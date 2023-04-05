@@ -1,0 +1,65 @@
+@import "variables";
+@import "components/all";
+@import "libs/normalize";
+
+.wrapper {
+  position: relative;
+
+
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #02026c;
+
+  &:before {
+    display: table;
+    content: ' ';
+  }
+  &:after {
+    clear: both;
+    display: table;
+    content: ' ';
+  }
+
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+
+}
+
+.back-to-top {
+  font-size: 12px;
+  line-height: 45px;
+  position: fixed;
+  z-index: 9999;
+  right: 40px;
+  bottom: 40px;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  transition: opacity 1s ease-out;
+  transition: all 300ms ease-in-out;
+  text-align: center;
+  opacity: 0;
+  border: 0;
+  border-radius: 2px;
+  background: rgba(36, 43, 45, 0.8);
+
+  svg {
+    width: 12px;
+    height: 12px;
+    fill: #ec7532;
+  }
+}

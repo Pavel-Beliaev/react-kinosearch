@@ -1,0 +1,130 @@
+@import "../variables";
+
+.navbar {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  min-height: 95px;
+  transition: all 300ms ease-in-out;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+
+  &-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-panel {
+    position: relative;
+    margin-right: 15px;
+
+    ul {
+      right: 0;
+      float: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
+      display: flex;
+      align-items: center;
+      margin-right: -15px;
+
+      li {
+        position: relative;
+
+        &:hover{
+          &:after{
+            right: 0;
+            width: 100%;
+          }
+        }
+
+        a {
+          font-size: 16px;
+          font-weight: normal;
+          line-height: .8em;
+          display: inline-block;
+          padding: 20px 24px;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          color: #fff;
+          position: relative;
+
+          &:hover {
+            color: #fbbd61;
+            transition: all .30s ease-in-out;
+
+          }
+        }
+
+        &.active {
+          a {
+            color: #fff;
+
+            &:hover {
+              color: #fbbd61;
+              transition: all .30s ease-in-out;
+
+            }
+
+            &:after {
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              display: block;
+              width: 100%;
+              height: 2px;
+              content: '';
+              background-image: $gradient;
+              box-shadow: 0 0 30px 0 $lightorang;
+            }
+          }
+        }
+
+        &:after {
+            position: absolute;
+            right: auto;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            content: '';
+            transition: all .30s ease-in-out;
+            background-image: $gradient;
+            box-shadow: 0 0 30px 0 $lightorang;
+        }
+      }
+    }
+  }
+}
+
+.tel {
+  margin-right: 15px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  float: right;
+  margin-top: 30px;
+  color: #fff;
+  align-items: center;
+  gap: 3px;
+
+  a {
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      color: $lightorang;
+      transition: all .30s ease-in-out;
+
+    }
+  }
+
+  img {
+
+    width: 14px;
+    height: 18px;
+  }
+
+}
+

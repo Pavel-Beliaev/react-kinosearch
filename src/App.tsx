@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './scss/app.scss'
+import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
+import MainLayout from "./pages/MainLayout";
+import Home from "./pages/Home";
+import AllMovies from "./pages/AllMovies";
+import News from "./pages/News";
+import ContactUs from "./pages/ContactUs";
+import ErrorPage from "./pages/ErrorPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path='/' element={<MainLayout/>}>
+                <Route index element={<Home/>}/>
+                <Route path='movies' element={<AllMovies/>}/>
+                <Route path='news' element={<News/>}/>
+                <Route path='contact' element={<ContactUs/>}/>
+                <Route path='*' element={<ErrorPage/>}/>
+            </Route>
+        )
+    )
+
+    return (
+        <RouterProvider router={router}/>
+    );
+};
 
 export default App;

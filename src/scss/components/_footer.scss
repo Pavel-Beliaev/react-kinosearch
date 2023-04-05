@@ -1,0 +1,83 @@
+@import "../variables";
+
+.footer {
+  position: static;
+  padding-top: 75px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  background: #101010;
+
+  &-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-row {
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  &-column {
+    width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+
+    h6 {
+      color: $orange;
+      font-size: 16px;
+      margin: 0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      padding-bottom: 10px;
+    }
+
+    &-menu {
+      ul {
+        li {
+
+          a {
+            font-size: 13px;
+            padding: 3px 0;
+            letter-spacing: 1.5px;
+            align-items: center;
+            gap: 5px;
+
+            span {
+              margin-right: 7px;
+              svg {
+                fill: rgba(255, 255, 255, .3);
+                width: 15px;
+                height: 15px;
+              }
+            }
+
+            &:hover {
+              color: #fbbd61;
+              transition: all .30s ease-in-out;
+
+
+              svg {
+                fill: #fbbd61;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.copyright {
+  margin-top: 50px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
