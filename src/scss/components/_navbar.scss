@@ -51,7 +51,7 @@
           position: relative;
 
           &:hover {
-            color: #fbbd61;
+            color: $lightorang;
             transition: all .30s ease-in-out;
 
           }
@@ -62,7 +62,7 @@
             color: #fff;
 
             &:hover {
-              color: #fbbd61;
+              color: $lightorang;
               transition: all .30s ease-in-out;
 
             }

@@ -4,12 +4,17 @@ import Footer from "../components/Footer";
 import {ReactComponent as BackToUpIcon} from "../public/SVG/chevron-up.svg";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
+import {useLocation} from "react-router-dom";
+
+
 
 const MainLayout = () => {
+    const {pathname} = useLocation();
+
     return (
         <div className='wrapper'>
-            <Header/>
             <Navbar/>
+            <Header pathname={pathname}/>
             <div>
                 <Outlet/>
             </div>
