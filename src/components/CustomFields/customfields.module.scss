@@ -1,0 +1,51 @@
+.custom_field {
+  margin-bottom: 23px;
+
+  p {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    margin-bottom: 5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #4a4a4a;
+
+    span {
+      position: relative;
+      line-height: 0;
+      font-size: 16px;
+      left: 2px;
+      color: #4a4a4a
+    }
+  }
+
+  input {
+    font-size: 14px;
+    height: 41px;
+    padding: 0 15px;
+    width: 100%;
+    transition: all 300ms ease-in-out;
+    border: 1px solid #d8d8d8;
+    color: #4a4a4a;
+
+    &:focus {
+      border-color: #fbbd61;
+    }
+  }
+
+  textarea {
+    padding: 8px 15px;
+    height: 162px;
+    font-size: 14px;
+    line-height: 22px;
+    width: 100%;
+    transition: all 300ms ease-in-out;
+    border: 1px solid #d8d8d8;
+    color: #4a4a4a;
+
+    &:focus {
+      border-color: #fbbd61;
+    }
+
+  }
+}

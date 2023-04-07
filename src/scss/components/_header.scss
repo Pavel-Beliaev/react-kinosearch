@@ -7,6 +7,8 @@
   background-position: center;
   background-size: cover;
 
+
+
   &:before {
     top: auto;
     height: 70%;
@@ -27,7 +29,6 @@
   left: 50%;
   margin-left: -45px;
   animation: ScrollDown 1.5s infinite;
-
 }
 
 .blurb {
@@ -42,7 +43,6 @@
 
   h1 {
     font-size: 52px;
-    font-weight: 300;
     padding: 0;
     animation: Heading .5s .5s forwards;
     letter-spacing: 3px;

@@ -1,0 +1,24 @@
+.custom_button {
+  transition: all 300ms ease-in-out;
+  color: #ec7532;
+  background: transparent;
+  font-size: 13px;
+  position: relative;
+  width: auto;
+  padding: 12px 24px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  border: 2px solid #ec7532;
+  border-radius: 30px;
+  cursor: pointer;
+  line-height: inherit;
+
+  &:active {
+    border-color: #fbbd61
+  }
+
+  &:hover {
+    color: #fff;
+    background: #ec7532;
+  }
+}

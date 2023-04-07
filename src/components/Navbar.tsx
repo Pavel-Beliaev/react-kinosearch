@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import phoneIcon from '../public/SVG/fa-phone.svg'
+import {ReactComponent as PhoneIcon} from "../public/SVG/phone.svg";
 import logoIcon from '../public/SVG/Paulo F  I  L  M  S.svg'
 import {Link} from "react-router-dom";
 
@@ -20,7 +20,7 @@ const Navbar = () => {
             <div className='heading'>
                 <div className='container'>
                     <div className='tel'>
-                        <img src={phoneIcon} alt="phone"/>
+                        <PhoneIcon/>
                         <a href="tel: 123456789">
                             123 456 789
                         </a>

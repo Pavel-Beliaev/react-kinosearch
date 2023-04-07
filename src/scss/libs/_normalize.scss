@@ -25,13 +25,25 @@ body {
 a,
 span,
 p,
-b,
+b, {
+  color: white;
+  font-weight: 300;
+}
+
 h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   color: white;
+  line-height: 1.4em;
+  position: relative;
+  margin: 0 0 10px 0;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #d8d8d8;
+  font-weight: 300;
+
 }
 
 h1 {
@@ -39,16 +51,18 @@ h1 {
 }
 
 h2 {
-  font-weight: 600;
-  font-size: 28px;
-  line-height: 30px;
-}
-
-h6 {
-  padding: 0 0 20px 0;
   line-height: 1.4em;
   position: relative;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #d8d8d8;
+  font-size: 18px;
+  margin-bottom: 40px;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+  color: #ec7532;
+
 }
+
 
 a {
   text-decoration: none;

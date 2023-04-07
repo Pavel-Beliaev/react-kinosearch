@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import arrowDown from '../public/SVG/duble-arrow-down.svg'
 import {dataPage} from "../mock/statick";
-import {HeaderProps} from "./@types/@types";
+import {HeaderProps} from "../@types/@types";
 
 
 
@@ -10,6 +10,8 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
 
     const stylePage = pathname.substring(1);
 
+
+
     useEffect(() => {
         setIsVisibleEffect(false);
         setTimeout(() => {
@@ -17,8 +19,9 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
         }, 0)
     }, [pathname])
 
+
     return (
-        <div className='header' style={{backgroundColor: `${dataPage[stylePage].color}`}}>
+        <div className='header' style={{backgroundImage:`${dataPage[stylePage].url}`}}>
             <img src={arrowDown} alt="Scroll down" className="scroll"/>
             <div className="container">
                 {isVisibleEffect &&
