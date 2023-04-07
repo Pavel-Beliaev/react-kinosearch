@@ -1,17 +1,22 @@
-import React from 'react';
-import style from './customfields.module.scss'
-import {FieldsProps} from "../../@types/@types";
+import React, {forwardRef} from 'react';
+import './customfields.scss'
+import {InputProps} from "../../@types/@types";
 
 
+const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
+    const {children, ...inputProps} = props;
 
-const CustomInput: React.FC<FieldsProps> = ({children, ...props}) => {
     return (
-        <div className={style.custom_field}>
-            <p>{children}<span>*</span></p>
-            <input {...props} />
+        <div className={children ? 'custom-field' : ''}>
+            {children &&
+                <p>
+                    {children}
+                    <span>*</span>
+                </p>
+            }
+            <input ref={ref} {...inputProps} />
         </div>
-
     );
-};
+});
 
 export default CustomInput;

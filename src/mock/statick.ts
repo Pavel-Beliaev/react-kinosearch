@@ -14,7 +14,7 @@ export const dataPage: PageDataType = {
     news: {
         title: 'Very Lates',
         heading: 'Movie news',
-        url: 'url("https://kazanreporter.ru/storage/web/cache/images/news/1/c6751fa975d7c19056d432f2cd1380da0cce6bb0.jpg/1200/720/crop")',
+        url: 'url("https://get.wallhere.com/photo/night-guitar-movies-film-reel-light-trumpet-lighting-darkness-6411.jpg")',
     },
     contact: {
         title: 'Have any questions?',

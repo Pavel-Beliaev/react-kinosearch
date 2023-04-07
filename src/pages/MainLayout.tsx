@@ -13,19 +13,19 @@ const MainLayout = () => {
 
     const [dataKinoPoisk, setDataKinoPoisk] = useState([]);
 
-    // useEffect(() => {
-    //     fetch('https://api.kinopoisk.dev/v1/image?limit=3', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'X-API-KEY': 'ZZ11XDW-57R4FQJ-MAQGVAK-12EKRXX'
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => setDataKinoPoisk(data.docs))
-    //         .catch(error => console.error(error));
-    // }, [])
-    // console.log(dataKinoPoisk)
+    useEffect(() => {
+        fetch('https://api.kinopoisk.dev/v1/movie?limit=3', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'X-API-KEY': 'ZZ11XDW-57R4FQJ-MAQGVAK-12EKRXX'
+            }
+        })
+            .then(response => response.json())
+            .then(data => setDataKinoPoisk(data.docs))
+            .catch(error => console.error(error));
+    }, [])
+    console.log(dataKinoPoisk)
 
     return (
         <div className='wrapper'>
