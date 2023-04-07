@@ -9,16 +9,16 @@ export const dataPage: PageDataType = {
     movies: {
         title: 'Take a look at',
         heading: 'What\'s on this week',
-        url: 'url("https://internetnearme.com/wp-content/uploads/2020/03/6-Shows-To-Watch-On-A-Rainy-Weekend-min.jpg")',
+        url: 'url("https://trafaret-decor.ru/sites/default/files/2023-01/%D0%A4%D0%BE%D0%BD%20%D0%BA%D0%B8%D0%BD%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8%20%2853%29.jpg")',
     },
     news: {
         title: 'Very Lates',
         heading: 'Movie news',
-        url: 'url("https://kartinkin.net/uploads/posts/2022-03/1647010712_57-kartinkin-net-p-kinematograf-kartinki-62.jpg")',
+        url: 'url("https://kazanreporter.ru/storage/web/cache/images/news/1/c6751fa975d7c19056d432f2cd1380da0cce6bb0.jpg/1200/720/crop")',
     },
     contact: {
         title: 'Have any questions?',
         heading: 'Please contact us',
-        url: 'url("https://static.tildacdn.com/tild6135-3239-4532-a631-613736623538/hand-light-finger-ph.jpg")',
+        url: 'url("https://www.rightarminc.com/wp-content/uploads/2019/10/contact_banner.jpg")',
     }
 }

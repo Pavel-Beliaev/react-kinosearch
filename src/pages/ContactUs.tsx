@@ -5,6 +5,7 @@ import {ReactComponent as PhoneIcon} from "../public/SVG/phone.svg";
 import {ReactComponent as EmailIcon} from "../public/SVG/email.svg";
 import {ReactComponent as LocationIcon} from "../public/SVG/location.svg";
 import CustomTextarea from "../components/CustomFields/CustomTextarea";
+import MapElement from "../components/MapElement";
 
 const ContactUs = () => {
     return (
@@ -12,7 +13,7 @@ const ContactUs = () => {
             <div className='map'>
                 <div className='map-wrapper'>
                     <div className='map_inside'>
-                        {/*map*/}
+                        <MapElement/>
                     </div>
                 </div>
             </div>
