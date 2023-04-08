@@ -7,15 +7,18 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
     const {children, ...inputProps} = props;
 
     return (
-        <div className={children ? 'custom-field' : ''}>
+        <>
             {children &&
-                <p>
-                    {children}
-                    <span>*</span>
-                </p>
+                <div className={children ? 'custom-field' : ''}>
+
+                    <p>
+                        {children}
+                        <span>*</span>
+                    </p>
+                </div>
             }
-            <input ref={ref} {...inputProps} />
-        </div>
+            <input className='custom-input' ref={ref} {...inputProps} />
+        </>
     );
 });
 

@@ -50,19 +50,28 @@
   width: 45px;
   height: 45px;
   cursor: pointer;
-  transition: opacity 1s ease-out;
-  transition: all 300ms ease-in-out;
+  transition: opacity 1s ease-out, all 300ms ease-in-out;
   text-align: center;
   opacity: 0;
-  border: 0;
   border-radius: 2px;
   background: rgba(36, 43, 45, 0.8);
 
-  svg {
-    width: 12px;
-    height: 12px;
-    fill: #ec7532;
+  &:hover {
+    .fa {
+      color: $lightorang;
+      transition: all .30s ease-in-out;
+    }
   }
+
+  .fa {
+    &-chevron-up {
+      color: #ec7532;
+    }
+  }
+}
+
+.show {
+  //opacity: 1;
 }
 
 .frameworks {

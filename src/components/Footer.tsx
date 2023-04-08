@@ -1,7 +1,4 @@
 import React from 'react';
-import {ReactComponent as TwitterIcon} from "../public/SVG/twitter.svg";
-import {ReactComponent as FacebookIcon} from "../public/SVG/facebook.svg";
-import {ReactComponent as GooglePlusIcon} from "../public/SVG/google-plus.svg";
 import {Link} from "react-router-dom";
 
 const footerMenu = ['Get in touch', 'About movie star', 'Legal stuff'];
@@ -43,19 +40,19 @@ const Footer = () => {
                                 <ul>
                                     <li>
                                         <Link to="https://twitter.com">
-                                            <span><TwitterIcon/></span>
+                                            <span className='fa fa-twitter'></span>
                                             Twitter
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="https://www.facebook.com">
-                                            <span><FacebookIcon/></span>
+                                            <span className='fa fa-facebook'></span>
                                             Facebook
                                         </Link>
                                     </li>
                                     <li>
                                         <Link to="http://plus.google.com/">
-                                            <span><GooglePlusIcon/></span>
+                                            <span className='fa fa-google-plus'></span>
                                             Google +
                                         </Link>
                                     </li>

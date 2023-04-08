@@ -41,7 +41,7 @@
         width: 125px;
         height: 4px;
         content: '';
-        background: linear-gradient(to right, #ec7532 0%,#fbbd61 100%);
+        background: $gradient;
       }
     }
   }
@@ -52,14 +52,14 @@
   }
 
   form {
-    padding: 0 15px;
+    padding-right: 15px;
     width: 50%;
   }
 
   &-colum {
     display: flex;
     flex-direction: column;
-    padding: 0 15px;
+    padding-left: 15px;
   }
 
   &-row {
@@ -67,19 +67,20 @@
     margin-bottom: 30px;
 
     span {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       margin-right: 25px;
       height: 75px;
       width: 75px;
       border: 2px solid #d8d8d8;
       border-radius: 50%;
+      text-align: center;
 
-      svg {
-        width: 35px;
-        height: 35px;
-        fill: $orange;
+      i {
+        color: #ec7532;
+        font-size: 32px;
+        position: relative;
+        top: 50%;
+        max-width: 46px;
+        transform: translateY(-50%);
       }
     }
   }

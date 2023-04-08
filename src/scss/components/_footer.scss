@@ -43,7 +43,6 @@
     &-menu {
       ul {
         li {
-
           a {
             font-size: 13px;
             padding: 3px 0;
@@ -51,23 +50,20 @@
             align-items: center;
             gap: 5px;
 
-            span {
-              margin-right: 7px;
-              svg {
-                fill: rgba(255, 255, 255, .3);
-                width: 15px;
-                height: 15px;
-              }
+            .fa {
+              width: 25px;
+              transition: all 300ms ease-in-out;
+              transform: translateY(2px);
+              color: rgba(255, 255, 255, .3);
             }
 
             &:hover {
-              color: #fbbd61;
+              color: $lightorang;
               transition: all .30s ease-in-out;
 
-
-              svg {
+              .fa {
+                color: $lightorang;
                 transition: all .30s ease-in-out;
-                fill: #fbbd61;
               }
             }
           }
@@ -82,3 +78,4 @@
   padding: 20px 0;
   border-top: 1px solid rgba(255, 255, 255, .1);
 }
+

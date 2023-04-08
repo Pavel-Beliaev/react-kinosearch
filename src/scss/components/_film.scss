@@ -1,1 +1,86 @@
 @import "../variables";
+
+.film {
+  display: flex;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #d8d8d8;
+  gap: 30px;
+
+  img {
+    border-radius: 10px;
+    width: 25%;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: $lightorang;
+    }
+
+    h3 {
+      border-bottom: none;
+      padding: 0;
+      font-size: 30px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      color: #101010;
+
+    }
+
+    p {
+      margin: 0 0 20px 0;
+      color: #717171
+    }
+
+  }
+
+  &-more {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 45px;
+
+    p {
+      margin: 0;
+    }
+
+    span {
+      align-self: flex-end;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      color: #717171
+    }
+  }
+
+  &-button {
+    font-size: 12px;
+    position: relative;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: $orange;
+
+    &:after {
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      font-weight: bold;
+      position: absolute;
+      top: 0;
+      margin-left: 5px;
+      content: '\f105';
+    }
+
+
+    &:hover {
+      color: $lightorang;
+      transition: all 300ms ease-in-out;
+    }
+  }
+}
+
+

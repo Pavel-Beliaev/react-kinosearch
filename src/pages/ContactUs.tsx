@@ -1,9 +1,6 @@
 import React from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
 import CustomButton from "../components/CustomButton/CustomButton";
-import {ReactComponent as PhoneIcon} from "../public/SVG/phone.svg";
-import {ReactComponent as EmailIcon} from "../public/SVG/email.svg";
-import {ReactComponent as LocationIcon} from "../public/SVG/location.svg";
 import CustomTextarea from "../components/CustomFields/CustomTextarea";
 import MapElement from "../components/MapElement";
 
@@ -31,21 +28,21 @@ const ContactUs = () => {
                     </form>
                     <div className='form-colum'>
                         <div className='form-row'>
-                            <span><LocationIcon/></span>
+                            <span><i className='fa fa-map-marker'></i></span>
                             <div className='form-text'>
                                 <h4>Address</h4>
                                 <p>Solar system, planet Earth</p>
                             </div>
                         </div>
                         <div className='form-row'>
-                            <span><EmailIcon/></span>
+                            <span><i className='fa fa-envelope-open'></i></span>
                             <div className='form-text'>
                                 <h4>Email</h4>
                                 <p>philipsxenium93@gmail.com</p>
                             </div>
                         </div>
                         <div className='form-row'>
-                            <span><PhoneIcon/></span>
+                            <span><i className='fa fa-phone'></i></span>
                             <div className='form-text'>
                                 <h4>Telephone</h4>
                                 <p>+66 65 335 62 63</p>

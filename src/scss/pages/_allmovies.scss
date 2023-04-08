@@ -1,4 +1,90 @@
 @import "../variables";
 
+.movies {
+  padding-top: 70px;
+  padding-bottom: 75px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-search {
+    display: flex;
+    flex: 0 1 100%;
+
+    position: relative;
+    z-index: 99;
+    margin-top: -135px;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 40px 40px 0 0;
+    background: #fff;
+
+    input {
+      margin-bottom: 0;
+      border-radius: 30px;
+      padding: 10px 33px 10px 20px;
+    }
+
+    i {
+      font-size: 14px;
+      position: absolute;
+      top: 33px;
+      right: 35px;
+      color: $orange;
+    }
+  }
+
+  &-colum {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 65%;
+
+  }
+
+  &-sidebar {
+    display: flex;
+    flex: 0 1 25%;
+    flex-direction: column;
+    margin-right: 20px;
+
+    h4 {
+      font-size: 18px;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      color: $orange;
+
+      &:after{
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        display: block;
+        height: 4px;
+        width: 75px;
+        background: $gradient;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        margin-bottom: 8px;
+        flex: 0 1 50%;
+
+        a {
+          color: #717171;
+          transition: all 300ms ease-in-out;
+
+          &:hover {
+            color: $lightorang;
+            transition: all 300ms ease-in-out;
+          }
+        }
+      }
+    }
+  }
+}
+
 
 

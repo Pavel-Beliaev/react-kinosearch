@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import {ReactComponent as BackToUpIcon} from "../public/SVG/chevron-up.svg";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
@@ -13,19 +12,19 @@ const MainLayout = () => {
 
     const [dataKinoPoisk, setDataKinoPoisk] = useState([]);
 
-    useEffect(() => {
-        fetch('https://api.kinopoisk.dev/v1/movie?limit=3', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'X-API-KEY': 'ZZ11XDW-57R4FQJ-MAQGVAK-12EKRXX'
-            }
-        })
-            .then(response => response.json())
-            .then(data => setDataKinoPoisk(data.docs))
-            .catch(error => console.error(error));
-    }, [])
-    console.log(dataKinoPoisk)
+    // useEffect(() => {
+    //     fetch('https://unogsng.p.rapidapi.com/genres', {
+    //         method: 'GET',
+    //         headers: {
+    //             'X-RapidAPI-Key': '8eba846fb6mshf4e86bfabb90b42p1cbb3djsn98a0ff61fc46',
+    //             'X-RapidAPI-Host': 'unogsng.p.rapidapi.com'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => setDataKinoPoisk(data.docs))
+    //         .catch(error => console.error(error));
+    // }, [])
+    // console.log(dataKinoPoisk)
 
     return (
         <div className='wrapper'>
@@ -34,8 +33,9 @@ const MainLayout = () => {
             <div className='frameworks'>
                 <Outlet/>
             </div>
-            <a href="#" className='back-to-top'>
-                <BackToUpIcon/> {/*opacity: 0;*/}
+            <a href="#" className='back-to-top show'>
+                <i className='fa fa-chevron-up'></i>
+                {/*opacity: 0;*/}
             </a>
             <Footer/>
         </div>
