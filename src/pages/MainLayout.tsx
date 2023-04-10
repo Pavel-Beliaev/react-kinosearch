@@ -13,15 +13,15 @@ const MainLayout = () => {
     const [dataKinoPoisk, setDataKinoPoisk] = useState([]);
 
     // useEffect(() => {
-    //     fetch('https://unogsng.p.rapidapi.com/genres', {
+    //     fetch('https://api.themoviedb.org/3/movie/76341', {
     //         method: 'GET',
     //         headers: {
-    //             'X-RapidAPI-Key': '8eba846fb6mshf4e86bfabb90b42p1cbb3djsn98a0ff61fc46',
-    //             'X-RapidAPI-Host': 'unogsng.p.rapidapi.com'
+    //             'Authorization': 'Bearer d2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+    //             'Content-Type': 'application/json;charset=utf-8'
     //         }
     //     })
     //         .then(response => response.json())
-    //         .then(data => setDataKinoPoisk(data.docs))
+    //         .then(data => setDataKinoPoisk(data))
     //         .catch(error => console.error(error));
     // }, [])
     // console.log(dataKinoPoisk)

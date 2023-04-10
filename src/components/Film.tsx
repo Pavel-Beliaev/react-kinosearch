@@ -18,7 +18,7 @@ const Film = () => {
                             movie page
                         </a>
                     </p>
-                    <span>000 mins</span>
+                    {/*<span></span>*/}
                 </div>
             </div>
         </div>

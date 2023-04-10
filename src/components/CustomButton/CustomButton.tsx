@@ -1,12 +1,12 @@
 import React from 'react';
-import style from './custombutton.module.scss'
+import './custombutton.scss'
 import {ButtonProps} from "../../@types/@types";
 
 
 
 const CustomButton:React.FC<ButtonProps> = ({children, ...props}) => {
     return (
-      <button {...props} className={style.custom_button}>
+      <button {...props} className='custom_button'>
           {children}
       </button>
     );

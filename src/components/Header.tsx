@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import arrowDown from '../public/SVG/duble-arrow-down.svg'
 import {dataPage} from "../mock/statick";
 import {HeaderProps} from "../@types/@types";
-
+import Slider from "./Slider/Slider";
+import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
 
 
 const Header: React.FC<HeaderProps> = ({pathname}) => {
@@ -11,26 +11,30 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
     const stylePage = pathname.substring(1);
 
 
-
     useEffect(() => {
         setIsVisibleEffect(false);
         setTimeout(() => {
             setIsVisibleEffect(true)
         }, 0)
-    }, [pathname])
+    }, [pathname]);
 
 
     return (
-        <div className='header' style={{backgroundImage:`${dataPage[stylePage].url}`}}>
-            <img src={arrowDown} alt="Scroll down" className="scroll"/>
-            <div className="container">
-                {isVisibleEffect &&
-                    <div className="blurb">
-                        <span className="title">{dataPage[stylePage].title}</span>
-                        <h1>{dataPage[stylePage].heading}</h1>
-                    </div>
-                }
-            </div>
+        <div className='header' style={{backgroundImage: `${dataPage[stylePage].url}`}}>
+          <span className="scroll"><ArrowDownIcon/></span>
+            {pathname === '/'
+                ?
+                <Slider/>
+                :
+                <div className="container">
+                    {isVisibleEffect &&
+                        <div className="blurb">
+                            <span className="title">{dataPage[stylePage].title}</span>
+                            <h1>{dataPage[stylePage].heading}</h1>
+                        </div>
+                    }
+                </div>
+            }
         </div>
     );
 };

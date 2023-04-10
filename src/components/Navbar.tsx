@@ -1,13 +1,9 @@
 import React, {useState} from 'react';
 import logoIcon from '../public/SVG/Paulo F  I  L  M  S.svg'
 import {Link} from "react-router-dom";
+import {navbarMenu} from "../mock/statick";
 
-const navbarMenu = [
-    {title: 'Home', url: '/'},
-    {title: 'All movies', url: '/movies'},
-    {title: 'News', url: '/news'},
-    {title: 'Contact us', url: '/contact'},
-]
+
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(0)

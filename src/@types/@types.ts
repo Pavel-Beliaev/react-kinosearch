@@ -12,8 +12,8 @@ export type HeaderProps = {
     pathname: string
 }
 
-export type ButtonProps = {
-    children: string
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
+    children: string | React.ReactElement
 }
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {

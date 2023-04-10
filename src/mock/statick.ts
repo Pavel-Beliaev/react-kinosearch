@@ -22,3 +22,10 @@ export const dataPage: PageDataType = {
         url: 'url("https://www.rightarminc.com/wp-content/uploads/2019/10/contact_banner.jpg")',
     }
 }
+
+export const navbarMenu = [
+    {title: 'Home', url: '/'},
+    {title: 'All movies', url: '/movies'},
+    {title: 'News', url: '/news'},
+    {title: 'Contact us', url: '/contact'},
+]
