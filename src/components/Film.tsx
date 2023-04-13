@@ -15,7 +15,7 @@ const Film = () => {
                     <p>
                         <a className='film-button'
                             href="#">
-                            movie page
+                            Read more
                         </a>
                     </p>
                     {/*<span></span>*/}

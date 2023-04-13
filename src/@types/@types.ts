@@ -17,9 +17,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    children?: ReactNode;
+    title?: string;
 }
 
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-    children: ReactNode;
+    title: string;
 }

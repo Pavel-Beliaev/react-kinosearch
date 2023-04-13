@@ -4,15 +4,14 @@ import {InputProps} from "../../@types/@types";
 
 
 const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
-    const {children, ...inputProps} = props;
+    const {title, ...inputProps} = props;
 
     return (
         <>
-            {children &&
-                <div className={children ? 'custom-field' : ''}>
-
+            {title &&
+                <div className={title ? 'custom-field' : ''}>
                     <p>
-                        {children}
+                        {title}
                         <span>*</span>
                     </p>
                 </div>

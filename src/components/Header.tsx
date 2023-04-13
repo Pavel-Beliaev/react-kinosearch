@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {dataPage} from "../mock/statick";
 import {HeaderProps} from "../@types/@types";
-import Slider from "./Slider/Slider";
+import SliderHeader from "./SliderHeader/SliderHeader";
 import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
 
 
@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
           <span className="scroll"><ArrowDownIcon/></span>
             {pathname === '/'
                 ?
-                <Slider/>
+                <SliderHeader/>
                 :
                 <div className="container">
                     {isVisibleEffect &&

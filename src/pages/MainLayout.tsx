@@ -13,18 +13,11 @@ const MainLayout = () => {
     const [dataKinoPoisk, setDataKinoPoisk] = useState([]);
 
     // useEffect(() => {
-    //     fetch('https://api.themoviedb.org/3/movie/76341', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': 'Bearer d2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-    //             'Content-Type': 'application/json;charset=utf-8'
-    //         }
-    //     })
+    //     fetch('/?api_key=d2e6a036f6b0dbeacdb1e6d2fc5af3aa')
     //         .then(response => response.json())
-    //         .then(data => setDataKinoPoisk(data))
+    //         .then(data => setDataKinoPoisk(data.results))
     //         .catch(error => console.error(error));
     // }, [])
-    // console.log(dataKinoPoisk)
 
     return (
         <div className='wrapper'>
@@ -33,6 +26,7 @@ const MainLayout = () => {
             <div className='frameworks'>
                 <Outlet/>
             </div>
+
             <a href="#" className='back-to-top show'>
                 <i className='fa fa-chevron-up'></i>
                 {/*opacity: 0;*/}

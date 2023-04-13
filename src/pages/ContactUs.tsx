@@ -20,10 +20,10 @@ const ContactUs = () => {
                 </div>
                 <div className='form-block'>
                     <form action="">
-                        <CustomInput children={'Name'}/>
-                        <CustomInput children={'Email'}/>
-                        <CustomInput children={'Where did you hear about us?'}/>
-                        <CustomTextarea children={'Message'}/>
+                        <CustomInput title={'Name'}/>
+                        <CustomInput title={'Email'}/>
+                        <CustomInput title={'Where did you hear about us?'}/>
+                        <CustomTextarea title={'Message'}/>
                         <CustomButton children={'Send message'}/>
                     </form>
                     <div className='form-colum'>

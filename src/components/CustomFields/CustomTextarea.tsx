@@ -4,12 +4,12 @@ import {TextareaProps} from "../../@types/@types";
 
 
 const CustomTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref?) => {
-    const { children, ...textareaProps } = props;
+    const { title, ...textareaProps } = props;
 
     return (
         <div className='custom-field'>
             <p>
-                {children}
+                {title}
                 <span>*</span>
             </p>
             <textarea ref={ref} {...textareaProps} />

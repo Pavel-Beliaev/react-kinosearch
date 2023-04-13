@@ -1,8 +1,16 @@
 import React from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
 import Film from "../components/Film";
+import {useGetAllGenresQuery, useGetAllMoviesQuery, useSearchMoviesQuery} from "../Store/TMDB/tmdb.api";
 
 const AllMovies = () => {
+    // const {data} = useSearchMoviesQuery('Avatar') //for search
+    // const {data} = useGetAllMoviesQuery(1) // all movies (pages)
+    // const {data} = useGetAllGenresQuery('en-US') // all genre
+
+
+
+
     return (
         <div className='frameworks-container movies'>
             <div className='movies-search'>

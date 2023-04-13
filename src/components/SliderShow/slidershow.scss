@@ -1,0 +1,39 @@
+.swiperTrending {
+  --swiper-scrollbar-size: 8px;
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+    margin: 0 -15px;
+
+    &-wrapper {
+      margin-bottom: 70px;
+    }
+
+    &-slide {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .swiper-scrollbar-drag {
+    background-color: #fbbd61;
+  }
+
+  .swiper-scrollbar-drag:active {
+    background-image: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+  }
+}
+
+
+
+
+
+
+
+
+
+
