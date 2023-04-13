@@ -1,15 +1,68 @@
-.mySwiper2 {
+.sliderTrailer {
+  padding-top: 75px;
+  position: relative;
+}
+
+.swiperTop {
+  position: absolute;
+  user-select: none;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.1;
+  }
+}
+
+.swiperMid {
+  user-select: none;
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 50%;
+    object-fit: cover;
+    margin: 30px;
+  }
+
+}
+
+.swiperBottom {
+  user-select: none;
+  margin: 0 30px;
   --swiper-navigation-color: #fff;
   --swiper-pagination-color: #fff;
-  position: relative;
-  user-select: none;
+
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-.mySwiper {
-  position: absolute;
-  bottom: 0;
-  height: 30%;
-  z-index: 50;
-  width: 100%;
+.swiperBottom {
+  .swiper-slide {
+    opacity: 0.4;
 
+    &-active {
+      opacity: 1;
+    }
+  }
 }
+
+
+
+
+
+
+

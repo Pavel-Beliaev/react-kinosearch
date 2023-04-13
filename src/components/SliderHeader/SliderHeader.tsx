@@ -12,9 +12,10 @@ const SliderHeader: React.FC = () => {
 
     return (
         <Swiper
-            className='slider'
+            className='sliderHeader'
             modules={[Pagination, Autoplay, EffectFade]}
             effect='fade'
+            allowTouchMove={false}
             spaceBetween={30}
             centeredSlides={true}
             autoplay={{
@@ -33,7 +34,7 @@ const SliderHeader: React.FC = () => {
                 {title: 'Thriller', name: 'Name 3', color: 'blue'}
             ]
                 .map((obj, index) => (
-                    <SwiperSlide className='slider-slides'
+                    <SwiperSlide className='sliderHeader-slides'
                                  style={{backgroundColor: `${obj.color}`}}
                                  key={index}
                     >
@@ -41,7 +42,7 @@ const SliderHeader: React.FC = () => {
                             <div className="container">
                                 {isActive &&
                                     <div className='blurb'>
-                                        <div className='slider-text'>
+                                        <div className='sliderHeader-text'>
                                             <span>{obj.title}</span>
                                             <h1>{obj.name}</h1>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut blanditiis
