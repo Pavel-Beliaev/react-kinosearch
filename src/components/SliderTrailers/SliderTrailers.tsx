@@ -7,6 +7,7 @@ import "swiper/scss";
 import "swiper/scss/free-mode";
 import "swiper/scss/navigation";
 import "swiper/scss/thumbs";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
 
 const SliderTrailers = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
@@ -71,34 +72,34 @@ const SliderTrailers = () => {
 
                 >
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+                        <VideoPlayer/>
                     </SwiperSlide>
                 </Swiper>
                 <Swiper
