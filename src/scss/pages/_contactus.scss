@@ -32,17 +32,6 @@
   &-title {
     h2 {
       position: relative;
-
-      &:after {
-        position: absolute;
-        right: auto;
-        bottom: -1px;
-        display: block;
-        width: 125px;
-        height: 4px;
-        content: '';
-        background: $gradient;
-      }
     }
   }
 

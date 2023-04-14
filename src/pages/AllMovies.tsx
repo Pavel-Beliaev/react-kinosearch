@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
-import Film from "../components/Film";
+import CardMovie from "../components/CardMovie";
 import {useGetAllGenresQuery, useGetAllMoviesQuery, useSearchMoviesQuery} from "../Store/TMDB/tmdb.api";
 
 const AllMovies = () => {
@@ -18,10 +18,10 @@ const AllMovies = () => {
                 <i className='fa fa-search'></i>
             </div>
             <div className='movies-colum'>
-                <Film/>
-                <Film/>
-                <Film/>
-                <Film/>
+                <CardMovie/>
+                <CardMovie/>
+                <CardMovie/>
+                <CardMovie/>
             </div>
             <div className='movies-sidebar'>
                 <h4>Categories</h4>

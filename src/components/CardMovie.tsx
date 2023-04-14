@@ -1,7 +1,7 @@
 import React from 'react';
 import notPicture from '../public/PNG/placeholder.png'
 
-const Film = () => {
+const CardMovie = () => {
     return (
         <div className='film'>
             <img src={notPicture} alt="Prev. poster"/>
@@ -25,4 +25,4 @@ const Film = () => {
     );
 };
 
-export default Film;
+export default CardMovie;

@@ -2,7 +2,7 @@ import React from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
 import CustomButton from "../components/CustomButton/CustomButton";
 import CustomTextarea from "../components/CustomFields/CustomTextarea";
-import MapElement from "../components/MapElement";
+import MapComponent from "../components/MapComponent";
 
 const ContactUs = () => {
     return (
@@ -10,7 +10,7 @@ const ContactUs = () => {
             <div className='map'>
                 <div className='map-wrapper'>
                     <div className='map_inside'>
-                        <MapElement/>
+                        <MapComponent/>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Map, Placemark, YMaps} from "@pbe/react-yandex-maps";
 
-const MapElement = () => {
+const MapComponent = () => {
     return (
         <YMaps>
             <Map defaultState={{
@@ -25,4 +25,4 @@ const MapElement = () => {
     );
 };
 
-export default MapElement;
+export default MapComponent;

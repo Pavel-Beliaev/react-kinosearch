@@ -3,7 +3,7 @@ import notPicture from '../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
 
 
-const NewFilm = () => {
+const CardMovieSlider = () => {
     return (
         <div className='newfilms'>
             <div className='newfilms-poster'>
@@ -35,4 +35,4 @@ const NewFilm = () => {
     );
 };
 
-export default NewFilm;
+export default CardMovieSlider;
