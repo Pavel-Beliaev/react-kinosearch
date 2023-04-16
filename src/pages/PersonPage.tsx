@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MoviePage = () => {
+const PersonPage = () => {
     return (
         <div style={{color: "black"}}>
-            Movie page
+            Person Page
         </div>
     );
 };
 
-export default MoviePage;
+export default PersonPage;

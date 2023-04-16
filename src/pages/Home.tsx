@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useGetNewMoviesQuery, useGetPictureQuery, useGetVideoQuery} from "../Store/TMDB/tmdb.api";
-import CardMovieSlider from "../components/CardMovieSlider";
+import MovieSlideCard from "../components/MovieSlideCard";
 import axios from "axios";
 import SliderShow from "../components/SliderShow/SliderShow";
 import SliderTrailers from "../components/SliderTrailers/SliderTrailers";

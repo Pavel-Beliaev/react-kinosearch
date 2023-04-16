@@ -1,9 +1,9 @@
 import React from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
-import CardMovie from "../components/CardMovie";
+import MovieCard from "../components/MovieCard";
 import {useGetAllGenresQuery, useGetAllMoviesQuery, useSearchMoviesQuery} from "../Store/TMDB/tmdb.api";
 
-const AllMovies = () => {
+const AllMoviesPage = () => {
     // const {data} = useSearchMoviesQuery('Avatar') //for search
     // const {data} = useGetAllMoviesQuery(1) // all movies (pages)
     // const {data} = useGetAllGenresQuery('en-US') // all genre
@@ -18,10 +18,7 @@ const AllMovies = () => {
                 <i className='fa fa-search'></i>
             </div>
             <div className='movies-colum'>
-                <CardMovie/>
-                <CardMovie/>
-                <CardMovie/>
-                <CardMovie/>
+                <MovieCard/>
             </div>
             <div className='movies-sidebar'>
                 <h4>Categories</h4>
@@ -34,4 +31,4 @@ const AllMovies = () => {
     );
 };
 
-export default AllMovies;
+export default AllMoviesPage;

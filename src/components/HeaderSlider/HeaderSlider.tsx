@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomButton from "../CustomButton/CustomButton";
-import './sliderheader.scss'
+import './headerslider.scss'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import { Pagination, Autoplay, EffectFade} from 'swiper';
 
@@ -8,7 +8,7 @@ import 'swiper/scss';
 import 'swiper/scss/effect-fade'
 import "swiper/scss/pagination";
 
-const SliderHeader: React.FC = () => {
+const HeaderSlider: React.FC = () => {
 
     return (
         <Swiper
@@ -57,7 +57,10 @@ const SliderHeader: React.FC = () => {
                                                 facere magni, modi nesciunt nulla obcaecati officiis, porro quae qui rem
                                                 repellat
                                                 suscipit veritatis!</p>
-                                            <CustomButton children={<i className='fa fa-play'><span>Play trailer</span></i>}/>
+                                            <div className='sliderHeader-button'>
+                                                <span className='sliderHeader-certificate'>18</span>
+                                                <CustomButton children={<i className='fa fa-play'><span>Play trailer</span></i>}/>
+                                            </div>
                                         </div>
                                     </div>
                                 }
@@ -70,4 +73,4 @@ const SliderHeader: React.FC = () => {
     );
 };
 
-export default SliderHeader;
+export default HeaderSlider;

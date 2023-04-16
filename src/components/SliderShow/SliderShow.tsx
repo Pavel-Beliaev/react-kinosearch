@@ -5,7 +5,7 @@ import {Swiper, SwiperSlide} from "swiper/react";
 
 import "swiper/scss";
 import "swiper/scss/scrollbar";
-import CardMovieSlider from "../CardMovieSlider";
+import MovieSlideCard from "../MovieSlideCard";
 
 const SliderShow = () => {
     return (
@@ -22,12 +22,12 @@ const SliderShow = () => {
                 modules={[Scrollbar]}
                 className="swiperTrending"
             >
-                <SwiperSlide><CardMovieSlider/></SwiperSlide>
-                <SwiperSlide><CardMovieSlider/></SwiperSlide>
-                <SwiperSlide><CardMovieSlider/></SwiperSlide>
-                <SwiperSlide><CardMovieSlider/></SwiperSlide>
-                <SwiperSlide><CardMovieSlider/></SwiperSlide>
-                <SwiperSlide><CardMovieSlider/></SwiperSlide>
+                <SwiperSlide><MovieSlideCard/></SwiperSlide>
+                <SwiperSlide><MovieSlideCard/></SwiperSlide>
+                <SwiperSlide><MovieSlideCard/></SwiperSlide>
+                <SwiperSlide><MovieSlideCard/></SwiperSlide>
+                <SwiperSlide><MovieSlideCard/></SwiperSlide>
+                <SwiperSlide><MovieSlideCard/></SwiperSlide>
             </Swiper>
         </>
     );

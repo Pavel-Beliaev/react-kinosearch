@@ -1,9 +1,12 @@
 @import "./navbar";
 @import "./footer";
 @import "./header";
-@import "./film";
-@import "./newfilm";
-@import "../pages/contactus";
-@import "../pages/allmovies";
+@import "./movieCard";
+@import "./movieSlideCard";
+@import "./peopleCard";
+@import "../pages/contactPage";
+@import "../pages/allMoviesPage";
 @import "../pages/home";
 @import "../pages/people";
+@import "../pages/personPage";
+@import "../pages/moviePage";

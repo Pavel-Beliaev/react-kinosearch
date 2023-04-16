@@ -34,8 +34,6 @@
   }
 
 
-
-
   .container {
     position: absolute;
     top: 0;
@@ -108,39 +106,59 @@
     }
   }
 
-  button {
-    animation: Buttons .5s .5s forwards;
-    opacity: 0;
-    background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+  &-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-    &:active {
-      background-color: #e6e6e6;
-      border-color: #adadad;
-      background-image: none;
+    >span {
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 33px;
+      width: 33px;
+      height: 33px;
+      text-align: center;
+      color: #fff;
+      border-radius: 50%;
+      background: #4a4a4a;
+    }
+
+    button {
+      animation: Buttons .5s .5s forwards;
+      opacity: 0;
+      background: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+
+      &:active {
+        background-color: #e6e6e6;
+        border-color: #adadad;
+        background-image: none;
 
 
-      span {
-        color: #adadad;
+        span {
+          color: #adadad;
+        }
+
+        .fa {
+          &-play {
+            color: #adadad;
+          }
+        }
       }
 
       .fa {
         &-play {
-          color: #adadad;
+          color: #fff;
         }
       }
-    }
 
-    .fa {
-      &-play {
+      span {
         color: #fff;
+        margin-left: 3px;
       }
     }
-
-    span {
-      color: #fff;
-      margin-left: 3px;
-    }
   }
+
+
 }
 
 @keyframes slideanim {

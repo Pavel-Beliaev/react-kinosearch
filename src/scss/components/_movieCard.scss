@@ -51,10 +51,15 @@
     }
 
     span {
-      align-self: flex-end;
-      font-size: 12px;
-      letter-spacing: 1.5px;
-      color: #717171
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 33px;
+      width: 33px;
+      height: 33px;
+      text-align: center;
+      color: #fff;
+      border-radius: 50%;
+      background: #4a4a4a;
     }
   }
 
