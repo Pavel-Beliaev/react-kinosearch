@@ -10,7 +10,6 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
 
     const stylePage = pathname.substring(1);
 
-    console.log(pathname)
     useEffect(() => {
         setIsVisibleEffect(false);
         setTimeout(() => {

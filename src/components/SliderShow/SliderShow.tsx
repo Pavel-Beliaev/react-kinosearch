@@ -2,12 +2,15 @@ import React from 'react';
 import './slidershow.scss'
 import {Scrollbar} from "swiper";
 import {Swiper, SwiperSlide} from "swiper/react";
-
 import "swiper/scss";
 import "swiper/scss/scrollbar";
-import MovieSlideCard from "../MovieSlideCard";
 
-const SliderShow = () => {
+interface SliderProps {
+    children: React.ReactNode
+    slideCount: number
+}
+
+const SliderShow: React.FC<SliderProps> = ({children, slideCount}) => {
     return (
         <>
             <Swiper
@@ -16,18 +19,18 @@ const SliderShow = () => {
                     draggable: true,
                     horizontalClass: 'scroll-horizontal'
                 }}
-                slidesPerView={4}
+                slidesPerView={slideCount}
                 spaceBetween={30}
 
                 modules={[Scrollbar]}
                 className="swiperTrending"
             >
-                <SwiperSlide><MovieSlideCard/></SwiperSlide>
-                <SwiperSlide><MovieSlideCard/></SwiperSlide>
-                <SwiperSlide><MovieSlideCard/></SwiperSlide>
-                <SwiperSlide><MovieSlideCard/></SwiperSlide>
-                <SwiperSlide><MovieSlideCard/></SwiperSlide>
-                <SwiperSlide><MovieSlideCard/></SwiperSlide>
+                <SwiperSlide>{children}</SwiperSlide>
+                <SwiperSlide>{children}</SwiperSlide>
+                <SwiperSlide>{children}</SwiperSlide>
+                <SwiperSlide>{children}</SwiperSlide>
+                <SwiperSlide>{children}</SwiperSlide>
+                <SwiperSlide>{children}</SwiperSlide>
             </Swiper>
         </>
     );

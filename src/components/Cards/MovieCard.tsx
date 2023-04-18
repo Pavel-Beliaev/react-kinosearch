@@ -1,5 +1,6 @@
 import React from 'react';
-import notPicture from '../public/PNG/placeholder.png'
+import notPicture from '../../public/PNG/placeholder.png'
+import {Link} from "react-router-dom";
 
 const MovieCard = () => {
     return (
@@ -13,10 +14,10 @@ const MovieCard = () => {
                     explicabo facilis fuga odit quis quo tempora.</p>
                 <div className='film-more'>
                     <p>
-                        <a className='film-button'
-                           href="#">
+                        <Link className='film-button'
+                           to="1">
                             Read more
-                        </a>
+                        </Link>
                     </p>
                     <span>18</span>
                 </div>

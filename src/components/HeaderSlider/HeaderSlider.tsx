@@ -7,6 +7,7 @@ import { Pagination, Autoplay, EffectFade} from 'swiper';
 import 'swiper/scss';
 import 'swiper/scss/effect-fade'
 import "swiper/scss/pagination";
+import Rating from "../Rating/Rating";
 
 const HeaderSlider: React.FC = () => {
 
@@ -58,8 +59,11 @@ const HeaderSlider: React.FC = () => {
                                                 repellat
                                                 suscipit veritatis!</p>
                                             <div className='sliderHeader-button'>
+                                                <Rating/>
+                                                <CustomButton
+                                                    children={<i className='fa fa-play'><span>Play trailer</span></i>}
+                                                />
                                                 <span className='sliderHeader-certificate'>18</span>
-                                                <CustomButton children={<i className='fa fa-play'><span>Play trailer</span></i>}/>
                                             </div>
                                         </div>
                                     </div>

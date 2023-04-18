@@ -1,6 +1,7 @@
 import React from 'react';
-import notPicture from '../public/PNG/placeholder.png'
+import notPicture from '../../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
+import Rating from "../Rating/Rating";
 
 
 const MovieSlideCard = () => {
@@ -10,11 +11,11 @@ const MovieSlideCard = () => {
                 <div className='newfilms-aside'>
                     <div className='newfilms-text'>
                         <Link className='newfilms-play'
-                            to='#'>
+                              to='#'>
                             <i className='fa fa-play'></i>
                         </Link>
                         <Link className='newfilms-readmore'
-                            to='#'>
+                              to='/movies/1'>
                             Read more
                         </Link>
                         <span>Released: 1993-03-15</span>
@@ -27,9 +28,7 @@ const MovieSlideCard = () => {
                 <span className='newfilms-certificate'>
                     18
                 </span>
-                <span className='newfilms-rating'>
-                    7.3
-                </span>
+                <Rating/>
             </div>
         </div>
     );

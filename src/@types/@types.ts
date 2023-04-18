@@ -23,3 +23,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     title: string;
 }
+
+export type RatingProps = {
+    rating?: number | null
+}

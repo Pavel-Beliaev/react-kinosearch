@@ -1,0 +1,15 @@
+.rating-indicator {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  font-size: 24px;
+
+  .rating {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: normal;
+    color: #FFA500FF
+  }
+}

@@ -1,1 +1,67 @@
 @import "../variables";
+
+.page {
+  display: flex;
+  flex-direction: column;
+  margin: 0 -15px;
+
+
+  h2 {
+    margin-top: 65px;
+  }
+
+  &-synopsis {
+    display: flex;
+    justify-content: space-between;
+
+    img {
+      width: 290px;
+      flex: 0 1 30%;
+
+    }
+
+    h3 {
+      border: none;
+      padding: 0;
+      margin-bottom: 10px;
+      color: #101010;
+    }
+
+    p {
+      color: #101010;
+    }
+  }
+
+  &-overview {
+    flex: 0 1 45%;
+
+  }
+
+  &-info {
+    flex: 0 1 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-links {
+      display: flex;
+      color: #101010;
+
+      //.....
+    }
+
+    &-other {
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        margin: 0;
+      }
+    }
+
+  }
+
+
+}
+
+

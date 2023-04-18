@@ -105,14 +105,15 @@
     font-size: 18px;
     color: #4a4a4a;
     padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   &-more {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: center
+  ;
   }
 
   &-certificate {
@@ -125,11 +126,5 @@
     color: #fff;
     border-radius: 50%;
     background: #4a4a4a;
-  }
-
-  &-rating {
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    color: $orange
   }
 }
