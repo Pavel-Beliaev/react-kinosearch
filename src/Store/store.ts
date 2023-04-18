@@ -2,10 +2,12 @@ import {configureStore} from "@reduxjs/toolkit";
 import {tmdbApi} from "./tmdbService/tmdb.api";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import filter from "./filter/slice";
+import config from "./config/slice";
 
 export const store = configureStore({
     reducer: {
         filter,
+        config,
         [tmdbApi.reducerPath]: tmdbApi.reducer
     },
     middleware: (getDefaultMiddleware) =>

@@ -113,19 +113,6 @@
     width: 100%;
     align-items: center;
 
-    > span {
-      justify-self: flex-end;
-      font-size: 14px;
-      font-weight: bold;
-      line-height: 48px;
-      width: 48px;
-      height: 48px;
-      text-align: center;
-      color: #fff;
-      border-radius: 50%;
-      border: solid 2px #fff;
-    }
-
     button {
       animation: Buttons .5s .5s forwards;
       opacity: 0;

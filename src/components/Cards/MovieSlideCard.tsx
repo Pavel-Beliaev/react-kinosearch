@@ -25,9 +25,7 @@ const MovieSlideCard = () => {
             </div>
             <h4>title</h4>
             <div className='newfilms-more'>
-                <span className='newfilms-certificate'>
-                    18
-                </span>
+                <p>runtime</p>
                 <Rating/>
             </div>
         </div>

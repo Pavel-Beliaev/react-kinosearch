@@ -13,8 +13,13 @@ const People = () => {
 
     const onChangePage = (page: number) => {
         dispatch(setPage(page));
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+
     };
-    console.log(page)
+
     return (
         <div className='frameworks-container people'>
             <h2>Popular People</h2>
@@ -27,7 +32,7 @@ const People = () => {
                         profilePath={object.profile_path}
                     />
                 ))}
-                <div className='people-pagination'>
+                <div className='container people-pagination'>
                     <Pagination value={page} changePage={onChangePage} totalPage={data?.total_pages}/>
                 </div>
             </div>

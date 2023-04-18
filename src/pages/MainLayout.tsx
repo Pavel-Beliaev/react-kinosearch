@@ -4,10 +4,14 @@ import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
+import {useGetConfigurationQuery, useGetGenreQuery} from "../Store/tmdbService/tmdb.api";
 
 
 
 const MainLayout = () => {
+    const config = useGetConfigurationQuery();
+    const genres = useGetGenreQuery();
+
     const {pathname} = useLocation();
 
     return (

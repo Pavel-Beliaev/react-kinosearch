@@ -1,11 +1,10 @@
 import React from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
 import MovieCard from "../components/Cards/MovieCard";
+import {useAppSelector} from "../Store/store";
 
 const AllMoviesPage = () => {
-
-
-
+    const {genres} = useAppSelector((state) => state.config)
 
     return (
         <div className='frameworks-container movies'>
@@ -19,8 +18,9 @@ const AllMoviesPage = () => {
             <div className='movies-sidebar'>
                 <h4>Categories</h4>
                 <ul>
-                    <li><a href="#">horror</a></li>
-                    <li><a href="#">horror</a></li>
+                    {genres.map((genre) => (
+                        <li key={genre.id}><a href="#">{genre.name}</a></li>
+                    ))}
                 </ul>
             </div>
         </div>
