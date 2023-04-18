@@ -18,4 +18,10 @@
     align-content: flex-start;
     gap: 30px;
   }
+
+  &-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }

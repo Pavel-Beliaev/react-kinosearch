@@ -1,4 +1,5 @@
 import React from "react";
+import {IKnowFor} from "../Store/tmdbService/@types";
 
 export type PageDataType = {
     [key: string]: {
@@ -26,4 +27,10 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 
 export type RatingProps = {
     rating?: number | null
+}
+
+export type PeopleCardProps = {
+    name: string,
+    knownFor: IKnowFor[]
+    profilePath: string,
 }

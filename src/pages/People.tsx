@@ -1,11 +1,20 @@
 import React from 'react';
 import PeopleCard from "../components/Cards/PeopleCard";
 import {useGetPopularPersonQuery} from "../Store/tmdbService/tmdb.api";
+import Pagination from "../components/Pagination/Pagination";
+import {setPage} from "../Store/filter/slice";
+import {useAppDispatch, useAppSelector} from "../Store/store";
 
 
 const People = () => {
-    const {data} = useGetPopularPersonQuery(1);
+    const {page} =useAppSelector(state => state.filter)
+    const {data} = useGetPopularPersonQuery(page);
+    const dispatch =useAppDispatch();
 
+    const onChangePage = (page: number) => {
+        dispatch(setPage(page));
+    };
+    console.log(page)
     return (
         <div className='frameworks-container people'>
             <h2>Popular People</h2>
@@ -16,9 +25,11 @@ const People = () => {
                         name={object.name}
                         knownFor={object.known_for}
                         profilePath={object.profile_path}
-
                     />
                 ))}
+                <div className='people-pagination'>
+                    <Pagination value={page} changePage={onChangePage} totalPage={data?.total_pages}/>
+                </div>
             </div>
         </div>
     );
