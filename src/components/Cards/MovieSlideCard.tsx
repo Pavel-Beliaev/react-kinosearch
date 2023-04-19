@@ -2,9 +2,20 @@ import React from 'react';
 import notPicture from '../../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
 import Rating from "../Rating/Rating";
+import {useAppSelector} from "../../Store/store";
+
+type MovieSlideCardProps = {
+    date: string,
+    title: string,
+    rating: number,
+    poster: string | null
+}
 
 
-const MovieSlideCard = () => {
+const MovieSlideCard:React.FC<MovieSlideCardProps> = ({date, poster, title, rating}) => {
+    const {base_url, posterSize} = useAppSelector((state) => state.config)
+
+
     return (
         <div className='newfilms'>
             <div className='newfilms-poster'>
@@ -18,15 +29,19 @@ const MovieSlideCard = () => {
                               to='/movies/1'>
                             Read more
                         </Link>
-                        <span>Released: 1993-03-15</span>
+                        <span>Released: {date}</span>
                     </div>
                 </div>
-                <img src={notPicture} alt="poster"/>
+                <img
+                    src={poster ? `${base_url}${posterSize}${poster}` : ''}
+                     alt="poster"/>
             </div>
-            <h4>title</h4>
+            <div className='newfilms-title'>
+                <h4>{title}</h4>
+            </div>
             <div className='newfilms-more'>
                 <p>runtime</p>
-                <Rating/>
+                <Rating rating={rating}/>
             </div>
         </div>
     );

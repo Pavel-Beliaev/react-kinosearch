@@ -1,7 +1,7 @@
 import React from 'react';
 import {Map, Placemark, YMaps} from "@pbe/react-yandex-maps";
 
-const MapComponent = () => {
+const MapComponent:React.FC = () => {
     return (
         <YMaps>
             <Map defaultState={{

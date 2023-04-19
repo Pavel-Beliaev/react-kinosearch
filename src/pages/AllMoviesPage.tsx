@@ -3,7 +3,7 @@ import CustomInput from "../components/CustomFields/CustomInput";
 import MovieCard from "../components/Cards/MovieCard";
 import {useAppSelector} from "../Store/store";
 
-const AllMoviesPage = () => {
+const AllMoviesPage:React.FC = () => {
     const {genres} = useAppSelector((state) => state.config)
 
     return (

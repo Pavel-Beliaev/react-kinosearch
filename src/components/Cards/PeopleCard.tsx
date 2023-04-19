@@ -13,12 +13,12 @@ const PeopleCard: React.FC<PeopleCardProps> = ({name, knownFor, profilePath}) =>
         filmName.title && filmName.title ||
         filmName.original_title && filmName.original_title
     ).join(', ')
+
     return (
         <Link to='1'>
             <div className='peopleCard'>
                 <img
                     src={profilePath
-                        // ? `${images?.images.base_url}${images?.images.poster_sizes[2]}${profilePath}`
                        ? `${base_url}${profileSize}${profilePath}`
                         : notPicture
                     }

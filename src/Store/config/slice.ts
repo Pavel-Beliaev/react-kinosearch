@@ -1,18 +1,16 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Genres} from "../tmdbService/tmdb.api";
+import {ConfigurationState} from "./@types";
+import {Genres} from "../tmdbService/@types";
 
-export interface ConfigurationState {
-    base_url: string,
-    profileSize: string,
-    backdropSize:string,
-    genres: Genres[],
-}
+
 
 const initialState: ConfigurationState = {
     base_url: '',
     profileSize: '',
     backdropSize: '',
+    posterSize: '',
     genres: [],
+
 }
 export const configurationSLice = createSlice({
     name: 'config',
@@ -27,12 +25,21 @@ export const configurationSLice = createSlice({
         setBackdropSize(state, action: PayloadAction<string>) {
             state.backdropSize = action.payload
         },
+        setPosterSize(state, action: PayloadAction<string>) {
+            state.posterSize = action.payload
+        },
         setGenre(state, action: PayloadAction<Genres[]>) {
             state.genres = action.payload
         },
+
     },
 })
 
-export const {setBaseUrl, setProfileSize, setBackdropSize, setGenre} = configurationSLice.actions;
+export const {
+    setBaseUrl,
+    setProfileSize,
+    setBackdropSize,
+    setPosterSize,
+    setGenre} = configurationSLice.actions;
 
 export default configurationSLice.reducer

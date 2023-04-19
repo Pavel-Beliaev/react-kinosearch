@@ -49,7 +49,7 @@ const Rating: React.FC<RatingProps> = ({rating}) => {
                         fill="none"
                     />
                 </svg>
-                <div className="rating">{rating ? rating : 0}</div>
+                <div className="rating">{rating ? rating.toFixed(1) : 0}</div>
             </div>
         </>
 

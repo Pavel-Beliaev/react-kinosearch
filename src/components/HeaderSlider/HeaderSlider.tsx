@@ -14,16 +14,6 @@ const HeaderSlider: React.FC = () => {
     const {genres} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
     const {data} = useGetNewMoviesQuery();
-    console.log(genres)
-
-    //...data.results:Array
-    // genre_ids:Array(5)
-    // 0: 16
-    // 1: 12
-    // 2: 10751
-    // 3: 14
-    // 4: 35
-    console.log(genres.find(el => el.id === 12)?.name)
 
     return (
         <Swiper
@@ -43,7 +33,7 @@ const HeaderSlider: React.FC = () => {
                 horizontalClass: 'container-pagination'
             }}
         >
-            {data?.results.slice(0, 3).map((film, index) => (
+            {data?.results.slice(2, 5).map((film, index) => (
                 <SwiperSlide className='sliderHeader-slides'
                              style={{backgroundImage: `url(${base_url}${backdropSize}${film.backdrop_path})`}}
                              key={index}

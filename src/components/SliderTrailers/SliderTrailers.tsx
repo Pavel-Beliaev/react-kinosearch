@@ -1,19 +1,28 @@
 import React, {useState} from 'react';
 import './slidertrailers.scss'
 import {Swiper, SwiperSlide} from "swiper/react";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import {FreeMode, Navigation, Thumbs} from "swiper";
 import SwiperClass from 'swiper/types/swiper-class';
 import "swiper/scss";
 import "swiper/scss/free-mode";
 import "swiper/scss/navigation";
 import "swiper/scss/thumbs";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import {useGetPopularMoviesQuery, useGetVideoByIdQuery} from "../../Store/tmdbService/tmdb.api";
+import {useAppSelector} from "../../Store/store";
 
-const SliderTrailers = () => {
+const SliderTrailers: React.FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
-    const [thumbsSwiperMid, setThumbsSwiperMid] = useState<SwiperClass>();
+    const [slideIndex, setSlideIndex] = useState<number>(0);
 
+    const {base_url, posterSize, backdropSize} = useAppSelector((state) => state.config);
+    const {data: popularMoviesDataList} = useGetPopularMoviesQuery(1);
+    const getId = popularMoviesDataList?.results.map((obj) => obj.id);
+    const {data: videoDataList} = useGetVideoByIdQuery(getId ? getId[slideIndex] : 0);
 
+    const foundVideo = videoDataList?.results.find((video) =>
+        video.name.toLowerCase().includes('official trailer'))
+    const video = (foundVideo || videoDataList?.results[0])
 
     return (
         <>
@@ -26,86 +35,24 @@ const SliderTrailers = () => {
                 allowTouchMove={false}
 
             >
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </SwiperSlide>
+                {popularMoviesDataList?.results.map((backdrop) => (
+                    <SwiperSlide key={backdrop.backdrop_path}>
+                        <img src={`${base_url}${backdropSize}${backdrop.backdrop_path}`} alt='backdrop'/>
+                    </SwiperSlide>
+                ))}
+
             </Swiper>
             <div className='container sliderTrailer'>
                 <h2>Trailers</h2>
-                <Swiper
-                    thumbs={{
-                        swiper:  thumbsSwiperTop
-                    }}
-                    onSwiper={setThumbsSwiperMid}
-                    loop={true}
-                    spaceBetween={30}
-                    modules={[FreeMode, Navigation, Thumbs]}
-                    className="swiperMid"
-                    allowTouchMove={false}
-
-                >
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <VideoPlayer/>
-                    </SwiperSlide>
-                </Swiper>
+                <div className='sliderTrailer-player'>
+                    <VideoPlayer
+                        keys={video?.key}
+                    />
+                </div>
                 <Swiper
                     loop={true}
                     thumbs={{
-                        swiper:  thumbsSwiperMid
+                        swiper: thumbsSwiperTop
                     }}
                     spaceBetween={30}
                     slidesPerView={4}
@@ -115,38 +62,14 @@ const SliderTrailers = () => {
                     modules={[FreeMode, Navigation, Thumbs]}
                     className="swiperBottom"
                     slideToClickedSlide={true}
-
+                    onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
                 >
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                    </SwiperSlide>
+                    {popularMoviesDataList?.results.map((poster) => (
+                        <SwiperSlide key={poster.id}>
+                            <img src={`${base_url}${posterSize}${poster.poster_path}`} alt='poster'/>
+                        </SwiperSlide>
+                    ))}
+
                 </Swiper>
             </div>
         </>

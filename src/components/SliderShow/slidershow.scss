@@ -1,6 +1,7 @@
 .swiperTrending {
   --swiper-scrollbar-size: 8px;
 
+
   .swiper {
     width: 100%;
     height: 100%;
@@ -11,6 +12,7 @@
     }
 
     &-slide {
+      height: 100%;
       img {
         width: 100%;
         height: 100%;

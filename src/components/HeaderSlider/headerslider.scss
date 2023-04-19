@@ -54,7 +54,7 @@
 
     &:before {
       top: auto;
-      height: 80%;
+      height: 90%;
       position: absolute;
       right: 0;
       bottom: 0;
@@ -77,7 +77,6 @@
   &-text {
     padding-left: 15px;
     width: 66%;
-    z-index: 3;
 
     span {
       font-size: 14px;

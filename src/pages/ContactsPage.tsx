@@ -4,7 +4,7 @@ import CustomButton from "../components/CustomButton/CustomButton";
 import CustomTextarea from "../components/CustomFields/CustomTextarea";
 import MapComponent from "../components/MapComponent";
 
-const ContactsPage = () => {
+const ContactsPage:React.FC = () => {
     return (
         <div className='frameworks-container'>
             <div className='map'>

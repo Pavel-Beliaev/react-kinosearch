@@ -8,9 +8,9 @@ import {useGetConfigurationQuery, useGetGenreQuery} from "../Store/tmdbService/t
 
 
 
-const MainLayout = () => {
-    const config = useGetConfigurationQuery();
-    const genres = useGetGenreQuery();
+const MainLayout:React.FC = () => {
+    useGetConfigurationQuery();
+    useGetGenreQuery();
 
     const {pathname} = useLocation();
 

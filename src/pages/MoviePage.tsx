@@ -5,7 +5,7 @@ import SliderShow from "../components/SliderShow/SliderShow";
 import PeopleCard from "../components/Cards/PeopleCard";
 
 
-const MoviePage = () => {
+const MoviePage:React.FC = () => {
     return (
         <div className='container'>
             <div className='page'>

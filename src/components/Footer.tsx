@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 const footerMenu = ['Get in touch', 'About movie star', 'Legal stuff'];
-const Footer = () => {
+const Footer:React.FC = () => {
     return (
         <div className='footer'>
             <div className='container'>

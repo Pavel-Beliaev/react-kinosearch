@@ -2,7 +2,7 @@ import React from 'react';
 import notPicture from '../../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
 
-const MovieCard = () => {
+const MovieCard:React.FC = () => {
     return (
         <div className='film'>
             <img src={notPicture} alt="Prev. poster"/>

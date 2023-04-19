@@ -6,7 +6,7 @@ import {setPage} from "../Store/filter/slice";
 import {useAppDispatch, useAppSelector} from "../Store/store";
 
 
-const People = () => {
+const People:React.FC = () => {
     const {page} =useAppSelector(state => state.filter)
     const {data} = useGetPopularPersonQuery(page);
     const dispatch =useAppDispatch();

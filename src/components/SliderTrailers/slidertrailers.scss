@@ -1,6 +1,10 @@
 .sliderTrailer {
   padding-top: 75px;
   position: relative;
+
+  &-player{
+    display: flex;
+  }
 }
 
 .swiperTop {
@@ -32,7 +36,7 @@
 .swiperBottom {
   user-select: none;
   margin: 0 30px;
-  --swiper-navigation-color: #fff;
+  --swiper-navigation-color: #ec7532;
   --swiper-pagination-color: #fff;
 
 

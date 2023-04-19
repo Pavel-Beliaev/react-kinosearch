@@ -5,7 +5,7 @@ import {navbarMenu} from "../mock/statick";
 
 
 
-const Navbar = () => {
+const Navbar:React.FC = () => {
     const [isActive, setIsActive] = useState(0)
     const onChangeMenu = (idx: number) => {
         setIsActive(idx)

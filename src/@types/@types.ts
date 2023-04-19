@@ -1,5 +1,5 @@
 import React from "react";
-import {IKnowFor} from "../Store/tmdbService/@types";
+import {IKnowFor, IResultsMovies} from "../Store/tmdbService/@types";
 
 export type PageDataType = {
     [key: string]: {
@@ -39,4 +39,10 @@ export type PaginationProps = {
     value: number,
     changePage: (page: number) => void
     totalPage: number | undefined
+}
+
+export interface SliderProps {
+    slideCount: number,
+
+    arrMovies?: IResultsMovies[],
 }

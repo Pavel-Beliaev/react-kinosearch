@@ -1,6 +1,6 @@
 import React from 'react';
 
-const PersonPage = () => {
+const PersonPage:React.FC = () => {
     return (
         <div style={{color: "black"}}>
             Person Page

@@ -33,7 +33,8 @@ export interface IKnowFor {
     name: string,
     original_name: string,
 }
-export interface IResults {
+
+export interface IResultsPopularPerson {
     profile_path: string,
     adult: boolean,
     id: number,
@@ -45,12 +46,12 @@ export interface IResults {
 export interface IPopularPerson {
 
     page: number,
-    results: IResults[],
+    results: IResultsPopularPerson[],
     total_results: number,
     total_pages: number,
 }
 
-export type IResultsNewMovie = {
+export type IResultsMovies = {
     poster_path: string | null,
     adult: boolean,
     overview: string,
@@ -66,14 +67,49 @@ export type IResultsNewMovie = {
     video: boolean,
     vote_average: number,
 }
+
 export interface INewMovies {
     page: number,
-    results: IResultsNewMovie[],
+    results: IResultsMovies[],
     dates: {
         maximum: string,
         minimum: string,
     }
     total_pages: number,
     total_results: number,
+}
 
+export type Genres = {
+    id: number,
+    name: string,
+}
+
+export interface IGenres {
+    genres: Genres[],
+}
+
+export interface IMovies {
+
+    page: number,
+    results: IResultsMovies[] ,
+    total_results: number,
+    total_pages: number,
+}
+
+export type IResultVideos = {
+    iso_639_1: string,
+    iso_3166_1: string,
+    name: string,
+    key: string,
+    site: string,
+    size: number,
+    type: string,
+    official: boolean,
+    published_at: string,
+    id: string,
+}
+
+export interface IVideos {
+    id: number,
+    results: IResultVideos[],
 }

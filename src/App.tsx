@@ -10,7 +10,7 @@ import ErrorPage from "./pages/ErrorPage";
 import MoviePage from "./pages/MoviePage";
 import PersonPage from "./pages/PersonPage";
 
-const App = () => {
+const App:React.FC = () => {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path='/' element={<MainLayout/>}>
