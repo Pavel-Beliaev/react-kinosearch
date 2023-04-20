@@ -22,9 +22,15 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys,}) => {
                 light={true}
                 config={{
                     youtube: {
-                        playerVars: {showinfo: 1}
-                    }
+                        playerVars: {
+                            enablejsapi: 1,
+                            showinfo: 1,
+                            origin: 'http://localhost:3000/'
+                        },
+                    },
+
                 }}
+
             />
         </div>
     );

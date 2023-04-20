@@ -3,8 +3,6 @@ import {IConfiguration, IGenres, IMovies, INewMovies, IPopularPerson, IResultsMo
 import {setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
 
 
-
-
 export const tmdbApi = createApi({
     reducerPath: 'tmdbApi',
     baseQuery: fetchBaseQuery({
@@ -98,9 +96,21 @@ export const tmdbApi = createApi({
                 },
             })
         }),
+        getAllMovies: build.query<IMovies, void>({
+            query: () => ({
+                url: `/discover/movie`,
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                },
+            })
+        }),
     })
 })
+//language=en-US
+//sort_by=popularity.desc
+//page=1
 export const {
+    useGetAllMoviesQuery,
     useGetVideoByIdQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,

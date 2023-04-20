@@ -33,7 +33,7 @@ const HeaderSlider: React.FC = () => {
                 horizontalClass: 'container-pagination'
             }}
         >
-            {data?.results.slice(2, 5).map((film, index) => (
+            {data?.results.slice(0, 3).map((film, index) => (
                 <SwiperSlide className='sliderHeader-slides'
                              style={{backgroundImage: `url(${base_url}${backdropSize}${film.backdrop_path})`}}
                              key={index}

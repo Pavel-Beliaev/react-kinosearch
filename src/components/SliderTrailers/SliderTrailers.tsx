@@ -24,6 +24,7 @@ const SliderTrailers: React.FC = () => {
         video.name.toLowerCase().includes('official trailer'))
     const video = (foundVideo || videoDataList?.results[0])
 
+
     return (
         <>
             <Swiper
