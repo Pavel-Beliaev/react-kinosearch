@@ -6,16 +6,10 @@ import "swiper/scss";
 import "swiper/scss/scrollbar";
 import {SliderProps} from "../../@types/@types";
 import MovieSlideCard from "../Cards/MovieSlideCard";
-import {useGetDetailsMovieQuery} from "../../Store/tmdbService/tmdb.api";
 
 
 
 const SliderShow: React.FC<SliderProps> = ({slideCount,arrMovies}) => {
-    const [slideIndex, setSlideIndex] = useState<number>(0);
-
-    const getId = arrMovies?.map((obj) => obj.id);
-    const {data} = useGetDetailsMovieQuery(getId ? getId[slideIndex] : 0 )
-
 
     return (
         <>
@@ -31,12 +25,12 @@ const SliderShow: React.FC<SliderProps> = ({slideCount,arrMovies}) => {
                 keyboard={true}
                 modules={[Scrollbar, Mousewheel, Keyboard]}
                 className="swiperTrending"
-                onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
             >
                 {arrMovies?.map((film) => (
                     <SwiperSlide key={film.id}>
                         <MovieSlideCard
-                            date={film.release_date}
+                            id={film.id}
+                            release={film.release_date}
                             rating={film.vote_average}
                             title={film.title}
                             poster={film.poster_path}

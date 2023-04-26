@@ -19,7 +19,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys,}) => {
                 url={`https://www.youtube.com/watch?v=${keys}`}
                 width='100%'
                 height='100%'
-                light={true}
                 config={{
                     youtube: {
                         playerVars: {

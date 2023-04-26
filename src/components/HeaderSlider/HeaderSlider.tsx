@@ -8,9 +8,11 @@ import Rating from "../Rating/Rating";
 import 'swiper/scss';
 import 'swiper/scss/effect-fade'
 import "swiper/scss/pagination";
-import {useAppSelector} from "../../Store/store";
+import {useAppDispatch, useAppSelector} from "../../Store/store";
+import {setActiveModal} from "../../Store/config/slice";
 
 const HeaderSlider: React.FC = () => {
+    const dispatch = useAppDispatch();
     const {genres} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
     const {data} = useGetNewMoviesQuery();
@@ -51,6 +53,7 @@ const HeaderSlider: React.FC = () => {
                                         <div className='sliderHeader-button'>
                                             <Rating rating={film.vote_average}/>
                                             <CustomButton
+                                                onClick={() => dispatch(setActiveModal({active: true, id:film.id}))}
                                                 children={<i className='fa fa-play'><span>Play trailer</span></i>}
                                             />
                                         </div>

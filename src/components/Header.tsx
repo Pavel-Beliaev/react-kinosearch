@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
 
 
     return (
-        <div className='header' style={{backgroundImage: `${dataPage[stylePage].url}`}}>
+        <div className='header' style={{backgroundImage:  `${dataPage[stylePage]?.url}`}}>
           <span className="scroll"><ArrowDownIcon/></span>
             {pathname === '/'
                 ?
@@ -28,8 +28,8 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
                 <div className="container">
                     {isVisibleEffect &&
                         <div className="blurb">
-                            <span className="title">{dataPage[stylePage].title}</span>
-                            <h1>{dataPage[stylePage].heading}</h1>
+                            <span className="title">{dataPage[stylePage]?.title}</span>
+                            <h1>{dataPage[stylePage]?.heading}</h1>
                         </div>
                     }
                 </div>

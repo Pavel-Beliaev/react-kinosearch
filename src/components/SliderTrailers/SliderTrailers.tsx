@@ -25,7 +25,6 @@ const SliderTrailers: React.FC = () => {
         video.name.toLowerCase().includes('official trailer'))
     const video = (foundVideo || videoDataList?.results[0])
 
-
     return (
         <>
             <Swiper
@@ -46,10 +45,14 @@ const SliderTrailers: React.FC = () => {
             </Swiper>
             <div className='container sliderTrailer'>
                 <h2>Trailers</h2>
-                <div className='sliderTrailer-player'>
-                    <VideoPlayer
-                        keys={video?.key}
-                    />
+                <div
+                    style={video ? {} : {paddingTop: '55.3%'}}
+                    className='sliderTrailer-player'>
+                    {video &&
+                        <VideoPlayer
+                            keys={video?.key}
+                        />
+                    }
                 </div>
                 <Swiper
                     loop={true}

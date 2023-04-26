@@ -1,18 +1,20 @@
 import React from 'react';
-import notPicture from '../../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
 import Rating from "../Rating/Rating";
-import {useAppSelector} from "../../Store/store";
+import {useAppDispatch, useAppSelector} from "../../Store/store";
+import {setActiveModal} from "../../Store/config/slice";
 
 type MovieSlideCardProps = {
-    date: string,
+    release: string,
     title: string,
     rating: number,
     poster: string | null
+    id: number
 }
 
 
-const MovieSlideCard:React.FC<MovieSlideCardProps> = ({date, poster, title, rating}) => {
+const MovieSlideCard:React.FC<MovieSlideCardProps> = ({id, release, poster, title, rating}) => {
+    const dispatch = useAppDispatch();
     const {base_url, posterSize} = useAppSelector((state) => state.config)
 
 
@@ -21,15 +23,17 @@ const MovieSlideCard:React.FC<MovieSlideCardProps> = ({date, poster, title, rati
             <div className='newfilms-poster'>
                 <div className='newfilms-aside'>
                     <div className='newfilms-text'>
-                        <Link className='newfilms-play'
-                              to='#'>
+                        <div
+                            className='newfilms-play'
+                            onClick={() => dispatch(setActiveModal({active:true, id: id}))}
+                        >
                             <i className='fa fa-play'></i>
-                        </Link>
+                        </div>
                         <Link className='newfilms-readmore'
-                              to='/movies/1'>
+                              to={`/movies/${id}`}>
                             Read more
                         </Link>
-                        <span>Released: {date}</span>
+                        <span>Released: {release}</span>
                     </div>
                 </div>
                 <img

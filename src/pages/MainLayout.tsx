@@ -5,6 +5,7 @@ import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
 import {useGetConfigurationQuery, useGetGenreQuery} from "../Store/tmdbService/tmdb.api";
+import ModalVideo from "../components/ModalVideo";
 
 
 
@@ -27,6 +28,7 @@ const MainLayout:React.FC = () => {
                 {/*opacity: 0;*/}
             </a>
             <Footer/>
+            <ModalVideo/>
         </div>
     );
 };

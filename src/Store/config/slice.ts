@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ConfigurationState} from "./@types";
+import {ConfigurationState, VideoModal} from "./@types";
 import {Genres} from "../tmdbService/@types";
 
 
@@ -10,6 +10,10 @@ const initialState: ConfigurationState = {
     backdropSize: '',
     posterSize: '',
     genres: [],
+    activeModal: {
+        active: false,
+        id: 0,
+    }
 
 }
 export const configurationSLice = createSlice({
@@ -31,11 +35,14 @@ export const configurationSLice = createSlice({
         setGenre(state, action: PayloadAction<Genres[]>) {
             state.genres = action.payload
         },
-
+        setActiveModal(state, action: PayloadAction<VideoModal>) {
+            state.activeModal = action.payload
+        },
     },
 })
 
 export const {
+    setActiveModal,
     setBaseUrl,
     setProfileSize,
     setBackdropSize,

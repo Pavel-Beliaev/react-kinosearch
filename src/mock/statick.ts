@@ -21,16 +21,6 @@ export const dataPage: PageDataType = {
         heading: 'Please contact us',
         url: 'url("https://www.rightarminc.com/wp-content/uploads/2019/10/contact_banner.jpg")',
     },
-    'movies/1': {
-        title: '',
-        heading: 'Movie Page',
-        url: '',
-    },
-    'people/1': {
-        title: '',
-        heading: 'Person Page',
-        url: '',
-    }
 }
 
 export const navbarMenu = [

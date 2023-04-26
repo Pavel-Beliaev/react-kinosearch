@@ -3,9 +3,14 @@ import notPicture from '../public/PNG/placeholder.png'
 import Rating from "../components/Rating/Rating";
 import SliderShow from "../components/SliderShow/SliderShow";
 import PeopleCard from "../components/Cards/PeopleCard";
+import {useParams} from "react-router-dom";
+import {useGetDetailsMovieQuery} from "../Store/tmdbService/tmdb.api";
 
 
 const MoviePage:React.FC = () => {
+    const {id} = useParams()
+    const {data} = useGetDetailsMovieQuery(Number(id))
+    console.log(data)
     return (
         <div className='container'>
             <div className='page'>
