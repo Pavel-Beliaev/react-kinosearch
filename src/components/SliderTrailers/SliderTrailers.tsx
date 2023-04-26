@@ -16,6 +16,7 @@ const SliderTrailers: React.FC = () => {
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
     const {base_url, posterSize, backdropSize} = useAppSelector((state) => state.config);
+
     const {data: popularMoviesDataList} = useGetPopularMoviesQuery(1);
     const getId = popularMoviesDataList?.results.map((obj) => obj.id);
     const {data: videoDataList} = useGetVideoByIdQuery(getId ? getId[slideIndex] : 0);

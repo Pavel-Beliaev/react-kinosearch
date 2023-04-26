@@ -1,5 +1,14 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {IConfiguration, IGenres, IMovies, INewMovies, IPopularPerson, IResultsMovies, IVideos} from "./@types";
+import {
+    IConfiguration,
+    IDetailsMovie,
+    IGenres,
+    IMovies,
+    INewMovies,
+    IPopularPerson,
+    IVideos,
+    QueryArgs
+} from "./@types";
 import {setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
 
 
@@ -96,20 +105,40 @@ export const tmdbApi = createApi({
                 },
             })
         }),
-        getAllMovies: build.query<IMovies, void>({
-            query: () => ({
-                url: `/discover/movie`,
+        getAllMovies: build.query<IMovies, QueryArgs>({
+            query: ({type, searchValue, pageNumber, genre}) => ({
+                url: `/${type}/movie`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                    query: searchValue,
+                    page: pageNumber,
+                    with_genres: genre,
                 },
-            })
+            }),
+
+            // serializeQueryArgs: ({endpointName}) => {
+            //     return endpointName
+            // },
+            // merge: (currentCacheData, newCacheData) => {
+            //     currentCacheData.results.push(...newCacheData.results)
+            // },
+            // forceRefetch({currentArg, previousArg}) {
+            //     return currentArg !== previousArg
+            // },
         }),
+        getDetailsMovie: build.query<IDetailsMovie, number>({
+            query: (id) => ({
+                url: `/movie/${id}`,
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                    append_to_response: 'videos'
+                },
+            }),
+        })
     })
 })
-//language=en-US
-//sort_by=popularity.desc
-//page=1
 export const {
+    useGetDetailsMovieQuery,
     useGetAllMoviesQuery,
     useGetVideoByIdQuery,
     useGetPopularMoviesQuery,

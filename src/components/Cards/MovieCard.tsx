@@ -4,21 +4,22 @@ import {Link} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 
 type MovieCardProps = {
-    poster:string | null,
+    poster: string | null,
     overview: string,
     title: string,
     filmGenre: number[],
 }
 
-const MovieCard:React.FC<MovieCardProps> = ({poster,overview,title,filmGenre}) => {
+const MovieCard: React.FC<MovieCardProps> = ({poster, overview, title, filmGenre}) => {
     const {base_url, posterSize} = useAppSelector((state) => state.config)
     const {genres} = useAppSelector((state) => state.config)
 
 
-
     return (
         <div className='film'>
-            <img src={`${base_url}${posterSize}${poster}`} alt="Prev. poster"/>
+            <img
+                src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
+                alt="Prev. poster"/>
             <div className='film-info'>
                 <span>{filmGenre.map((id) =>
                     genres.find(el => el.id === id)?.name
@@ -28,7 +29,7 @@ const MovieCard:React.FC<MovieCardProps> = ({poster,overview,title,filmGenre}) =
                 <div className='film-more'>
                     <p>
                         <Link className='film-button'
-                           to="1">
+                              to="1">
                             Read more
                         </Link>
                     </p>

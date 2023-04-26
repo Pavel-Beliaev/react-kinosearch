@@ -9,7 +9,6 @@ import {
 const Home: React.FC = () => {
     const topRatedMoviesQuery = useGetTopRatedMoviesQuery(1)
     const trendingMoviesQuery = useGetTrendingMoviesQuery(1)
-
     return (
         <>
             <div className='slider-show'>

@@ -40,7 +40,6 @@ const MovieSlideCard:React.FC<MovieSlideCardProps> = ({date, poster, title, rati
                 <h4>{title}</h4>
             </div>
             <div className='newfilms-more'>
-                <p>runtime</p>
                 <Rating rating={rating}/>
             </div>
         </div>

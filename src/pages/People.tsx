@@ -1,23 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PeopleCard from "../components/Cards/PeopleCard";
 import {useGetPopularPersonQuery} from "../Store/tmdbService/tmdb.api";
 import Pagination from "../components/Pagination/Pagination";
-import {setPage} from "../Store/filter/slice";
-import {useAppDispatch, useAppSelector} from "../Store/store";
 
 
 const People:React.FC = () => {
-    const {page} =useAppSelector(state => state.filter)
-    const {data} = useGetPopularPersonQuery(page);
-    const dispatch =useAppDispatch();
+    const [pageNumber, setPageNumber] = useState(1)
+
+    const {data} = useGetPopularPersonQuery(pageNumber);
 
     const onChangePage = (page: number) => {
-        dispatch(setPage(page));
+        (setPageNumber(page))
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
-        });
-
+        })
     };
 
     return (
@@ -33,7 +30,7 @@ const People:React.FC = () => {
                     />
                 ))}
                 <div className='container people-pagination'>
-                    <Pagination value={page} changePage={onChangePage} totalPage={data?.total_pages}/>
+                    <Pagination value={pageNumber} changePage={onChangePage} totalPage={data?.total_pages}/>
                 </div>
             </div>
         </div>

@@ -91,7 +91,7 @@ export interface IGenres {
 export interface IMovies {
 
     page: number,
-    results: IResultsMovies[] ,
+    results: IResultsMovies[],
     total_results: number,
     total_pages: number,
 }
@@ -112,4 +112,57 @@ export type IResultVideos = {
 export interface IVideos {
     id: number,
     results: IResultVideos[],
+}
+
+export type QueryArgs = {
+    type: string,
+    searchValue: string,
+    pageNumber: number,
+    genre: number | null,
+}
+
+export type ISpokenLanguages = {
+    iso_639_1: string,
+    name: string,
+}
+
+export type IProductionCountries = {
+    iso_3166_1: string,
+    name: string,
+}
+
+export type IProductionCompanies = {
+    name: string,
+    id: number,
+    logo_path: string | null,
+    origin_country: string,
+}
+
+export interface IDetailsMovie {
+    adult: boolean,
+    backdrop_path: string | null,
+    belongs_to_collection: null | Object,
+    budget: number,
+    genres: IGenres[],
+    name: string,
+    homepage: string | null,
+    id: number,
+    imdb_id: string | null,
+    original_language: string,
+    original_title: string,
+    overview: string | null,
+    popularity: number,
+    poster_path: string | null,
+    production_companies: IProductionCompanies[],
+    production_countries: IProductionCountries[],
+    release_date: string,
+    revenue: number,
+    runtime: number | null,
+    spoken_languages: ISpokenLanguages[],
+    status: string,
+    tagline: string | null,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number,
 }
