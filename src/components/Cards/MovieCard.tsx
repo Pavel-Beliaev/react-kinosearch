@@ -8,9 +8,10 @@ type MovieCardProps = {
     overview: string,
     title: string,
     filmGenre: number[],
+    id: number,
 }
 
-const MovieCard: React.FC<MovieCardProps> = ({poster, overview, title, filmGenre}) => {
+const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
     const {base_url, posterSize} = useAppSelector((state) => state.config)
     const {genres} = useAppSelector((state) => state.config)
 
@@ -29,7 +30,7 @@ const MovieCard: React.FC<MovieCardProps> = ({poster, overview, title, filmGenre
                 <div className='film-more'>
                     <p>
                         <Link className='film-button'
-                              to="1">
+                              to={`${id}`}>
                             Read more
                         </Link>
                     </p>

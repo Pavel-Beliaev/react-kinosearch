@@ -1,8 +1,8 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
 import MovieCard from "../components/Cards/MovieCard";
-import {useAppDispatch, useAppSelector} from "../Store/store";
-import {tmdbApi, useGetAllMoviesQuery} from "../Store/tmdbService/tmdb.api";
+import {useAppSelector} from "../Store/store";
+import {useGetAllMoviesQuery} from "../Store/tmdbService/tmdb.api";
 import {useObserver} from "../hooks/useObserver";
 import {Link} from "react-router-dom";
 import debounce from 'lodash.debounce'
@@ -13,7 +13,6 @@ const AllMoviesPage: React.FC = () => {
     const [isValue, setIsValue] = useState('');
     const [genre, setGenre] = useState<number | null>(null);
     const lastElementRef = useRef<HTMLDivElement>(null);
-    const dispatch = useAppDispatch();
     const {genres} = useAppSelector((state) => state.config);
 
 
@@ -64,6 +63,7 @@ const AllMoviesPage: React.FC = () => {
                 {moviesDataBase.map((film) => (
                     <MovieCard
                         key={film.id}
+                        id={film.id}
                         title={film.title}
                         overview={film.overview}
                         poster={film.poster_path}

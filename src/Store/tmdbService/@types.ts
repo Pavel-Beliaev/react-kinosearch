@@ -138,12 +138,41 @@ export type IProductionCompanies = {
     origin_country: string,
 }
 
+export type CreditsCastType = {
+    adult: boolean,
+    cast_id: number,
+    character: string,
+    credit_id: string,
+    gender: number,
+    id: number,
+    known_for_department: string,
+    name: string,
+    order: number,
+    original_name: string,
+    popularity: number,
+    profile_path: string,
+}
+
+export type CreditsCrewType = {
+    adult: boolean,
+    credit_id: string,
+    department: string,
+    gender: number,
+    id: number,
+    job: string,
+    known_for_department: string,
+    name: string,
+    original_name: string,
+    popularity: number,
+    profile_path: string,
+}
+
 export interface IDetailsMovie {
     adult: boolean,
     backdrop_path: string | null,
     belongs_to_collection: null | Object,
     budget: number,
-    genres: IGenres[],
+    genres: Genres[],
     name: string,
     homepage: string | null,
     id: number,
@@ -165,4 +194,11 @@ export interface IDetailsMovie {
     video: boolean,
     vote_average: number,
     vote_count: number,
+    videos: {
+        results: IResultVideos[]
+    },
+    credits: {
+        cast: CreditsCastType[],
+        crew: CreditsCrewType[],
+    }
 }

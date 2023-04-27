@@ -13,7 +13,7 @@ const ModalVideo: React.FC = () => {
     const foundVideo = videoDataList?.results.find((video) =>
         video.name.toLowerCase().includes('official trailer'))
     const video = (foundVideo || videoDataList?.results[0])
-    console.log(video)
+
     return (
         <div
             className={active ? 'modal active' : 'modal'}
@@ -24,7 +24,7 @@ const ModalVideo: React.FC = () => {
                 onClick={event => event.stopPropagation()}
             >
                 {video &&
-                    <VideoPlayer keys={video.key}/>
+                    <VideoPlayer keys={video.key} playing={active}/>
                 }
             </div>
         </div>

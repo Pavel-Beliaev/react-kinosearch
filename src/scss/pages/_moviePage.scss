@@ -14,12 +14,6 @@
     display: flex;
     justify-content: space-between;
 
-    img {
-      width: 290px;
-      flex: 0 1 30%;
-
-    }
-
     h3 {
       border: none;
       padding: 0;
@@ -32,9 +26,47 @@
     }
   }
 
+  &-poster {
+    position: relative;
+
+    img {
+      width: 100%;
+      flex: 0 1 30%;
+      height: 100%;
+    }
+  }
+
+  &-rating {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+  }
+
   &-overview {
     flex: 0 1 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-start;
 
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      flex-grow: 1;
+    }
+
+  }
+
+  &-credits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &-crew {
+    flex: 0 1 30%;
   }
 
   &-info {
@@ -44,10 +76,45 @@
     gap: 20px;
 
     &-links {
-      display: flex;
-      color: #101010;
 
-      //.....
+      ul {
+        display: flex;
+        gap: 10px;
+
+        li {
+
+
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 40px;
+            width: 43px;
+            height: 43px;
+            margin: 0 1px;
+            border: solid 2px #d8d8d8;
+            border-radius: 50%;
+            transition: all 300ms ease-in-out;
+
+
+            i {
+              padding: 3px;
+              color: rgba(0, 0, 0, 0.5);
+              transition: all 300ms ease-in-out;
+
+            }
+
+            &:hover {
+              border-color: $lightorang;
+
+              i {
+                color: $lightorang;
+
+              }
+            }
+          }
+        }
+      }
     }
 
     &-other {

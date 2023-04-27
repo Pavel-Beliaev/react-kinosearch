@@ -6,9 +6,10 @@ import ReactPlayer from "react-player/lazy";
 type VideoPlayerProps = {
 
     keys: string | undefined,
+    playing?: boolean
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({keys,}) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, playing}) => {
 
 
     return (
@@ -19,6 +20,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys,}) => {
                 url={`https://www.youtube.com/watch?v=${keys}`}
                 width='100%'
                 height='100%'
+                playing={playing}
                 config={{
                     youtube: {
                         playerVars: {

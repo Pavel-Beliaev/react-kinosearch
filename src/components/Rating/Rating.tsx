@@ -4,7 +4,7 @@ import {RatingProps} from "../../@types/@types";
 
 
 
-const Rating: React.FC<RatingProps> = ({rating}) => {
+const Rating: React.FC<RatingProps> = ({rating, fill}) => {
 
     const circumference = 2 * Math.PI * 25;
     const offset = circumference - ((rating ? rating : 0) / 10) * circumference;
@@ -35,7 +35,7 @@ const Rating: React.FC<RatingProps> = ({rating}) => {
                         r="25"
                         stroke="#ccc"
                         strokeWidth="2"
-                        fill="none"
+                        fill={fill}
                     />
                     <circle
                         className="indicator"

@@ -10,6 +10,7 @@ import {
     QueryArgs
 } from "./@types";
 import {setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
+import {setHeader} from "../header/slice";
 
 
 export const tmdbApi = createApi({
@@ -115,7 +116,7 @@ export const tmdbApi = createApi({
                     with_genres: genre,
                 },
             }),
-
+            // keepUnusedDataFor: 2, //срок жизни кеша
             // serializeQueryArgs: ({endpointName}) => {
             //     return endpointName
             // },
@@ -131,9 +132,18 @@ export const tmdbApi = createApi({
                 url: `/movie/${id}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    append_to_response: 'videos'
+                    append_to_response: 'videos,credits'
                 },
             }),
+            keepUnusedDataFor: 2,
+            async onQueryStarted(arg, {dispatch, queryFulfilled}) {
+                try {
+                    const {data} = await queryFulfilled
+                    dispatch(setHeader({title: data.title, genres: data.genres, url: data.backdrop_path, heading:''}))
+                } catch (error) {
+                    console.log(error)
+                }
+            }
         })
     })
 })

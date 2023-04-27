@@ -1,13 +1,7 @@
 import React from "react";
 import {IKnowFor, IResultsMovies} from "../Store/tmdbService/@types";
 
-export type PageDataType = {
-    [key: string]: {
-        title: string;
-        heading: string;
-        url: string;
-    };
-};
+
 
 export type HeaderProps = {
     pathname: string
@@ -26,7 +20,9 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
 }
 
 export type RatingProps = {
-    rating?: number | null
+    rating?: number | null,
+
+    fill?: string,
 }
 
 export type PeopleCardProps = {
