@@ -1,15 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import './slidershow.scss'
-import {Scrollbar, Mousewheel, Keyboard} from "swiper";
-import {Swiper, SwiperSlide} from "swiper/react";
+import {Scrollbar, Mousewheel, Keyboard, Navigation} from "swiper";
+import {Swiper} from "swiper/react";
 import "swiper/scss";
 import "swiper/scss/scrollbar";
 import {SliderProps} from "../../@types/@types";
-import MovieSlideCard from "../Cards/MovieSlideCard";
 
 
 
-const SliderShow: React.FC<SliderProps> = ({slideCount,arrMovies}) => {
+const SliderShow: React.FC<SliderProps> = ({navigation, slideCount, children}) => {
 
     return (
         <>
@@ -19,24 +18,16 @@ const SliderShow: React.FC<SliderProps> = ({slideCount,arrMovies}) => {
                     draggable: true,
                     horizontalClass: 'scroll-horizontal'
                 }}
+                navigation={navigation ? navigation : false}
                 slidesPerView={slideCount}
                 spaceBetween={30}
+                cssMode={true}
                 mousewheel={true}
                 keyboard={true}
-                modules={[Scrollbar, Mousewheel, Keyboard]}
+                modules={[Scrollbar, Mousewheel, Keyboard, Navigation]}
                 className="swiperTrending"
             >
-                {arrMovies?.map((film) => (
-                    <SwiperSlide key={film.id}>
-                        <MovieSlideCard
-                            id={film.id}
-                            release={film.release_date}
-                            rating={film.vote_average}
-                            title={film.title}
-                            poster={film.poster_path}
-                        />
-                    </SwiperSlide>
-                ))}
+                {children}
             </Swiper>
         </>
     );

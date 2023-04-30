@@ -46,7 +46,7 @@ const SliderTrailers: React.FC = () => {
             <div className='container sliderTrailer'>
                 <h2>Trailers</h2>
                 <div
-                    style={video ? {} : {paddingTop: '55.3%'}}
+                    style={video ? {} : {paddingTop: '47.3%'}}
                     className='sliderTrailer-player'>
                     {video &&
                         <VideoPlayer

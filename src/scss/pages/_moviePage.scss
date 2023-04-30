@@ -3,7 +3,6 @@
 .page {
   display: flex;
   flex-direction: column;
-  margin: 0 -15px;
 
 
   h2 {
@@ -125,9 +124,38 @@
         margin: 0;
       }
     }
-
   }
 
+  &-block {
+    margin-top: 65px;
+    background-color: #101010;
+    width: 100%;
+    position: relative;
+
+    h2 {
+    }
+  }
+
+  &-media {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-backdrops {
+    padding-top: 30px;
+
+    .note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: rgba(255,255,255, 0.4);
+      background-color: rgba(113,113,113, 0.4);
+
+    }
+  }
 
 }
 

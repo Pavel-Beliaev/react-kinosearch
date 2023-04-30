@@ -4,20 +4,22 @@ import ReactPlayer from "react-player/lazy";
 
 
 type VideoPlayerProps = {
-
-    keys: string | undefined,
+    keysArray?: string[],
+    keys?: string | undefined,
     playing?: boolean
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, playing}) => {
-
+const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, playing, keysArray}) => {
 
     return (
         <div className='player-wrapper'>
             <ReactPlayer
                 controls={true}
                 className='react-player'
-                url={`https://www.youtube.com/watch?v=${keys}`}
+                url={keysArray
+                    ? keysArray.map((key) => (`https://www.youtube.com/watch?v=${key}`))
+                    : `https://www.youtube.com/watch?v=${keys}`
+                }
                 width='100%'
                 height='100%'
                 playing={playing}

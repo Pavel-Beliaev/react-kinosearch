@@ -27,7 +27,8 @@ export type RatingProps = {
 
 export type PeopleCardProps = {
     name: string,
-    knownFor: IKnowFor[]
+    knownFor?: IKnowFor[],
+    character?: string,
     profilePath: string,
 }
 
@@ -38,7 +39,7 @@ export type PaginationProps = {
 }
 
 export interface SliderProps {
+    navigation?: boolean,
     slideCount: number,
-
-    arrMovies?: IResultsMovies[],
+    children: React.ReactElement | React.ReactNode
 }

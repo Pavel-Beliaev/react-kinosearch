@@ -5,10 +5,10 @@ import notPicture from '../../public/JPG/placeholder.jpg'
 import {useAppSelector} from "../../Store/store";
 
 
-const PeopleCard: React.FC<PeopleCardProps> = ({name, knownFor, profilePath}) => {
+const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath}) => {
     const {base_url, profileSize} = useAppSelector((state) => state.config)
 
-    const roleString = knownFor.map((filmName) =>
+    const roleString = knownFor?.map((filmName) =>
         filmName.name && filmName.name ||
         filmName.title && filmName.title ||
         filmName.original_title && filmName.original_title
@@ -27,7 +27,10 @@ const PeopleCard: React.FC<PeopleCardProps> = ({name, knownFor, profilePath}) =>
                 <div className='peopleCard-text'>
                     <h4>{name}</h4>
                     <p>
-                        {roleString}
+                        {roleString
+                            ? roleString
+                            : character
+                        }
                     </p>
                 </div>
             </div>

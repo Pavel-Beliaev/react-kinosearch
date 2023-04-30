@@ -1,0 +1,91 @@
+.reviews {
+  display: flex;
+  flex-direction: column;
+
+  &-block {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+  }
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+    }
+
+    &-alt {
+      width: 64px;
+      height: 64px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 25px;
+      background-color: #ec7532;
+      border-radius: 50%;
+    }
+  }
+
+  &-text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &-user {
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      border: none;
+      padding: 0;
+      margin: 0;
+      color: #717171;
+      font-weight: bold;
+    }
+
+    span {
+      color: #ec7532;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+
+    }
+  }
+
+  &-text {
+
+    p {
+      color: #717171;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  &-link {
+
+    a {
+      color: #fbbd61;
+      letter-spacing: 1.5px;
+      font-size: 13px;
+      transition: all 300ms ease-in-out;
+
+
+      &:hover {
+        color: #ec7532;
+        transition: all 300ms ease-in-out;
+
+      }
+
+    }
+
+  }
+}

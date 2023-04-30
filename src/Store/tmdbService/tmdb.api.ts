@@ -9,7 +9,7 @@ import {
     IVideos,
     QueryArgs
 } from "./@types";
-import {setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
+import {setAvatarSize, setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
 import {setHeader} from "../header/slice";
 
 
@@ -33,6 +33,7 @@ export const tmdbApi = createApi({
                     dispatch(setProfileSize(data?.images.profile_sizes[1]))
                     dispatch(setBackdropSize(data?.images.backdrop_sizes[2]))
                     dispatch(setPosterSize(data?.images.poster_sizes[3]))
+                    dispatch(setAvatarSize(data?.images.logo_sizes[1]))
                 } catch (error) {
                     console.log(error)
                 }
@@ -132,7 +133,7 @@ export const tmdbApi = createApi({
                 url: `/movie/${id}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    append_to_response: 'videos,credits'
+                    append_to_response: 'videos,credits,images,reviews'
                 },
             }),
             keepUnusedDataFor: 2,

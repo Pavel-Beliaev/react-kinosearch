@@ -11,4 +11,5 @@ export interface ConfigurationState {
     posterSize:string,
     genres: Genres[],
     activeModal: VideoModal,
+    avatarSize: string,
 }

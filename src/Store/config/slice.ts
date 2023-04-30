@@ -9,6 +9,7 @@ const initialState: ConfigurationState = {
     profileSize: '',
     backdropSize: '',
     posterSize: '',
+    avatarSize: '',
     genres: [],
     activeModal: {
         active: false,
@@ -32,6 +33,9 @@ export const configurationSLice = createSlice({
         setPosterSize(state, action: PayloadAction<string>) {
             state.posterSize = action.payload
         },
+        setAvatarSize(state, action: PayloadAction<string>) {
+            state.avatarSize = action.payload
+        },
         setGenre(state, action: PayloadAction<Genres[]>) {
             state.genres = action.payload
         },
@@ -42,6 +46,7 @@ export const configurationSLice = createSlice({
 })
 
 export const {
+    setAvatarSize,
     setActiveModal,
     setBaseUrl,
     setProfileSize,
