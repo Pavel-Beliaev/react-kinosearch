@@ -149,9 +149,15 @@ const MoviePage: React.FC = () => {
                 </div>
             </div>
             <div className='container'>
-                <Reviews
-                    reviews={data?.reviews.results}
-                />
+                <h2>Reviews</h2>
+                {data?.reviews.results.length === 0
+                    ? <div className='page-review'>
+                        <p>We don't have any reviews for {data?.title}. </p>
+                    </div>
+                    : <Reviews
+                        reviews={data?.reviews.results}
+                    />
+                }
             </div>
         </div>
     );

@@ -151,12 +151,26 @@
       gap: 10px;
       font-size: 13px;
       letter-spacing: 1.5px;
-      color: rgba(255,255,255, 0.4);
-      background-color: rgba(113,113,113, 0.4);
+      color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(113, 113, 113, 0.4);
 
     }
   }
 
+  &-review {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    p {
+      letter-spacing: 1.5px;
+      color: #101010;
+    }
+  }
 }
 
 

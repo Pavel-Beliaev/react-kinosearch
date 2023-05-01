@@ -11,11 +11,8 @@ const Reviews: React.FC<ReviewsType> = ({reviews}) => {
     const {base_url, avatarSize} = useAppSelector((state) => state.config)
 
 
-
-
     return (
         <div className='reviews'>
-            <h2>Reviews</h2>
             {reviews?.map((review) => (
                 <div
                     key={review.id}

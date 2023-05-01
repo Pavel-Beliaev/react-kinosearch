@@ -238,5 +238,13 @@ export interface IDetailsMovie {
         results: ResultsReviewsType[],
         total_pages: number,
         total_results: number,
+    },
+    external_ids: {
+        imdb_id: string | null,
+        facebook_id: string | null,
+        instagram_id: string | null,
+        twitter_id: string | null,
+        id: number,
+
     }
 }

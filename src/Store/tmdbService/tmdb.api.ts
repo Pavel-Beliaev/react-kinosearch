@@ -133,7 +133,7 @@ export const tmdbApi = createApi({
                 url: `/movie/${id}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    append_to_response: 'videos,credits,images,reviews'
+                    append_to_response: 'videos,credits,images,reviews,external_ids'
                 },
             }),
             keepUnusedDataFor: 2,
