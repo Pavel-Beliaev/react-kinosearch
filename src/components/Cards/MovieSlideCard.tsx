@@ -21,26 +21,38 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({id, release, poster, tit
 
     return (
         <div className='newfilms'>
-            <div className={release ? 'newfilms-poster' : 'newfilms-posterAlt'}>
-                <div className='newfilms-aside'>
-                    <div className='newfilms-text'>
-                        <div
-                            className='newfilms-play'
-                            onClick={() => dispatch(setActiveModal({active: true, id: id}))}
-                        >
-                            <i className='fa fa-play'></i>
+            {release
+                ? <div className='newfilms-poster'>
+                    <div className='newfilms-aside'>
+                        <div className='newfilms-text'>
+                            <div
+                                className='newfilms-play'
+                                onClick={() => dispatch(setActiveModal({active: true, id: id}))}
+                            >
+                                <i className='fa fa-play'></i>
+                            </div>
+                            <Link className='newfilms-readmore'
+                                  to={`/movies/${id}`}
+                            >
+                                Read more
+                            </Link>
+                            <span>Released: {release}</span>
                         </div>
-                        <Link className='newfilms-readmore'
-                              to={`/movies/${id}`}>
-                            Read more
-                        </Link>
-                        <span>Released: {release}</span>
                     </div>
+                    <img
+                        src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
+                        alt="poster"
+                    />
                 </div>
-                <img
-                    src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
-                    alt="poster"/>
-            </div>
+                : <div className='newfilms-posterAlt'>
+                    <Link to={`/movies/${id}`}>
+                        <img
+                            src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
+                            alt="poster"
+                        />
+                    </Link>
+                </div>
+            }
             <div className='newfilms-title'>
                 <h4>{title}</h4>
             </div>

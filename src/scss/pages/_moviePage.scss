@@ -178,4 +178,10 @@
 }
 
 .acting {
+  &-wrapper{
+    width: 100%;
+    border: 1px solid rgba(227, 227, 227, 1);
+    padding: 10px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
 }
