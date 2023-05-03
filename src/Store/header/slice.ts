@@ -26,6 +26,12 @@ const initialState: PageDataType = {
         genres: [],
         title: '',
         url: '',
+    },
+    peoples: {
+        heading: '',
+        genres: [],
+        title: '',
+        url: '',
     }
 }
 
@@ -33,12 +39,15 @@ export const headerSlice = createSlice({
     name: 'config',
     initialState,
     reducers: {
-        setHeader(state, action: PayloadAction<ParamsPageDataType>) {
+        setHeaderFilms(state, action: PayloadAction<ParamsPageDataType>) {
+            state.film = action.payload
+        },
+        setHeaderPeoples(state, action: PayloadAction<ParamsPageDataType>) {
             state.film = action.payload
         },
     },
 })
 
-export const {setHeader} = headerSlice.actions;
+export const {setHeaderFilms, setHeaderPeoples} = headerSlice.actions;
 
 export default headerSlice.reducer

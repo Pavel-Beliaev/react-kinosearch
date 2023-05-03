@@ -12,6 +12,7 @@
   &-synopsis {
     display: flex;
     justify-content: space-between;
+    gap: 20px;
 
     h3 {
       border: none;
@@ -31,7 +32,6 @@
     img {
       width: 100%;
       flex: 0 1 30%;
-      height: 100%;
     }
   }
 
@@ -75,6 +75,10 @@
     gap: 20px;
 
     &-links {
+
+      h2 {
+        margin-top: 0;
+      }
 
       ul {
         display: flex;
@@ -173,4 +177,5 @@
   }
 }
 
-
+.acting {
+}

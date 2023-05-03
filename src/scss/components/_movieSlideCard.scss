@@ -13,6 +13,7 @@
     margin-bottom: 20px;
     border-radius: 10px;
     overflow: hidden;
+    flex: 0 1 80%;
 
     &:hover {
       &:before {
@@ -38,6 +39,17 @@
       opacity: 0.7;
       background: $gradient;
     }
+
+    img {
+      width:270px;
+      height: 340px;
+    }
+  }
+
+  &-posterAlt {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    flex: 0 1 80%;
 
     img {
       width:270px;
@@ -105,7 +117,8 @@
   }
 
   &-title {
-    flex-grow: 1;
+    //flex-grow: 1;
+    flex:0 1 10%;
     h4 {
       border: none;
       font-size: 18px;
@@ -117,6 +130,8 @@
 
 
   &-more {
+    flex:0 1 10%;
+
     width: 100%;
     display: flex;
     justify-content: space-around;

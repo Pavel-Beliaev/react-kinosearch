@@ -16,10 +16,9 @@ export interface IKnowFor {
     adult: boolean,
     overview: string,
     release_date: string,
-    original_title: string,
     genre_ids: number[],
     id: number,
-    media_type: string,
+    original_title: string,
     original_language: string,
     title: string,
     backdrop_path: string | null,
@@ -27,6 +26,7 @@ export interface IKnowFor {
     vote_count: number,
     video: boolean,
     vote_average: number,
+    media_type: string,
     //-----------
     first_air_date: string,
     origin_country: string[]
@@ -115,10 +115,11 @@ export interface IVideos {
 }
 
 export type QueryArgs = {
-    type: string,
-    searchValue: string,
-    pageNumber: number,
-    genre: number | null,
+    type?: string,
+    searchValue?: string,
+    pageNumber?: number,
+    genre?: number | null,
+    peopleId?: number,
 }
 
 export type ISpokenLanguages = {
@@ -248,3 +249,110 @@ export interface IDetailsMovie {
 
     }
 }
+
+export type CreditsPeopleCastType = {
+    adult: boolean,
+    backdrop_path: string | null,
+    character: string,
+    credit_id: string,
+    episode_count: number,
+    first_air_date: string
+    genre_ids: number[],
+    id: number,
+    name: string,
+    origin_country: string[]
+    order: number,
+    original_language: string,
+    original_title: string,
+    original_name: string,
+    overview: string,
+    popularity: number,
+    poster_path: string | null,
+    release_date: string,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number,
+}
+
+export type CreditsPeopleCrewType = {
+    adult: boolean,
+    backdrop_path: string | null,
+    credit_id: string,
+    department: string,
+    episode_count: number,
+    first_air_date: string,
+    genre_ids: number[],
+    id: number,
+    job: string,
+    name: string,
+    origin_country: string[],
+    original_language: string,
+    original_title: string,
+    original_name: string,
+    overview: string,
+    popularity: number,
+    poster_path: string | null,
+    release_date: string,
+    title: string,
+    video: boolean,
+    vote_average: number,
+    vote_count: number,
+}
+
+export type TaggedImagesResults = {
+    aspect_ratio: number,
+    file_path: string,
+    height: number,
+    id: string,
+    iso_639_1: null | string,
+    vote_average: number,
+    vote_count: number,
+    width: number,
+    image_type: string,
+    media: IKnowFor,
+    media_type: string,
+
+}
+
+export interface AllPersonsType {
+    birthday: string | null,
+    known_for_department: string,
+    deathday: null | string,
+    id: number,
+    name: string,
+    also_known_as: string[],
+    gender: number,
+    biography: string,
+    popularity: number,
+    place_of_birth: string | null,
+    profile_path: string | null,
+    adult: boolean,
+    imdb_id: string,
+    homepage: null | string,
+    tv_credits: {
+        cast: CreditsPeopleCastType[],
+        crew: CreditsPeopleCrewType[],
+    },
+    movie_credits: {
+        cast: CreditsPeopleCastType[],
+        crew: CreditsPeopleCrewType[],
+    },
+    external_ids: {
+        imdb_id: string | null,
+        facebook_id: null | string,
+        freebase_mid: string | null,
+        freebase_id: null | string,
+        tvrage_id: number | null,
+        twitter_id: null | string,
+        id: number,
+        instagram_id: string | null,
+    },
+    tagged_images: {
+        page: number,
+        results: TaggedImagesResults[],
+        total_pages: number,
+        total_results: number,
+    },
+}
+

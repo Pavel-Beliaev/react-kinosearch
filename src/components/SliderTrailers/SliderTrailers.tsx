@@ -19,7 +19,7 @@ const SliderTrailers: React.FC = () => {
 
     const {data: popularMoviesDataList} = useGetPopularMoviesQuery(1);
     const getId = popularMoviesDataList?.results.map((obj) => obj.id);
-    const {data: videoDataList} = useGetVideoByIdQuery(getId ? getId[slideIndex] : 0);
+    const {data: videoDataList} = useGetVideoByIdQuery(Number(getId && getId[slideIndex]));
 
     const foundVideo = videoDataList?.results.find((video) =>
         video.name.toLowerCase().includes('official trailer'))

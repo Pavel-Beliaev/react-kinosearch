@@ -7,8 +7,7 @@ import AllMoviesPage from "./pages/AllMoviesPage";
 import People from "./pages/People";
 import ContactsPage from "./pages/ContactsPage";
 import ErrorPage from "./pages/ErrorPage";
-import MoviePage from "./pages/MoviePage";
-import PersonPage from "./pages/PersonPage";
+import DetailInfoPage from "./pages/DetailInfoPage";
 
 const App:React.FC = () => {
     const router = createBrowserRouter(
@@ -16,9 +15,9 @@ const App:React.FC = () => {
             <Route path='/' element={<MainLayout/>}>
                 <Route index element={<Home/>}/>
                 <Route path='movies' element={<AllMoviesPage/>}/>
-                <Route path='movies/:id' element={<MoviePage/>}/>
+                <Route path='movies/:id' element={<DetailInfoPage/>}/>
                 <Route path='people' element={<People/>}/>
-                <Route path='people/:id' element={<PersonPage/>}/>
+                <Route path='people/:id' element={<DetailInfoPage/>}/>
                 <Route path='contact' element={<ContactsPage/>}/>
                 <Route path='*' element={<ErrorPage/>}/>
             </Route>

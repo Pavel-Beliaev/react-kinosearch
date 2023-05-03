@@ -5,7 +5,7 @@ import notPicture from '../../public/JPG/placeholder.jpg'
 import {useAppSelector} from "../../Store/store";
 
 
-const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath}) => {
+const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
     const {base_url, profileSize} = useAppSelector((state) => state.config)
 
     const roleString = knownFor?.map((filmName) =>
@@ -15,7 +15,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profi
     ).join(', ')
 
     return (
-        <Link to='1'>
+        <Link to={`/people/${id}`}>
             <div className='peopleCard'>
                 <img
                     src={profilePath

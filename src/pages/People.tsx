@@ -9,6 +9,7 @@ const People:React.FC = () => {
 
     const {data} = useGetPopularPersonQuery(pageNumber);
 
+
     const onChangePage = (page: number) => {
         (setPageNumber(page))
         window.scrollTo({
@@ -26,6 +27,7 @@ const People:React.FC = () => {
                         key={object.id}
                         name={object.name}
                         knownFor={object.known_for}
+                        id={object.id}
                         profilePath={object.profile_path}
                     />
                 ))}

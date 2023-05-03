@@ -13,7 +13,7 @@ const initialState: ConfigurationState = {
     genres: [],
     activeModal: {
         active: false,
-        id: 0,
+        id: null,
     }
 
 }

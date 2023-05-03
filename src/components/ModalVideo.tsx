@@ -8,7 +8,8 @@ import {useGetVideoByIdQuery} from "../Store/tmdbService/tmdb.api";
 const ModalVideo: React.FC = () => {
     const {active, id} = useAppSelector(state => state.config.activeModal);
     const dispatch = useAppDispatch();
-    const {data: videoDataList} = useGetVideoByIdQuery(Number(id))
+    const movieID = id && id
+    const {data: videoDataList} = useGetVideoByIdQuery(Number(movieID))
 
     const foundVideo = videoDataList?.results.find((video) =>
         video.name.toLowerCase().includes('official trailer'))

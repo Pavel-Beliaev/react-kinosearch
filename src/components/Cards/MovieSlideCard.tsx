@@ -3,9 +3,10 @@ import {Link} from "react-router-dom";
 import Rating from "../Rating/Rating";
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
+import notPicture from "../../public/PNG/placeholder.png";
 
 type MovieSlideCardProps = {
-    release: string,
+    release?: string,
     title: string,
     rating: number,
     poster: string | null
@@ -13,19 +14,19 @@ type MovieSlideCardProps = {
 }
 
 
-const MovieSlideCard:React.FC<MovieSlideCardProps> = ({id, release, poster, title, rating}) => {
+const MovieSlideCard: React.FC<MovieSlideCardProps> = ({id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
     const {base_url, posterSize} = useAppSelector((state) => state.config)
 
 
     return (
         <div className='newfilms'>
-            <div className='newfilms-poster'>
+            <div className={release ? 'newfilms-poster' : 'newfilms-posterAlt'}>
                 <div className='newfilms-aside'>
                     <div className='newfilms-text'>
                         <div
                             className='newfilms-play'
-                            onClick={() => dispatch(setActiveModal({active:true, id: id}))}
+                            onClick={() => dispatch(setActiveModal({active: true, id: id}))}
                         >
                             <i className='fa fa-play'></i>
                         </div>
@@ -37,8 +38,8 @@ const MovieSlideCard:React.FC<MovieSlideCardProps> = ({id, release, poster, titl
                     </div>
                 </div>
                 <img
-                    src={poster ? `${base_url}${posterSize}${poster}` : ''}
-                     alt="poster"/>
+                    src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
+                    alt="poster"/>
             </div>
             <div className='newfilms-title'>
                 <h4>{title}</h4>

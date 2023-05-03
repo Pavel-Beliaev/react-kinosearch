@@ -30,6 +30,7 @@ export type PeopleCardProps = {
     knownFor?: IKnowFor[],
     character?: string,
     profilePath: string,
+    id: number
 }
 
 export type PaginationProps = {
