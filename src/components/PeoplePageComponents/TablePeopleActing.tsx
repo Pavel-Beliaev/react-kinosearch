@@ -45,7 +45,7 @@ const columns: ColumnsType<MovieCredits> = [
             return <div>
                 <Link to={value.title
                     ? `/movies/${value.movieID}`
-                    : `/movies/${value.tvID}`}>
+                    : `/tv/${value.tvID}`}>
                     {value.title
                         ? <span className='table-title'>{value.title}&nbsp;</span>
                         : <span className='table-title'>{value.name}&nbsp;</span>
@@ -84,7 +84,6 @@ const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCre
         }
 
     }))
-
 
     return (
         <div className='container table'>

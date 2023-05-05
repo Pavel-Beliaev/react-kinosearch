@@ -4,11 +4,11 @@ import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SliderShow from "../SliderShow/SliderShow";
 import {SwiperSlide} from "swiper/react";
 import {useAppSelector} from "../../Store/store";
-import {IDetailsMovie} from "../../Store/tmdbService/@types";
+import {IDetailsMovie, IDetailsTv} from "../../Store/tmdbService/@types";
 
 export type MovieMediaType = {
     youtubeVideosKeys: string[] | undefined,
-    dataMovie: IDetailsMovie | undefined
+    dataMovie: IDetailsMovie | IDetailsTv |undefined
 }
 
 const MovieMedia: React.FC<MovieMediaType> = ({youtubeVideosKeys, dataMovie}) => {

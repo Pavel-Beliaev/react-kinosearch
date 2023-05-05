@@ -1,8 +1,8 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {
-    AllPersonsType,
+    AllPersonsType, Genres,
     IConfiguration,
-    IDetailsMovie,
+    IDetailsMovie, IDetailsTv,
     IGenres,
     IMovies,
     INewMovies,
@@ -78,7 +78,7 @@ export const tmdbApi = createApi({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setHeaderPeoples({title: data.name, genres: [], url: data.profile_path, heading:''}))
+                    dispatch(setHeaderPeoples({title: data.name, genres: [], url: data.profile_path, heading: ''}))
                 } catch (error) {
                     console.log(error)
                 }
@@ -151,8 +151,8 @@ export const tmdbApi = createApi({
             // },
         }),
         getDetailsMovie: build.query<IDetailsMovie, number>({
-            query: (id) => ({
-                url: `/movie/${id}`,
+            query: (movie_id) => ({
+                url: `/movie/${movie_id}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
                     append_to_response: 'videos,credits,images,reviews,external_ids'
@@ -162,7 +162,30 @@ export const tmdbApi = createApi({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setHeaderFilms({title: data.title, genres: data.genres, url: data.backdrop_path, heading:''}))
+                    dispatch(setHeaderFilms({
+                        title: data.title,
+                        genres: data.genres,
+                        url: data.backdrop_path,
+                        heading: ''
+                    }))
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }),
+        getDetailsTv: build.query<IDetailsTv, number>({
+            query: (tv_id) => ({
+                url: `/tv/${tv_id}`,
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                    append_to_response: 'videos,credits,images,reviews,external_ids'
+                },
+            }),
+            keepUnusedDataFor: 1,
+            async onQueryStarted(arg, {dispatch, queryFulfilled}) {
+                try {
+                    const {data} = await queryFulfilled
+                    dispatch(setHeaderFilms({title: data.name, genres: data.genres, url: data.backdrop_path, heading:''}))
                 } catch (error) {
                     console.log(error)
                 }
@@ -171,6 +194,7 @@ export const tmdbApi = createApi({
     })
 })
 export const {
+    useGetDetailsTvQuery,
     useGetAllPersonQuery,
     useGetDetailsMovieQuery,
     useGetAllMoviesQuery,

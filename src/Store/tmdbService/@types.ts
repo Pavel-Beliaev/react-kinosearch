@@ -97,16 +97,16 @@ export interface IMovies {
 }
 
 export type IResultVideos = {
+    id: string,
     iso_639_1: string,
     iso_3166_1: string,
-    name: string,
     key: string,
+    name: string,
+    official: boolean,
+    published_at: string,
     site: string,
     size: number,
     type: string,
-    official: boolean,
-    published_at: string,
-    id: string,
 }
 
 export interface IVideos {
@@ -141,7 +141,6 @@ export type IProductionCompanies = {
 
 export type CreditsCastType = {
     adult: boolean,
-    cast_id: number,
     character: string,
     credit_id: string,
     gender: number,
@@ -152,6 +151,7 @@ export type CreditsCastType = {
     original_name: string,
     popularity: number,
     profile_path: string,
+    cast_id: number,
 }
 
 export type CreditsCrewType = {
@@ -183,10 +183,10 @@ export type ResultsReviewsType = {
 
     author: string,
     author_details: {
-        name: string,
-        username: string,
         avatar_path: string | null,
+        name: string,
         rating: number | null,
+        username: string,
     },
     content: string,
     created_at: string,
@@ -246,7 +246,6 @@ export interface IDetailsMovie {
         instagram_id: string | null,
         twitter_id: string | null,
         id: number,
-
     }
 }
 
@@ -354,5 +353,117 @@ export interface AllPersonsType {
         total_pages: number,
         total_results: number,
     },
+}
+
+export type CreatedByType = {
+    id: number,
+    credit_id: string,
+    name: string,
+    gender: number,
+    profile_path: string | null,
+}
+
+export type NetworksType = {
+    name: string,
+    id: number,
+    logo_path: string | null,
+    origin_country: string,
+}
+
+export type ProductionCompaniesType = {
+    id: number,
+    logo_path: null | string,
+    name: string,
+    origin_country: string,
+}
+
+export type ProductionCountriesType = {
+    iso_3166_1: string,
+    name: string,
+}
+
+export type SeasonsType = {
+    air_date: string,
+    episode_count: number,
+    id: number,
+    name: string,
+    overview: string,
+    poster_path: string,
+    season_number: number,
+}
+
+export type SpokenLanguagesType = {
+    english_name: string,
+    iso_639_1: string,
+    name: string,
+}
+
+export interface IDetailsTv {
+    backdrop_path: string | null,
+    created_by: CreatedByType[],
+    episode_run_time: number[],
+    first_air_date: string,
+    genres: Genres[],
+    homepage: string,
+    id: number,
+    in_production: boolean,
+    languages: string[],
+    last_air_date: string,
+    last_episode_to_air: {
+        air_date: string,
+        episode_number: number,
+        id: number,
+        name: string,
+        overview: string,
+        production_code: string,
+        season_number: number,
+        still_path: string | null,
+        vote_average: number,
+        vote_count: number,
+    }
+    name: string,
+    next_episode_to_air: null,
+    networks: NetworksType[],
+    number_of_episodes: number,
+    number_of_seasons: number,
+    origin_country: string[],
+    original_language: string,
+    original_name: string,
+    overview: string,
+    popularity: number,
+    poster_path: string | null,
+    production_companies: ProductionCompaniesType[],
+    production_countries: ProductionCountriesType[],
+    seasons: SeasonsType[],
+    spoken_languages: SpokenLanguagesType[],
+    status: string,
+    tagline: string,
+    type: string,
+    vote_average: number,
+    vote_count: number,
+    videos: {
+        results: IResultVideos[]
+    },
+    credits: {
+        cast: CreditsCastType[],
+        crew: CreditsCrewType[],
+    },
+    images: {
+        backdrops: ImagesType[],
+        posters: ImagesType[],
+    },
+    reviews: {
+        page: number,
+        results: ResultsReviewsType[],
+        total_pages: number,
+        total_results: number,
+    },
+    external_ids: {
+        imdb_id: string | null,
+        facebook_id: string | null,
+        instagram_id: string | null,
+        twitter_id: string | null,
+        id: number,
+    }
 }
 

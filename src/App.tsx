@@ -9,13 +9,14 @@ import ContactsPage from "./pages/ContactsPage";
 import ErrorPage from "./pages/ErrorPage";
 import DetailInfoPage from "./pages/DetailInfoPage";
 
-const App:React.FC = () => {
+const App: React.FC = () => {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path='/' element={<MainLayout/>}>
                 <Route index element={<Home/>}/>
                 <Route path='movies' element={<AllMoviesPage/>}/>
                 <Route path='movies/:id' element={<DetailInfoPage/>}/>
+                <Route path='tv/:id' element={<DetailInfoPage/>}/>
                 <Route path='people' element={<People/>}/>
                 <Route path='people/:id' element={<DetailInfoPage/>}/>
                 <Route path='contact' element={<ContactsPage/>}/>

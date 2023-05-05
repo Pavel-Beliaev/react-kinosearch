@@ -7,11 +7,25 @@ export type MovieInfoType = {
     homepage: string | null | undefined,
     status: string | null | undefined,
     releaseDate: string | null | undefined,
-    budget: number | null | undefined,
-    revenue: number | null | undefined,
+    budget?: number | null | undefined,
+    revenue?: number | null | undefined,
+    end_date?: string | null | undefined,
+    number_of_seasons?: number | undefined,
+    number_of_episodes?: number  | undefined,
 }
 
-const MovieInfo:React.FC<MovieInfoType> = ({twitterLink, facebookLink, budget, revenue, status, homepage, releaseDate}) => {
+const MovieInfo: React.FC<MovieInfoType> = ({
+                                                twitterLink,
+                                                facebookLink,
+                                                budget,
+                                                revenue,
+                                                status,
+                                                homepage,
+                                                releaseDate,
+                                                end_date,
+                                                number_of_seasons,
+                                                number_of_episodes,
+                                            }) => {
 
     return (
         <>
@@ -44,14 +58,26 @@ const MovieInfo:React.FC<MovieInfoType> = ({twitterLink, facebookLink, budget, r
                 <h3>Release date</h3>
                 <p>{releaseDate}</p>
             </div>
-            <div className='page-info-other'>
+            {end_date && <div className='page-info-other'>
+                <h3>End date</h3>
+                <p>{end_date}</p>
+            </div>}
+            {number_of_seasons && <div className='page-info-other'>
+                <h3>Number of seasons</h3>
+                <p>{number_of_seasons}</p>
+            </div>}
+            {number_of_episodes && <div className='page-info-other'>
+                <h3>Number of episodes</h3>
+                <p>{number_of_episodes}</p>
+            </div>}
+            {budget && <div className='page-info-other'>
                 <h3>Budget</h3>
                 <p>$ {budget},00</p>
-            </div>
-            <div className='page-info-other'>
+            </div>}
+            {revenue && <div className='page-info-other'>
                 <h3>Revenue</h3>
                 <p>$ {revenue},00</p>
-            </div>
+            </div>}
         </>
     );
 };

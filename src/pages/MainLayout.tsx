@@ -15,6 +15,7 @@ const MainLayout: React.FC = () => {
 
     const {pathname} = useLocation();
     const navbarRef = useRef<HTMLDivElement>(null);
+    const homeRef = useRef<HTMLDivElement>(null);
     const observer = useRef<IntersectionObserver>();
     const [isVisible, setIsVisible] = useState(false)
 
@@ -46,7 +47,8 @@ const MainLayout: React.FC = () => {
     return (
         <div
             className='wrapper'>
-                <Navbar navbarRef={navbarRef}/>
+            <div ref={homeRef}/>
+            <Navbar navbarRef={navbarRef}/>
             <DropDownNavbar isVisible={isVisible}/>
             <Header pathname={pathname}/>
             <div className='frameworks'>
@@ -54,7 +56,7 @@ const MainLayout: React.FC = () => {
             </div>
             <div
                 style={{opacity: isVisible ? 1 : 0}}
-                onClick={() => BackToTop(navbarRef)}
+                onClick={() => BackToTop(homeRef)}
                 className='back-to-top show'>
                 <i className='fa fa-chevron-up'></i>
             </div>
