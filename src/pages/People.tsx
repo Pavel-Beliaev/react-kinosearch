@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import PeopleCard from "../components/Cards/PeopleCard";
 import {useGetPopularPersonQuery} from "../Store/tmdbService/tmdb.api";
 import Pagination from "../components/Pagination/Pagination";
+import SkeletonPeopleCard from "../components/Skeletons/SkeletonPeopleCard";
 
 
-const People:React.FC = () => {
+const People: React.FC = () => {
     const [pageNumber, setPageNumber] = useState(1)
 
-    const {data} = useGetPopularPersonQuery(pageNumber);
+    const {data, isFetching} = useGetPopularPersonQuery(pageNumber);
 
 
     const onChangePage = (page: number) => {
@@ -23,13 +24,15 @@ const People:React.FC = () => {
             <h2>Popular People</h2>
             <div className='people-content'>
                 {data?.results.map((object) => (
-                    <PeopleCard
-                        key={object.id}
-                        name={object.name}
-                        knownFor={object.known_for}
-                        id={object.id}
-                        profilePath={object.profile_path}
-                    />
+                    isFetching
+                        ? <SkeletonPeopleCard/>
+                        : <PeopleCard
+                            key={object.id}
+                            name={object.name}
+                            knownFor={object.known_for}
+                            id={object.id}
+                            profilePath={object.profile_path}
+                        />
                 ))}
                 <div className='container people-pagination'>
                     <Pagination value={pageNumber} changePage={onChangePage} totalPage={data?.total_pages}/>

@@ -25,6 +25,9 @@ const MovieMedia: React.FC<MovieMediaType> = ({youtubeVideosKeys, dataMovie}) =>
                     <Switcher
                         switcher={switcher}
                         setSwitcher={setSwitcher}
+                        title1={'Trailers'}
+                        title2={'Backgrounds'}
+                        color={'#717171'}
                     />
 
                     {switcher === 0

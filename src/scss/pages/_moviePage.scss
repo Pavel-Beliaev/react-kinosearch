@@ -177,11 +177,55 @@
   }
 }
 
-.acting {
-  &-wrapper{
-    width: 100%;
-    border: 1px solid rgba(227, 227, 227, 1);
-    padding: 10px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.table {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 65px;
+  letter-spacing: 1.5px;
+
+  &-wrapper {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    user-select: none;
+
+    .ant-table-column-sorter-down.active{
+      color: #ec7532;
+    }
+
+    .ant-table-column-sorter-up.active {
+      color: #ec7532;
+    }
+  }
+
+  a {
+    color: #101010;
+  }
+
+  &-title {
+    color: #101010;
+    font-weight: bold;
+
+    a {
+      cursor: pointer;
+    }
+
+  }
+
+  &-episodes {
+    color: rgba(16, 16, 16, 0.7);
+  }
+
+  &-character {
+    color: #101010;
+  }
+
+  &-year {
+    span {
+      color: #101010;
+    }
+  }
+
+  &-switcher {
+    padding-left: 80%;
+    padding-bottom: 10px;
   }
 }

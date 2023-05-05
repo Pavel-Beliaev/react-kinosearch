@@ -23,6 +23,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, playing, keysArray}) => 
                 width='100%'
                 height='100%'
                 playing={playing}
+                light={true}
                 config={{
                     youtube: {
                         playerVars: {

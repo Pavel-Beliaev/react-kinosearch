@@ -3,29 +3,42 @@ import './switcher.scss'
 
 export type SwitcherType = {
     switcher: number,
-    setSwitcher: React.Dispatch<React.SetStateAction<number>>
+    setSwitcher: React.Dispatch<React.SetStateAction<number>>,
+    title1: string,
+    title2: string,
+    color: string
 }
-const Switcher:React.FC<SwitcherType> = ({setSwitcher, switcher}) => {
+const Switcher: React.FC<SwitcherType> = ({color, title1, title2, setSwitcher, switcher}) => {
 
 
     return (
-        <div className='switcher'>
+        <div
+            style={{backgroundColor: `${color}`}}
+            className='switcher'>
             <span
                 onClick={() => setSwitcher(0)}
             >
-                Trailers
+                {title1}
             </span>
             <span
-                onClick={() => setSwitcher(1)}
+                  onClick={() => setSwitcher(1)}
             >
-                Backgrounds
+                {title2}
             </span>
             <div
                 style={switcher === 0
-                    ? {transform: 'translateX(-75px)', width: '45%'}
-                    : {transform: 'translateX(62px)', width: '65%'}}
+                    ? {transform: 'translateX(0px)', width: ''}
+                    : {transform: 'translateX(100%)', width: ''}}
                 className='slider'
-            />
+            >
+                <span>
+                    {switcher === 0
+                        ? title1
+                        : title2
+                    }
+                </span>
+
+            </div>
         </div>
     );
 };

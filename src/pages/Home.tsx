@@ -7,10 +7,11 @@ import {
 } from "../Store/tmdbService/tmdb.api";
 import MovieSlideCard from "../components/Cards/MovieSlideCard";
 import {SwiperSlide} from "swiper/react";
+import SkeletonSliderShow from "../components/Skeletons/SkeletonSliderShow";
 
 const Home: React.FC = () => {
-    const {data: topRateDataList} = useGetTopRatedMoviesQuery(1);
-    const {data: trendDataList} = useGetTrendingMoviesQuery(1);
+    const {data: trendDataList, isLoading: isLoadingTrend} = useGetTrendingMoviesQuery(1);
+    const {data: topRateDataList, isLoading: isLoadingTopRate} = useGetTopRatedMoviesQuery(1);
 
 
     return (
@@ -20,15 +21,18 @@ const Home: React.FC = () => {
                     <h2>Trending</h2>
                     <SliderShow
                         slideCount={4}
-                        children={ trendDataList?.results.map((film) => (
+                        children={trendDataList?.results.map((film) => (
                             <SwiperSlide key={film.id}>
-                                <MovieSlideCard
-                                    id={film.id}
-                                    release={film.release_date}
-                                    rating={film.vote_average}
-                                    title={film.title}
-                                    poster={film.poster_path}
-                                />
+                                {isLoadingTrend
+                                    ? <SkeletonSliderShow/>
+                                    : <MovieSlideCard
+                                        id={film.id}
+                                        release={film.release_date}
+                                        rating={film.vote_average}
+                                        title={film.title}
+                                        poster={film.poster_path}
+                                    />
+                                }
                             </SwiperSlide>
                         ))}
                     />
@@ -42,15 +46,18 @@ const Home: React.FC = () => {
                     <h2>Top rated</h2>
                     <SliderShow
                         slideCount={4}
-                        children={ topRateDataList?.results.map((film) => (
+                        children={topRateDataList?.results.map((film) => (
                             <SwiperSlide key={film.id}>
-                                <MovieSlideCard
-                                    id={film.id}
-                                    release={film.release_date}
-                                    rating={film.vote_average}
-                                    title={film.title}
-                                    poster={film.poster_path}
-                                />
+                                {isLoadingTopRate
+                                    ? <SkeletonSliderShow/>
+                                    : <MovieSlideCard
+                                        id={film.id}
+                                        release={film.release_date}
+                                        rating={film.vote_average}
+                                        title={film.title}
+                                        poster={film.poster_path}
+                                    />
+                                }
                             </SwiperSlide>
                         ))}
                     />
