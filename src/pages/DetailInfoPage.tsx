@@ -17,6 +17,7 @@ import TablePeopleActing from "../components/PeoplePageComponents/TablePeopleAct
 import SkeletonSliderShow from "../components/Skeletons/SkeletonSliderShow";
 import SkeletonPeopleCard from "../components/Skeletons/SkeletonPeopleCard";
 import SkeletonMoviePage from "../components/Skeletons/SkeletonMoviePage";
+import SkeletonPeoplePage from "../components/Skeletons/SkeletonPeoplePage";
 
 const DetailInfoPage = () => {
     const {id} = useParams()
@@ -26,7 +27,7 @@ const DetailInfoPage = () => {
     const peopleID = pathname.includes('people') && id
 
     const {data: dataMovieDetails, isFetching: isFetchingMovieDetails} = useGetDetailsMovieQuery(Number(movieID));
-    const {data: dataPeopleDetails} = useGetAllPersonQuery(Number(peopleID))
+    const {data: dataPeopleDetails, isFetching: isFetchingPeopleDetails} = useGetAllPersonQuery(Number(peopleID))
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
         pageNumber: 1,
         peopleId: dataPeopleDetails?.id,
@@ -40,37 +41,26 @@ const DetailInfoPage = () => {
             <div className='container'>
                 <h2>Synopsis</h2>
                 <div className='page-synopsis'>
-                    {isFetchingMovieDetails
-                        ? <SkeletonMoviePage/>
-                        : <>
-                            <div className='page-poster'>
-                                {pathname.includes('movies')
-                                    ? <MoviePoster
+
+                    {pathname.includes('movies')
+                        ? isFetchingMovieDetails
+                            ? <SkeletonMoviePage/>
+                            : <>
+                                <div className='page-poster'>
+                                    <MoviePoster
                                         poster={dataMovieDetails?.poster_path}
                                         rating={dataMovieDetails?.vote_average}
                                     />
-                                    : <PeoplePoster
-                                        poster={dataPeopleDetails?.profile_path}
-                                    />
-                                }
-
-                            </div>
-                            <div className='page-overview'>
-                                {pathname.includes('movies')
-                                    ? <MovieOverview
+                                </div>
+                                <div className='page-overview'>
+                                    <MovieOverview
                                         overview={dataMovieDetails?.overview}
                                         title={'Overviews'}
                                         creditsCrew={dataMovieDetails?.credits.crew}
                                     />
-                                    : <PeopleBiography
-                                        title={'Biography'}
-                                        biography={dataPeopleDetails?.biography}
-                                    />
-                                }
-                            </div>
-                            <div className='page-info'>
-                                {pathname.includes('movies')
-                                    ? <MovieInfo
+                                </div>
+                                <div className='page-info'>
+                                    <MovieInfo
                                         homepage={dataMovieDetails?.homepage}
                                         twitterLink={dataMovieDetails?.external_ids.twitter_id}
                                         facebookLink={dataMovieDetails?.external_ids.facebook_id}
@@ -79,7 +69,24 @@ const DetailInfoPage = () => {
                                         revenue={dataMovieDetails?.revenue}
                                         budget={dataMovieDetails?.budget}
                                     />
-                                    : <PeopleInfo
+                                </div>
+                            </>
+                        : isFetchingPeopleDetails
+                            ? <SkeletonPeoplePage/>
+                            : <>
+                                <div className='page-poster'>
+                                    <PeoplePoster
+                                        poster={dataPeopleDetails?.profile_path}
+                                    />
+                                </div>
+                                <div className='page-overview'>
+                                    <PeopleBiography
+                                        title={'Biography'}
+                                        biography={dataPeopleDetails?.biography}
+                                    />
+                                </div>
+                                <div className='page-info'>
+                                    <PeopleInfo
                                         title={'Personal Info'}
                                         birthday={dataPeopleDetails?.birthday}
                                         deathday={dataPeopleDetails?.deathday}
@@ -89,9 +96,8 @@ const DetailInfoPage = () => {
                                         facebookLink={dataPeopleDetails?.external_ids.facebook_id}
                                         twitterLink={dataPeopleDetails?.external_ids.twitter_id}
                                     />
-                                }
-                            </div>
-                        </>
+                                </div>
+                            </>
                     }
                 </div>
                 {pathname.includes('movies')

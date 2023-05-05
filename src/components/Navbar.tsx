@@ -15,9 +15,9 @@ const Navbar:React.FC = () => {
             <div className='heading'>
                 <div className='container'>
                     <div className='tel'>
-                        <a href="tel: 123456789">
+                        <a href="tel: +66 65 335 62 63">
                             <i className='fa fa-phone'></i>
-                            123 456 789
+                            +66 65 335 62 63
                         </a>
                     </div>
                 </div>

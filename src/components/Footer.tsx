@@ -45,15 +45,15 @@ const Footer:React.FC = () => {
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="https://www.facebook.com">
+                                        <Link to="https://www.facebook.com/profile.php?id=100014321836619&sk=about">
                                             <span className='fa fa-facebook'></span>
                                             Facebook
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to="http://plus.google.com/">
-                                            <span className='fa fa-google-plus'></span>
-                                            Google +
+                                        <Link to="https://t.me/ComeThroughDontLinger">
+                                            <span className='fa fa-telegram'></span>
+                                            Telegram
                                         </Link>
                                     </li>
                                 </ul>
