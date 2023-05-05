@@ -1,37 +1,28 @@
-import React, {RefObject, useState} from 'react';
-import logoIcon from '../public/SVG/Paulo F  I  L  M  S.svg'
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
+import logoIcon from "../public/SVG/Paulo F  I  L  M  S.svg";
 import {navbarMenu} from "../mock/statick";
 
-export type NavbarType = {
-    navbarRef: RefObject<HTMLDivElement>
+export type DropDownNavbarType = {
+    isVisible: boolean
 }
-
-const Navbar: React.FC<NavbarType> = ({navbarRef}) => {
+const DropDownNavbar: React.FC<DropDownNavbarType> = ({isVisible}) => {
     const [isActive, setIsActive] = useState(0)
     const onChangeMenu = (idx: number) => {
         setIsActive(idx)
     }
+
     return (
-        <div className='navbar'>
+        <div style={isVisible ? {transform: 'translateX(0px)'} : {}}
+             className='drop_navbar'>
             <div className='container'>
-                <div className='tel'>
-                    <Link to="tel: +66 65 335 62 63">
-                        <i className='fa fa-phone'></i>
-                        +66 65 335 62 63
-                    </Link>
-                </div>
-            </div>
-            <div className='container'>
-                <div ref={navbarRef}
-                    className='navbar-main'>
-                    <div className='navbar-logo'>
+                <div className='drop_navbar-main'>
+                    <div className='drop_navbar-logo'>
                         <Link to="/">
                             <img src={logoIcon} alt="logo"/>
                         </Link>
-                        {/*<button>burger</button>*/}
                     </div>
-                    <div className='navbar-panel'>
+                    <div className='drop_navbar-panel'>
                         <ul>
                             {navbarMenu.map((obj, index) => (
                                 <li
@@ -49,4 +40,4 @@ const Navbar: React.FC<NavbarType> = ({navbarRef}) => {
     );
 };
 
-export default Navbar;
+export default DropDownNavbar;
