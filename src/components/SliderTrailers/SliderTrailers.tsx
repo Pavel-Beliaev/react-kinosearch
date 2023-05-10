@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './slidertrailers.scss'
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Navigation, Thumbs} from "swiper";
@@ -8,22 +8,31 @@ import "swiper/scss/free-mode";
 import "swiper/scss/navigation";
 import "swiper/scss/thumbs";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import {useGetPopularMoviesQuery, useGetVideoByIdQuery} from "../../Store/tmdbService/tmdb.api";
+import {
+    useGetPopularMoviesQuery,
+    useLazyGetVideoByIdQuery
+} from "../../Store/tmdbService/tmdb.api";
 import {useAppSelector} from "../../Store/store";
 
 const SliderTrailers: React.FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
+    const [playOffVideo, setPlayOffVideo] = useState(true);
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
     const {base_url, posterSize, backdropSize} = useAppSelector((state) => state.config);
 
     const {data: popularMoviesDataList} = useGetPopularMoviesQuery(1);
-    const getId = popularMoviesDataList?.results.map((obj) => obj.id);
-    const {data: videoDataList} = useGetVideoByIdQuery(Number(getId && getId[slideIndex]));
+    const getId = popularMoviesDataList?.results.map((obj) => obj.id)[slideIndex];
 
-    const foundVideo = videoDataList?.results.find((video) =>
-        video.name.toLowerCase().includes('official trailer'))
-    const video = (foundVideo || videoDataList?.results[0])
+    const [target, data] = useLazyGetVideoByIdQuery();
+
+    const moviesKeys = data.data?.results.filter((el) => el.type === 'Trailer').map((elem) => elem.key)
+
+
+    useEffect(() => {
+        target(getId)
+    }, [getId])
+
 
     return (
         <>
@@ -46,11 +55,11 @@ const SliderTrailers: React.FC = () => {
             <div className='container sliderTrailer'>
                 <h2>Trailers</h2>
                 <div
-                    style={video ? {} : {paddingTop: '47.3%'}}
+                    style={moviesKeys ? {} : {paddingTop: '47.3%'}}
                     className='sliderTrailer-player'>
-                    {video &&
+                    {moviesKeys &&
                         <VideoPlayer
-                            keys={video?.key}
+                            keysArray={moviesKeys}
                         />
                     }
                 </div>
@@ -68,13 +77,13 @@ const SliderTrailers: React.FC = () => {
                     className="swiperBottom"
                     slideToClickedSlide={true}
                     onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
+                    // onActiveIndexChange={() => setPlayOffVideo(false)}
                 >
                     {popularMoviesDataList?.results.map((poster) => (
                         <SwiperSlide key={poster.id}>
                             <img src={`${base_url}${posterSize}${poster.poster_path}`} alt='poster'/>
                         </SwiperSlide>
                     ))}
-
                 </Swiper>
             </div>
         </>

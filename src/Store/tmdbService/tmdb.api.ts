@@ -1,6 +1,6 @@
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {
-    AllPersonsType, Genres,
+    AllPersonsType,
     IConfiguration,
     IDetailsMovie, IDetailsTv,
     IGenres,
@@ -12,7 +12,6 @@ import {
 } from "./@types";
 import {setAvatarSize, setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
 import {setHeaderFilms, setHeaderPeoples} from "../header/slice";
-
 
 
 export const tmdbApi = createApi({
@@ -74,7 +73,6 @@ export const tmdbApi = createApi({
                     append_to_response: 'movie_credits,tv_credits,external_ids,tagged_images'
                 },
             }),
-            keepUnusedDataFor: 1,
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
@@ -119,13 +117,13 @@ export const tmdbApi = createApi({
                 },
             }),
         }),
-        getVideoById: build.query<IVideos, number>({
+        getVideoById: build.query<IVideos, number | undefined>({
             query: (id) => ({
                 url: `/movie/${id}/videos`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
                 },
-            })
+            }),
         }),
         getAllMovies: build.query<IMovies, QueryArgs>({
             query: ({type, searchValue, pageNumber, genre, peopleId}) => ({
@@ -135,19 +133,21 @@ export const tmdbApi = createApi({
                     query: searchValue,
                     page: pageNumber,
                     with_genres: genre,
-                    with_people: peopleId
+                    with_people: peopleId,
                 },
             }),
-            keepUnusedDataFor: 2,
-            // keepUnusedDataFor: 2, //срок жизни кеша
             // serializeQueryArgs: ({endpointName}) => {
             //     return endpointName
             // },
-            // merge: (currentCacheData, newCacheData) => {
-            //     currentCacheData.results.push(...newCacheData.results)
+            // merge: (currentCacheData, newCacheData, otherArgs) => {
+            //      currentCacheData.results.push(...newCacheData.results)
             // },
-            // forceRefetch({currentArg, previousArg}) {
-            //     return currentArg !== previousArg
+            // forceRefetch({currentArg, previousArg, endpointState,state}) {
+            //     console.log('currentArg', currentArg)
+            //     console.log('previousArg', previousArg)
+            //     console.log('endpointState', endpointState)
+            //     console.log('state', state)
+            //     return currentArg === previousArg
             // },
         }),
         getDetailsMovie: build.query<IDetailsMovie, number>({
@@ -158,7 +158,6 @@ export const tmdbApi = createApi({
                     append_to_response: 'videos,credits,images,reviews,external_ids'
                 },
             }),
-            keepUnusedDataFor: 1,
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
@@ -181,7 +180,6 @@ export const tmdbApi = createApi({
                     append_to_response: 'videos,credits,images,reviews,external_ids'
                 },
             }),
-            keepUnusedDataFor: 1,
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
@@ -198,7 +196,7 @@ export const {
     useGetAllPersonQuery,
     useGetDetailsMovieQuery,
     useGetAllMoviesQuery,
-    useGetVideoByIdQuery,
+    useLazyGetVideoByIdQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetTrendingMoviesQuery,

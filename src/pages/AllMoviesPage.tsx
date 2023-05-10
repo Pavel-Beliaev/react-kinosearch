@@ -16,14 +16,13 @@ const AllMoviesPage: React.FC = () => {
     const lastElementRef = useRef<HTMLDivElement>(null);
     const {genres} = useAppSelector((state) => state.config);
 
-
-    const {isFetching, data} = useGetAllMoviesQuery(
-        {searchValue, pageNumber, genre, type: (searchValue ? 'search' : 'discover')},
+    const types = searchValue ? 'search' : 'discover'
+    const {data, isFetching} = useGetAllMoviesQuery(
+        {type: types , searchValue, pageNumber, genre},
         {refetchOnMountOrArgChange: true}
     );
     const moviesDataBase = data?.results ?? [];
     const totalPage = data?.total_pages ?? 1;
-
     useObserver(
         lastElementRef,
         isFetching,
@@ -50,6 +49,8 @@ const AllMoviesPage: React.FC = () => {
         setGenre(IdGenre)
     }
 
+
+
     return (
         <div className='frameworks-container movies'>
             <div className='movies-search'>
@@ -61,9 +62,11 @@ const AllMoviesPage: React.FC = () => {
                 <i className='fa fa-search'></i>
             </div>
             <div className='movies-colum'>
-                {moviesDataBase.map((film) => (
+                {moviesDataBase.map((film, index) => (
                     isFetching
-                        ? <div className='movies-skeleton'><SkeletonMovieCard/></div>
+                        ? <div
+                            key={index}
+                            className='movies-skeleton'><SkeletonMovieCard/></div>
                         : <MovieCard
                             key={film.id}
                             id={film.id}
@@ -73,7 +76,7 @@ const AllMoviesPage: React.FC = () => {
                             filmGenre={film.genre_ids}
 
                         />
-                    ))}
+                ))}
                 <div style={{height: 1, width: '100%'}}
                      ref={lastElementRef}/>
             </div>

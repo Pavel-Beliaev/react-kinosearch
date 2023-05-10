@@ -13,8 +13,9 @@ const initialState: ConfigurationState = {
     genres: [],
     activeModal: {
         active: false,
-        id: null,
-    }
+        id: 0,
+    },
+
 
 }
 export const configurationSLice = createSlice({

@@ -12,6 +12,8 @@ export type PeopleInfoType = {
     facebookLink: string | null | undefined,
 }
 
+export const genderArr = ['female', 'male']
+
 const PeopleInfo: React.FC<PeopleInfoType> = ({
                                                   facebookLink,
                                                   twitterLink,
@@ -47,7 +49,7 @@ const PeopleInfo: React.FC<PeopleInfoType> = ({
             </div>
             <div className='page-info-other'>
                 <h3>Gender</h3>
-                <p>{gender}</p>
+                <p>{genderArr[gender! - 1]}</p>
             </div>
             <div className='page-info-other'>
                 <h3>Birthday</h3>

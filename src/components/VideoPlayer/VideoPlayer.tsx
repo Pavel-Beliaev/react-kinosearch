@@ -6,10 +6,9 @@ import ReactPlayer from "react-player/lazy";
 type VideoPlayerProps = {
     keysArray?: string[],
     keys?: string | undefined,
-    playing?: boolean
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, playing, keysArray}) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
 
     return (
         <div className='player-wrapper'>
@@ -22,7 +21,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, playing, keysArray}) => 
                 }
                 width='100%'
                 height='100%'
-                playing={playing}
                 light={true}
                 config={{
                     youtube: {

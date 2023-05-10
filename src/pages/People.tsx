@@ -23,9 +23,9 @@ const People: React.FC = () => {
         <div className='frameworks-container people'>
             <h2>Popular People</h2>
             <div className='people-content'>
-                {data?.results.map((object) => (
+                {data?.results.map((object, index) => (
                     isFetching
-                        ? <SkeletonPeopleCard/>
+                        ? <SkeletonPeopleCard key={index}/>
                         : <PeopleCard
                             key={object.id}
                             name={object.name}

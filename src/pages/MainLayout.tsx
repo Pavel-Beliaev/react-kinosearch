@@ -1,5 +1,5 @@
 import React, {RefObject, useEffect, useRef, useState} from 'react';
-import Navbar from "../components/Navbar";
+import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
@@ -48,7 +48,7 @@ const MainLayout: React.FC = () => {
         <div
             className='wrapper'>
             <div ref={homeRef}/>
-            <Navbar navbarRef={navbarRef}/>
+            <Menu navbarRef={navbarRef}/>
             <DropDownNavbar isVisible={isVisible}/>
             <Header pathname={pathname}/>
             <div className='frameworks'>

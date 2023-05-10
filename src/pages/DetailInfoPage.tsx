@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useLocation, useParams} from "react-router-dom";
 import {
     useGetAllMoviesQuery,
@@ -43,7 +43,12 @@ const DetailInfoPage = () => {
     const youtubeMoviesKeys = dataMovieDetails?.videos.results.filter((el) => el.site === 'YouTube').map((elem) => elem.key)
     const youtubeTvKeys = dataTvDetails?.videos.results.filter((el) => el.site === 'YouTube').map((elem) => elem.key)
 
-    console.log(dataTvDetails)
+    useEffect(() => {
+        window.scrollTo({
+            top: 350,
+            behavior: 'smooth'
+        })
+    }, [id])
 
     return (
         <div className='page'>
