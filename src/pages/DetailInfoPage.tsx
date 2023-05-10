@@ -1,11 +1,5 @@
 import React, {useEffect} from 'react';
 import {useLocation, useParams} from "react-router-dom";
-import {
-    useGetAllMoviesQuery,
-    useGetAllPersonQuery,
-    useGetDetailsMovieQuery,
-    useGetDetailsTvQuery
-} from "../Store/tmdbService/tmdb.api";
 import MovieInfo from "../components/MoviePageComponents/MovieInfo";
 import PeopleInfo from "../components/PeoplePageComponents/PeopleInfo";
 import MovieOverview from "../components/MoviePageComponents/MovieOverview";
@@ -18,11 +12,17 @@ import SliderWrapper from "../components/SliderWrapper";
 import MovieSlideCard from "../components/Cards/MovieSlideCard";
 import MovieMedia from "../components/MoviePageComponents/MovieMedia";
 import MovieReviews from "../components/MoviePageComponents/MovieReviews";
-import TablePeopleActing from "../components/PeoplePageComponents/TablePeopleActing";
+import TablePeopleActing from "../components/PeoplePageComponents/TablePeopleActing/TablePeopleActing";
 import SkeletonSliderShow from "../components/Skeletons/SkeletonSliderShow";
 import SkeletonPeopleCard from "../components/Skeletons/SkeletonPeopleCard";
 import SkeletonMoviePage from "../components/Skeletons/SkeletonMoviePage";
 import SkeletonPeoplePage from "../components/Skeletons/SkeletonPeoplePage";
+import {
+    useGetAllMoviesQuery,
+    useGetDetailsPersonQuery,
+    useGetDetailsMovieQuery,
+    useGetDetailsTvQuery
+} from "../Store/tmdbService/endpoints";
 
 const DetailInfoPage = () => {
     const {id} = useParams()
@@ -34,7 +34,7 @@ const DetailInfoPage = () => {
 
     const {data: dataTvDetails, isFetching: isFetchingTvDetails} = useGetDetailsTvQuery(Number(tvID));
     const {data: dataMovieDetails, isFetching: isFetchingMovieDetails} = useGetDetailsMovieQuery(Number(movieID));
-    const {data: dataPeopleDetails, isFetching: isFetchingPeopleDetails} = useGetAllPersonQuery(Number(peopleID))
+    const {data: dataPeopleDetails, isFetching: isFetchingPeopleDetails} = useGetDetailsPersonQuery(Number(peopleID))
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
         pageNumber: 1,
         peopleId: dataPeopleDetails?.id,

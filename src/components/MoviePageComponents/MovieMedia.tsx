@@ -4,18 +4,11 @@ import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SliderShow from "../SliderShow/SliderShow";
 import {SwiperSlide} from "swiper/react";
 import {useAppSelector} from "../../Store/store";
-import {IDetailsMovie, IDetailsTv} from "../../Store/tmdbService/@types";
-
-export type MovieMediaType = {
-    youtubeVideosKeys: string[] | undefined,
-    dataMovie: IDetailsMovie | IDetailsTv |undefined
-}
+import {MovieMediaType} from "./types";
 
 const MovieMedia: React.FC<MovieMediaType> = ({youtubeVideosKeys, dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
-
-
 
     return (
         <div className='page-block'>

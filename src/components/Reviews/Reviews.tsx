@@ -1,12 +1,10 @@
 import React from 'react';
 import './reviews.scss'
 import {Link} from "react-router-dom";
-import {ResultsReviewsType} from "../../Store/tmdbService/@types";
 import {useAppSelector} from "../../Store/store";
+import {ReviewsType} from "./types";
 
-export type ReviewsType = {
-    reviews: ResultsReviewsType[] | undefined,
-}
+
 const Reviews: React.FC<ReviewsType> = ({reviews}) => {
     const {base_url, avatarSize} = useAppSelector((state) => state.config)
 

@@ -4,3 +4,6 @@ export const navbarMenu = [
     {title: 'People', url: '/people'},
     {title: 'Contact us', url: '/contact'},
 ]
+export const footerMenu = ['Get in touch', 'About movie star', 'Legal stuff'];
+
+export const genderArr = ['female', 'male']

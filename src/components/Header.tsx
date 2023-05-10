@@ -4,7 +4,6 @@ import HeaderSlider from "./HeaderSlider/HeaderSlider";
 import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
 import {useAppSelector} from "../Store/store";
 
-
 const Header: React.FC<HeaderProps> = ({pathname}) => {
     const [isVisibleEffect, setIsVisibleEffect] = useState(true);
     const {base_url, backdropSize} = useAppSelector((state) => state.config);

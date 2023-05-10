@@ -2,15 +2,10 @@ import React from 'react';
 import notPicture from "../../public/PNG/placeholder.png";
 import Rating from "../Rating/Rating";
 import {useAppSelector} from "../../Store/store";
-
-export type MoviePosterType = {
-    poster: string | null | undefined,
-    rating: number | undefined,
-}
+import {MoviePosterType} from "./types";
 
 const MoviePoster:React.FC<MoviePosterType> = ({poster, rating}) => {
     const {base_url, posterSize} = useAppSelector((state) => state.config)
-
 
     return (
         <>

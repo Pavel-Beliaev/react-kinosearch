@@ -1,13 +1,7 @@
 import React from 'react';
 import './switcher.scss'
+import {SwitcherType} from "./types";
 
-export type SwitcherType = {
-    switcher: number,
-    setSwitcher: React.Dispatch<React.SetStateAction<number>>,
-    title1: string,
-    title2: string,
-    color: string
-}
 const Switcher: React.FC<SwitcherType> = ({color, title1, title2, setSwitcher, switcher}) => {
 
 

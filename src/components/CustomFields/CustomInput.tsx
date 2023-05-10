@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react';
 import './customfields.scss'
-import {InputProps} from "../../@types/@types";
+import {InputProps} from "./types";
 
 
 const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {

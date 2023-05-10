@@ -4,7 +4,7 @@ import {Scrollbar, Mousewheel, Keyboard, Navigation} from "swiper";
 import {Swiper} from "swiper/react";
 import "swiper/scss";
 import "swiper/scss/scrollbar";
-import {SliderProps} from "../../@types/@types";
+import {SliderProps} from "./types";
 
 
 

@@ -3,7 +3,6 @@ import CustomButton from "../CustomButton/CustomButton";
 import './headerslider.scss'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Autoplay, EffectFade} from 'swiper';
-import {useGetNewMoviesQuery} from "../../Store/tmdbService/tmdb.api";
 import Rating from "../Rating/Rating";
 import 'swiper/scss';
 import 'swiper/scss/effect-fade'
@@ -11,6 +10,7 @@ import "swiper/scss/pagination";
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import {Link} from "react-router-dom";
+import {useGetNewMoviesQuery} from "../../Store/tmdbService/endpoints";
 
 const HeaderSlider: React.FC = () => {
     const dispatch = useAppDispatch();

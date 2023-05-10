@@ -8,15 +8,11 @@ import "swiper/scss/free-mode";
 import "swiper/scss/navigation";
 import "swiper/scss/thumbs";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import {
-    useGetPopularMoviesQuery,
-    useLazyGetVideoByIdQuery
-} from "../../Store/tmdbService/tmdb.api";
 import {useAppSelector} from "../../Store/store";
+import {useGetPopularMoviesQuery, useLazyGetVideoByIdQuery} from "../../Store/tmdbService/endpoints";
 
 const SliderTrailers: React.FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
-    const [playOffVideo, setPlayOffVideo] = useState(true);
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
     const {base_url, posterSize, backdropSize} = useAppSelector((state) => state.config);

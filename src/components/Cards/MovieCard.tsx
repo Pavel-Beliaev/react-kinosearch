@@ -2,14 +2,7 @@ import React from 'react';
 import notPicture from '../../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
-
-type MovieCardProps = {
-    poster: string | null,
-    overview: string,
-    title: string,
-    filmGenre: number[],
-    id: number,
-}
+import {MovieCardProps} from "./types";
 
 const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
     const {base_url, posterSize} = useAppSelector((state) => state.config)

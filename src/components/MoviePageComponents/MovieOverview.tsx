@@ -1,12 +1,6 @@
 import React from 'react';
-import {CreatedByType, CreditsCrewType} from "../../Store/tmdbService/@types";
+import {MovieOverviewType} from "./types";
 
-export type MovieOverviewType = {
-    title: string,
-    overview: string | null | undefined,
-    creditsCrew?: CreditsCrewType[] | undefined,
-    created_by?: CreatedByType[] | undefined,
-}
 const MovieOverview: React.FC<MovieOverviewType> = ({title, created_by, overview, creditsCrew}) => {
 
     return (

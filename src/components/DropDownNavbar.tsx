@@ -1,9 +1,7 @@
 import React from 'react';
 import Navbar from "./Navbar";
+import {DropDownNavbarType} from "../@types/@types";
 
-export type DropDownNavbarType = {
-    isVisible: boolean
-}
 const DropDownNavbar: React.FC<DropDownNavbarType> = ({isVisible}) => {
 
     return (

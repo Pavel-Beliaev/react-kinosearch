@@ -1,6 +1,6 @@
 import React, {forwardRef} from 'react';
 import './customfields.scss'
-import {TextareaProps} from "../../@types/@types";
+import {TextareaProps} from "./types";
 
 
 const CustomTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref?) => {

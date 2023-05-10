@@ -2,11 +2,11 @@ import React, {useCallback, useRef, useState} from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
 import MovieCard from "../components/Cards/MovieCard";
 import {useAppSelector} from "../Store/store";
-import {useGetAllMoviesQuery} from "../Store/tmdbService/tmdb.api";
 import {useObserver} from "../hooks/useObserver";
 import {Link} from "react-router-dom";
 import debounce from 'lodash.debounce'
 import SkeletonMovieCard from "../components/Skeletons/SkeletonMovieCard";
+import {useGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
 
 const AllMoviesPage: React.FC = () => {
     const [pageNumber, setPageNumber] = useState(1);

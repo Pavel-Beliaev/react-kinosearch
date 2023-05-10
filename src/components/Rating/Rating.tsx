@@ -1,8 +1,6 @@
 import React from 'react';
 import './rating.scss'
-import {RatingProps} from "../../@types/@types";
-
-
+import {RatingProps} from "./types";
 
 const Rating: React.FC<RatingProps> = ({rating, fill}) => {
 

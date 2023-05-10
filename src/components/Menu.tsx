@@ -1,15 +1,9 @@
-import React, {RefObject, useEffect, useState} from 'react';
-import logoIcon from '../public/SVG/Paulo F  I  L  M  S.svg'
+import React from 'react';
 import {Link} from "react-router-dom";
-import {navbarMenu} from "../mock/statick";
 import Navbar from "./Navbar";
-
-export type NavbarType = {
-    navbarRef?: RefObject<HTMLDivElement>
-}
+import {NavbarType} from "../@types/@types";
 
 const Menu: React.FC<NavbarType> = ({navbarRef}) => {
-
 
     return (
         <div className='navbar'>

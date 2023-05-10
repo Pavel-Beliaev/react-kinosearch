@@ -1,12 +1,7 @@
 import React from 'react';
 import './videoplayer.scss'
 import ReactPlayer from "react-player/lazy";
-
-
-type VideoPlayerProps = {
-    keysArray?: string[],
-    keys?: string | undefined,
-}
+import {VideoPlayerProps} from "./types";
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
 

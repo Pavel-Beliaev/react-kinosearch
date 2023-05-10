@@ -4,15 +4,7 @@ import Rating from "../Rating/Rating";
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import notPicture from "../../public/PNG/placeholder.png";
-
-type MovieSlideCardProps = {
-    release?: string,
-    title: string,
-    rating: number,
-    poster: string | null
-    id: number
-}
-
+import {MovieSlideCardProps} from "./types";
 
 const MovieSlideCard: React.FC<MovieSlideCardProps> = ({id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();

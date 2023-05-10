@@ -1,18 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
-export type MovieInfoType = {
-    twitterLink: string | null | undefined,
-    facebookLink: string | null | undefined,
-    homepage: string | null | undefined,
-    status: string | null | undefined,
-    releaseDate: string | null | undefined,
-    budget?: number | null | undefined,
-    revenue?: number | null | undefined,
-    end_date?: string | null | undefined,
-    number_of_seasons?: number | undefined,
-    number_of_episodes?: number  | undefined,
-}
+import {MovieInfoType} from "./types";
 
 const MovieInfo: React.FC<MovieInfoType> = ({
                                                 twitterLink,

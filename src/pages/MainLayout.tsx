@@ -4,9 +4,9 @@ import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
-import {useGetConfigurationQuery, useGetGenreQuery} from "../Store/tmdbService/tmdb.api";
 import ModalVideo from "../components/ModalVideo";
 import DropDownNavbar from "../components/DropDownNavbar";
+import {useGetConfigurationQuery, useGetGenreQuery} from "../Store/tmdbService/endpoints";
 
 
 const MainLayout: React.FC = () => {
@@ -32,7 +32,7 @@ const MainLayout: React.FC = () => {
             threshold: 0,
         };
 
-        const addPage: IntersectionObserverCallback = (entries, observer) => {
+        const addPage: IntersectionObserverCallback = (entries) => {
             if (entries[0].isIntersecting) {
                 setIsVisible(false)
             } else if (!entries[0].isIntersecting) {

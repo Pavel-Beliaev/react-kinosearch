@@ -1,9 +1,5 @@
 import React from 'react';
-
-export type PeopleBiographyType = {
-    title: string,
-    biography: string | null | undefined,
-}
+import {PeopleBiographyType} from "./types";
 
 const PeopleBiography:React.FC<PeopleBiographyType> = ({title, biography}) => {
     return (

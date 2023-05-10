@@ -2,7 +2,7 @@ import React from 'react';
 import {Link, NavLink} from "react-router-dom";
 import logoIcon from "../public/SVG/Paulo F  I  L  M  S.svg";
 import {navbarMenu} from "../mock/statick";
-import {NavbarType} from "./Menu";
+import {NavbarType} from "../@types/@types";
 
 const Navbar:React.FC<NavbarType> = ({navbarRef}) => {
 

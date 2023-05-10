@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 import PeopleCard from "../components/Cards/PeopleCard";
-import {useGetPopularPersonQuery} from "../Store/tmdbService/tmdb.api";
 import Pagination from "../components/Pagination/Pagination";
 import SkeletonPeopleCard from "../components/Skeletons/SkeletonPeopleCard";
+import {useGetAllPersonQuery} from "../Store/tmdbService/endpoints";
 
 
 const People: React.FC = () => {
     const [pageNumber, setPageNumber] = useState(1)
 
-    const {data, isFetching} = useGetPopularPersonQuery(pageNumber);
+    const {data, isFetching} = useGetAllPersonQuery(pageNumber);
 
 
     const onChangePage = (page: number) => {

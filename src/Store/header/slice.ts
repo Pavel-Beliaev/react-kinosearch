@@ -1,6 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {PageDataType, ParamsPageDataType} from "./@types";
-import {tmdbApi} from "../tmdbService/tmdb.api";
 
 const initialState: PageDataType = {
     movies: {

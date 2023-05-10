@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import {footerMenu} from "../mock/statick";
 
-const footerMenu = ['Get in touch', 'About movie star', 'Legal stuff'];
+
 const Footer:React.FC = () => {
     return (
         <div className='footer'>

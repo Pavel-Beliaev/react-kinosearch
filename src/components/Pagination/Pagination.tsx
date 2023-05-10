@@ -1,7 +1,7 @@
 import React from 'react';
 import './pagination.scss'
 import ReactPaginate from "react-paginate";
-import {PaginationProps} from "../../@types/@types";
+import {PaginationProps} from "./types";
 
 
 const Pagination: React.FC<PaginationProps> = ({value, changePage, totalPage}) => {

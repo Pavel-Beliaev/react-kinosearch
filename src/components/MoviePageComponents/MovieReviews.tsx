@@ -1,15 +1,8 @@
 import React from 'react';
 import Reviews from "../Reviews/Reviews";
-import {ResultsReviewsType} from "../../Store/tmdbService/@types";
-
-export type MovieReviewsType = {
-    length: number | undefined,
-    title: string | undefined,
-    reviews: ResultsReviewsType[] | undefined,
-}
+import {MovieReviewsType} from "./types";
 
 const MovieReviews: React.FC<MovieReviewsType> = ({length, title, reviews}) => {
-
 
     return (
         <div className='container'>

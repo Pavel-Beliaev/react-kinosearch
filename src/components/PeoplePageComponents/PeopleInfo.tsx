@@ -1,18 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
-export type PeopleInfoType = {
-    title: string | null | undefined,
-    gender: number | null | undefined,
-    birthday: string | null | undefined,
-    deathday: string | null | undefined,
-    placeOfBirth: string | null | undefined,
-    knownFor: string | undefined,
-    twitterLink: string | null | undefined,
-    facebookLink: string | null | undefined,
-}
-
-export const genderArr = ['female', 'male']
+import {PeopleInfoType} from "./types";
+import {genderArr} from "../../mock/statick";
 
 const PeopleInfo: React.FC<PeopleInfoType> = ({
                                                   facebookLink,

@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {setActiveModal} from "../Store/config/slice";
 import VideoPlayer from "./VideoPlayer/VideoPlayer";
-import {useLazyGetVideoByIdQuery} from "../Store/tmdbService/tmdb.api";
+import {useLazyGetVideoByIdQuery} from "../Store/tmdbService/endpoints";
 
 
 const ModalVideo: React.FC = () => {

@@ -1,46 +1,18 @@
-import React from "react";
-import {IKnowFor, IResultsMovies} from "../Store/tmdbService/@types";
+import React, {RefObject} from "react";
 
+export type DropDownNavbarType = {
+    isVisible: boolean
+}
 
+export type NavbarType = {
+    navbarRef?: RefObject<HTMLDivElement>
+}
+
+export type SliderWrapperType = {
+    title: string,
+    children:  React.ReactElement | React.ReactNode
+}
 
 export type HeaderProps = {
     pathname: string
-}
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    children: string | React.ReactElement
-}
-
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-    title?: string;
-}
-
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-    title: string;
-}
-
-export type RatingProps = {
-    rating?: number | null,
-
-    fill?: string,
-}
-
-export type PeopleCardProps = {
-    name: string,
-    knownFor?: IKnowFor[],
-    character?: string,
-    profilePath: string,
-    id: number
-}
-
-export type PaginationProps = {
-    value: number,
-    changePage: (page: number) => void
-    totalPage: number | undefined
-}
-
-export interface SliderProps {
-    navigation?: boolean,
-    slideCount: number,
-    children: React.ReactElement | React.ReactNode
 }

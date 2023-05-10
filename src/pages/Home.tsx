@@ -1,13 +1,10 @@
 import React from 'react';
 import SliderShow from "../components/SliderShow/SliderShow";
 import SliderTrailers from "../components/SliderTrailers/SliderTrailers";
-import {
-    useGetTopRatedMoviesQuery,
-    useGetTrendingMoviesQuery
-} from "../Store/tmdbService/tmdb.api";
 import MovieSlideCard from "../components/Cards/MovieSlideCard";
 import {SwiperSlide} from "swiper/react";
 import SkeletonSliderShow from "../components/Skeletons/SkeletonSliderShow";
+import {useGetTopRatedMoviesQuery, useGetTrendingMoviesQuery} from "../Store/tmdbService/endpoints";
 
 const Home: React.FC = () => {
     const {data: trendDataList, isLoading: isLoadingTrend} = useGetTrendingMoviesQuery(1);
