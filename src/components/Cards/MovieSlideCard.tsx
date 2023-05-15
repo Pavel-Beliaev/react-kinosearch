@@ -6,14 +6,14 @@ import {setActiveModal} from "../../Store/config/slice";
 import notPicture from "../../public/PNG/placeholder.png";
 import {MovieSlideCardProps} from "./types";
 
-const MovieSlideCard: React.FC<MovieSlideCardProps> = ({id, release, poster, title, rating}) => {
+const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
     const {base_url, posterSize} = useAppSelector((state) => state.config)
 
 
     return (
         <div className='newfilms'>
-            {release
+            {release || first_air_date
                 ? <div className='newfilms-poster'>
                     <div className='newfilms-aside'>
                         <div className='newfilms-text'>
@@ -24,7 +24,7 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({id, release, poster, tit
                                 <i className='fa fa-play'></i>
                             </div>
                             <Link className='newfilms-readmore'
-                                  to={`/movies/${id}`}
+                                  to={release ? `/movies/${id}` : `/tv/${id}`}
                             >
                                 Read more
                             </Link>

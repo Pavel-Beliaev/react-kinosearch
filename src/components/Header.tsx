@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
             <span className="scroll"><ArrowDownIcon/></span>
             {pathname === '/'
                 ?
-                <HeaderSlider/>
+                <HeaderSlider pathname={stylePage}/>
                 :
                 <div className="container">
                     {isVisibleEffect &&

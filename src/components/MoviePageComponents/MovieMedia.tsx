@@ -6,9 +6,15 @@ import {SwiperSlide} from "swiper/react";
 import {useAppSelector} from "../../Store/store";
 import {MovieMediaType} from "./types";
 
-const MovieMedia: React.FC<MovieMediaType> = ({youtubeVideosKeys, dataMovie}) => {
+
+
+const MovieMedia: React.FC<MovieMediaType> = ({ dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
+    const [toggle, setToggle] = useState(0);
+
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
+
+    console.log(dataMovie)
 
     return (
         <div className='page-block'>
@@ -22,13 +28,27 @@ const MovieMedia: React.FC<MovieMediaType> = ({youtubeVideosKeys, dataMovie}) =>
                         title2={'Backgrounds'}
                         color={'#717171'}
                     />
-
                     {switcher === 0
-                        ? <div className='sliderTrailer-player'>
-                            <VideoPlayer
-                                keysArray={youtubeVideosKeys}
-                            />
+                        ? <div className='page-videos'>
+                            {dataMovie?.videos.results.map((param) => (
+                                <div
+                                    className='page-videos_item'
+                                    key={param.key}
+                                    onClick={() => {}}
+                                >
+                                    <div className='sliderTrailer-player'>
+                                        <VideoPlayer
+                                            keys={param.key}
+                                        />
+                                    </div>
+                                    <p>{param.name}</p>
+                                </div>
+                            ))
+
+                            }
+
                         </div>
+
                         : <div className='page-backdrops'>
                             <SliderShow
                                 navigation={true}

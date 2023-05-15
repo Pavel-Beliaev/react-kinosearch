@@ -147,6 +147,30 @@
     flex-direction: column;
   }
 
+  &-videos {
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    &_item {
+      width: 20%;
+      height: 20%;
+    }
+
+    &_player {
+      margin: 0;
+    }
+
+    p {
+      margin-top: 5px;
+      padding: 3px;
+    }
+  }
+
   &-backdrops {
     padding-top: 30px;
 
@@ -189,7 +213,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     user-select: none;
 
-    .ant-table-column-sorter-down.active{
+    .ant-table-column-sorter-down.active {
       color: #ec7532;
     }
 

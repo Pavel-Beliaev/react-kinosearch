@@ -9,7 +9,8 @@ export interface ConfigurationState {
     profileSize: string,
     backdropSize:string,
     posterSize:string,
-    genres: Genres[],
+    genresMovies: Genres[],
+    genresTV: Genres[],
     activeModal: VideoModal,
     avatarSize: string,
 }

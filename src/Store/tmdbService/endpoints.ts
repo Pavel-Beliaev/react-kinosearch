@@ -6,11 +6,19 @@ import {
     INewMovies,
     IPopularPerson,
     IVideos,
-    QueryArgs
+    QueryArgs,
 } from "./@types";
-import {setAvatarSize, setBackdropSize, setBaseUrl, setGenre, setPosterSize, setProfileSize} from "../config/slice";
+import {
+    setAvatarSize,
+    setBackdropSize,
+    setBaseUrl,
+    setGenreMovies, setGenreTV,
+    setPosterSize,
+    setProfileSize
+} from "../config/slice";
 import {setHeaderFilms, setHeaderPeoples} from "../header/slice";
 import {tmdbApi} from "./tmdb.api";
+import {setMovieData, setPageNumber} from "../movies/slice";
 
 const extendedApi = tmdbApi.injectEndpoints({
     endpoints: (build) => ({
@@ -37,7 +45,7 @@ const extendedApi = tmdbApi.injectEndpoints({
                 }
             }
         }),
-        getGenre: build.query<IGenres, void>({
+        getGenreMovies: build.query<IGenres, void>({
             query: () => ({
                 url: '/genre/movie/list',
                 params: {
@@ -47,39 +55,66 @@ const extendedApi = tmdbApi.injectEndpoints({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setGenre(data.genres))
+                    dispatch(setGenreMovies(data.genres))
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }),
+        getGenreTV: build.query<IGenres, void>({
+            query: () => ({
+                url: '/genre/tv/list',
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                },
+            }),
+            async onQueryStarted(arg, {dispatch, queryFulfilled}) {
+                try {
+                    const {data} = await queryFulfilled
+                    dispatch(setGenreTV(data.genres))
                 } catch (error) {
                     console.log(error)
                 }
             }
         }),
 
-        // endpoints getAll
+        // endpoints search
 
-        getAllMovies: build.query<IMovies, QueryArgs>({
-            query: ({type, searchValue, pageNumber, genre, peopleId}) => ({
-                url: `/${type}/movie`,
+        searchMovies: build.query<IMovies, QueryArgs>({
+            query: ({type, searchValue, pageNumber}) => ({
+                url: `/search/${type}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
                     query: searchValue,
+                    page: pageNumber,
+                },
+            }),
+        }),
+
+        // endpoints getAll
+
+        getAllMovies: build.query<IMovies, QueryArgs>({
+            query: ({type, pageNumber, genre, peopleId}) => ({
+                url: `/discover/${type}`,
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
                     page: pageNumber,
                     with_genres: genre,
                     with_people: peopleId,
                 },
             }),
-            // serializeQueryArgs: ({endpointName}) => {
-            //     return endpointName
-            // },
-            // merge: (currentCacheData, newCacheData, otherArgs) => {
-            //      currentCacheData.results.push(...newCacheData.results)
-            // },
-            // forceRefetch({currentArg, previousArg, endpointState,state}) {
-            //     console.log('currentArg', currentArg)
-            //     console.log('previousArg', previousArg)
-            //     console.log('endpointState', endpointState)
-            //     console.log('state', state)
-            //     return currentArg === previousArg
-            // },
+            keepUnusedDataFor: 1,
+            async onQueryStarted(args, {dispatch, queryFulfilled}) {
+                dispatch(setMovieData([]))
+                dispatch(setPageNumber(1))
+                try {
+                    const {data} = await queryFulfilled
+                    dispatch(setMovieData(data.results))
+                    dispatch(setPageNumber(data.page))
+                } catch (error) {
+                    console.log('error')
+                }
+            }
         }),
         getAllPerson: build.query<IPopularPerson, number>({
             query: (page) => ({
@@ -94,6 +129,23 @@ const extendedApi = tmdbApi.injectEndpoints({
 
         // endpoints films
 
+        getTrendingMovies: build.query<IMovies, string>({
+            query: (time_window) => ({
+                url: `/trending/movie/${time_window}`,
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                },
+            })
+        }),
+        getTopRatedMovies: build.query<IMovies, string>({
+            query: (type) => ({
+                url: `${type}/top_rated`,
+                params: {
+                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+                },
+            })
+        }),
+        //in header
         getNewMovies: build.query<INewMovies, void>({
             query: () => ({
                 url: '/movie/now_playing',
@@ -102,24 +154,7 @@ const extendedApi = tmdbApi.injectEndpoints({
                 },
             })
         }),
-        getTrendingMovies: build.query<IMovies, number>({
-            query: (page) => ({
-                url: '/trending/movie/day',
-                params: {
-                    page: page,
-                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                },
-            })
-        }),
-        getTopRatedMovies: build.query<IMovies, number>({
-            query: (page) => ({
-                url: '/movie/top_rated',
-                params: {
-                    page: page,
-                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                },
-            })
-        }),
+        //in slider trailers
         getPopularMovies: build.query<IMovies, number>({
             query: (page) => ({
                 url: '/movie/popular',
@@ -177,7 +212,12 @@ const extendedApi = tmdbApi.injectEndpoints({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setHeaderFilms({title: data.name, genres: data.genres, url: data.backdrop_path, heading:''}))
+                    dispatch(setHeaderFilms({
+                        title: data.name,
+                        genres: data.genres,
+                        url: data.backdrop_path,
+                        heading: ''
+                    }))
                 } catch (error) {
                     console.log(error)
                 }
@@ -204,6 +244,7 @@ const extendedApi = tmdbApi.injectEndpoints({
     overrideExisting: false
 })
 export const {
+    useSearchMoviesQuery,
     useGetDetailsTvQuery,
     useGetDetailsPersonQuery,
     useGetDetailsMovieQuery,
@@ -212,7 +253,8 @@ export const {
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetTrendingMoviesQuery,
-    useGetGenreQuery,
+    useGetGenreMoviesQuery,
+    useGetGenreTVQuery,
     useGetNewMoviesQuery,
     useGetConfigurationQuery,
     useGetAllPersonQuery,

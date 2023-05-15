@@ -10,7 +10,8 @@ const initialState: ConfigurationState = {
     backdropSize: '',
     posterSize: '',
     avatarSize: '',
-    genres: [],
+    genresMovies: [],
+    genresTV: [],
     activeModal: {
         active: false,
         id: 0,
@@ -37,8 +38,11 @@ export const configurationSLice = createSlice({
         setAvatarSize(state, action: PayloadAction<string>) {
             state.avatarSize = action.payload
         },
-        setGenre(state, action: PayloadAction<Genres[]>) {
-            state.genres = action.payload
+        setGenreMovies(state, action: PayloadAction<Genres[]>) {
+            state.genresMovies = action.payload
+        },
+        setGenreTV(state, action: PayloadAction<Genres[]>) {
+            state.genresTV = action.payload
         },
         setActiveModal(state, action: PayloadAction<VideoModal>) {
             state.activeModal = action.payload
@@ -53,6 +57,7 @@ export const {
     setProfileSize,
     setBackdropSize,
     setPosterSize,
-    setGenre} = configurationSLice.actions;
+    setGenreMovies,
+    setGenreTV} = configurationSLice.actions;
 
 export default configurationSLice.reducer

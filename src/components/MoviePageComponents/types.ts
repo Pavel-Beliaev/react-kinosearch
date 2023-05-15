@@ -25,7 +25,6 @@ export type MovieOverviewType = {
 }
 
 export type MovieMediaType = {
-    youtubeVideosKeys: string[] | undefined,
     dataMovie: IDetailsMovie | IDetailsTv |undefined
 }
 

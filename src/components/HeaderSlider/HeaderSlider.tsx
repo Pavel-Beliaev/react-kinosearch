@@ -11,12 +11,16 @@ import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import {Link} from "react-router-dom";
 import {useGetNewMoviesQuery} from "../../Store/tmdbService/endpoints";
+import {HeaderSliderType} from "./types";
 
-const HeaderSlider: React.FC = () => {
+
+const HeaderSlider: React.FC<HeaderSliderType> = ({pathname}) => {
     const dispatch = useAppDispatch();
-    const {genres} = useAppSelector((state) => state.config)
+    const {genresMovies, genresTV} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
-    const {data} = useGetNewMoviesQuery();
+    const {data} = useGetNewMoviesQuery()
+
+    const genres = pathname === 'movies' ? genresMovies : genresTV
 
     return (
         <Swiper
@@ -47,7 +51,7 @@ const HeaderSlider: React.FC = () => {
                                 <div className='blurb'>
                                     <div className='sliderHeader-text'>
                                         <span>{film.genre_ids.map((id) =>
-                                            genres.find(el => el.id === id)?.name
+                                            genresMovies.find(el => el.id === id)?.name
                                         ).join(', ')}</span>
                                         <h1>{film.title}</h1>
                                         <p>{film.overview}</p>

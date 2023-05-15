@@ -6,12 +6,14 @@ import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
 import ModalVideo from "../components/ModalVideo";
 import DropDownNavbar from "../components/DropDownNavbar";
-import {useGetConfigurationQuery, useGetGenreQuery} from "../Store/tmdbService/endpoints";
+import {useGetConfigurationQuery, useGetGenreMoviesQuery, useGetGenreTVQuery} from "../Store/tmdbService/endpoints";
+import {useObserver} from "../hooks/useObserver";
 
 
 const MainLayout: React.FC = () => {
     useGetConfigurationQuery();
-    useGetGenreQuery();
+    useGetGenreMoviesQuery();
+    useGetGenreTVQuery();
 
     const {pathname} = useLocation();
     const navbarRef = useRef<HTMLDivElement>(null);
@@ -24,24 +26,16 @@ const MainLayout: React.FC = () => {
         ref.current!.scrollIntoView({behavior: 'smooth', block: 'start'});
     };
 
-    useEffect(() => {
-        if (isVisible) return;
-        if (observer.current) observer.current.disconnect();
-
-        const options = {
-            threshold: 0,
-        };
-
-        const addPage: IntersectionObserverCallback = (entries) => {
-            if (entries[0].isIntersecting) {
-                setIsVisible(false)
-            } else if (!entries[0].isIntersecting) {
-                setIsVisible(true)
-            }
-        };
-        observer.current = new IntersectionObserver(addPage, options);
-        observer.current.observe(navbarRef.current!);
-    }, [isVisible])
+    useObserver(
+        navbarRef,
+        isVisible,
+        () => {
+            setIsVisible(false)
+        },
+        () => {
+            setIsVisible(true)
+        }
+    )
 
 
     return (

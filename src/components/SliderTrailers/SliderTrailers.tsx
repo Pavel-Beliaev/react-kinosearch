@@ -52,7 +52,7 @@ const SliderTrailers: React.FC = () => {
                 <h2>Trailers</h2>
                 <div
                     style={moviesKeys ? {} : {paddingTop: '47.3%'}}
-                    className='sliderTrailer-player'>
+                    className='sliderTrailer-player trailers-player'>
                     {moviesKeys &&
                         <VideoPlayer
                             keysArray={moviesKeys}

@@ -9,14 +9,16 @@ export type PeopleCardProps = {
 }
 
 export type MovieSlideCardProps = {
+    first_air_date?: string,
     release?: string,
     title: string,
     rating: number,
     poster: string | null
-    id: number
+    id: number,
 }
 
 export type MovieCardProps = {
+    switcherFilms: number,
     poster: string | null,
     overview: string,
     title: string,

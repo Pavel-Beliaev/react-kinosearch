@@ -3,12 +3,14 @@ import {tmdbApi} from "./tmdbService/tmdb.api";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import config from "./config/slice";
 import header from "./header/slice";
+import movies from "./movies/slice";
 import {setupListeners} from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
     reducer: {
         config,
         header,
+        movies,
         [tmdbApi.reducerPath]: tmdbApi.reducer
     },
     middleware: (getDefaultMiddleware) =>

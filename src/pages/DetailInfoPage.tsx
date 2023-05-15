@@ -36,16 +36,13 @@ const DetailInfoPage = () => {
     const {data: dataMovieDetails, isFetching: isFetchingMovieDetails} = useGetDetailsMovieQuery(Number(movieID));
     const {data: dataPeopleDetails, isFetching: isFetchingPeopleDetails} = useGetDetailsPersonQuery(Number(peopleID))
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
-        pageNumber: 1,
         peopleId: dataPeopleDetails?.id,
-        type: 'discover'
+        type: 'movie'
     });
-    const youtubeMoviesKeys = dataMovieDetails?.videos.results.filter((el) => el.site === 'YouTube').map((elem) => elem.key)
-    const youtubeTvKeys = dataTvDetails?.videos.results.filter((el) => el.site === 'YouTube').map((elem) => elem.key)
 
     useEffect(() => {
         window.scrollTo({
-            top: 350,
+            top: 115,
             behavior: 'smooth'
         })
     }, [id])
@@ -197,7 +194,6 @@ const DetailInfoPage = () => {
             {pathname.includes('movies')
                 ? <>
                     <MovieMedia
-                        youtubeVideosKeys={youtubeMoviesKeys}
                         dataMovie={dataMovieDetails}
                     />
                     <MovieReviews
@@ -209,7 +205,6 @@ const DetailInfoPage = () => {
                 : pathname.includes('tv')
                     ? <>
                         <MovieMedia
-                            youtubeVideosKeys={youtubeTvKeys}
                             dataMovie={dataTvDetails}
                         />
                         <MovieReviews

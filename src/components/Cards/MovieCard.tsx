@@ -4,10 +4,10 @@ import {Link} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 import {MovieCardProps} from "./types";
 
-const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
+const MovieCard: React.FC<MovieCardProps> = ({switcherFilms, id, poster, overview, title, filmGenre}) => {
     const {base_url, posterSize} = useAppSelector((state) => state.config)
-    const {genres} = useAppSelector((state) => state.config)
-
+    const {genresMovies, genresTV} = useAppSelector((state) => state.config)
+    const genres = switcherFilms === 0 ? genresMovies : genresTV
 
     return (
         <div className='film'>
