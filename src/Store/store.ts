@@ -4,6 +4,7 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import config from "./config/slice";
 import header from "./header/slice";
 import movies from "./movies/slice";
+import error from "./errors/slice";
 import {setupListeners} from "@reduxjs/toolkit/query";
 
 export const store = configureStore({
@@ -11,10 +12,13 @@ export const store = configureStore({
         config,
         header,
         movies,
+        error,
         [tmdbApi.reducerPath]: tmdbApi.reducer
     },
-    middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(tmdbApi.middleware)
+    middleware: (getDefaultMiddleware) =>  [
+        ...getDefaultMiddleware(),
+        tmdbApi.middleware
+    ]
 })
 
 setupListeners(store.dispatch)

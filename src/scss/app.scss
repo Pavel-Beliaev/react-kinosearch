@@ -39,29 +39,42 @@
 
 .back-to-top {
   font-size: 12px;
-  line-height: 45px;
   position: fixed;
   z-index: 9999;
   right: 40px;
   bottom: 40px;
-  width: 45px;
-  height: 45px;
+  //width: 45px;
+  //height: 45px;
   cursor: pointer;
   transition: opacity 1s ease-out, all 300ms ease-in-out;
-  text-align: center;
-  border-radius: 2px;
+  border-radius: 30px;
   background: rgba(36, 43, 45, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &:hover {
+    i {
+      border: 2px solid $lightorang;
+      transition: all .30s ease-in-out;
+
+    }
+
     .fa {
       color: $lightorang;
       transition: all .30s ease-in-out;
     }
   }
 
+  i {
+    border: 2px solid $orange;
+    padding: 15.5px;
+    border-radius: 30px;
+  }
+
   .fa {
     &-chevron-up {
-      color: #ec7532;
+      color: $orange;
     }
   }
 }

@@ -1,12 +1,9 @@
 import React, {RefObject} from "react";
 
 export type DropDownNavbarType = {
-    isVisible: boolean
+    scroll: number
 }
 
-export type NavbarType = {
-    navbarRef?: RefObject<HTMLDivElement>
-}
 
 export type SliderWrapperType = {
     title: string,

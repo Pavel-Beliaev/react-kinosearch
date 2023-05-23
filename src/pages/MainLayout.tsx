@@ -1,4 +1,4 @@
-import React, {RefObject, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Menu from "../components/Menu";
 import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
@@ -7,7 +7,8 @@ import {useLocation} from "react-router-dom";
 import ModalVideo from "../components/ModalVideo";
 import DropDownNavbar from "../components/DropDownNavbar";
 import {useGetConfigurationQuery, useGetGenreMoviesQuery, useGetGenreTVQuery} from "../Store/tmdbService/endpoints";
-import {useObserver} from "../hooks/useObserver";
+import {useAppSelector} from "../Store/store";
+import ErrorPage from "./ErrorPage";
 
 
 const MainLayout: React.FC = () => {
@@ -16,42 +17,36 @@ const MainLayout: React.FC = () => {
     useGetGenreTVQuery();
 
     const {pathname} = useLocation();
-    const navbarRef = useRef<HTMLDivElement>(null);
-    const homeRef = useRef<HTMLDivElement>(null);
-    const observer = useRef<IntersectionObserver>();
-    const [isVisible, setIsVisible] = useState(false)
 
+    const [scroll, setScroll] = useState(0);
 
-    const BackToTop = (ref: RefObject<HTMLDivElement>) => {
-        ref.current!.scrollIntoView({behavior: 'smooth', block: 'start'});
+    const handleScroll = () => {
+        setScroll(window.scrollY);
     };
 
-    useObserver(
-        navbarRef,
-        isVisible,
-        () => {
-            setIsVisible(false)
-        },
-        () => {
-            setIsVisible(true)
-        }
-    )
+    const handleUpButton = () => {
+        window.scrollTo(0, 0);
+    };
 
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     return (
         <div
             className='wrapper'>
-            <div ref={homeRef}/>
-            <Menu navbarRef={navbarRef}/>
-            <DropDownNavbar isVisible={isVisible}/>
+            <div/>
+            <Menu/>
+            <DropDownNavbar scroll={scroll}/>
             <Header pathname={pathname}/>
             <div className='frameworks'>
                 <Outlet/>
             </div>
             <div
-                style={{opacity: isVisible ? 1 : 0}}
-                onClick={() => BackToTop(homeRef)}
-                className='back-to-top show'>
+                style={{opacity: scroll < 300 ? 0 : 1}}
+                onClick={handleUpButton}
+                className='back-to-top'>
                 <i className='fa fa-chevron-up'></i>
             </div>
             <Footer/>

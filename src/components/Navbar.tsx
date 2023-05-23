@@ -2,14 +2,12 @@ import React from 'react';
 import {Link, NavLink} from "react-router-dom";
 import logoIcon from "../public/SVG/Paulo F  I  L  M  S.svg";
 import {navbarMenu} from "../mock/statick";
-import {NavbarType} from "../@types/@types";
 
-const Navbar:React.FC<NavbarType> = ({navbarRef}) => {
+const Navbar:React.FC = () => {
 
     return (
         <div className='container'>
-            <div ref={navbarRef}
-                 className='navbar-main'>
+            <div className='navbar-main'>
                 <div className='navbar-logo'>
                     <Link to="/">
                         <img src={logoIcon} alt="logo"/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import notPicture from '../../public/JPG/placeholder.jpg'
+import notFoto from '../../public/JPG/notFoto.jpg'
 import {useAppSelector} from "../../Store/store";
 import {PeopleCardProps} from "./types";
 
@@ -19,7 +19,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profi
                 <img
                     src={profilePath
                        ? `${base_url}${profileSize}${profilePath}`
-                        : notPicture
+                        : notFoto
                     }
                     alt="people"
                 />

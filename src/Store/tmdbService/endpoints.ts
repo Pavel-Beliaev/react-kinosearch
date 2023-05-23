@@ -18,7 +18,16 @@ import {
 } from "../config/slice";
 import {setHeaderFilms, setHeaderPeoples} from "../header/slice";
 import {tmdbApi} from "./tmdb.api";
-import {setMovieData, setPageNumber} from "../movies/slice";
+import {setInfinityScroll} from "../movies/slice";
+import {setErrorMessage} from "../errors/slice";
+
+export type ErrorType = {
+
+    status_code: number,
+    status_message: string,
+    success: boolean
+
+}
 
 const extendedApi = tmdbApi.injectEndpoints({
     endpoints: (build) => ({
@@ -103,14 +112,11 @@ const extendedApi = tmdbApi.injectEndpoints({
                     with_people: peopleId,
                 },
             }),
-            keepUnusedDataFor: 1,
+            // keepUnusedDataFor: 1,
             async onQueryStarted(args, {dispatch, queryFulfilled}) {
-                dispatch(setMovieData([]))
-                dispatch(setPageNumber(1))
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setMovieData(data.results))
-                    dispatch(setPageNumber(data.page))
+                        dispatch(setInfinityScroll(data.results))
                 } catch (error) {
                     console.log('error')
                 }
@@ -234,14 +240,19 @@ const extendedApi = tmdbApi.injectEndpoints({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setHeaderPeoples({title: data.name, genres: [], url: data.profile_path, heading: ''}))
+                    dispatch(setHeaderPeoples({
+                        title: data.name,
+                        genres: [],
+                        url: data.profile_path,
+                        heading: ''
+                    }))
                 } catch (error) {
-                    console.log(error)
+
                 }
             }
         }),
     }),
-    overrideExisting: false
+    overrideExisting: true
 })
 export const {
     useSearchMoviesQuery,
@@ -249,6 +260,7 @@ export const {
     useGetDetailsPersonQuery,
     useGetDetailsMovieQuery,
     useGetAllMoviesQuery,
+    useLazyGetAllMoviesQuery,
     useLazyGetVideoByIdQuery,
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,

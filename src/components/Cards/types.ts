@@ -24,4 +24,5 @@ export type MovieCardProps = {
     title: string,
     filmGenre: number[],
     id: number,
+    index: number,
 }

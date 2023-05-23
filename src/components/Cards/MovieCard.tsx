@@ -1,10 +1,12 @@
 import React from 'react';
-import notPicture from '../../public/PNG/placeholder.png'
 import {Link} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 import {MovieCardProps} from "./types";
+import notPicture from "../../public/PNG/placeholder.png";
 
-const MovieCard: React.FC<MovieCardProps> = ({switcherFilms, id, poster, overview, title, filmGenre}) => {
+
+
+const MovieCard: React.FC<MovieCardProps> = ({index, switcherFilms, id, poster, overview, title, filmGenre}) => {
     const {base_url, posterSize} = useAppSelector((state) => state.config)
     const {genresMovies, genresTV} = useAppSelector((state) => state.config)
     const genres = switcherFilms === 0 ? genresMovies : genresTV

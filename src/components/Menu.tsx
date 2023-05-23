@@ -1,9 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Navbar from "./Navbar";
-import {NavbarType} from "../@types/@types";
 
-const Menu: React.FC<NavbarType> = ({navbarRef}) => {
+const Menu: React.FC = () => {
 
     return (
         <div className='navbar'>
@@ -15,7 +14,7 @@ const Menu: React.FC<NavbarType> = ({navbarRef}) => {
                     </Link>
                 </div>
             </div>
-            <Navbar navbarRef={navbarRef}/>
+            <Navbar/>
         </div>
     );
 };

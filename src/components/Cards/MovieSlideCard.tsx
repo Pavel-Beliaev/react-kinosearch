@@ -3,8 +3,10 @@ import {Link} from "react-router-dom";
 import Rating from "../Rating/Rating";
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
-import notPicture from "../../public/PNG/placeholder.png";
 import {MovieSlideCardProps} from "./types";
+import notPicture from "../../public/PNG/placeholder.png";
+
+
 
 const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();

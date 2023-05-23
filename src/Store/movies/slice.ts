@@ -1,26 +1,30 @@
-import {Genres, IMovies, IResultsMovies} from "../tmdbService/@types";
+import {IResultsMovies} from "../tmdbService/@types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {VideoModal} from "../config/@types";
 
 export type MoviesState = {
-    pageNumber: number,
     dataFilms: IResultsMovies[],
+    types: string[],
+    pageNumber: number,
 }
 
 const initialState: MoviesState = {
-    pageNumber: 1,
     dataFilms: [],
+    types: ['movie', 'tv'],
+    pageNumber: 1
 }
 
 export const moviesSlice = createSlice({
     name: 'movies',
     initialState,
     reducers: {
-        setPageNumber(state, action: PayloadAction<number>) {
-            state.pageNumber = action.payload
-        },
         setMovieData(state, action: PayloadAction<IResultsMovies[]>) {
             state.dataFilms = action.payload
+        },
+        setInfinityScroll(state, action: PayloadAction<IResultsMovies[]>) {
+            state.dataFilms.push(...action.payload);
+        },
+        setPageNumber(state, action: PayloadAction<number>) {
+           state.pageNumber = action.payload
         },
     },
 })
@@ -28,6 +32,7 @@ export const moviesSlice = createSlice({
 export const {
     setPageNumber,
     setMovieData,
+    setInfinityScroll,
 } = moviesSlice.actions;
 
 export default moviesSlice.reducer

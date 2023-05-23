@@ -18,7 +18,6 @@ const Home: React.FC = () => {
     const {data: trendDataList, isLoading: isLoadingTrend} = useGetTrendingMoviesQuery(typeQueryTrindingFilms[switcherTrendingFilms]);
     const {data: topRateDataList, isLoading: isLoadingTopRate} = useGetTopRatedMoviesQuery(typeQueryFilms[switcherTopRateFilms]);
 
-    console.log(topRateDataList)
 
     return (
         <>

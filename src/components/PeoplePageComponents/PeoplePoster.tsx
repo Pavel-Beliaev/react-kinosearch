@@ -1,7 +1,8 @@
 import React from 'react';
-import notPicture from "../../public/PNG/placeholder.png";
 import {useAppSelector} from "../../Store/store";
 import {PeoplePosterType} from "./types";
+import notFoto from '../../public/JPG/notFoto.jpg'
+
 
 const PeoplePoster:React.FC<PeoplePosterType> = ({poster}) => {
     const {base_url, profileSize} = useAppSelector((state) => state.config)
@@ -9,7 +10,7 @@ const PeoplePoster:React.FC<PeoplePosterType> = ({poster}) => {
     return (
         <>
             <img
-                src={poster ? `${base_url}${profileSize}${poster}` : notPicture}
+                src={poster ? `${base_url}${profileSize}${poster}` : notFoto}
                 alt="poster"
             />
         </>

@@ -5,69 +5,65 @@ import {useAppDispatch, useAppSelector} from "../Store/store";
 import {useObserver} from "../hooks/useObserver";
 import debounce from 'lodash.debounce'
 import SkeletonMovieCard from "../components/Skeletons/SkeletonMovieCard";
-import {useGetAllMoviesQuery, useSearchMoviesQuery} from "../Store/tmdbService/endpoints";
+import {useGetAllMoviesQuery, useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
 import Switcher from "../components/Switcher/Switcher";
 import {typeQueryFilms} from "../mock/statick";
-import CustomButton from "../components/CustomButton/CustomButton";
-import {setPageNumber} from "../Store/movies/slice";
+import {setMovieData, setPageNumber} from "../Store/movies/slice";
 
 const AllMoviesPage: React.FC = () => {
-    const {pageNumber, dataFilms} = useAppSelector(state => state.movies)
-    const dispatch = useAppDispatch();
-    // const [pageNumber, setPageNumber] = useState(1);
+    const {dataFilms, pageNumber, types} = useAppSelector(state => state.movies)
     const [switcherFilms, setSwitcherFilms] = useState(0)
+    const dispatch = useAppDispatch();
+    const [prevPageNumber, setPrevPageNumber] = useState(1)
+
+
     const [searchValue, setSearchValue] = useState('');
     const [isValue, setIsValue] = useState('');
-    const [isVisible, setIsVisible] = useState(false)
+
+    // const [isLoading, setIsLoading] = useState(false)
+
     const [isActive, setIsActive] = useState<{ idx?: number | null, active?: boolean }>({idx: null, active: false})
     const [genre, setGenre] = useState<number | null>();
 
     const lastElementRef = useRef<HTMLDivElement>(null);
+    const dataElementRef = useRef<HTMLDivElement>(null);
 
     const {genresMovies, genresTV} = useAppSelector((state) => state.config);
     const genres = switcherFilms === 0 ? genresMovies : genresTV
 
-    const {isFetching, data, refetch} = useGetAllMoviesQuery({
-            type: typeQueryFilms[switcherFilms],
-            pageNumber,
-            genre
-        },
-    );
 
-    const {data: searchMovieData} = useSearchMoviesQuery({
-            type: typeQueryFilms[switcherFilms],
-            searchValue,
-            pageNumber,
-        },
-    );
+    const [fetching, data] = useLazyGetAllMoviesQuery()
 
-    const searchMovieDataBase = searchMovieData?.results ?? []
-    // const moviesDataBase = data?.results ?? [];
-    const totalPage = data?.total_pages ?? 1;
-    const dataBaseMovie = !searchValue ? dataFilms : searchMovieDataBase
+    const blockHeight = dataElementRef.current?.getBoundingClientRect().height
+    const pageHeight = blockHeight! > window.innerHeight
+    const totalPage = data.data?.total_pages ?? 1;
+    const isFetch = data.isFetching
+    const isSuces = data.isSuccess
 
     useObserver(
         lastElementRef,
-        isVisible,
+        isFetch,
         () => {
-            // if (pageNumber < totalPage) {
-            //     dispatch(setPageNumber(pageNumber + 1))
-            // }
-            if (!isVisible) {
-                setIsVisible(true)
+            if (pageNumber <= totalPage && prevPageNumber === pageNumber) {
+                dispatch(setPageNumber(pageNumber + 1))
             }
-        },
-        () => {
-            setIsVisible(false)
         }
     )
 
     useEffect(() => {
-        refetch()
-        setGenre(null)
-        setIsActive({idx:null, active:false})
-    }, [switcherFilms])
+        if (isSuces) {
+            setPrevPageNumber(pageNumber)
+        }
+    },[isSuces, dataFilms])
 
+
+
+    useEffect(() => {
+        fetching({
+            type: types[switcherFilms],
+            pageNumber,
+        })
+    }, [pageNumber, switcherFilms])
 
     const debounceChangeInput = useCallback(
         debounce((str) => {
@@ -80,19 +76,13 @@ const AllMoviesPage: React.FC = () => {
         setIsValue(event.target.value);
         debounceChangeInput(event.target.value);
     }
-
     const changeGenre = (IdGenre: number | null, idx: number, active: boolean) => {
         setGenre(IdGenre)
         setIsActive({idx, active: active})
     }
 
-    const changePage = () => {
-        if (pageNumber < totalPage) {
-            dispatch(setPageNumber(pageNumber + 1))
-        }
-    }
+    console.log(pageNumber)
 
-    console.log(isActive)
     return (
         <div className='frameworks-container movies'>
             <div className='movies-search'>
@@ -112,13 +102,17 @@ const AllMoviesPage: React.FC = () => {
                     color={'#ffffff'}
                 />
             </div>
-            <div className='movies-colum'>
-                {dataBaseMovie.map((film, index) => (
-                    isFetching
+            <div
+                ref={dataElementRef}
+                className='movies-colum'
+            >
+                {dataFilms.map((film, index) => (
+                    data.isFetching
                         ? <div
                             key={index}
                             className='movies-skeleton'><SkeletonMovieCard/></div>
                         : <MovieCard
+                            index={index}
                             switcherFilms={switcherFilms}
                             key={film.id}
                             id={film.id}
@@ -129,17 +123,9 @@ const AllMoviesPage: React.FC = () => {
 
                         />
                 ))}
-                <div
-                    style={isVisible ? {opacity: 1, transition: "all 300ms ease-in-out"} : {}}
-                    ref={lastElementRef}
-                    className='movies-button'>
-                    <CustomButton
-                        children={'Load more'}
-                        onClick={() => {
-                            changePage()
-                        }}
-                    />
-                </div>
+                {pageHeight &&
+                    <div ref={lastElementRef}/>
+                }
             </div>
             <div className='movies-sidebar'>
                 <h4>Categories</h4>
