@@ -1,7 +1,7 @@
 export const navbarMenu = [
     {title: 'Home', url: '/'},
-    {title: 'All movies', url: '/movies'},
-    {title: 'People', url: '/people'},
+    {title: 'All movies', url: '/all'},
+    {title: 'People', url: '/peoples'},
     {title: 'Contact us', url: '/contact'},
 ]
 export const footerMenu = ['Get in touch', 'About movie star', 'Legal stuff'];

@@ -10,11 +10,9 @@ import {MovieMediaType} from "./types";
 
 const MovieMedia: React.FC<MovieMediaType> = ({ dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
-    const [toggle, setToggle] = useState(0);
 
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
 
-    console.log(dataMovie)
 
     return (
         <div className='page-block'>

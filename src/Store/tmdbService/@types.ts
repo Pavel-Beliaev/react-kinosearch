@@ -119,11 +119,13 @@ export interface IVideos {
 }
 
 export type QueryArgs = {
+    typeQuery?: string,
     type?: string,
     searchValue?: string,
     pageNumber?: number,
     genre?: number | null,
     peopleId?: number,
+    infinityKey?: boolean
 }
 
 export type ISpokenLanguages = {

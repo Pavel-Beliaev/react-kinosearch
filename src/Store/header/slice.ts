@@ -2,13 +2,19 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {PageDataType, ParamsPageDataType} from "./@types";
 
 const initialState: PageDataType = {
-    movies: {
+    'all/movie': {
         heading: 'Take a look at',
-        title: 'What to see',
+        title: 'Movies',
         url: 'url("https://trafaret-decor.ru/sites/default/files/2023-01/%D0%A4%D0%BE%D0%BD%20%D0%BA%D0%B8%D0%BD%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8%20%2853%29.jpg")',
         genres: [],
     },
-    people: {
+    'all/tv': {
+        heading: 'Take a look at',
+        title: 'Tv',
+        url: 'url("https://trafaret-decor.ru/sites/default/files/2023-01/%D0%A4%D0%BE%D0%BD%20%D0%BA%D0%B8%D0%BD%D0%BE%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D1%80%D0%B5%D0%B7%D0%B5%D0%BD%D1%82%D0%B0%D1%86%D0%B8%D0%B8%20%2853%29.jpg")',
+        genres: [],
+    },
+    peoples: {
         heading: 'The best',
         title: 'Popular people',
         url: 'url("https://get.wallhere.com/photo/night-guitar-movies-film-reel-light-trumpet-lighting-darkness-6411.jpg")',
@@ -26,7 +32,7 @@ const initialState: PageDataType = {
         title: '',
         url: '',
     },
-    peoples: {
+    people: {
         heading: '',
         genres: [],
         title: '',

@@ -1,41 +1,40 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import CustomInput from "../components/CustomFields/CustomInput";
-import MovieCard from "../components/Cards/MovieCard";
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {useObserver} from "../hooks/useObserver";
 import debounce from 'lodash.debounce'
-import SkeletonMovieCard from "../components/Skeletons/SkeletonMovieCard";
-import {useGetAllMoviesQuery, useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
-import Switcher from "../components/Switcher/Switcher";
-import {typeQueryFilms} from "../mock/statick";
-import {setMovieData, setPageNumber} from "../Store/movies/slice";
+import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
+import {setInfinityAble, setPageNumber} from "../Store/movies/slice";
+import ErrorPage from "./ErrorPage";
+import Loader from "../components/Loader/Loader";
+import {Outlet, useLocation} from "react-router-dom";
 
 const AllMoviesPage: React.FC = () => {
-    const {dataFilms, pageNumber, types} = useAppSelector(state => state.movies)
-    const [switcherFilms, setSwitcherFilms] = useState(0)
+    const {dataFilms, pageNumber, infinityAble} = useAppSelector(state => state.movies)
     const dispatch = useAppDispatch();
     const [prevPageNumber, setPrevPageNumber] = useState(1)
-
+    const [observerAble, setObserverAble] = useState(false)
 
     const [searchValue, setSearchValue] = useState('');
     const [isValue, setIsValue] = useState('');
 
-    // const [isLoading, setIsLoading] = useState(false)
+    const [isActive, setIsActive] = useState(false)
+    const [genreId, setGenreId] = useState<number | null>(null);
 
-    const [isActive, setIsActive] = useState<{ idx?: number | null, active?: boolean }>({idx: null, active: false})
-    const [genre, setGenre] = useState<number | null>();
+    const [preventRedundantRequest, setPreventRedundantRequest] = useState(false)
 
     const lastElementRef = useRef<HTMLDivElement>(null);
     const dataElementRef = useRef<HTMLDivElement>(null);
 
-    const {genresMovies, genresTV} = useAppSelector((state) => state.config);
-    const genres = switcherFilms === 0 ? genresMovies : genresTV
+    const {pathname} = useLocation()
+    const type = pathname.split('/').pop()
 
+    const {genresMovies, genresTV} = useAppSelector((state) => state.config);
+    const genres = type === 'movie' ? genresMovies : genresTV
 
     const [fetching, data] = useLazyGetAllMoviesQuery()
 
-    const blockHeight = dataElementRef.current?.getBoundingClientRect().height
-    const pageHeight = blockHeight! > window.innerHeight
+
     const totalPage = data.data?.total_pages ?? 1;
     const isFetch = data.isFetching
     const isSuces = data.isSuccess
@@ -46,24 +45,57 @@ const AllMoviesPage: React.FC = () => {
         () => {
             if (pageNumber <= totalPage && prevPageNumber === pageNumber) {
                 dispatch(setPageNumber(pageNumber + 1))
+                dispatch(setInfinityAble(true))
             }
         }
     )
 
+    // useEffect(() => {
+    //     const queryString = qs.stringify({
+    //         search: searchValue,
+    //         genre: genreId,
+    //         page: pageNumber,
+    //     })
+    // }, [searchValue, genreId, pageNumber])
+
     useEffect(() => {
+        setIsActive(false)
+        setGenreId(null)
+    }, [type, searchValue])
+
+    useEffect(() => {
+        // window.scrollTo({
+        //     top: 0,
+        // })
+        dispatch(setPageNumber(1))
+        dispatch(setInfinityAble(false))
+    }, [type, genreId, searchValue])
+
+    useEffect(() => {
+        const blockHeight = dataElementRef.current?.getBoundingClientRect().height
+        const screenHeight = window.innerHeight
+        setObserverAble(Boolean(blockHeight && blockHeight > screenHeight))
         if (isSuces) {
             setPrevPageNumber(pageNumber)
         }
-    },[isSuces, dataFilms])
+    }, [isSuces, dataFilms])
 
+    useEffect(() => {
+        setPreventRedundantRequest(!preventRedundantRequest)
+    },[pageNumber, genreId, type, searchValue])
 
+    console.log(dataFilms)
 
     useEffect(() => {
         fetching({
-            type: types[switcherFilms],
+            type: type,
             pageNumber,
+            genre: genreId,
+            searchValue: searchValue,
+            typeQuery: searchValue ? 'search' : 'discover',
+            infinityKey: infinityAble,
         })
-    }, [pageNumber, switcherFilms])
+    }, [preventRedundantRequest])
 
     const debounceChangeInput = useCallback(
         debounce((str) => {
@@ -76,12 +108,21 @@ const AllMoviesPage: React.FC = () => {
         setIsValue(event.target.value);
         debounceChangeInput(event.target.value);
     }
-    const changeGenre = (IdGenre: number | null, idx: number, active: boolean) => {
-        setGenre(IdGenre)
-        setIsActive({idx, active: active})
+
+    const changeGenre = (IdGenre: number | null, active: boolean) => {
+        setGenreId(IdGenre)
+        setIsActive(active)
     }
 
-    console.log(pageNumber)
+    const cleanInput = () => {
+        setSearchValue('')
+        setIsValue('')
+    }
+
+    const cleanGenre = () => {
+        setGenreId(null)
+        setIsActive(false)
+    }
 
     return (
         <div className='frameworks-container movies'>
@@ -92,63 +133,54 @@ const AllMoviesPage: React.FC = () => {
                     placeholder='Type to search'
                 />
                 <i className='fa fa-search'></i>
-            </div>
-            <div className='movies-switcher'>
-                <Switcher
-                    switcher={switcherFilms}
-                    setSwitcher={setSwitcherFilms}
-                    title1={'Movies'}
-                    title2={'TV'}
-                    color={'#ffffff'}
-                />
+                {searchValue &&
+                    <span
+                        onClick={cleanInput}
+                    >
+                        Clean
+                    </span>
+                }
             </div>
             <div
                 ref={dataElementRef}
                 className='movies-colum'
             >
-                {dataFilms.map((film, index) => (
-                    data.isFetching
-                        ? <div
-                            key={index}
-                            className='movies-skeleton'><SkeletonMovieCard/></div>
-                        : <MovieCard
-                            index={index}
-                            switcherFilms={switcherFilms}
-                            key={film.id}
-                            id={film.id}
-                            title={film.title || film.name}
-                            overview={film.overview}
-                            poster={film.poster_path}
-                            filmGenre={film.genre_ids}
-
-                        />
-                ))}
-                {pageHeight &&
-                    <div ref={lastElementRef}/>
+                {searchValue && !dataFilms.length
+                    ? <ErrorPage/>
+                    : <Outlet context={{dataFilms, type}}/>
+                }
+                {isFetch
+                    ? <Loader/>
+                    : observerAble && pageNumber < totalPage &&
+                    <div
+                        ref={lastElementRef}
+                    />
                 }
             </div>
             <div className='movies-sidebar'>
                 <h4>Categories</h4>
                 <ul>
-                    {genres.map((genre, index) => (
+                    {genres.map((genre) => (
                         <li
-                            className={isActive.idx === index && isActive.active ? 'active' : ''}
                             key={genre.id}
                         >
                             <span
-                                onClick={() => changeGenre(genre.id, index, true)}
+                                className={genreId === genre.id && isActive ? 'active' : ''}
+
+                                onClick={() => changeGenre(genre.id, true)}
                             >
                                 {genre.name}
                             </span>
-                            {isActive.idx === index && isActive.active &&
-                                <i
-                                    onClick={() => changeGenre(null, index, false)}
-                                    className='fa fa-times'
-                                >
-                                </i>
-                            }
                         </li>
                     ))}
+                    {genreId &&
+                        <span
+                            className='movies-sidebar-clean'
+                            onClick={cleanGenre}
+                        >
+                        Clean
+                    </span>
+                    }
                 </ul>
             </div>
         </div>

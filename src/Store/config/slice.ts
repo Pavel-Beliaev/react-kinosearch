@@ -14,7 +14,7 @@ const initialState: ConfigurationState = {
     genresTV: [],
     activeModal: {
         active: false,
-        id: 0,
+        id: null,
     },
 
 

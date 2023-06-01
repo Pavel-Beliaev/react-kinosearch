@@ -18,11 +18,9 @@ export type MovieSlideCardProps = {
 }
 
 export type MovieCardProps = {
-    switcherFilms: number,
     poster: string | null,
     overview: string,
     title: string,
     filmGenre: number[],
     id: number,
-    index: number,
 }

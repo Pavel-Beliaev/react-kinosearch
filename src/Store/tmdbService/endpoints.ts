@@ -18,7 +18,7 @@ import {
 } from "../config/slice";
 import {setHeaderFilms, setHeaderPeoples} from "../header/slice";
 import {tmdbApi} from "./tmdb.api";
-import {setInfinityScroll} from "../movies/slice";
+import {setInfinityAble, setInfinityScroll, setMovieData} from "../movies/slice";
 import {setErrorMessage} from "../errors/slice";
 
 export type ErrorType = {
@@ -88,35 +88,39 @@ const extendedApi = tmdbApi.injectEndpoints({
         }),
 
         // endpoints search
-
-        searchMovies: build.query<IMovies, QueryArgs>({
-            query: ({type, searchValue, pageNumber}) => ({
-                url: `/search/${type}`,
-                params: {
-                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    query: searchValue,
-                    page: pageNumber,
-                },
-            }),
-        }),
+        //
+        // searchMovies: build.query<IMovies, QueryArgs>({
+        //     query: ({type, searchValue, pageNumber}) => ({
+        //         url: `/search/${type}`,
+        //         params: {
+        //             'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
+        //             query: searchValue,
+        //             page: pageNumber,
+        //         },
+        //     }),
+        // }),
 
         // endpoints getAll
 
         getAllMovies: build.query<IMovies, QueryArgs>({
-            query: ({type, pageNumber, genre, peopleId}) => ({
-                url: `/discover/${type}`,
+            query: ({type, typeQuery, searchValue, pageNumber, genre, peopleId, infinityKey}) => ({
+                url: `/${typeQuery}/${type}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
                     page: pageNumber,
                     with_genres: genre,
                     with_people: peopleId,
+                    query: searchValue,
+
                 },
             }),
-            // keepUnusedDataFor: 1,
+            keepUnusedDataFor: 1,
             async onQueryStarted(args, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
+                    if (args.infinityKey) {
                         dispatch(setInfinityScroll(data.results))
+                    } else dispatch(setMovieData(data.results))
                 } catch (error) {
                     console.log('error')
                 }
@@ -255,7 +259,7 @@ const extendedApi = tmdbApi.injectEndpoints({
     overrideExisting: true
 })
 export const {
-    useSearchMoviesQuery,
+    // useSearchMoviesQuery,
     useGetDetailsTvQuery,
     useGetDetailsPersonQuery,
     useGetDetailsMovieQuery,

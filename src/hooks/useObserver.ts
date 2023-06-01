@@ -12,16 +12,12 @@ export const useObserver = (
         if (observer.current) observer.current.disconnect();
         if (disabled) return;
 
-        const options = {
-            threshold: 1.0,
-        };
-
         const addPage: IntersectionObserverCallback = (entries) => {
             if (entries[0].isIntersecting) {
                 callback_one();
             }
         };
-        observer.current = new IntersectionObserver(addPage, options);
+        observer.current = new IntersectionObserver(addPage);
         if (ref.current) {
             observer.current.observe(ref.current);
         }

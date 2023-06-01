@@ -1,12 +1,12 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import Navbar from "./Navbar";
+import {Link} from "react-router-dom";
 
 const Menu: React.FC = () => {
 
     return (
         <div className='navbar'>
-            <div className='container'>
+            <div className='container heading'>
                 <div className='tel'>
                     <Link to="tel: +66 65 335 62 63">
                         <i className='fa fa-phone'></i>

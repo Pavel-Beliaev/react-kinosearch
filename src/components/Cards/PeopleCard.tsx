@@ -1,11 +1,12 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import notFoto from '../../public/JPG/notFoto.jpg'
 import {useAppSelector} from "../../Store/store";
 import {PeopleCardProps} from "./types";
 
 const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
     const {base_url, profileSize} = useAppSelector((state) => state.config)
+    const {pathname} = useLocation()
 
     const roleString = knownFor?.map((filmName) =>
         filmName.name && filmName.name ||
@@ -14,11 +15,11 @@ const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profi
     ).join(', ')
 
     return (
-        <Link to={`/people/${id}`}>
+        <Link to={`/peoples/${id}`} state={{state: pathname}}>
             <div className='peopleCard'>
                 <img
                     src={profilePath
-                       ? `${base_url}${profileSize}${profilePath}`
+                        ? `${base_url}${profileSize}${profilePath}`
                         : notFoto
                     }
                     alt="people"

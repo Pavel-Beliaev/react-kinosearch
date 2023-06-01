@@ -22,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
     }, [pathname]);
 
 
+
     return (
         <div
             className='header'

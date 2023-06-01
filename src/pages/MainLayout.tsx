@@ -4,14 +4,24 @@ import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
-import ModalVideo from "../components/ModalVideo";
 import DropDownNavbar from "../components/DropDownNavbar";
-import {useGetConfigurationQuery, useGetGenreMoviesQuery, useGetGenreTVQuery} from "../Store/tmdbService/endpoints";
+import {
+    useGetConfigurationQuery,
+    useGetGenreMoviesQuery,
+    useGetGenreTVQuery,
+    useLazyGetVideoByIdQuery
+} from "../Store/tmdbService/endpoints";
+import ModalWindow from "../components/ModalWindow/ModalWindow";
 import {useAppSelector} from "../Store/store";
-import ErrorPage from "./ErrorPage";
+import CustomButton from "../components/CustomButton/CustomButton";
+import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
 
 
 const MainLayout: React.FC = () => {
+    const {active, id} = useAppSelector(state => state.config.activeModal);
+
+    const [target, data] = useLazyGetVideoByIdQuery()
+
     useGetConfigurationQuery();
     useGetGenreMoviesQuery();
     useGetGenreTVQuery();
@@ -19,6 +29,23 @@ const MainLayout: React.FC = () => {
     const {pathname} = useLocation();
 
     const [scroll, setScroll] = useState(0);
+    const [invalid, setInvalid] = useState(false)
+
+    const movieID = id && id
+    const foundVideo = data.data?.results.find((video) =>
+        video.name.toLowerCase().includes('official trailer'))
+    const video = (foundVideo || data.data?.results[0])
+
+    useEffect(() => {
+        if (active) {
+            target(Number(movieID))
+        }
+    }, [movieID])
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const handleScroll = () => {
         setScroll(window.scrollY);
@@ -28,10 +55,6 @@ const MainLayout: React.FC = () => {
         window.scrollTo(0, 0);
     };
 
-    useEffect(() => {
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     return (
         <div
@@ -50,7 +73,16 @@ const MainLayout: React.FC = () => {
                 <i className='fa fa-chevron-up'></i>
             </div>
             <Footer/>
-            <ModalVideo/>
+            <ModalWindow>
+                    <div
+                        className={active ? 'modal-content active' : 'modal-content'}
+                        onClick={event => event.stopPropagation()}
+                    >
+                        {active &&
+                            <VideoPlayer keys={video?.key}/>
+                        }
+                    </div>
+            </ModalWindow>
         </div>
     );
 };

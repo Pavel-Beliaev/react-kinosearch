@@ -7,11 +7,9 @@ import {MovieSlideCardProps} from "./types";
 import notPicture from "../../public/PNG/placeholder.png";
 
 
-
 const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
     const {base_url, posterSize} = useAppSelector((state) => state.config)
-
 
     return (
         <div className='newfilms'>
@@ -39,7 +37,7 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, rele
                     />
                 </div>
                 : <div className='newfilms-posterAlt'>
-                    <Link to={`/movies/${id}`}>
+                    <Link to={`/all/movie/${id}`}>
                         <img
                             src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
                             alt="poster"

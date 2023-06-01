@@ -1,0 +1,80 @@
+.loader {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-primary {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 4px double #ec7532;
+    border-radius: 50%;
+
+    &-slice {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-top: 4px solid #EC7532FF;
+      border-left: 4px solid transparent;
+      border-bottom: 4px solid #EC7532FF;
+      border-right: 4px solid transparent;
+      border-radius: 50%;
+      animation: spinRevers linear 4s infinite;
+    }
+  }
+
+
+  &-middle {
+    &-slice {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-right: 4px solid #fbbd61;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+      border-left: 4px solid #fbbd61;
+      border-radius: 50%;
+      animation: spin linear 1s infinite;
+    }
+  }
+
+  &-core {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 4px double #ec7532;
+    border-radius: 50%;
+
+    &-slice {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-bottom: 4px solid #EC7532FF;
+      border-top: 4px solid #EC7532FF;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+      border-radius: 50%;
+      animation: spinRevers linear 2s infinite;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg)
+  }
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+
+@keyframes spinRevers {
+  from {
+    transform: rotate(360deg)
+  }
+  to {
+    transform: rotate(0deg)
+  }
+}

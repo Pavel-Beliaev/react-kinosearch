@@ -28,7 +28,7 @@ const DetailInfoPage = () => {
     const {id} = useParams()
     const {pathname} = useLocation()
 
-    const movieID = pathname.includes('movies') && id
+    const movieID = pathname.includes('movie') && id
     const tvID = pathname.includes('tv') && id
     const peopleID = pathname.includes('people') && id
 
@@ -37,7 +37,8 @@ const DetailInfoPage = () => {
     const {data: dataPeopleDetails, isFetching: isFetchingPeopleDetails} = useGetDetailsPersonQuery(Number(peopleID))
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
         peopleId: dataPeopleDetails?.id,
-        type: 'movie'
+        type: 'movie',
+        typeQuery: 'discover',
     });
 
     useEffect(() => {
@@ -52,7 +53,7 @@ const DetailInfoPage = () => {
             <div className='container'>
                 <h2>Synopsis</h2>
                 <div className='page-synopsis'>
-                    {pathname.includes('movies')
+                    {pathname.includes('movie')
                         ? isFetchingMovieDetails
                             ? <SkeletonMoviePage/>
                             : <>
@@ -140,7 +141,7 @@ const DetailInfoPage = () => {
                                 </>
                     }
                 </div>
-                {pathname.includes('movies')
+                {pathname.includes('movie')
                     ? <SliderWrapper
                         title={'Top billed cast'}
                         children={dataMovieDetails?.credits.cast.map((cast) => (
@@ -191,7 +192,7 @@ const DetailInfoPage = () => {
                             ))}
                         />}
             </div>
-            {pathname.includes('movies')
+            {pathname.includes('movie')
                 ? <>
                     <MovieMedia
                         dataMovie={dataMovieDetails}

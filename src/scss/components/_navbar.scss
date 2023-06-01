@@ -12,6 +12,32 @@
   border: 1px solid transparent;
   user-select: none;
 
+  .tel {
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    a {
+      transition: all 300ms ease-in-out;
+
+      i {
+        font-size: 17px;
+        width: 14px;
+        margin-right: 5px;
+        color: #fff;
+      }
+
+      &:hover {
+        color: $lightorang;
+        transition: all .30s ease-in-out;
+      }
+    }
+  }
+
   &-main {
     display: flex;
     justify-content: space-between;
@@ -32,6 +58,12 @@
         position: relative;
 
         &:hover {
+          .navbar-panel-popup{
+            transform: translateY(0%);
+            opacity: 1;
+            z-index: 0;
+          }
+
           &:after {
             right: 0;
             width: 100%;
@@ -85,35 +117,61 @@
         }
       }
     }
-  }
-}
 
-.tel {
-  margin-right: 15px;
-  font-size: 14px;
-  font-weight: bold;
-  display: flex;
-  float: right;
-  margin-top: 30px;
-  color: #fff;
-  align-items: center;
-  gap: 3px;
-
-  a {
-    transition: all 300ms ease-in-out;
-
-    i {
-      font-size: 17px;
-      width: 14px;
-      margin-right: 5px;
-      color: #fff;
-    }
-
-    &:hover {
-      color: $lightorang;
+    &-popup {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      background-color: rgba($orange, 0.8);
+      justify-content: flex-start;
       transition: all .30s ease-in-out;
+      bottom: -205%;
+      transform: translateY(-100%);
+      opacity: 0;
+      z-index: -100;
+
+      li {
+        width: 100%;
+
+
+        &:hover {
+          background-color: rgba($lightorang, 0.8);
+          transition: all .30s ease-in-out;
+
+        }
+
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .heading {
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+
+
+    span {
+      font-size: 18px;
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      margin-right: 24px;
+      transition: all .30s ease-in-out;
+      cursor: pointer;
+
+
+      &:hover {
+        color: $lightorang;
+        transition: all .30s ease-in-out;
+      }
     }
   }
 }
+
+
 
 

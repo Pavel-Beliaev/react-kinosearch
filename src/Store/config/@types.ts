@@ -2,7 +2,7 @@ import {Genres} from "../tmdbService/@types";
 
 export type VideoModal = {
     active: boolean,
-    id?: number
+    id?: number | null
 }
 export interface ConfigurationState {
     base_url: string,

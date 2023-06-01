@@ -24,7 +24,6 @@ const SliderTrailers: React.FC = () => {
 
     const moviesKeys = data.data?.results.filter((el) => el.type === 'Trailer').map((elem) => elem.key)
 
-    console.log(getId)
     useEffect(() => {
         target(getId)
     }, [getId])

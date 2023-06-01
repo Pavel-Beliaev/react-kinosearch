@@ -12,6 +12,7 @@
     display: flex;
     flex: 0 1 100%;
 
+
     position: relative;
     z-index: 99;
     margin-top: -135px;
@@ -32,6 +33,29 @@
       top: 33px;
       right: 35px;
       color: $orange;
+    }
+
+    span {
+      position: absolute;
+      color: $orange;
+      bottom: 10%;
+      left: 3%;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+      font-weight: normal;
+      cursor: pointer;
+
+      &:after {
+        content: '\f00d';
+        font: normal normal normal 14px/1 FontAwesome;
+        font-size: inherit;
+        font-weight: inherit;
+        margin-left: 3px;
+      }
+
+      &:hover {
+        color: $lightorang;
+      }
     }
   }
 
@@ -55,7 +79,7 @@
 
   &-sidebar {
     display: flex;
-    flex: 0 1 25%;
+    flex: 0 1 30%;
     flex-direction: column;
     margin-right: 20px;
 
@@ -94,36 +118,39 @@
           cursor: pointer;
           padding: 5px 8px 5px 8px;
 
+
           &:hover {
             color: $lightorang;
             transition: all 300ms ease-in-out;
           }
 
-
-          i {
-            padding-left: 10px;
+          &.active {
+            background-color: #ec7532;
+            border-radius: 30px;
+            color: white;
           }
         }
 
-        &.active {
-          background-color: #ec7532;
-          border-radius: 30px;
+      }
+    }
 
-          span {
-            color: white;
-          }
+    &-clean {
+      color: #ec7532;
+      padding: 5px 8px;
+      cursor: pointer;
 
-          i {
-            padding-right: 10px;
-            color: white;
-            cursor: pointer;
-
-          }
-        }
+      &:after {
+        content: '\f00d';
+        font: normal normal normal 14px/1 FontAwesome;
+        margin-left: 3px;
       }
     }
   }
+
+  .refElement {
+    padding: 5px;
+    background-color: #101010;
+    width: 100%;
+  }
 }
-
-
 
