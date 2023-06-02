@@ -19,8 +19,8 @@ const App: React.FC = () => {
                     <Route path=':type' element={<AllMoviesContent/>}/>
                 </Route>
                 <Route path='all/:type/:id' element={<DetailInfoPage/>}/>
-                <Route path='peoples' element={<People/>}/>
-                <Route path='peoples/:id' element={<DetailInfoPage/>}/>
+                <Route path='persons' element={<People/>}/>
+                <Route path='person/:id' element={<DetailInfoPage/>}/>
                 <Route path='contact' element={<ContactsPage/>}/>
                 <Route path='*' element={<ErrorPage/>}/>
             </Route>

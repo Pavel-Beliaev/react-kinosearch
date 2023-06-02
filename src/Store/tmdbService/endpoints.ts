@@ -1,6 +1,6 @@
 import {
     AllPersonsType,
-    IConfiguration, IDetailsMovie, IDetailsTv,
+    IConfiguration, IDetails,
     IGenres,
     IMovies,
     INewMovies,
@@ -18,15 +18,11 @@ import {
 } from "../config/slice";
 import {setHeaderFilms, setHeaderPeoples} from "../header/slice";
 import {tmdbApi} from "./tmdb.api";
-import {setInfinityAble, setInfinityScroll, setMovieData} from "../movies/slice";
-import {setErrorMessage} from "../errors/slice";
+import {setInfinityScroll, setMovieData} from "../movies/slice";
 
-export type ErrorType = {
-
-    status_code: number,
-    status_message: string,
-    success: boolean
-
+export type DetailsArgType = {
+    id: number,
+    type: string,
 }
 
 const extendedApi = tmdbApi.injectEndpoints({
@@ -86,19 +82,6 @@ const extendedApi = tmdbApi.injectEndpoints({
                 }
             }
         }),
-
-        // endpoints search
-        //
-        // searchMovies: build.query<IMovies, QueryArgs>({
-        //     query: ({type, searchValue, pageNumber}) => ({
-        //         url: `/search/${type}`,
-        //         params: {
-        //             'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-        //             query: searchValue,
-        //             page: pageNumber,
-        //         },
-        //     }),
-        // }),
 
         // endpoints getAll
 
@@ -189,69 +172,26 @@ const extendedApi = tmdbApi.injectEndpoints({
 
         // endpoints details
 
-        getDetailsMovie: build.query<IDetailsMovie, number>({
-            query: (movie_id) => ({
-                url: `/movie/${movie_id}`,
+        getDetails: build.query<IDetails, DetailsArgType>({
+            query: ({id, type}) => ({
+                url: `/${type}/${id}`,
                 params: {
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    append_to_response: 'videos,credits,images,reviews,external_ids'
+                    append_to_response: 'videos,credits,images,reviews,external_ids,movie_credits,tv_credits,tagged_images'
                 },
             }),
+            keepUnusedDataFor: 1,
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
                     dispatch(setHeaderFilms({
-                        title: data.title,
-                        genres: data.genres,
-                        url: data.backdrop_path,
+                        title: data.title ? data.title : data.name,
+                        genres: data.genres ? data.genres : [],
+                        url: data.backdrop_path ? data.backdrop_path : data.profile_path,
                         heading: ''
                     }))
                 } catch (error) {
                     console.log(error)
-                }
-            }
-        }),
-        getDetailsTv: build.query<IDetailsTv, number>({
-            query: (tv_id) => ({
-                url: `/tv/${tv_id}`,
-                params: {
-                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    append_to_response: 'videos,credits,images,reviews,external_ids'
-                },
-            }),
-            async onQueryStarted(arg, {dispatch, queryFulfilled}) {
-                try {
-                    const {data} = await queryFulfilled
-                    dispatch(setHeaderFilms({
-                        title: data.name,
-                        genres: data.genres,
-                        url: data.backdrop_path,
-                        heading: ''
-                    }))
-                } catch (error) {
-                    console.log(error)
-                }
-            }
-        }),
-        getDetailsPerson: build.query<AllPersonsType, number>({
-            query: (id) => ({
-                url: `/person/${id}`,
-                params: {
-                    'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
-                    append_to_response: 'movie_credits,tv_credits,external_ids,tagged_images'
-                },
-            }),
-            async onQueryStarted(arg, {dispatch, queryFulfilled}) {
-                try {
-                    const {data} = await queryFulfilled
-                    dispatch(setHeaderPeoples({
-                        title: data.name,
-                        genres: [],
-                        url: data.profile_path,
-                        heading: ''
-                    }))
-                } catch (error) {
-
                 }
             }
         }),
@@ -259,11 +199,9 @@ const extendedApi = tmdbApi.injectEndpoints({
     overrideExisting: true
 })
 export const {
-    // useSearchMoviesQuery,
-    useGetDetailsTvQuery,
-    useGetDetailsPersonQuery,
-    useGetDetailsMovieQuery,
+    useLazyGetDetailsQuery,
     useGetAllMoviesQuery,
+    useGetDetailsQuery,
     useLazyGetAllMoviesQuery,
     useLazyGetVideoByIdQuery,
     useGetPopularMoviesQuery,

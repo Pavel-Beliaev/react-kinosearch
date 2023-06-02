@@ -128,21 +128,11 @@ export type QueryArgs = {
     infinityKey?: boolean
 }
 
-export type ISpokenLanguages = {
+
+export type SpokenLanguagesType = {
+    english_name: string,
     iso_639_1: string,
     name: string,
-}
-
-export type IProductionCountries = {
-    iso_3166_1: string,
-    name: string,
-}
-
-export type IProductionCompanies = {
-    name: string,
-    id: number,
-    logo_path: string | null,
-    origin_country: string,
 }
 
 export type CreditsCastType = {
@@ -201,60 +191,6 @@ export type ResultsReviewsType = {
     url: string,
 
 }
-
-export interface IDetailsMovie {
-    adult: boolean,
-    backdrop_path: string | null,
-    belongs_to_collection: null | Object,
-    budget: number,
-    genres: Genres[],
-    name: string,
-    homepage: string | null,
-    id: number,
-    imdb_id: string | null,
-    original_language: string,
-    original_title: string,
-    overview: string | null,
-    popularity: number,
-    poster_path: string | null,
-    production_companies: IProductionCompanies[],
-    production_countries: IProductionCountries[],
-    release_date: string,
-    revenue: number,
-    runtime: number | null,
-    spoken_languages: ISpokenLanguages[],
-    status: string,
-    tagline: string | null,
-    title: string,
-    video: boolean,
-    vote_average: number,
-    vote_count: number,
-    videos: {
-        results: IResultVideos[]
-    },
-    credits: {
-        cast: CreditsCastType[],
-        crew: CreditsCrewType[],
-    },
-    images: {
-        backdrops: ImagesType[],
-        posters: ImagesType[],
-    },
-    reviews: {
-        page: number,
-        results: ResultsReviewsType[],
-        total_pages: number,
-        total_results: number,
-    },
-    external_ids: {
-        imdb_id: string | null,
-        facebook_id: string | null,
-        instagram_id: string | null,
-        twitter_id: string | null,
-        id: number,
-    }
-}
-
 export type CreditsPeopleCastType = {
     adult: boolean,
     backdrop_path: string | null,
@@ -321,44 +257,6 @@ export type TaggedImagesResults = {
 }
 
 export interface AllPersonsType {
-    birthday: string | null,
-    known_for_department: string,
-    deathday: null | string,
-    id: number,
-    name: string,
-    also_known_as: string[],
-    gender: number,
-    biography: string,
-    popularity: number,
-    place_of_birth: string | null,
-    profile_path: string | null,
-    adult: boolean,
-    imdb_id: string,
-    homepage: null | string,
-    tv_credits: {
-        cast: CreditsPeopleCastType[],
-        crew: CreditsPeopleCrewType[],
-    },
-    movie_credits: {
-        cast: CreditsPeopleCastType[],
-        crew: CreditsPeopleCrewType[],
-    },
-    external_ids: {
-        imdb_id: string | null,
-        facebook_id: null | string,
-        freebase_mid: string | null,
-        freebase_id: null | string,
-        tvrage_id: number | null,
-        twitter_id: null | string,
-        id: number,
-        instagram_id: string | null,
-    },
-    tagged_images: {
-        page: number,
-        results: TaggedImagesResults[],
-        total_pages: number,
-        total_results: number,
-    },
 }
 
 export type CreatedByType = {
@@ -376,16 +274,16 @@ export type NetworksType = {
     origin_country: string,
 }
 
-export type ProductionCompaniesType = {
-    id: number,
-    logo_path: null | string,
-    name: string,
-    origin_country: string,
-}
-
-export type ProductionCountriesType = {
+export type IProductionCountries = {
     iso_3166_1: string,
     name: string,
+}
+
+export type IProductionCompanies = {
+    name: string,
+    id: number,
+    logo_path: string | null,
+    origin_country: string,
 }
 
 export type SeasonsType = {
@@ -398,13 +296,7 @@ export type SeasonsType = {
     season_number: number,
 }
 
-export type SpokenLanguagesType = {
-    english_name: string,
-    iso_639_1: string,
-    name: string,
-}
-
-export interface IDetailsTv {
+export interface IDetails {
     backdrop_path: string | null,
     created_by: CreatedByType[],
     episode_run_time: number[],
@@ -438,8 +330,8 @@ export interface IDetailsTv {
     overview: string,
     popularity: number,
     poster_path: string | null,
-    production_companies: ProductionCompaniesType[],
-    production_countries: ProductionCountriesType[],
+    production_companies: IProductionCompanies[],
+    production_countries: IProductionCountries[],
     seasons: SeasonsType[],
     spoken_languages: SpokenLanguagesType[],
     status: string,
@@ -470,6 +362,42 @@ export interface IDetailsTv {
         instagram_id: string | null,
         twitter_id: string | null,
         id: number,
-    }
-}
+        freebase_mid: string | null,
+        freebase_id: null | string,
+        tvrage_id: number | null,
+    },
+    adult: boolean,
+    belongs_to_collection: null | Object,
+    budget: number,
+    imdb_id: string | null,
+    original_title: string,
+    release_date: string,
+    revenue: number,
+    runtime: number | null,
+    title: string,
+    video: boolean,
 
+    birthday: string | null,
+    known_for_department: string,
+    deathday: null | string,
+    also_known_as: string[],
+    gender: number,
+    biography: string,
+    place_of_birth: string | null,
+    profile_path: string | null,
+    tv_credits: {
+        cast: CreditsPeopleCastType[],
+        crew: CreditsPeopleCrewType[],
+    },
+    movie_credits: {
+        cast: CreditsPeopleCastType[],
+        crew: CreditsPeopleCrewType[],
+    },
+
+    tagged_images: {
+        page: number,
+        results: TaggedImagesResults[],
+        total_pages: number,
+        total_results: number,
+    },
+}

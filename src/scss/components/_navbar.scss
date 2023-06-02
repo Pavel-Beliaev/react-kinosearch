@@ -58,10 +58,15 @@
         position: relative;
 
         &:hover {
-          .navbar-panel-popup{
-            transform: translateY(0%);
+          .navbar-panel-popup {
+            width: 100%;
+            transition: all .30s ease-in-out;
             opacity: 1;
-            z-index: 0;
+
+            li {
+              visibility: visible;
+              transition: all .30s ease-in-out;
+            }
           }
 
           &:after {
@@ -122,23 +127,22 @@
       position: absolute;
       display: flex;
       flex-direction: column;
-      width: 100%;
       background-color: rgba($orange, 0.8);
       justify-content: flex-start;
       transition: all .30s ease-in-out;
-      bottom: -205%;
-      transform: translateY(-100%);
+      top: 100%;
+      width: 0;
       opacity: 0;
-      z-index: -100;
 
       li {
         width: 100%;
+        visibility: hidden;
+        transition: all .30s ease-in-out;
 
 
         &:hover {
           background-color: rgba($lightorang, 0.8);
           transition: all .30s ease-in-out;
-
         }
 
         a {

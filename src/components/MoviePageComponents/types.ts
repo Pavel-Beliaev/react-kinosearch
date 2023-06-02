@@ -1,8 +1,6 @@
 import {
     CreatedByType,
-    CreditsCrewType,
-    IDetailsMovie,
-    IDetailsTv,
+    CreditsCrewType, IDetails,
     ResultsReviewsType
 } from "../../Store/tmdbService/@types";
 
@@ -25,7 +23,7 @@ export type MovieOverviewType = {
 }
 
 export type MovieMediaType = {
-    dataMovie: IDetailsMovie | IDetailsTv |undefined
+    dataMovie: IDetails |undefined
 }
 
 export type MovieInfoType = {

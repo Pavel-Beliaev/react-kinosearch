@@ -19,27 +19,25 @@ import SkeletonMoviePage from "../components/Skeletons/SkeletonMoviePage";
 import SkeletonPeoplePage from "../components/Skeletons/SkeletonPeoplePage";
 import {
     useGetAllMoviesQuery,
-    useGetDetailsPersonQuery,
-    useGetDetailsMovieQuery,
-    useGetDetailsTvQuery
+    useLazyGetDetailsQuery,
 } from "../Store/tmdbService/endpoints";
 
 const DetailInfoPage = () => {
     const {id} = useParams()
     const {pathname} = useLocation()
 
-    const movieID = pathname.includes('movie') && id
-    const tvID = pathname.includes('tv') && id
-    const peopleID = pathname.includes('people') && id
+    const pathnameType = pathname.split("/");
+    const type = pathnameType.length > 3 ? pathnameType[2] : pathnameType[1];
 
-    const {data: dataTvDetails, isFetching: isFetchingTvDetails} = useGetDetailsTvQuery(Number(tvID));
-    const {data: dataMovieDetails, isFetching: isFetchingMovieDetails} = useGetDetailsMovieQuery(Number(movieID));
-    const {data: dataPeopleDetails, isFetching: isFetchingPeopleDetails} = useGetDetailsPersonQuery(Number(peopleID))
+    const [fetchMovie, {data, isFetching: isFetchingDetails}] = useLazyGetDetailsQuery()
+
+
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
-        peopleId: dataPeopleDetails?.id,
+        peopleId: data?.id,
         type: 'movie',
         typeQuery: 'discover',
     });
+
 
     useEffect(() => {
         window.scrollTo({
@@ -48,105 +46,105 @@ const DetailInfoPage = () => {
         })
     }, [id])
 
+    useEffect(() => {
+        fetchMovie({
+            type: type,
+            id: Number(id)
+        })
+    }, [id])
+
+    console.log('data person', data)
+
+
     return (
         <div className='page'>
             <div className='container'>
                 <h2>Synopsis</h2>
                 <div className='page-synopsis'>
-                    {pathname.includes('movie')
-                        ? isFetchingMovieDetails
+                    {pathname.includes('person')
+                        ? isFetchingDetails
+                            ? <SkeletonPeoplePage/>
+                            : <>
+                                <div className='page-poster'>
+                                    <PeoplePoster
+                                        poster={data?.profile_path}
+                                    />
+                                </div>
+                                <div className='page-overview'>
+                                    <PeopleBiography
+                                        title={'Biography'}
+                                        biography={data?.biography}
+                                    />
+                                </div>
+                                <div className='page-info'>
+                                    <PeopleInfo
+                                        title={'Personal Info'}
+                                        birthday={data?.birthday}
+                                        deathday={data?.deathday}
+                                        placeOfBirth={data?.place_of_birth}
+                                        gender={data?.gender}
+                                        knownFor={data?.known_for_department}
+                                        facebookLink={data?.external_ids.facebook_id}
+                                        twitterLink={data?.external_ids.twitter_id}
+                                    />
+                                </div>
+                            </>
+                        : isFetchingDetails
                             ? <SkeletonMoviePage/>
                             : <>
                                 <div className='page-poster'>
                                     <MoviePoster
-                                        poster={dataMovieDetails?.poster_path}
-                                        rating={dataMovieDetails?.vote_average}
+                                        poster={data?.poster_path}
+                                        rating={data?.vote_average}
                                     />
                                 </div>
                                 <div className='page-overview'>
                                     <MovieOverview
-                                        overview={dataMovieDetails?.overview}
+                                        overview={data?.overview}
                                         title={'Overviews'}
-                                        creditsCrew={dataMovieDetails?.credits.crew}
+                                        creditsCrew={data?.credits.crew}
+                                        created_by={data?.created_by}
                                     />
                                 </div>
                                 <div className='page-info'>
                                     <MovieInfo
-                                        homepage={dataMovieDetails?.homepage}
-                                        twitterLink={dataMovieDetails?.external_ids.twitter_id}
-                                        facebookLink={dataMovieDetails?.external_ids.facebook_id}
-                                        status={dataMovieDetails?.status}
-                                        releaseDate={dataMovieDetails?.release_date}
-                                        revenue={dataMovieDetails?.revenue}
-                                        budget={dataMovieDetails?.budget}
+                                        homepage={data?.homepage}
+                                        twitterLink={data?.external_ids.twitter_id}
+                                        facebookLink={data?.external_ids.facebook_id}
+                                        status={data?.status}
+                                        releaseDate={data?.release_date ? data?.release_date : data?.first_air_date}
+                                        end_date={data?.last_air_date}
+                                        revenue={data?.revenue}
+                                        budget={data?.budget}
+                                        number_of_seasons={data?.number_of_seasons}
+                                        number_of_episodes={data?.number_of_episodes}
                                     />
                                 </div>
                             </>
-                        : pathname.includes('tv')
-                            ? isFetchingTvDetails
-                                ? <SkeletonMoviePage/>
-                                : <>
-                                    <div className='page-poster'>
-                                        <MoviePoster
-                                            poster={dataTvDetails?.poster_path}
-                                            rating={dataTvDetails?.vote_average}
-                                        />
-                                    </div>
-                                    <div className='page-overview'>
-                                        <MovieOverview
-                                            overview={dataTvDetails?.overview}
-                                            title={'Overviews'}
-                                            created_by={dataTvDetails?.created_by}
-                                        />
-                                    </div>
-                                    <div className='page-info'>
-                                        <MovieInfo
-                                            homepage={dataTvDetails?.homepage}
-                                            twitterLink={dataTvDetails?.external_ids.twitter_id}
-                                            facebookLink={dataTvDetails?.external_ids.facebook_id}
-                                            status={dataTvDetails?.status}
-                                            releaseDate={dataTvDetails?.first_air_date}
-                                            end_date={dataTvDetails?.last_air_date}
-                                            number_of_seasons={dataTvDetails?.number_of_seasons}
-                                            number_of_episodes={dataTvDetails?.number_of_episodes}
-                                        />
-                                    </div>
-                                </>
-                            : isFetchingPeopleDetails
-                                ? <SkeletonPeoplePage/>
-                                : <>
-                                    <div className='page-poster'>
-                                        <PeoplePoster
-                                            poster={dataPeopleDetails?.profile_path}
-                                        />
-                                    </div>
-                                    <div className='page-overview'>
-                                        <PeopleBiography
-                                            title={'Biography'}
-                                            biography={dataPeopleDetails?.biography}
-                                        />
-                                    </div>
-                                    <div className='page-info'>
-                                        <PeopleInfo
-                                            title={'Personal Info'}
-                                            birthday={dataPeopleDetails?.birthday}
-                                            deathday={dataPeopleDetails?.deathday}
-                                            placeOfBirth={dataPeopleDetails?.place_of_birth}
-                                            gender={dataPeopleDetails?.gender}
-                                            knownFor={dataPeopleDetails?.known_for_department}
-                                            facebookLink={dataPeopleDetails?.external_ids.facebook_id}
-                                            twitterLink={dataPeopleDetails?.external_ids.twitter_id}
-                                        />
-                                    </div>
-                                </>
                     }
                 </div>
-                {pathname.includes('movie')
+                {pathname.includes('person')
                     ? <SliderWrapper
+                        title={'Known For'}
+                        children={dataAllMovies?.results.map((film) => (
+                            <SwiperSlide key={film.id}>
+                                {isFetching
+                                    ? <SkeletonSliderShow/>
+                                    : <MovieSlideCard
+                                        title={film.title}
+                                        rating={film.vote_average}
+                                        poster={film.poster_path}
+                                        id={film.id}
+                                    />
+                                }
+                            </SwiperSlide>
+                        ))}
+                    />
+                    : <SliderWrapper
                         title={'Top billed cast'}
-                        children={dataMovieDetails?.credits.cast.map((cast) => (
+                        children={data?.credits.cast.map((cast) => (
                             <SwiperSlide key={cast.credit_id}>
-                                {isFetchingMovieDetails
+                                {isFetchingDetails
                                     ? <SkeletonPeopleCard/>
                                     : <PeopleCard
                                         id={cast.id}
@@ -158,66 +156,24 @@ const DetailInfoPage = () => {
                             </SwiperSlide>
                         ))}
                     />
-                    : pathname.includes('tv')
-                        ? <SliderWrapper
-                            title={'Top billed cast'}
-                            children={dataTvDetails?.credits.cast.map((cast) => (
-                                <SwiperSlide key={cast.credit_id}>
-                                    {isFetchingMovieDetails
-                                        ? <SkeletonPeopleCard/>
-                                        : <PeopleCard
-                                            id={cast.id}
-                                            name={cast.name}
-                                            character={cast.character}
-                                            profilePath={cast.profile_path}
-                                        />
-                                    }
-                                </SwiperSlide>
-                            ))}
-                        />
-                        : <SliderWrapper
-                            title={'Known For'}
-                            children={dataAllMovies?.results.map((film) => (
-                                <SwiperSlide key={film.id}>
-                                    {isFetching
-                                        ? <SkeletonSliderShow/>
-                                        : <MovieSlideCard
-                                            title={film.title}
-                                            rating={film.vote_average}
-                                            poster={film.poster_path}
-                                            id={film.id}
-                                        />
-                                    }
-                                </SwiperSlide>
-                            ))}
-                        />}
+                }
             </div>
-            {pathname.includes('movie')
-                ? <>
+            {data?.also_known_as && pathname.includes('person')
+                ? <TablePeopleActing
+                    movieCredits={data?.movie_credits.cast}
+                    tvCredits={data?.tv_credits.cast}
+                />
+                : data?.budget &&
+                <>
                     <MovieMedia
-                        dataMovie={dataMovieDetails}
+                        dataMovie={data}
                     />
                     <MovieReviews
-                        length={dataMovieDetails?.reviews.results.length}
-                        title={dataMovieDetails?.title}
-                        reviews={dataMovieDetails?.reviews.results}
+                        length={data?.reviews.results.length}
+                        title={data?.title ? data?.title : data?.name}
+                        reviews={data?.reviews.results}
                     />
                 </>
-                : pathname.includes('tv')
-                    ? <>
-                        <MovieMedia
-                            dataMovie={dataTvDetails}
-                        />
-                        <MovieReviews
-                            length={dataTvDetails?.reviews.results.length}
-                            title={dataTvDetails?.name}
-                            reviews={dataTvDetails?.reviews.results}
-                        />
-                    </>
-                    : <TablePeopleActing
-                        movieCredits={dataPeopleDetails?.movie_credits.cast}
-                        tvCredits={dataPeopleDetails?.tv_credits.cast}
-                    />
             }
         </div>
     );

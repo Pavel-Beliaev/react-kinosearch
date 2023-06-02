@@ -64,9 +64,9 @@ const AllMoviesPage: React.FC = () => {
     }, [type, searchValue])
 
     useEffect(() => {
-        // window.scrollTo({
-        //     top: 0,
-        // })
+        window.scrollTo({
+            top: 0,
+        })
         dispatch(setPageNumber(1))
         dispatch(setInfinityAble(false))
     }, [type, genreId, searchValue])
@@ -84,7 +84,6 @@ const AllMoviesPage: React.FC = () => {
         setPreventRedundantRequest(!preventRedundantRequest)
     },[pageNumber, genreId, type, searchValue])
 
-    console.log(dataFilms)
 
     useEffect(() => {
         fetching({

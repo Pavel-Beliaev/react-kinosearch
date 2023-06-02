@@ -15,7 +15,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profi
     ).join(', ')
 
     return (
-        <Link to={`/peoples/${id}`} state={{state: pathname}}>
+        <Link to={`/person/${id}`} state={{state: pathname}}>
             <div className='peopleCard'>
                 <img
                     src={profilePath
