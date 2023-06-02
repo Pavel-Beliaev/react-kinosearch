@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import Switcher from "../Switcher/Switcher";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
-import SliderShow from "../SliderShow/SliderShow";
+import Switcher from "../../Switcher/Switcher";
+import VideoPlayer from "../../VideoPlayer/VideoPlayer";
+import SliderShow from "../../SliderShow/SliderShow";
 import {SwiperSlide} from "swiper/react";
-import {useAppSelector} from "../../Store/store";
+import {useAppSelector} from "../../../Store/store";
 import {MovieMediaType} from "./types";
 
 
-
-const MovieMedia: React.FC<MovieMediaType> = ({ dataMovie}) => {
+const MovieMedia: React.FC<MovieMediaType> = ({dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
 
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
@@ -27,12 +26,14 @@ const MovieMedia: React.FC<MovieMediaType> = ({ dataMovie}) => {
                         color={'#717171'}
                     />
                     {switcher === 0
-                        ? <div className='page-videos'>
+                        ?
+                        <div className='page-videos'>
                             {dataMovie?.videos.results.map((param) => (
                                 <div
                                     className='page-videos_item'
                                     key={param.key}
-                                    onClick={() => {}}
+                                    onClick={() => {
+                                    }}
                                 >
                                     <div className='sliderTrailer-player'>
                                         <VideoPlayer
@@ -41,12 +42,8 @@ const MovieMedia: React.FC<MovieMediaType> = ({ dataMovie}) => {
                                     </div>
                                     <p>{param.name}</p>
                                 </div>
-                            ))
-
-                            }
-
+                            ))}
                         </div>
-
                         : <div className='page-backdrops'>
                             <SliderShow
                                 navigation={true}
@@ -69,3 +66,4 @@ const MovieMedia: React.FC<MovieMediaType> = ({ dataMovie}) => {
 };
 
 export default MovieMedia;
+

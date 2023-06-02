@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const SkeletonMoviePage: React.FC = (props) => (
+const SkeletonPeoplePage: React.FC = (props) => (
     <ContentLoader
         speed={2}
         width={1140}
@@ -36,4 +36,4 @@ const SkeletonMoviePage: React.FC = (props) => (
     </ContentLoader>
 )
 
-export default SkeletonMoviePage;
+export default SkeletonPeoplePage;

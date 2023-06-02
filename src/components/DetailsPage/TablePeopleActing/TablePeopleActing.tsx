@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Table} from 'antd';
 import Switcher from "../../Switcher/Switcher";
-import {MovieCredits, TablePeopleActingType} from "../types";
+import {MovieCredits, TablePeopleActingType} from "./types";
 import {columns} from "./config_table";
 
 const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {

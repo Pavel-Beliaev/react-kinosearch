@@ -1,5 +1,5 @@
 import {ColumnsType} from "antd/es/table";
-import {MovieCredits} from "../types";
+import {MovieCredits} from "./types";
 import {Link} from "react-router-dom";
 import React from "react";
 
@@ -23,7 +23,7 @@ export const columns: ColumnsType<MovieCredits> = [
         render: (value) => {
             return <div>
                 <Link to={value.title
-                    ? `/all/movies/${value.movieID}`
+                    ? `/all/movie/${value.movieID}`
                     : `/all/tv/${value.tvID}`}>
                     {value.title
                         ? <span className='table-title'>{value.title}&nbsp;</span>
