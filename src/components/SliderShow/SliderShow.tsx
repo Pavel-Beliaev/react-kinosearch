@@ -6,8 +6,6 @@ import "swiper/scss";
 import "swiper/scss/scrollbar";
 import {SliderProps} from "./types";
 
-
-
 const SliderShow: React.FC<SliderProps> = ({navigation, slideCount, children}) => {
 
     return (
@@ -18,7 +16,10 @@ const SliderShow: React.FC<SliderProps> = ({navigation, slideCount, children}) =
                     draggable: true,
                     horizontalClass: 'scroll-horizontal'
                 }}
-                navigation={navigation ? navigation : false}
+                navigation={navigation
+                    ? navigation
+                    : false
+                }
                 slidesPerView={slideCount}
                 spaceBetween={30}
                 cssMode={true}

@@ -21,8 +21,11 @@ const DetailInfoPage = () => {
 
     const [keyType, setKeyType] = useState(false)
 
-    const pathnameType = pathname.split("/");
-    const type = pathnameType.length > 3 ? pathnameType[2] : pathnameType[1];
+    const pathnameType = pathname
+        .split("/");
+    const type = pathnameType.length > 3
+        ? pathnameType[2]
+        : pathnameType[1];
 
     const [fetchMovie, {data, isFetching: isFetchingDetails}] = useLazyGetDetailsQuery()
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
@@ -33,10 +36,11 @@ const DetailInfoPage = () => {
 
 
     useEffect(() => {
-        window.scrollTo({
-            top: 115,
-            behavior: 'smooth'
-        })
+        window
+            .scrollTo({
+                top: 115,
+                behavior: 'smooth'
+            })
     }, [id])
 
     useEffect(() => {
@@ -54,37 +58,46 @@ const DetailInfoPage = () => {
         <div className='page'>
             <div className='container'>
                 <h2>Synopsis</h2>
-                <Sinopsis data={data} keyType={keyType} isFetching={isFetchingDetails}/>
+                <Sinopsis
+                    data={data}
+                    keyType={keyType}
+                    isFetching={isFetchingDetails}
+                />
                 <SliderWrapper
-                    title={keyType ? 'Known For' : 'Top billed cast'}
+                    title={keyType
+                        ? 'Known For'
+                        : 'Top billed cast'
+                    }
                     children={
                         keyType
-                            ? dataAllMovies?.results.map((film) => (
-                                <SwiperSlide key={film.id}>
-                                    {isFetching
-                                        ? <SkeletonSliderShow/>
-                                        : <MovieSlideCard
-                                            title={film.title}
-                                            rating={film.vote_average}
-                                            poster={film.poster_path}
-                                            id={film.id}
-                                        />
-                                    }
-                                </SwiperSlide>
-                            ))
-                            : data?.credits.cast.map((cast) => (
-                                <SwiperSlide key={cast.credit_id}>
-                                    {isFetchingDetails
-                                        ? <SkeletonPeopleCard/>
-                                        : <PeopleCard
-                                            id={cast.id}
-                                            name={cast.name}
-                                            character={cast.character}
-                                            profilePath={cast.profile_path}
-                                        />
-                                    }
-                                </SwiperSlide>
-                            ))
+                            ? dataAllMovies?.results
+                                .map((film) => (
+                                    <SwiperSlide key={film.id}>
+                                        {isFetching
+                                            ? <SkeletonSliderShow/>
+                                            : <MovieSlideCard
+                                                title={film.title}
+                                                rating={film.vote_average}
+                                                poster={film.poster_path}
+                                                id={film.id}
+                                            />
+                                        }
+                                    </SwiperSlide>
+                                ))
+                            : data?.credits.cast
+                                .map((cast) => (
+                                    <SwiperSlide key={cast.credit_id}>
+                                        {isFetchingDetails
+                                            ? <SkeletonPeopleCard/>
+                                            : <PeopleCard
+                                                id={cast.id}
+                                                name={cast.name}
+                                                character={cast.character}
+                                                profilePath={cast.profile_path}
+                                            />
+                                        }
+                                    </SwiperSlide>
+                                ))
                     }
                 />
             </div>

@@ -52,7 +52,6 @@ export const headerSlice = createSlice({
         },
     },
 })
-
 export const {setHeaderFilms, setHeaderPeoples} = headerSlice.actions;
 
 export default headerSlice.reducer

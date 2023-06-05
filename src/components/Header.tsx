@@ -1,17 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {HeaderProps} from "../@types/@types";
 import HeaderSlider from "./HeaderSlider/HeaderSlider";
 import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
 import {useAppSelector} from "../Store/store";
 
+export type HeaderProps = {
+    pathname: string
+}
 const Header: React.FC<HeaderProps> = ({pathname}) => {
     const [isVisibleEffect, setIsVisibleEffect] = useState(true);
+
     const {base_url, backdropSize} = useAppSelector((state) => state.config);
-
-
     const data = useAppSelector(state => state.header);
-    const stylePage = pathname.substring(1);
-    const genre = data.film.genres.map((genr) => genr.name).join(', ')
+
+    const stylePage = pathname
+        .substring(1);
+    const genre = data.film.genres
+        .map((genr) => genr.name)
+        .join(', ')
 
 
     useEffect(() => {
@@ -20,7 +25,6 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
             setIsVisibleEffect(true)
         }, 0)
     }, [pathname]);
-
 
 
     return (
@@ -32,12 +36,12 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
                     : `url(${base_url}${backdropSize}${data.film.url})`
             }}
         >
-            <span className="scroll"><ArrowDownIcon/></span>
+            <span className="scroll">
+                <ArrowDownIcon/>
+            </span>
             {pathname === '/'
-                ?
-                <HeaderSlider pathname={stylePage}/>
-                :
-                <div className="container">
+                ? <HeaderSlider/>
+                : <div className="container">
                     {isVisibleEffect &&
                         <div className="blurb">
                             <span className="title">

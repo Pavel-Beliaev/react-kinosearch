@@ -1,15 +1,6 @@
 import {IResultsMovies} from "../tmdbService/@types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {useState} from "react";
-
-export type MoviesState = {
-    dataFilms: IResultsMovies[],
-    types: string[],
-    pageNumber: number,
-    infinityAble: boolean,
-    searchValue: string,
-    genreId: number | null
-}
+import {MoviesState} from "./@types";
 
 const initialState: MoviesState = {
     dataFilms: [],
@@ -18,9 +9,7 @@ const initialState: MoviesState = {
     infinityAble: false,
     searchValue: '',
     genreId: null
-
 }
-
 export const moviesSlice = createSlice({
     name: 'movies',
     initialState,
@@ -32,7 +21,7 @@ export const moviesSlice = createSlice({
             state.dataFilms.push(...action.payload);
         },
         setPageNumber(state, action: PayloadAction<number>) {
-           state.pageNumber = action.payload
+            state.pageNumber = action.payload
         },
         setInfinityAble(state, action: PayloadAction<boolean>) {
             state.infinityAble = action.payload
@@ -40,13 +29,11 @@ export const moviesSlice = createSlice({
         setSearchValue(state, action: PayloadAction<string>) {
             state.searchValue = action.payload
         },
-        setGenreId(state, action: PayloadAction<number|null>) {
+        setGenreId(state, action: PayloadAction<number | null>) {
             state.genreId = action.payload
         },
-
     },
 })
-
 export const {
     setGenreId,
     setSearchValue,

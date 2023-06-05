@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 const Menu: React.FC = () => {
 
     return (
-        <div className='navbar'>
+        <div className='menu'>
             <div className='container heading'>
                 <div className='tel'>
                     <Link to="tel: +66 65 335 62 63">

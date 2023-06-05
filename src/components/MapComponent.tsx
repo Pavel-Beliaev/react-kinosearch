@@ -1,7 +1,8 @@
 import React from 'react';
 import {Map, Placemark, YMaps} from "@pbe/react-yandex-maps";
 
-const MapComponent:React.FC = () => {
+const MapComponent: React.FC = () => {
+
     return (
         <YMaps>
             <Map defaultState={{
@@ -17,9 +18,9 @@ const MapComponent:React.FC = () => {
                     modules={["geoObject.addon.balloon"]}
                     defaultGeometry={[7.877035, 98.396866]}
                     properties={{
-                        balloonContentBody:
-                            "Last location",
-                    }}/>
+                        balloonContentBody: "Last location",
+                    }}
+                />
             </Map>
         </YMaps>
     );

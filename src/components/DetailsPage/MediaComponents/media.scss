@@ -1,0 +1,70 @@
+.review {
+  &-text {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+
+    p {
+      letter-spacing: 1.5px;
+      color: #101010;
+    }
+  }
+}
+
+.mediaBlock {
+  margin-top: 65px;
+  background-color: #101010;
+  width: 100%;
+  position: relative;
+
+  &-media {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-videos {
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    &_item {
+      width: 50%;
+      height: 50%;
+      flex: 0 1 45%;
+    }
+
+    &_player {
+      margin: 0;
+    }
+
+    p {
+      margin-top: 5px;
+      padding: 3px;
+    }
+  }
+
+  &-backdrops {
+    padding-top: 30px;
+
+    .note {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      color: rgba(255, 255, 255, 0.4);
+      background-color: rgba(113, 113, 113, 0.4);
+    }
+  }
+}
+
+

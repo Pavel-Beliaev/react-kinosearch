@@ -29,7 +29,6 @@
     padding: 20px;
     border-radius: 12px;
     background-color: rgba(#101010, 0.8);
-
     transform: scale(0.5);
     transition: 0.4s all;
     width: 40vw;
@@ -56,9 +55,6 @@
     flex-direction: column;
     align-items: center;
 
-
-
-
     h1 {
       border: none;
       color: #EC7532FF;
@@ -83,15 +79,10 @@
       height: 10%;
       margin-bottom: 50px;
       font-size: 32px;
-      //background-color: rgba(255, 255, 255, 0.8);
       background-color: #101010;
       border-top: none;
       border-left: none;
       border-right: none;
-
-
-      &:focus {
-      }
     }
   }
 

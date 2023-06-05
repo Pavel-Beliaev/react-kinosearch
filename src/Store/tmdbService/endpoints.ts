@@ -1,5 +1,5 @@
 import {
-    AllPersonsType,
+    DetailsArgType,
     IConfiguration, IDetails,
     IGenres,
     IMovies,
@@ -16,14 +16,9 @@ import {
     setPosterSize,
     setProfileSize
 } from "../config/slice";
-import {setHeaderFilms, setHeaderPeoples} from "../header/slice";
+import {setHeaderFilms} from "../header/slice";
 import {tmdbApi} from "./tmdb.api";
 import {setInfinityScroll, setMovieData} from "../movies/slice";
-
-export type DetailsArgType = {
-    id: number,
-    type: string,
-}
 
 const extendedApi = tmdbApi.injectEndpoints({
     endpoints: (build) => ({
@@ -94,7 +89,6 @@ const extendedApi = tmdbApi.injectEndpoints({
                     with_genres: genre,
                     with_people: peopleId,
                     query: searchValue,
-
                 },
             }),
             keepUnusedDataFor: 1,
@@ -118,7 +112,6 @@ const extendedApi = tmdbApi.injectEndpoints({
                 },
             })
         }),
-
 
         // endpoints films
 
@@ -169,7 +162,6 @@ const extendedApi = tmdbApi.injectEndpoints({
             }),
         }),
 
-
         // endpoints details
 
         getDetails: build.query<IDetails, DetailsArgType>({
@@ -185,9 +177,15 @@ const extendedApi = tmdbApi.injectEndpoints({
                 try {
                     const {data} = await queryFulfilled
                     dispatch(setHeaderFilms({
-                        title: data.title ? data.title : data.name,
-                        genres: data.genres ? data.genres : [],
-                        url: data.backdrop_path ? data.backdrop_path : data.profile_path,
+                        title: data.title
+                            ? data.title
+                            : data.name,
+                        genres: data.genres
+                            ? data.genres
+                            : [],
+                        url: data.backdrop_path
+                            ? data.backdrop_path
+                            : data.profile_path,
                         heading: ''
                     }))
                 } catch (error) {
@@ -201,7 +199,6 @@ const extendedApi = tmdbApi.injectEndpoints({
 export const {
     useLazyGetDetailsQuery,
     useGetAllMoviesQuery,
-    useGetDetailsQuery,
     useLazyGetAllMoviesQuery,
     useLazyGetVideoByIdQuery,
     useGetPopularMoviesQuery,

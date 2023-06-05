@@ -5,6 +5,7 @@ import {PaginationProps} from "./types";
 
 
 const Pagination: React.FC<PaginationProps> = ({value, changePage, totalPage}) => {
+
     return (
         <ReactPaginate
             className='paginate'

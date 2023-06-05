@@ -7,7 +7,6 @@ const Rating: React.FC<RatingProps> = ({rating, fill}) => {
     const circumference = 2 * Math.PI * 25;
     const offset = circumference - ((rating ? rating : 0) / 10) * circumference;
 
-
     const getColor = (rating: number) => {
         if (rating <= 3) {
             return "red";
@@ -17,8 +16,10 @@ const Rating: React.FC<RatingProps> = ({rating, fill}) => {
             return "green";
         }
     };
-    const color = getColor(rating ? rating : 0)
-
+    const color = getColor(rating
+        ? rating
+        : 0
+    )
 
     return (
         <>
@@ -47,10 +48,15 @@ const Rating: React.FC<RatingProps> = ({rating, fill}) => {
                         fill="none"
                     />
                 </svg>
-                <div className="rating">{rating ? rating.toFixed(1) : 0}</div>
+                <div className="rating">
+                    {rating
+                        ? rating
+                            .toFixed(1)
+                        : 0
+                    }
+                </div>
             </div>
         </>
-
     );
 };
 

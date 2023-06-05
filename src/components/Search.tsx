@@ -6,9 +6,10 @@ import {setSearchValue} from "../Store/movies/slice";
 
 const Search: React.FC = () => {
     const dispatch = useAppDispatch();
-    const {searchValue} = useAppSelector(state => state.movies)
-    const [isValue, setIsValue] = useState('');
 
+    const {searchValue} = useAppSelector(state => state.movies)
+
+    const [isValue, setIsValue] = useState('');
 
     const debounceChangeInput = useCallback(
         debounce((str) => {
@@ -28,7 +29,7 @@ const Search: React.FC = () => {
     }
 
     return (
-        <div className='movies-search'>
+        <div className='search'>
             <CustomInput
                 value={isValue}
                 onChange={changeInput}
@@ -36,11 +37,9 @@ const Search: React.FC = () => {
             />
             <i className='fa fa-search'></i>
             {searchValue &&
-                <span
-                    onClick={cleanInput}
-                >
-                        Clean
-                    </span>
+                <span onClick={cleanInput}>
+                    Clean
+                </span>
             }
         </div>
     );

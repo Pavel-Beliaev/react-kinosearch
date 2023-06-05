@@ -1,8 +1,6 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
-import CustomInput from "../components/CustomFields/CustomInput";
+import React, {useEffect, useRef, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {useObserver} from "../hooks/useObserver";
-import debounce from 'lodash.debounce'
 import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
 import {setGenreId, setInfinityAble, setPageNumber} from "../Store/movies/slice";
 import ErrorPage from "./ErrorPage";
@@ -31,8 +29,12 @@ const AllMoviesPage: React.FC = () => {
 
     const [fetching, data] = useLazyGetAllMoviesQuery()
 
-    const type = pathname.split('/').pop()
-    const genres = type === 'movie' ? genresMovies : genresTV
+    const type = pathname
+        .split('/')
+        .pop()
+    const genres = type === 'movie'
+        ? genresMovies
+        : genresTV
     const totalPage = data.data?.total_pages ?? 1;
     const isFetch = data.isFetching
     const isSuces = data.isSuccess
@@ -50,16 +52,20 @@ const AllMoviesPage: React.FC = () => {
 
     useEffect(() => {
         if (window.location.search) {
-            const params = qs.parse(window.location.search.substring(1))
+            const params = qs
+                .parse(window
+                    .location.search
+                    .substring(1))
         }
     }, [])
 
     useEffect(() => {
-        const queryString = qs.stringify({
-            search: searchValue,
-            genre: genreId,
-            page: pageNumber,
-        })
+        const queryString = qs
+            .stringify({
+                search: searchValue,
+                genre: genreId,
+                page: pageNumber,
+            })
         navigate(`?${queryString}`)
     }, [searchValue, genreId, pageNumber])
 
@@ -77,7 +83,8 @@ const AllMoviesPage: React.FC = () => {
     }, [type, genreId, searchValue])
 
     useEffect(() => {
-        const blockHeight = dataElementRef.current?.getBoundingClientRect().height
+        const blockHeight = dataElementRef.current
+            ?.getBoundingClientRect().height
         const screenHeight = window.innerHeight
         setObserverAble(Boolean(blockHeight && blockHeight > screenHeight))
         if (isSuces) {
@@ -95,7 +102,9 @@ const AllMoviesPage: React.FC = () => {
             pageNumber,
             genre: genreId,
             searchValue: searchValue,
-            typeQuery: searchValue ? 'search' : 'discover',
+            typeQuery: searchValue
+                ? 'search'
+                : 'discover',
             infinityKey: infinityAble,
         })
     }, [preventRedundantRequest])
@@ -114,9 +123,7 @@ const AllMoviesPage: React.FC = () => {
                 {isFetch
                     ? <Loader/>
                     : observerAble && pageNumber < totalPage &&
-                    <div
-                        ref={lastElementRef}
-                    />
+                    <div ref={lastElementRef}/>
                 }
             </div>
             <Genrebar

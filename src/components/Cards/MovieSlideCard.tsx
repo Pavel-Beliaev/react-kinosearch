@@ -9,22 +9,32 @@ import notPicture from "../../public/PNG/placeholder.png";
 
 const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
+
     const {base_url, posterSize} = useAppSelector((state) => state.config)
 
     return (
-        <div className='newfilms'>
+        <div className='movieSliderCard'>
             {release || first_air_date
-                ? <div className='newfilms-poster'>
-                    <div className='newfilms-aside'>
-                        <div className='newfilms-text'>
+                ? <div className='movieSliderCard-poster'>
+                    <div className='movieSliderCard-aside'>
+                        <div className='movieSliderCard-text'>
                             <div
-                                className='newfilms-play'
-                                onClick={() => dispatch(setActiveModal({active: true, id: id}))}
+                                className='movieSliderCard-play'
+                                onClick={() =>
+                                    dispatch(setActiveModal({
+                                        active: true,
+                                        id: id
+                                    }))
+                                }
                             >
                                 <i className='fa fa-play'></i>
                             </div>
-                            <Link className='newfilms-readmore'
-                                  to={release ? `/movies/${id}` : `/tv/${id}`}
+                            <Link
+                                className='movieSliderCard-readmore'
+                                to={release
+                                    ? `/movies/${id}`
+                                    : `/tv/${id}`
+                                }
                             >
                                 Read more
                             </Link>
@@ -32,24 +42,33 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, rele
                         </div>
                     </div>
                     <img
-                        src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
+                        src={poster
+                            ? `${base_url}${posterSize}${poster}`
+                            : notPicture
+                        }
                         alt="poster"
                     />
                 </div>
-                : <div className='newfilms-posterAlt'>
+                : <div className='movieSliderCard-posterAlt'>
                     <Link to={`/all/movie/${id}`}>
                         <img
-                            src={poster ? `${base_url}${posterSize}${poster}` : notPicture}
+                            src={poster
+                                ? `${base_url}${posterSize}${poster}`
+                                : notPicture
+                            }
                             alt="poster"
                         />
                     </Link>
                 </div>
             }
-            <div className='newfilms-title'>
+            <div className='movieSliderCard-title'>
                 <h4>{title}</h4>
             </div>
-            <div className='newfilms-more'>
-                <Rating rating={rating} fill='none'/>
+            <div className='movieSliderCard-more'>
+                <Rating
+                    rating={rating}
+                    fill='none'
+                />
             </div>
         </div>
     );

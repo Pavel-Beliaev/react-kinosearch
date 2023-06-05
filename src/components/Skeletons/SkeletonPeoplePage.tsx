@@ -32,7 +32,6 @@ const SkeletonPeoplePage: React.FC = (props) => (
         <rect x="895" y="281" rx="10" ry="10" width="228" height="16"/>
         <rect x="895" y="330" rx="10" ry="10" width="228" height="18"/>
         <rect x="895" y="353" rx="10" ry="10" width="228" height="16"/>
-
     </ContentLoader>
 )
 

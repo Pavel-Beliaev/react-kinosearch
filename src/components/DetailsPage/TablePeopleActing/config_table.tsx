@@ -24,16 +24,20 @@ export const columns: ColumnsType<MovieCredits> = [
             return <div>
                 <Link to={value.title
                     ? `/all/movie/${value.movieID}`
-                    : `/all/tv/${value.tvID}`}>
+                    : `/all/tv/${value.tvID}`
+                }
+                >
                     {value.title
                         ? <span className='table-title'>{value.title}&nbsp;</span>
                         : <span className='table-title'>{value.name}&nbsp;</span>
                     }
                 </Link>
                 {value.episode_count &&
-                    <span className='table-episodes'>({value.episode_count} episodes)&nbsp;</span>}
+                    <span className='table-episodes'>({value.episode_count} episodes)&nbsp;</span>
+                }
                 {value.character &&
-                    <span className='table-character'>as {value.character}</span>}
+                    <span className='table-character'>as {value.character}</span>
+                }
             </div>
         }
     },

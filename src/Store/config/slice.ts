@@ -2,8 +2,6 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ConfigurationState, VideoModal} from "./@types";
 import {Genres} from "../tmdbService/@types";
 
-
-
 const initialState: ConfigurationState = {
     base_url: '',
     profileSize: '',
@@ -16,8 +14,6 @@ const initialState: ConfigurationState = {
         active: false,
         id: null,
     },
-
-
 }
 export const configurationSLice = createSlice({
     name: 'config',
@@ -49,7 +45,6 @@ export const configurationSLice = createSlice({
         },
     },
 })
-
 export const {
     setAvatarSize,
     setActiveModal,
@@ -58,6 +53,7 @@ export const {
     setBackdropSize,
     setPosterSize,
     setGenreMovies,
-    setGenreTV} = configurationSLice.actions;
+    setGenreTV
+} = configurationSLice.actions;
 
 export default configurationSLice.reducer

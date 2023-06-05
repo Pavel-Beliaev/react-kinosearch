@@ -11,16 +11,14 @@ import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import {Link} from "react-router-dom";
 import {useGetNewMoviesQuery} from "../../Store/tmdbService/endpoints";
-import {HeaderSliderType} from "./types";
 
 
-const HeaderSlider: React.FC<HeaderSliderType> = ({pathname}) => {
+const HeaderSlider: React.FC = () => {
     const dispatch = useAppDispatch();
-    const {genresMovies, genresTV} = useAppSelector((state) => state.config)
+    const {genresMovies} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
     const {data} = useGetNewMoviesQuery()
 
-    const genres = pathname === 'movies' ? genresMovies : genresTV
 
     return (
         <Swiper
@@ -40,40 +38,55 @@ const HeaderSlider: React.FC<HeaderSliderType> = ({pathname}) => {
                 horizontalClass: 'container-pagination'
             }}
         >
-            {data?.results.slice(0, 3).map((film, index) => (
-                <SwiperSlide className='sliderHeader-slides'
-                             style={{backgroundImage: `url(${base_url}${backdropSize}${film.backdrop_path})`}}
-                             key={index}
-                >
-                    {({isActive}) => (
-                        <div className="container">
-                            {isActive &&
-                                <div className='blurb'>
-                                    <div className='sliderHeader-text'>
-                                        <span>{film.genre_ids.map((id) =>
-                                            genresMovies.find(el => el.id === id)?.name
-                                        ).join(', ')}</span>
-                                        <h1>{film.title}</h1>
-                                        <p>{film.overview}</p>
-                                        <div className='sliderHeader-button'>
-                                            <Rating rating={film.vote_average} fill='none'/>
-                                            <CustomButton
-                                                onClick={() => dispatch(setActiveModal({active: true, id: film.id}))}
-                                                children={<i className='fa fa-play'><span>Play trailer</span></i>}
-                                            />
-                                            <Link className='sliderHeader-readmore'
-                                                  to={`/movies/${film.id}`}>
-                                                Read more
-                                            </Link>
+            {data?.results
+                .slice(0, 3)
+                .map((film, index) => (
+                    <SwiperSlide
+                        className='sliderHeader-slides'
+                        style={{backgroundImage: `url(${base_url}${backdropSize}${film.backdrop_path})`}}
+                        key={index}
+                    >
+                        {({isActive}) => (
+                            <div className="container">
+                                {isActive &&
+                                    <div className='blurb'>
+                                        <div className='sliderHeader-text'>
+                                        <span>
+                                            {film.genre_ids
+                                                .map((id) =>
+                                                    genresMovies
+                                                        .find(el => el.id === id)?.name)
+                                                .join(', ')
+                                            }
+                                        </span>
+                                            <h1>{film.title}</h1>
+                                            <p>{film.overview}</p>
+                                            <div className='sliderHeader-button'>
+                                                <Rating
+                                                    rating={film.vote_average}
+                                                    fill='none'
+                                                />
+                                                <CustomButton
+                                                    onClick={() => dispatch(setActiveModal({
+                                                        active: true,
+                                                        id: film.id
+                                                    }))}
+                                                    children={<i className='fa fa-play'><span>Play trailer</span></i>}
+                                                />
+                                                <Link
+                                                    className='sliderHeader-readmore'
+                                                    to={`/movies/${film.id}`}
+                                                >
+                                                    Read more
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            }
-                        </div>
-                    )}
-                </SwiperSlide>
-            ))}
-
+                                }
+                            </div>
+                        )}
+                    </SwiperSlide>
+                ))}
         </Swiper>
     );
 };

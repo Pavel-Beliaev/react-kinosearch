@@ -24,27 +24,28 @@ const Genrebar: React.FC<GenrebarType> = ({isActive, setIsActive, genres}) => {
     }
 
     return (
-        <div className='movies-sidebar'>
+        <div className='genreBar'>
             <h4>Categories</h4>
             <ul>
-                {genres.map((genre) => (
-                    <li
-                        key={genre.id}
-                    >
+                {genres
+                    .map((genre) => (
+                        <li key={genre.id}>
                             <span
-                                className={
-                                    searchValue ? 'disableGenre' : genreId === genre.id && isActive ? 'active' : ''
+                                className={searchValue
+                                    ? 'disableGenre'
+                                    : genreId === genre.id && isActive
+                                        ? 'active'
+                                        : ''
                                 }
-
                                 onClick={() => changeGenre(genre.id, true)}
                             >
                                 {genre.name}
                             </span>
-                    </li>
-                ))}
+                        </li>
+                    ))}
                 {genreId &&
                     <span
-                        className='movies-sidebar-clean'
+                        className='genreBar-clean'
                         onClick={cleanGenre}
                     >
                         Clean

@@ -401,3 +401,8 @@ export interface IDetails {
         total_results: number,
     },
 }
+
+export type DetailsArgType = {
+    id: number,
+    type: string,
+}

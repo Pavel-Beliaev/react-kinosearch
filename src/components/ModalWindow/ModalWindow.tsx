@@ -2,21 +2,25 @@ import React from 'react';
 import './modalWindow.scss'
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
+import {ModalWindowType} from "./types";
 
-type ModalWindowType = {
-    children: React.ReactNode
-}
 const ModalWindow: React.FC<ModalWindowType> = ({children}) => {
-    const {active} = useAppSelector(state => state.config.activeModal);
     const dispstch = useAppDispatch();
-
+    const {active} = useAppSelector(state => state.config.activeModal);
 
     return (
         <>
             {active &&
                 <div
-                    onClick={() => dispstch(setActiveModal({active: false}))}
-                    className={active ? 'modalWindow active' : 'modalWindow'}
+                    onClick={() =>
+                        dispstch(setActiveModal({
+                            active: false
+                        }))
+                    }
+                    className={active
+                        ? 'modalWindow active'
+                        : 'modalWindow'
+                    }
                 >
                     {children}
                 </div>

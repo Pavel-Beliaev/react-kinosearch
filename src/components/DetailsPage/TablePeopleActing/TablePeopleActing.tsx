@@ -3,30 +3,39 @@ import {Table} from 'antd';
 import Switcher from "../../Switcher/Switcher";
 import {MovieCredits, TablePeopleActingType} from "./types";
 import {columns} from "./config_table";
+import './table.scss'
 
 const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
     const [switcher, setSwitcher] = useState(0);
-    const movieCreditsData: MovieCredits[] | undefined = movieCredits?.map((el) => ({
-        key: el.credit_id,
-        year: el.release_date ? Number(el.release_date.match(/\d{4}/)) : 0,
-        descriptions: {
-            movieID: el.id,
-            title: el.title,
-            character: el.character,
-        }
-    }))
 
-    const tvCreditsData: MovieCredits[] | undefined = tvCredits?.map((el) => ({
-        key: el.credit_id,
-        year: el.first_air_date ? Number(el.first_air_date.match(/\d{4}/)) : 0,
-        descriptions: {
-            tvID: el.id,
-            name: el.name,
-            character: el.character,
-            episode_count: el.episode_count,
-        }
+    const movieCreditsData: MovieCredits[] | undefined = movieCredits
+        ?.map((el) => ({
+            key: el.credit_id,
+            year: el.release_date
+                ? Number(el.release_date
+                    .match(/\d{4}/))
+                : 0,
+            descriptions: {
+                movieID: el.id,
+                title: el.title,
+                character: el.character,
+            }
+        }))
 
-    }))
+    const tvCreditsData: MovieCredits[] | undefined = tvCredits
+        ?.map((el) => ({
+            key: el.credit_id,
+            year: el.first_air_date
+                ? Number(el.first_air_date
+                    .match(/\d{4}/))
+                : 0,
+            descriptions: {
+                tvID: el.id,
+                name: el.name,
+                character: el.character,
+                episode_count: el.episode_count,
+            }
+        }))
 
     return (
         <div className='container table'>
@@ -45,7 +54,10 @@ const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCre
                 columns={columns}
                 className='table-wrapper'
                 pagination={false}
-                dataSource={switcher === 0 ? movieCreditsData : tvCreditsData}
+                dataSource={switcher === 0
+                    ? movieCreditsData
+                    : tvCreditsData
+                }
             />
         </div>
     );

@@ -1,7 +1,8 @@
 import React from 'react';
 import './loader.scss'
 
-const Loader = () => {
+const Loader: React.FC = () => {
+
     return (
         <div className='loader'>
             <div className='loader-primary'></div>

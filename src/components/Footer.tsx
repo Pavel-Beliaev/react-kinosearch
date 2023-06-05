@@ -3,39 +3,42 @@ import {Link} from "react-router-dom";
 import {footerMenu} from "../mock/statick";
 
 
-const Footer:React.FC = () => {
+const Footer: React.FC = () => {
+
     return (
         <div className='footer'>
             <div className='container'>
                 <div className='footer-main'>
                     <div className='footer-row'>
-                        {footerMenu.map((value) => (
-                            <div key={value}
-                                className='footer-column'>
-                                <h6>{value}</h6>
-                                <div className='footer-column-menu'>
-                                    <ul>
-                                        <li>
-                                            <Link to="/">
-                                                FAQs
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/">
-                                                Give us feedback
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/">
-                                                Contact us
-                                            </Link>
-                                        </li>
-                                    </ul>
+                        {footerMenu
+                            .map((value) => (
+                                <div
+                                    key={value}
+                                    className='footer-column'
+                                >
+                                    <h6>{value}</h6>
+                                    <div className='footer-column-menu'>
+                                        <ul>
+                                            <li>
+                                                <Link to="/">
+                                                    FAQs
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/">
+                                                    Give us feedback
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to="/">
+                                                    Contact us
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
                         <div className='footer-column'>
-
                             <h6>Connect with us</h6>
                             <div className='footer-column-menu'>
                                 <ul>

@@ -1,7 +1,7 @@
 import React from 'react';
-import CustomButton from "../components/CustomButton/CustomButton";
 
 const ErrorPage: React.FC = () => {
+
     return (
         <div className='error'>
             <div className='error-block'>

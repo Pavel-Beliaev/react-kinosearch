@@ -9,14 +9,17 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
     return (
         <>
             {title &&
-                <div className={title ? 'custom-field' : ''}>
+                <div className={title
+                    ? 'custom-field'
+                    : ''
+                }>
                     <p>
                         {title}
                         <span>*</span>
                     </p>
                 </div>
             }
-            <input className='custom-input' ref={ref} {...inputProps} />
+            <input className='custom-input' ref={ref} {...inputProps}/>
         </>
     );
 });

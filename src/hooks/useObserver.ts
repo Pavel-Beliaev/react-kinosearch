@@ -6,6 +6,7 @@ export const useObserver = (
     disabled: boolean,
     callback_one: ObserverCallback,
 ): void => {
+
     const observer = useRef<IntersectionObserver>();
 
     useEffect(() => {

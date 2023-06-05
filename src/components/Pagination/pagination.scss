@@ -6,12 +6,10 @@
     user-select: none;
     transition: all 300ms ease-in-out;
 
-
     &:hover {
       a {
         color: #fbbd61;
         border-color: #ec7532;
-
       }
     }
 
@@ -19,7 +17,6 @@
       a {
         color: #4a4a4a;
         border-color: #ec7532;
-
       }
     }
 
@@ -34,7 +31,6 @@
       margin: 0 4px;
       border: solid 2px #e8e8e8;
       border-radius: 50%;
-
     }
   }
 }

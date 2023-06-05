@@ -4,7 +4,8 @@ import CustomButton from "../components/CustomButton/CustomButton";
 import CustomTextarea from "../components/CustomFields/CustomTextarea";
 import MapComponent from "../components/MapComponent";
 
-const ContactsPage:React.FC = () => {
+const ContactsPage: React.FC = () => {
+
     return (
         <div className='frameworks-container'>
             <div className='map'>
@@ -28,21 +29,27 @@ const ContactsPage:React.FC = () => {
                     </form>
                     <div className='form-colum'>
                         <div className='form-row'>
-                            <span><i className='fa fa-map-marker'></i></span>
+                            <span>
+                                <i className='fa fa-map-marker'></i>
+                            </span>
                             <div className='form-text'>
                                 <h4>Address</h4>
                                 <p>Solar system, planet Earth</p>
                             </div>
                         </div>
                         <div className='form-row'>
-                            <span><i className='fa fa-envelope-open'></i></span>
+                            <span>
+                                <i className='fa fa-envelope-open'></i>
+                            </span>
                             <div className='form-text'>
                                 <h4>Email</h4>
                                 <p>philipsxenium93@gmail.com</p>
                             </div>
                         </div>
                         <div className='form-row'>
-                            <span><i className='fa fa-phone'></i></span>
+                            <span>
+                                <i className='fa fa-phone'></i>
+                            </span>
                             <div className='form-text'>
                                 <h4>Telephone</h4>
                                 <p>+66 65 335 62 63</p>

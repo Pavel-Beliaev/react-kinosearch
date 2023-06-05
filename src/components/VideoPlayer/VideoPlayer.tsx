@@ -25,9 +25,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
                             origin: 'http://localhost:3000/'
                         },
                     },
-
                 }}
-
             />
         </div>
     );
