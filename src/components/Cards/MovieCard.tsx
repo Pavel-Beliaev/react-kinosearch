@@ -11,6 +11,7 @@ const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmG
     const {base_url, posterSize, genresMovies, genresTV} = useAppSelector((state) => state.config)
     const genres = type === 'movie' ? genresMovies : genresTV
 
+
     return (
         <div className='film'>
             <img

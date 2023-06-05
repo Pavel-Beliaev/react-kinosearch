@@ -6,14 +6,18 @@ export type MoviesState = {
     dataFilms: IResultsMovies[],
     types: string[],
     pageNumber: number,
-    infinityAble: boolean
+    infinityAble: boolean,
+    searchValue: string,
+    genreId: number | null
 }
 
 const initialState: MoviesState = {
     dataFilms: [],
-    types: ['movie', 'tv'],
     pageNumber: 1,
+    types: ['movie', 'tv'],
     infinityAble: false,
+    searchValue: '',
+    genreId: null
 
 }
 
@@ -33,10 +37,19 @@ export const moviesSlice = createSlice({
         setInfinityAble(state, action: PayloadAction<boolean>) {
             state.infinityAble = action.payload
         },
+        setSearchValue(state, action: PayloadAction<string>) {
+            state.searchValue = action.payload
+        },
+        setGenreId(state, action: PayloadAction<number|null>) {
+            state.genreId = action.payload
+        },
+
     },
 })
 
 export const {
+    setGenreId,
+    setSearchValue,
     setPageNumber,
     setInfinityAble,
     setMovieData,

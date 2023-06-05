@@ -4,37 +4,35 @@ import {useAppDispatch, useAppSelector} from "../Store/store";
 import {useObserver} from "../hooks/useObserver";
 import debounce from 'lodash.debounce'
 import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
-import {setInfinityAble, setPageNumber} from "../Store/movies/slice";
+import {setGenreId, setInfinityAble, setPageNumber} from "../Store/movies/slice";
 import ErrorPage from "./ErrorPage";
 import Loader from "../components/Loader/Loader";
-import {Outlet, useLocation} from "react-router-dom";
+import {Outlet, useLocation, useNavigate} from "react-router-dom";
+import qs from 'qs'
+import Search from "../components/Search";
+import Genrebar from "../components/Genrebar";
 
 const AllMoviesPage: React.FC = () => {
-    const {dataFilms, pageNumber, infinityAble} = useAppSelector(state => state.movies)
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const {pathname} = useLocation()
+
+    const {genresMovies, genresTV} = useAppSelector((state) => state.config);
+    const {dataFilms, pageNumber, infinityAble, searchValue, genreId} = useAppSelector(state => state.movies)
+
     const [prevPageNumber, setPrevPageNumber] = useState(1)
     const [observerAble, setObserverAble] = useState(false)
-
-    const [searchValue, setSearchValue] = useState('');
-    const [isValue, setIsValue] = useState('');
+    const [preventRedundantRequest, setPreventRedundantRequest] = useState(false)
 
     const [isActive, setIsActive] = useState(false)
-    const [genreId, setGenreId] = useState<number | null>(null);
-
-    const [preventRedundantRequest, setPreventRedundantRequest] = useState(false)
 
     const lastElementRef = useRef<HTMLDivElement>(null);
     const dataElementRef = useRef<HTMLDivElement>(null);
 
-    const {pathname} = useLocation()
-    const type = pathname.split('/').pop()
-
-    const {genresMovies, genresTV} = useAppSelector((state) => state.config);
-    const genres = type === 'movie' ? genresMovies : genresTV
-
     const [fetching, data] = useLazyGetAllMoviesQuery()
 
-
+    const type = pathname.split('/').pop()
+    const genres = type === 'movie' ? genresMovies : genresTV
     const totalPage = data.data?.total_pages ?? 1;
     const isFetch = data.isFetching
     const isSuces = data.isSuccess
@@ -50,17 +48,24 @@ const AllMoviesPage: React.FC = () => {
         }
     )
 
-    // useEffect(() => {
-    //     const queryString = qs.stringify({
-    //         search: searchValue,
-    //         genre: genreId,
-    //         page: pageNumber,
-    //     })
-    // }, [searchValue, genreId, pageNumber])
+    useEffect(() => {
+        if (window.location.search) {
+            const params = qs.parse(window.location.search.substring(1))
+        }
+    }, [])
+
+    useEffect(() => {
+        const queryString = qs.stringify({
+            search: searchValue,
+            genre: genreId,
+            page: pageNumber,
+        })
+        navigate(`?${queryString}`)
+    }, [searchValue, genreId, pageNumber])
 
     useEffect(() => {
         setIsActive(false)
-        setGenreId(null)
+        dispatch(setGenreId(null))
     }, [type, searchValue])
 
     useEffect(() => {
@@ -82,8 +87,7 @@ const AllMoviesPage: React.FC = () => {
 
     useEffect(() => {
         setPreventRedundantRequest(!preventRedundantRequest)
-    },[pageNumber, genreId, type, searchValue])
-
+    }, [pageNumber, genreId, type, searchValue])
 
     useEffect(() => {
         fetching({
@@ -96,50 +100,9 @@ const AllMoviesPage: React.FC = () => {
         })
     }, [preventRedundantRequest])
 
-    const debounceChangeInput = useCallback(
-        debounce((str) => {
-            setSearchValue(str)
-        }, 1000),
-        []
-    )
-
-    const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setIsValue(event.target.value);
-        debounceChangeInput(event.target.value);
-    }
-
-    const changeGenre = (IdGenre: number | null, active: boolean) => {
-        setGenreId(IdGenre)
-        setIsActive(active)
-    }
-
-    const cleanInput = () => {
-        setSearchValue('')
-        setIsValue('')
-    }
-
-    const cleanGenre = () => {
-        setGenreId(null)
-        setIsActive(false)
-    }
-
     return (
         <div className='frameworks-container movies'>
-            <div className='movies-search'>
-                <CustomInput
-                    value={isValue}
-                    onChange={changeInput}
-                    placeholder='Type to search'
-                />
-                <i className='fa fa-search'></i>
-                {searchValue &&
-                    <span
-                        onClick={cleanInput}
-                    >
-                        Clean
-                    </span>
-                }
-            </div>
+            <Search/>
             <div
                 ref={dataElementRef}
                 className='movies-colum'
@@ -156,32 +119,11 @@ const AllMoviesPage: React.FC = () => {
                     />
                 }
             </div>
-            <div className='movies-sidebar'>
-                <h4>Categories</h4>
-                <ul>
-                    {genres.map((genre) => (
-                        <li
-                            key={genre.id}
-                        >
-                            <span
-                                className={genreId === genre.id && isActive ? 'active' : ''}
-
-                                onClick={() => changeGenre(genre.id, true)}
-                            >
-                                {genre.name}
-                            </span>
-                        </li>
-                    ))}
-                    {genreId &&
-                        <span
-                            className='movies-sidebar-clean'
-                            onClick={cleanGenre}
-                        >
-                        Clean
-                    </span>
-                    }
-                </ul>
-            </div>
+            <Genrebar
+                isActive={isActive}
+                setIsActive={setIsActive}
+                genres={genres}
+            />
         </div>
     );
 };

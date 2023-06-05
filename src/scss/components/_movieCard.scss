@@ -36,6 +36,11 @@
     }
 
     p {
+      display: -webkit-box;
+      -webkit-line-clamp: 12; // количество строк
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
       margin: 0 0 20px 0;
       color: #717171
     }

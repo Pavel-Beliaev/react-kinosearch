@@ -12,7 +12,7 @@ const AllMoviesContent:React.FC = () => {
 
     return (
         <>
-            {dataFilms.map((film, index) => (
+            {dataFilms.map((film) => (
                 <MovieCard
                     key={film.id}
                     id={film.id}

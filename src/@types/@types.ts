@@ -1,8 +1,5 @@
 import React, {RefObject} from "react";
 
-export type DropDownNavbarType = {
-    scroll: number
-}
 
 
 export type SliderWrapperType = {
