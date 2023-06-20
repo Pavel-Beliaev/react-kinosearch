@@ -27,6 +27,7 @@ const SliderShow: React.FC<SliderProps> = ({navigation, slideCount, children}) =
                 keyboard={true}
                 modules={[Scrollbar, Mousewheel, Keyboard, Navigation]}
                 className="swiperTrending"
+                
             >
                 {children}
             </Swiper>

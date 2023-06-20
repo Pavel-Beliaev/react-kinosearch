@@ -3,6 +3,27 @@
   height: 95vh;
   user-select: none;
 
+  @media (max-width: 850px) {
+    .sliderHeader-text {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 630px) {
+    .sliderHeader-text {
+      h1 {
+        font-size: 38px;
+      }
+
+      p {
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+    }
+  }
+
   .container-pagination {
     position: absolute;
     bottom: 80px;
@@ -71,11 +92,14 @@
     animation: Blurb .5s .5s forwards;
     text-align: left;
     margin-bottom: 0;
+
+
   }
 
   &-text {
     padding-left: 15px;
     width: 66%;
+
 
     span {
       font-size: 14px;

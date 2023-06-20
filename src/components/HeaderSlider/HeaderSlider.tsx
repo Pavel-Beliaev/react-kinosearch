@@ -75,7 +75,7 @@ const HeaderSlider: React.FC = () => {
                                                 />
                                                 <Link
                                                     className='sliderHeader-readmore'
-                                                    to={`/movies/${film.id}`}
+                                                    to={`all/movie/${film.id}`}
                                                 >
                                                     Read more
                                                 </Link>

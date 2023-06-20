@@ -27,14 +27,16 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-track {
-  background: #101010;
-  border: 1px solid $orange;
+  //background: #101010;
+  background: $orange;
+  //border: 1px solid #101010;
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: $lightorang;
+  height: 10px;
+  background-color: #101010;
   border-radius: 20px;
-  border: 3px solid #101010;
+  border: 2px solid $orange;
 }
 
 a,

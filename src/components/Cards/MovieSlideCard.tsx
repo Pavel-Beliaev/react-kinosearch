@@ -32,8 +32,8 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, rele
                             <Link
                                 className='movieSliderCard-readmore'
                                 to={release
-                                    ? `/movies/${id}`
-                                    : `/tv/${id}`
+                                    ? `all/movie/${id}`
+                                    : `all/tv/${id}`
                                 }
                             >
                                 Read more

@@ -1,10 +1,130 @@
 @import "../variables";
 
 .navbar {
+
+  @media (max-width: 960px) {
+    .navbar-main{
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 710px) {
+    .navbar-main{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .navbar-burger {
+      display: flex;
+    }
+
+    .navbar-panel {
+      display: none;
+    }
+  }
+
   &-main {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+
+
+  }
+
+  &-burger {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding-right: 24px;
+
+
+    svg {
+      width: 50px;
+      height: 50px;
+      stroke: white;
+      z-index: 2;
+    }
+
+    ul {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      background-color: rgba(#101010, 1);
+
+      li {
+        position: relative;
+        border: 1px solid #ec7532;
+        transition: all .30s ease-in-out;
+        background: #101010;
+
+
+        &:hover {
+          border: 1px solid #fbbd61;
+          transition: all .30s ease-in-out;
+          background: linear-gradient(-90deg, rgba(0, 0, 0, 1) 40%, rgba(236, 117, 50, 0.6) 100%);
+        }
+
+        &:nth-of-type(2) {
+
+          .popup {
+            li {
+              a {
+                &:after {
+                  content: '';
+                }
+              }
+            }
+          }
+
+          &:hover {
+            .popup {
+              display: block;
+            }
+          }
+
+          a {
+            &:after {
+              font: normal normal normal 16px/1 FontAwesome;
+              content: '\f105';
+              padding-left: 10px;
+              line-height: 10px;
+
+            }
+          }
+        }
+
+        a {
+          padding: 24px 24px;
+          width: 100%;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          font-size: 16px;
+          font-weight: normal;
+          line-height: .8em;
+          display: inline-block;
+          position: relative;
+        }
+      }
+    }
+
+    .popup {
+      display: none;
+      position: absolute;
+      z-index: 2;
+      left: 50%;
+      top: 0;
+      width: 50%;
+
+      li {
+
+        a {
+
+        }
+      }
+    }
   }
 
   &-panel {
@@ -21,7 +141,7 @@
         position: relative;
 
         &:hover {
-          .navbar-panel-popup {
+          .popup {
             width: 100%;
             transition: all .30s ease-in-out;
             opacity: 1;
@@ -85,7 +205,7 @@
       }
     }
 
-    &-popup {
+    .popup {
       position: absolute;
       display: flex;
       flex-direction: column;

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import Menu from "../components/Menu";
+import Menu from "../components/Navbar/Menu";
 import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
 import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
-import DropDownNavbar from "../components/DropDownNavbar";
+import DropDownNavbar from "../components/Navbar/DropDownNavbar";
 import {
     useGetConfigurationQuery,
     useGetGenreMoviesQuery,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SliderShow from "../components/SliderShow/SliderShow";
 import SliderTrailers from "../components/SliderTrailers/SliderTrailers";
 import MovieSlideCard from "../components/Cards/MovieSlideCard";
@@ -11,6 +11,8 @@ import {typeQueryFilms, typeQueryTrindingFilms} from "../mock/statick";
 const Home: React.FC = () => {
     const [switcherTrendingFilms, setSwitcherTrendingFilms] = useState(0)
     const [switcherTopRateFilms, setSwitcherTopRateFilms] = useState(0)
+    // const [countSlide, setCountSlide] = useState(4)
+
 
     const {
         data: trendDataList,
@@ -20,6 +22,25 @@ const Home: React.FC = () => {
         data: topRateDataList,
         isLoading: isLoadingTopRate
     } = useGetTopRatedMoviesQuery(typeQueryFilms[switcherTopRateFilms]);
+
+    // useEffect(() => {
+    //     if (window.innerWidth > 2140) {
+    //         setCountSlide(6)
+    //     } else if (window.innerWidth > 1740) {
+    //         setCountSlide(5)
+    //     } else if (window.innerWidth > 1380) {
+    //         setCountSlide(4)
+    //     } else if (window.innerWidth > 1000) {
+    //         setCountSlide(3)
+    //     } else if (window.innerWidth > 620) {
+    //         setCountSlide(2)
+    //     } else {
+    //         setCountSlide(1)
+    //     }
+    // }, [])
+
+
+
 
     return (
         <>
