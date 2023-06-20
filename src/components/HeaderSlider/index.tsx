@@ -13,12 +13,18 @@ import {CustomButton} from "../CustomButton";
 import {Rating} from "../Rating";
 
 
-export const HeaderSlider:FC = () => {
+export const HeaderSlider: FC = () => {
     const dispatch = useAppDispatch();
     const {genresMovies} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
     const {data} = useGetNewMoviesQuery()
 
+    const dispatchActiveModalHandler = (id: number) => {
+        dispatch(setActiveModal({
+            active: true,
+            id: id
+        }))
+    }
 
     return (
         <Swiper
@@ -66,13 +72,13 @@ export const HeaderSlider:FC = () => {
                                                     rating={film.vote_average}
                                                     fill='none'
                                                 />
-                                                <CustomButton
-                                                    onClick={() => dispatch(setActiveModal({
-                                                        active: true,
-                                                        id: film.id
-                                                    }))}
-                                                    children={<i className='fa fa-play'><span>Play trailer</span></i>}
-                                                />
+                                                <CustomButton onClick={() => dispatchActiveModalHandler(film.id)}>
+                                                    <i className='fa fa-play'>
+                                                        <span>
+                                                            Play trailer
+                                                        </span>
+                                                    </i>
+                                                </CustomButton>
                                                 <Link
                                                     className='sliderHeader-readMore'
                                                     to={`all/movie/${film.id}`}
@@ -86,7 +92,8 @@ export const HeaderSlider:FC = () => {
                             </div>
                         )}
                     </SwiperSlide>
-                ))}
+                ))
+            }
         </Swiper>
     );
 };

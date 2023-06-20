@@ -12,7 +12,7 @@ export type MovieMediaType = {
     pict: string | null | undefined
 }
 
-export const MovieMedia:FC<MovieMediaType> = ({dataMovie}) => {
+export const MovieMedia: FC<MovieMediaType> = ({dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
 
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
@@ -43,7 +43,8 @@ export const MovieMedia:FC<MovieMediaType> = ({dataMovie}) => {
                                         </div>
                                         <p>{param.name}</p>
                                     </div>
-                                ))}
+                                ))
+                            }
                         </div>
                         : <div className='mediaBlock-backdrops'>
                             <SliderShow
@@ -57,7 +58,8 @@ export const MovieMedia:FC<MovieMediaType> = ({dataMovie}) => {
                                                 alt="backdrops"
                                             />
                                         </SwiperSlide>
-                                    )}
+                                    )
+                                }
                             />
                         </div>
                     }

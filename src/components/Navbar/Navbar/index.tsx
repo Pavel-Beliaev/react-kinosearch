@@ -33,7 +33,6 @@ export const Navbar:FC = () => {
                         <NavElement/>
                     </ul>
                 </div>
-
             </div>
         </div>
     );

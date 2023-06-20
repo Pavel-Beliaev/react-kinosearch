@@ -3,7 +3,7 @@ import {useGetAllPersonQuery} from "../Store/tmdbService/endpoints";
 import {Pagination, PeopleCard, SkeletonPeopleCard} from "../components";
 
 
-export const People:FC = () => {
+export const People: FC = () => {
     const [pageNumber, setPageNumber] = useState(1)
 
     const {data, isFetching} = useGetAllPersonQuery(pageNumber);
@@ -33,7 +33,8 @@ export const People:FC = () => {
                                 id={object.id}
                                 profilePath={object.profile_path}
                             />
-                    ))}
+                    ))
+                }
                 <div className='container people-pagination'>
                     <Pagination
                         value={pageNumber}

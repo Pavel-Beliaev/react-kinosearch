@@ -8,7 +8,7 @@ export type ReviewsType = {
     reviews: ResultsReviewsType[] | undefined,
 }
 
-export const Reviews:FC<ReviewsType> = ({reviews}) => {
+export const Reviews: FC<ReviewsType> = ({reviews}) => {
     const {base_url, avatarSize} = useAppSelector((state) => state.config)
 
     return (
@@ -54,7 +54,8 @@ export const Reviews:FC<ReviewsType> = ({reviews}) => {
                             </div>
                         </div>
                     </div>
-                ))}
+                ))
+            }
         </div>
     );
 };

@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import {Link} from "react-router-dom";
-import {footerMenu} from "../mock/statick";
+import {footerContactArray, footerLinkArray, footerMenu} from "../mock/statick";
 
-export const Footer:FC = () => {
+export const Footer: FC = () => {
+
 
     return (
         <div className='footer'>
@@ -18,47 +19,33 @@ export const Footer:FC = () => {
                                     <h6>{value}</h6>
                                     <div className='footer-column-menu'>
                                         <ul>
-                                            <li>
-                                                <Link to="/">
-                                                    FAQs
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/">
-                                                    Give us feedback
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link to="/">
-                                                    Contact us
-                                                </Link>
-                                            </li>
+                                            {footerLinkArray
+                                                .map((text) => (
+                                                    <li key={text}>
+                                                        <Link to="/">
+                                                            {text}
+                                                        </Link>
+                                                    </li>
+                                                ))}
                                         </ul>
                                     </div>
                                 </div>
-                            ))}
+                            ))
+                        }
                         <div className='footer-column'>
                             <h6>Connect with us</h6>
                             <div className='footer-column-menu'>
                                 <ul>
-                                    <li>
-                                        <Link to="https://twitter.com">
-                                            <span className='fa fa-twitter'></span>
-                                            Twitter
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="https://www.facebook.com/profile.php?id=100014321836619&sk=about">
-                                            <span className='fa fa-facebook'></span>
-                                            Facebook
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="https://t.me/ComeThroughDontLinger">
-                                            <span className='fa fa-telegram'></span>
-                                            Telegram
-                                        </Link>
-                                    </li>
+                                    {footerContactArray
+                                        .map((obj) => (
+                                            <li key={obj.link}>
+                                                <Link to={`${obj.link}`}>
+                                                    <span className={`${obj.icon}`}></span>
+                                                    {obj.title}
+                                                </Link>
+                                            </li>
+                                        ))
+                                    }
                                 </ul>
                             </div>
                         </div>

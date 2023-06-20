@@ -11,7 +11,7 @@ import {useAppSelector} from "../../Store/store";
 import {useGetPopularMoviesQuery, useLazyGetVideoByIdQuery} from "../../Store/tmdbService/endpoints";
 import {VideoPlayer} from "../VideoPlayer";
 
-export const SliderTrailers:FC = () => {
+export const SliderTrailers: FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
@@ -49,7 +49,8 @@ export const SliderTrailers:FC = () => {
                                 alt='backdrop'
                             />
                         </SwiperSlide>
-                    ))}
+                    ))
+                }
             </Swiper>
             <div className='container sliderTrailer'>
                 <h2>Trailers</h2>
@@ -86,7 +87,8 @@ export const SliderTrailers:FC = () => {
                                     alt='poster'
                                 />
                             </SwiperSlide>
-                        ))}
+                        ))
+                    }
                 </Swiper>
             </div>
         </>

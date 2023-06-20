@@ -9,7 +9,7 @@ type GenreBarType = {
     genres: Genres[]
 }
 
-export const GenreBar:FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
+export const GenreBar: FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
     const dispatch = useAppDispatch()
     const {searchValue, genreId} = useAppSelector(state => state.movies)
 
@@ -42,7 +42,8 @@ export const GenreBar:FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
                                 {genre.name}
                             </span>
                         </li>
-                    ))}
+                    ))
+                }
                 {genreId &&
                     <span
                         className='genreBar-clean'

@@ -7,7 +7,7 @@ export type VideoPlayerProps = {
     keys?: string | undefined,
 }
 
-export const VideoPlayer:FC<VideoPlayerProps> = ({keys, keysArray}) => {
+export const VideoPlayer: FC<VideoPlayerProps> = ({keys, keysArray}) => {
 
     return (
         <div className='player-wrapper'>
@@ -15,7 +15,8 @@ export const VideoPlayer:FC<VideoPlayerProps> = ({keys, keysArray}) => {
                 controls={true}
                 className='react-player'
                 url={keysArray
-                    ? keysArray.map((key) => (`https://www.youtube.com/watch?v=${key}`))
+                    ? keysArray
+                        .map((key) => (`https://www.youtube.com/watch?v=${key}`))
                     : `https://www.youtube.com/watch?v=${keys}`
                 }
                 width='100%'
