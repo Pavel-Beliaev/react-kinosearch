@@ -3,7 +3,7 @@ import './customfields.scss'
 import {TextareaProps} from "./types";
 
 
-const CustomTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref?) => {
+export const CustomTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, ref?) => {
     const {title, ...textareaProps} = props;
 
     return (
@@ -16,5 +16,3 @@ const CustomTextarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, re
         </div>
     );
 });
-
-export default CustomTextarea;

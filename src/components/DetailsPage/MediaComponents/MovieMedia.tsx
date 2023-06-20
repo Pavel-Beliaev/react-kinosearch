@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
-import Switcher from "../../Switcher/Switcher";
-import VideoPlayer from "../../VideoPlayer/VideoPlayer";
-import SliderShow from "../../SliderShow/SliderShow";
 import {SwiperSlide} from "swiper/react";
 import {useAppSelector} from "../../../Store/store";
 import {MovieMediaType} from "./types";
 import './media.scss'
+import {VideoPlayer} from "../../VideoPlayer/VideoPlayer";
+import {Switcher} from "../../Switcher/Switcher";
+import {SliderShow} from "../../SliderShow/SliderShow";
 
 
-const MovieMedia: React.FC<MovieMediaType> = ({dataMovie}) => {
+export const MovieMedia: React.FC<MovieMediaType> = ({dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
 
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
@@ -62,6 +62,4 @@ const MovieMedia: React.FC<MovieMediaType> = ({dataMovie}) => {
         </div>
     );
 };
-
-export default MovieMedia;
 

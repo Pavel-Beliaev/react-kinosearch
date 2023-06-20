@@ -3,7 +3,7 @@ import './customfields.scss'
 import {InputProps} from "./types";
 
 
-const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
+export const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
     const {title, ...inputProps} = props;
 
     return (
@@ -23,5 +23,3 @@ const CustomInput = forwardRef<HTMLInputElement, InputProps>((props, ref?) => {
         </>
     );
 });
-
-export default CustomInput;

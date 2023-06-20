@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from "./Navbar";
 import {Link} from "react-router-dom";
+import {Navbar} from "./Navbar";
 
-const Menu: React.FC = () => {
+export const Menu: React.FC = () => {
 
     return (
         <div className='menu'>
@@ -18,5 +18,3 @@ const Menu: React.FC = () => {
         </div>
     );
 };
-
-export default Menu;

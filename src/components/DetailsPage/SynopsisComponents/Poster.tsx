@@ -1,11 +1,11 @@
 import React from 'react';
-import Rating from "../../Rating/Rating";
-import notFoto from "../../../public/JPG/notImg.jpg";
+import notImg from "../../../public/JPG/notImg.jpg";
 import {useAppSelector} from "../../../Store/store";
 import {PosterType} from "./types";
 import '../sinipsis.scss'
+import {Rating} from "../../Rating/Rating";
 
-const Poster: React.FC<PosterType> = ({poster, rating, keyType}) => {
+export const Poster: React.FC<PosterType> = ({poster, rating, keyType}) => {
     const {base_url, profileSize, posterSize} = useAppSelector((state) => state.config)
 
     return (
@@ -14,7 +14,7 @@ const Poster: React.FC<PosterType> = ({poster, rating, keyType}) => {
                 ? <img
                     src={poster
                         ? `${base_url}${profileSize}${poster}`
-                        : notFoto
+                        : notImg
                     }
                     alt="poster"
                 />
@@ -22,7 +22,7 @@ const Poster: React.FC<PosterType> = ({poster, rating, keyType}) => {
                     <img
                         src={poster
                             ? `${base_url}${posterSize}${poster}`
-                            : notFoto
+                            : notImg
                         }
                         alt="poster"
                     />
@@ -37,5 +37,3 @@ const Poster: React.FC<PosterType> = ({poster, rating, keyType}) => {
         </div>
     );
 };
-
-export default Poster;

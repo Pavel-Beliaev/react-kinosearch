@@ -1,13 +1,13 @@
 import React from 'react';
-import MovieCard from "./Cards/MovieCard";
 import {useOutletContext} from "react-router-dom";
 import {IResultsMovies} from "../Store/tmdbService/@types";
+import {MovieCard} from "./Cards/MovieCard";
 
 type AllMoviesContentType = {
     dataFilms: IResultsMovies[],
 }
 
-const AllMoviesContent: React.FC = () => {
+export const AllMoviesContent: React.FC = () => {
     const {dataFilms} = useOutletContext<AllMoviesContentType>()
 
     return (
@@ -27,5 +27,3 @@ const AllMoviesContent: React.FC = () => {
         </>
     );
 };
-
-export default AllMoviesContent;

@@ -2,7 +2,7 @@ import React from 'react';
 import {OverviewsType} from "./types";
 import '../sinipsis.scss'
 
-const Overviews: React.FC<OverviewsType> = ({title, created_by, overview, creditsCrew, keyType}) => {
+export const Overviews: React.FC<OverviewsType> = ({title, created_by, overview, creditsCrew, keyType}) => {
 
     return (
         <div className='overview'>
@@ -41,5 +41,3 @@ const Overviews: React.FC<OverviewsType> = ({title, created_by, overview, credit
         </div>
     );
 };
-
-export default Overviews;

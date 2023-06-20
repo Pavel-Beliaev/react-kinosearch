@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const SkeletonPeopleCard: React.FC = (props) => (
+export const SkeletonPeopleCard: React.FC = (props) => (
     <ContentLoader
         speed={2}
         width={200}
@@ -16,5 +16,4 @@ const SkeletonPeopleCard: React.FC = (props) => (
         <rect x="10" y="314" rx="10" ry="10" width="180" height="17"/>
         <rect x="10" y="340" rx="10" ry="10" width="180" height="14"/>
     </ContentLoader>
-)
-export default SkeletonPeopleCard;
+);

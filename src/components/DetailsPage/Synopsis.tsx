@@ -1,17 +1,17 @@
 import React from 'react';
-import Poster from "./SinopsisComponents/Poster";
 import {IDetails} from "../../Store/tmdbService/@types";
-import SkeletonPeoplePage from "../Skeletons/SkeletonPeoplePage";
-import Overviews from "./SinopsisComponents/Overviews";
-import Info from "./SinopsisComponents/Info";
 import './sinipsis.scss'
+import {Poster} from "./SynopsisComponents/Poster";
+import {Overviews} from "./SynopsisComponents/Overviews";
+import {Info} from "./SynopsisComponents/Info";
+import {SkeletonPeoplePage} from "../Skeletons/SkeletonPeoplePage";
 
-type SinopsisType = {
+type SynopsisType = {
     data: IDetails | undefined,
     keyType: boolean,
     isFetching: boolean
 }
-const Sinopsis: React.FC<SinopsisType> = ({data, keyType, isFetching}) => {
+export const Synopsis: React.FC<SynopsisType> = ({data, keyType, isFetching}) => {
 
     return (
         <>
@@ -48,5 +48,3 @@ const Sinopsis: React.FC<SinopsisType> = ({data, keyType, isFetching}) => {
         </>
     );
 };
-
-export default Sinopsis;

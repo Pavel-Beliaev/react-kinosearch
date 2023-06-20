@@ -8,7 +8,7 @@ import People from "./pages/People";
 import ContactsPage from "./pages/ContactsPage";
 import ErrorPage from "./pages/ErrorPage";
 import DetailInfoPage from "./pages/DetailInfoPage";
-import AllMoviesContent from "./components/AllMoviesContent";
+import {AllMoviesContent} from "./components";
 
 const App: React.FC = () => {
     const router = createBrowserRouter(

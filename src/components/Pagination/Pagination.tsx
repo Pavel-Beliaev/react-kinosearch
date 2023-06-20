@@ -4,7 +4,7 @@ import ReactPaginate from "react-paginate";
 import {PaginationProps} from "./types";
 
 
-const Pagination: React.FC<PaginationProps> = ({value, changePage, totalPage}) => {
+export const Pagination: React.FC<PaginationProps> = ({value, changePage, totalPage}) => {
 
     return (
         <ReactPaginate
@@ -20,5 +20,3 @@ const Pagination: React.FC<PaginationProps> = ({value, changePage, totalPage}) =
         />
     );
 };
-
-export default Pagination;

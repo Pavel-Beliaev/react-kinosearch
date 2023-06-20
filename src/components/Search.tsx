@@ -1,10 +1,10 @@
 import React, {useCallback, useState} from 'react';
-import CustomInput from "./CustomFields/CustomInput";
 import debounce from "lodash.debounce";
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {setSearchValue} from "../Store/movies/slice";
+import {CustomInput} from "./CustomFields/CustomInput";
 
-const Search: React.FC = () => {
+export const Search: React.FC = () => {
     const dispatch = useAppDispatch();
 
     const {searchValue} = useAppSelector(state => state.movies)
@@ -44,5 +44,3 @@ const Search: React.FC = () => {
         </div>
     );
 };
-
-export default Search;

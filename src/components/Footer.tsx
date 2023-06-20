@@ -2,8 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {footerMenu} from "../mock/statick";
 
-
-const Footer: React.FC = () => {
+export const Footer: React.FC = () => {
 
     return (
         <div className='footer'>
@@ -72,5 +71,3 @@ const Footer: React.FC = () => {
         </div>
     );
 };
-
-export default Footer;

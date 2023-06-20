@@ -5,7 +5,7 @@ import {MovieCardProps} from "./types";
 import notPicture from "../../public/PNG/placeholder.png";
 
 
-const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
+export const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
     const {pathname} = useLocation()
 
     const {base_url, posterSize, genresMovies, genresTV} = useAppSelector((state) => state.config)
@@ -51,5 +51,3 @@ const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmG
         </div>
     );
 };
-
-export default MovieCard;

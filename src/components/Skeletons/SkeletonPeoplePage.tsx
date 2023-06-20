@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const SkeletonPeoplePage: React.FC = (props) => (
+export const SkeletonPeoplePage: React.FC = (props) => (
     <ContentLoader
         speed={2}
         width={1140}
@@ -33,6 +33,4 @@ const SkeletonPeoplePage: React.FC = (props) => (
         <rect x="895" y="330" rx="10" ry="10" width="228" height="18"/>
         <rect x="895" y="353" rx="10" ry="10" width="228" height="16"/>
     </ContentLoader>
-)
-
-export default SkeletonPeoplePage;
+);

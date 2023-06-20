@@ -4,8 +4,8 @@ import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import {ModalWindowType} from "./types";
 
-const ModalWindow: React.FC<ModalWindowType> = ({children}) => {
-    const dispstch = useAppDispatch();
+export const ModalWindow: React.FC<ModalWindowType> = ({children}) => {
+    const dispatch = useAppDispatch();
     const {active} = useAppSelector(state => state.config.activeModal);
 
     return (
@@ -13,7 +13,7 @@ const ModalWindow: React.FC<ModalWindowType> = ({children}) => {
             {active &&
                 <div
                     onClick={() =>
-                        dispstch(setActiveModal({
+                        dispatch(setActiveModal({
                             active: false
                         }))
                     }
@@ -28,5 +28,3 @@ const ModalWindow: React.FC<ModalWindowType> = ({children}) => {
         </>
     );
 };
-
-export default ModalWindow;

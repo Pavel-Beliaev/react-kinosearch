@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from "react-router-dom";
 import logoIcon from "../../public/SVG/Paulo F  I  L  M  S.svg";
 import {ReactComponent as BurgerIcon} from "../../public/SVG/burger.svg";
-import NavElement from "./NavElement";
+import {NavElement} from "./NavElement";
 
 
-const Navbar: React.FC = () => {
+export const Navbar: React.FC = () => {
     const [isActive, setIsActive] = useState(false)
 
 
@@ -38,5 +38,3 @@ const Navbar: React.FC = () => {
         </div>
     );
 };
-
-export default Navbar;

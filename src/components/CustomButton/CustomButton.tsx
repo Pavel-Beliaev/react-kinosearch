@@ -2,7 +2,7 @@ import React from 'react';
 import './custombutton.scss'
 import {ButtonProps} from "./types";
 
-const CustomButton:React.FC<ButtonProps> = ({children, ...props}) => {
+export const CustomButton:React.FC<ButtonProps> = ({children, ...props}) => {
 
     return (
       <button {...props} className='custom_button'>
@@ -10,5 +10,3 @@ const CustomButton:React.FC<ButtonProps> = ({children, ...props}) => {
       </button>
     );
 };
-
-export default CustomButton;

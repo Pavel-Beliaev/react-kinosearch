@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Rating from "../Rating/Rating";
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import {MovieSlideCardProps} from "./types";
 import notPicture from "../../public/PNG/placeholder.png";
+import {Rating} from "../Rating/Rating";
 
 
-const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
+export const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
 
     const {base_url, posterSize} = useAppSelector((state) => state.config)
@@ -30,7 +30,7 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, rele
                                 <i className='fa fa-play'></i>
                             </div>
                             <Link
-                                className='movieSliderCard-readmore'
+                                className='movieSliderCard-readMore'
                                 to={release
                                     ? `all/movie/${id}`
                                     : `all/tv/${id}`
@@ -73,5 +73,3 @@ const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, rele
         </div>
     );
 };
-
-export default MovieSlideCard;

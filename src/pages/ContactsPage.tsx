@@ -1,8 +1,5 @@
 import React from 'react';
-import CustomInput from "../components/CustomFields/CustomInput";
-import CustomButton from "../components/CustomButton/CustomButton";
-import CustomTextarea from "../components/CustomFields/CustomTextarea";
-import MapComponent from "../components/MapComponent";
+import {CustomButton, CustomInput, CustomTextarea, MapComponent} from "../components";
 
 const ContactsPage: React.FC = () => {
 

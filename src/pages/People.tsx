@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import PeopleCard from "../components/Cards/PeopleCard";
-import Pagination from "../components/Pagination/Pagination";
-import SkeletonPeopleCard from "../components/Skeletons/SkeletonPeopleCard";
 import {useGetAllPersonQuery} from "../Store/tmdbService/endpoints";
+import {Pagination, PeopleCard, SkeletonPeopleCard} from "../components";
 
 
 const People: React.FC = () => {

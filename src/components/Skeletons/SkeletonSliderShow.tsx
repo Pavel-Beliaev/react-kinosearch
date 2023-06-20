@@ -1,7 +1,7 @@
 import React from "react"
 import ContentLoader from "react-content-loader"
 
-const SkeletonSliderShow: React.FC = (props) => (
+export const SkeletonSliderShow: React.FC = (props) => (
     <ContentLoader
         speed={2}
         width={262}
@@ -16,6 +16,4 @@ const SkeletonSliderShow: React.FC = (props) => (
         <rect x="0" y="425" rx="10" ry="10" width="262" height="25"/>
         <circle cx="123" cy="503" r="27"/>
     </ContentLoader>
-)
-
-export default SkeletonSliderShow;
+);

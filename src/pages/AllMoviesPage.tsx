@@ -4,11 +4,9 @@ import {useObserver} from "../hooks/useObserver";
 import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
 import {setGenreId, setInfinityAble, setPageNumber} from "../Store/movies/slice";
 import ErrorPage from "./ErrorPage";
-import Loader from "../components/Loader/Loader";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import qs from 'qs'
-import Search from "../components/Search";
-import Genrebar from "../components/Genrebar";
+import {GenreBar, Loader, Search} from "../components";
 
 const AllMoviesPage: React.FC = () => {
     const navigate = useNavigate();
@@ -50,14 +48,14 @@ const AllMoviesPage: React.FC = () => {
         }
     )
 
-    useEffect(() => {
-        if (window.location.search) {
-            const params = qs
-                .parse(window
-                    .location.search
-                    .substring(1))
-        }
-    }, [])
+    // useEffect(() => {
+    //     if (window.location.search) {
+    //         const params = qs
+    //             .parse(window
+    //                 .location.search
+    //                 .substring(1))
+    //     }
+    // }, [])
 
     useEffect(() => {
         const queryString = qs
@@ -126,7 +124,7 @@ const AllMoviesPage: React.FC = () => {
                     <div ref={lastElementRef}/>
                 }
             </div>
-            <Genrebar
+            <GenreBar
                 isActive={isActive}
                 setIsActive={setIsActive}
                 genres={genres}

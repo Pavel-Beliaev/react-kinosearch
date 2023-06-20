@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {Table} from 'antd';
-import Switcher from "../../Switcher/Switcher";
 import {MovieCredits, TablePeopleActingType} from "./types";
-import {columns} from "./config_table";
 import './table.scss'
+import {columns} from "./config_table";
+import {Switcher} from "../../Switcher/Switcher";
 
-const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
+export const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
     const [switcher, setSwitcher] = useState(0);
 
     const movieCreditsData: MovieCredits[] | undefined = movieCredits
@@ -62,5 +62,3 @@ const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCre
         </div>
     );
 };
-
-export default TablePeopleActing;

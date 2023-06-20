@@ -6,5 +6,5 @@ export const navbarMenu = [
 ]
 export const footerMenu = ['Get in touch', 'About movie star', 'Legal stuff'];
 export const genderArr = ['female', 'male']
-export const typeQueryTrindingFilms = ['day', 'week']
+export const typeQueryTrendingFilms = ['day', 'week']
 export const typeQueryFilms = ['movie', 'tv']

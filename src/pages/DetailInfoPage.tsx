@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation, useParams} from "react-router-dom";
 import {SwiperSlide} from "swiper/react";
-import PeopleCard from "../components/Cards/PeopleCard";
-import SliderWrapper from "../components/SliderWrapper";
-import MovieSlideCard from "../components/Cards/MovieSlideCard";
-import MovieMedia from "../components/DetailsPage/MediaComponents/MovieMedia";
-import MovieReviews from "../components/DetailsPage/MediaComponents/MovieReviews";
-import TablePeopleActing from "../components/DetailsPage/TablePeopleActing/TablePeopleActing";
-import SkeletonSliderShow from "../components/Skeletons/SkeletonSliderShow";
-import SkeletonPeopleCard from "../components/Skeletons/SkeletonPeopleCard";
 import {
     useGetAllMoviesQuery,
     useLazyGetDetailsQuery,
 } from "../Store/tmdbService/endpoints";
-import Sinopsis from "../components/DetailsPage/Sinopsis";
+import {
+    MovieMedia,
+    MovieReviews,
+    MovieSlideCard,
+    PeopleCard,
+    SkeletonPeopleCard, SkeletonSliderShow,
+    SliderWrapper, Synopsis, TablePeopleActing
+} from "../components";
 
 const DetailInfoPage = () => {
     const {id} = useParams()
@@ -58,7 +57,7 @@ const DetailInfoPage = () => {
         <div className='page'>
             <div className='container'>
                 <h2>Synopsis</h2>
-                <Sinopsis
+                <Synopsis
                     data={data}
                     keyType={keyType}
                     isFetching={isFetchingDetails}

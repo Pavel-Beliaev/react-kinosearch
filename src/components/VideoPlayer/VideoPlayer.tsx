@@ -3,7 +3,7 @@ import './videoplayer.scss'
 import ReactPlayer from "react-player/lazy";
 import {VideoPlayerProps} from "./types";
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
+export const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
 
     return (
         <div className='player-wrapper'>
@@ -30,5 +30,3 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
         </div>
     );
 };
-
-export default VideoPlayer;

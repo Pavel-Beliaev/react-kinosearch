@@ -1,11 +1,11 @@
 import React from 'react';
-import SliderShow from "./SliderShow/SliderShow";
+import {SliderShow} from "./SliderShow/SliderShow";
 
 type SliderWrapperType = {
     title: string,
     children: React.ReactElement | React.ReactNode
 }
-const SliderWrapper: React.FC<SliderWrapperType> = ({title, children}) => {
+export const SliderWrapper: React.FC<SliderWrapperType> = ({title, children}) => {
 
     return (
         <>
@@ -19,5 +19,3 @@ const SliderWrapper: React.FC<SliderWrapperType> = ({title, children}) => {
         </>
     );
 };
-
-export default SliderWrapper;

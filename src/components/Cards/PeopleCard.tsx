@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link, useLocation} from "react-router-dom";
-import notFoto from '../../public/JPG/notImg.jpg'
+import notImg from '../../public/JPG/notImg.jpg'
 import {useAppSelector} from "../../Store/store";
 import {PeopleCardProps} from "./types";
 
-const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
+export const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
     const {pathname} = useLocation()
 
     const {base_url, profileSize} = useAppSelector((state) => state.config)
@@ -28,7 +28,7 @@ const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profi
                 <img
                     src={profilePath
                         ? `${base_url}${profileSize}${profilePath}`
-                        : notFoto
+                        : notImg
                     }
                     alt="people"
                 />
@@ -46,5 +46,3 @@ const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profi
 
     );
 };
-
-export default PeopleCard;

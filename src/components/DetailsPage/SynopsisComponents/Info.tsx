@@ -4,7 +4,7 @@ import {genderArr} from "../../../mock/statick";
 import {InfoType} from "./types";
 import '../sinipsis.scss'
 
-const Info: React.FC<InfoType> = ({data, keyType}) => {
+export const Info: React.FC<InfoType> = ({data, keyType}) => {
 
     return (
         <div className='info'>
@@ -50,7 +50,7 @@ const Info: React.FC<InfoType> = ({data, keyType}) => {
                     </div>
                     {data?.deathday &&
                         <div className='info-other'>
-                            <h3>Deathday</h3>
+                            <h3>Day of death</h3>
                             <p>{data?.deathday}</p>
                         </div>
                     }
@@ -103,5 +103,3 @@ const Info: React.FC<InfoType> = ({data, keyType}) => {
         </div>
     );
 };
-
-export default Info;

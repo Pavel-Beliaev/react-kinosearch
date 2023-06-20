@@ -7,11 +7,11 @@ import "swiper/scss";
 import "swiper/scss/free-mode";
 import "swiper/scss/navigation";
 import "swiper/scss/thumbs";
-import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import {useAppSelector} from "../../Store/store";
 import {useGetPopularMoviesQuery, useLazyGetVideoByIdQuery} from "../../Store/tmdbService/endpoints";
+import {VideoPlayer} from "../VideoPlayer/VideoPlayer";
 
-const SliderTrailers: React.FC = () => {
+export const SliderTrailers: React.FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
@@ -92,5 +92,3 @@ const SliderTrailers: React.FC = () => {
         </>
     );
 };
-
-export default SliderTrailers;

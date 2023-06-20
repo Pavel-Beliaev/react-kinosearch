@@ -1,7 +1,7 @@
 import React from 'react';
 import './loader.scss'
 
-const Loader: React.FC = () => {
+export const Loader: React.FC = () => {
 
     return (
         <div className='loader'>
@@ -13,5 +13,3 @@ const Loader: React.FC = () => {
         </div>
     );
 };
-
-export default Loader;

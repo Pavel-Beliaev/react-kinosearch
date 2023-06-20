@@ -1,9 +1,9 @@
 import React from 'react';
-import Reviews from "../../Reviews/Reviews";
 import {MovieReviewsType} from "./types";
 import './media.scss'
+import {Reviews} from "../../Reviews/Reviews";
 
-const MovieReviews: React.FC<MovieReviewsType> = ({length, title, reviews}) => {
+export const MovieReviews: React.FC<MovieReviewsType> = ({length, title, reviews}) => {
 
     return (
         <div className='container review'>
@@ -17,5 +17,3 @@ const MovieReviews: React.FC<MovieReviewsType> = ({length, title, reviews}) => {
         </div>
     );
 };
-
-export default MovieReviews;

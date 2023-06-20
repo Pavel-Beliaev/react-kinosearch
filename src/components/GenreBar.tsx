@@ -3,13 +3,13 @@ import {useAppDispatch, useAppSelector} from "../Store/store";
 import {setGenreId} from "../Store/movies/slice";
 import {Genres} from "../Store/tmdbService/@types";
 
-type GenrebarType = {
+type GenreBarType = {
     isActive: boolean
     setIsActive: React.Dispatch<React.SetStateAction<boolean>>
     genres: Genres[]
 }
 
-const Genrebar: React.FC<GenrebarType> = ({isActive, setIsActive, genres}) => {
+export const GenreBar: React.FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
     const dispatch = useAppDispatch()
     const {searchValue, genreId} = useAppSelector(state => state.movies)
 
@@ -55,5 +55,3 @@ const Genrebar: React.FC<GenrebarType> = ({isActive, setIsActive, genres}) => {
         </div>
     );
 };
-
-export default Genrebar;

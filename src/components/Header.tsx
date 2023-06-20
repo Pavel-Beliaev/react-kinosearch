@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import HeaderSlider from "./HeaderSlider/HeaderSlider";
 import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
 import {useAppSelector} from "../Store/store";
+import {HeaderSlider} from "./HeaderSlider/HeaderSlider";
 
 export type HeaderProps = {
     pathname: string
 }
-const Header: React.FC<HeaderProps> = ({pathname}) => {
+export const Header: React.FC<HeaderProps> = ({pathname}) => {
     const [isVisibleEffect, setIsVisibleEffect] = useState(true);
 
     const {base_url, backdropSize} = useAppSelector((state) => state.config);
@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
     const stylePage = pathname
         .substring(1);
     const genre = data.film.genres
-        .map((genr) => genr.name)
+        .map((genre) => genre.name)
         .join(', ')
 
 
@@ -63,5 +63,3 @@ const Header: React.FC<HeaderProps> = ({pathname}) => {
         </div>
     );
 };
-
-export default Header;

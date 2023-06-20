@@ -1,19 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import Menu from "../components/Navbar/Menu";
-import Footer from "../components/Footer";
 import {Outlet} from "react-router-dom";
-import Header from "../components/Header";
 import {useLocation} from "react-router-dom";
-import DropDownNavbar from "../components/Navbar/DropDownNavbar";
 import {
     useGetConfigurationQuery,
     useGetGenreMoviesQuery,
     useGetGenreTVQuery,
     useLazyGetVideoByIdQuery
 } from "../Store/tmdbService/endpoints";
-import ModalWindow from "../components/ModalWindow/ModalWindow";
 import {useAppSelector} from "../Store/store";
-import VideoPlayer from "../components/VideoPlayer/VideoPlayer";
+import {DropDownNavbar, Footer, Header, Menu, ModalWindow, VideoPlayer} from "../components";
 
 
 const MainLayout: React.FC = () => {

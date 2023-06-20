@@ -3,7 +3,7 @@ import {navbarMenu} from "../../mock/statick";
 import {Link, NavLink} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 
-const NavElement: React.FC = () => {
+export const NavElement: React.FC = () => {
     const {types} = useAppSelector(state => state.movies)
 
     const disabledClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, idx: number) => {
@@ -52,5 +52,3 @@ const NavElement: React.FC = () => {
         </>
     );
 };
-
-export default NavElement;

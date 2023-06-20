@@ -2,7 +2,7 @@ import React from 'react';
 import './switcher.scss'
 import {SwitcherType} from "./types";
 
-const Switcher: React.FC<SwitcherType> = ({color, title1, title2, setSwitcher, switcher}) => {
+export const Switcher: React.FC<SwitcherType> = ({color, title1, title2, setSwitcher, switcher}) => {
 
     return (
         <div
@@ -32,5 +32,3 @@ const Switcher: React.FC<SwitcherType> = ({color, title1, title2, setSwitcher, s
         </div>
     );
 };
-
-export default Switcher;

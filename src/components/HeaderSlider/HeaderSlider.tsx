@@ -1,9 +1,7 @@
 import React from 'react';
-import CustomButton from "../CustomButton/CustomButton";
 import './headerslider.scss'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Autoplay, EffectFade} from 'swiper';
-import Rating from "../Rating/Rating";
 import 'swiper/scss';
 import 'swiper/scss/effect-fade'
 import "swiper/scss/pagination";
@@ -11,9 +9,11 @@ import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
 import {Link} from "react-router-dom";
 import {useGetNewMoviesQuery} from "../../Store/tmdbService/endpoints";
+import {CustomButton} from "../CustomButton/CustomButton";
+import {Rating} from "../Rating/Rating";
 
 
-const HeaderSlider: React.FC = () => {
+export const HeaderSlider: React.FC = () => {
     const dispatch = useAppDispatch();
     const {genresMovies} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
@@ -74,7 +74,7 @@ const HeaderSlider: React.FC = () => {
                                                     children={<i className='fa fa-play'><span>Play trailer</span></i>}
                                                 />
                                                 <Link
-                                                    className='sliderHeader-readmore'
+                                                    className='sliderHeader-readMore'
                                                     to={`all/movie/${film.id}`}
                                                 >
                                                     Read more
@@ -90,5 +90,3 @@ const HeaderSlider: React.FC = () => {
         </Swiper>
     );
 };
-
-export default HeaderSlider;
