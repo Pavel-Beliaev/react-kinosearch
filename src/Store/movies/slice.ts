@@ -2,6 +2,12 @@ import {IResultsMovies} from "../tmdbService/@types";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {MoviesState} from "./@types";
 
+type FilterType = {
+    pageNumber: number,
+    searchValue: string,
+    genreId: number | null
+}
+
 const initialState: MoviesState = {
     dataFilms: [],
     pageNumber: 1,
@@ -32,9 +38,15 @@ export const moviesSlice = createSlice({
         setGenreId(state, action: PayloadAction<number | null>) {
             state.genreId = action.payload
         },
+        setFilter(state, action: PayloadAction<FilterType>) {
+            state.pageNumber = action.payload.pageNumber
+            state.searchValue = action.payload.searchValue
+            state.genreId = action.payload.genreId
+        }
     },
 })
 export const {
+    setFilter,
     setGenreId,
     setSearchValue,
     setPageNumber,

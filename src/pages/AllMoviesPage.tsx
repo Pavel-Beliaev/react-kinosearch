@@ -2,13 +2,13 @@ import React, {FC, useEffect, useRef, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {useObserver} from "../hooks/useObserver";
 import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
-import {setGenreId, setInfinityAble, setPageNumber} from "../Store/movies/slice";
+import {setGenreId, setInfinityAble, setPageNumber, setFilter} from "../Store/movies/slice";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import qs from 'qs'
 import {GenreBar, Loader, Search} from "../components";
 import {ErrorPage} from "./ErrorPage";
 
-export const AllMoviesPage:FC = () => {
+export const AllMoviesPage: FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {pathname} = useLocation()
@@ -25,7 +25,7 @@ export const AllMoviesPage:FC = () => {
     const lastElementRef = useRef<HTMLDivElement>(null);
     const dataElementRef = useRef<HTMLDivElement>(null);
 
-    const [fetching, data] = useLazyGetAllMoviesQuery()
+    const [fetching, allMovieBase] = useLazyGetAllMoviesQuery()
 
     const type = pathname
         .split('/')
@@ -33,9 +33,9 @@ export const AllMoviesPage:FC = () => {
     const genres = type === 'movie'
         ? genresMovies
         : genresTV
-    const totalPage = data.data?.total_pages ?? 1;
-    const isFetch = data.isFetching
-    const isSuces = data.isSuccess
+    const totalPage = allMovieBase.data?.total_pages ?? 1;
+    const isFetch = allMovieBase.isFetching
+    const isSuces = allMovieBase.isSuccess
 
     useObserver(
         lastElementRef,
@@ -48,14 +48,21 @@ export const AllMoviesPage:FC = () => {
         }
     )
 
-    // useEffect(() => {
-    //     if (window.location.search) {
-    //         const params = qs
-    //             .parse(window
-    //                 .location.search
-    //                 .substring(1))
-    //     }
-    // }, [])
+    useEffect(() => {
+        if (window.location.search) {
+            const params = qs
+                .parse(window
+                    .location.search
+                    .substring(1))
+            console.log(params)
+            dispatch(setFilter({
+                    searchValue: params.search as string,
+                    genreId: params.genre as unknown as number | null,
+                    pageNumber: params.page as unknown as number,
+                })
+            )
+        }
+    }, [])
 
     useEffect(() => {
         const queryString = qs

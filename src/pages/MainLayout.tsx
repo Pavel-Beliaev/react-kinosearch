@@ -82,10 +82,7 @@ export const MainLayout: FC = () => {
             <Footer/>
             <ModalWindow>
                 <div
-                    className={active
-                        ? 'modal-content active'
-                        : 'modal-content'
-                    }
+                    className={`modal-content ${active && 'active'}`}
                     onClick={event => event
                         .stopPropagation()}
                 >

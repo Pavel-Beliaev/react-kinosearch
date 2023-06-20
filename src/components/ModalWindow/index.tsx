@@ -20,10 +20,7 @@ export const ModalWindow:FC<ModalWindowType> = ({children}) => {
                             active: false
                         }))
                     }
-                    className={active
-                        ? 'modalWindow active'
-                        : 'modalWindow'
-                    }
+                    className={`modalWindow ${active && 'active'}`}
                 >
                     {children}
                 </div>
