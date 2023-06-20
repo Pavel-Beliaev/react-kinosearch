@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {SliderShow} from "./SliderShow/SliderShow";
+import {SliderShow} from "./SliderShow";
 
 type SliderWrapperType = {
     title: string,

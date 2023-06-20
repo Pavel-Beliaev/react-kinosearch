@@ -14,7 +14,7 @@ import {DropDownNavbar, Footer, Header, Menu, ModalWindow, VideoPlayer} from "..
 export const MainLayout: FC = () => {
     const {active, id} = useAppSelector(state => state.config.activeModal);
 
-    const [target, data] = useLazyGetVideoByIdQuery()
+    const [fetchVideoById, data] = useLazyGetVideoByIdQuery()
     const [fetchGenresMovie] = useLazyGetGenreMoviesQuery();
     const [fetchGenresTV] = useLazyGetGenreTVQuery();
     const [fetchConfig] = useLazyGetConfigurationQuery();
@@ -40,7 +40,7 @@ export const MainLayout: FC = () => {
 
     useEffect(() => {
         if (active) {
-            target(Number(movieID))
+            fetchVideoById(movieID!)
         }
     }, [movieID])
 
