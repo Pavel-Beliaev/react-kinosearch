@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {Table} from 'antd';
 import {MovieCredits, TablePeopleActingType} from "./types";
 import './table.scss'
 import {columns} from "./config_table";
 import {Switcher} from "../../Switcher/Switcher";
 
-export const TablePeopleActing: React.FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
+export const TablePeopleActing:FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
     const [switcher, setSwitcher] = useState(0);
 
     const movieCreditsData: MovieCredits[] | undefined = movieCredits

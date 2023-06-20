@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Navbar} from "./Navbar";
 
 type DropDownNavbarType = {
     scroll: number
 }
 
-export const DropDownNavbar: React.FC<DropDownNavbarType> = ({scroll}) => {
+export const DropDownNavbar:FC<DropDownNavbarType> = ({scroll}) => {
 
     return (
         <div

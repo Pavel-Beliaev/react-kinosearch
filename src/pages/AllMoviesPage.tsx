@@ -1,14 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {FC, useEffect, useRef, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {useObserver} from "../hooks/useObserver";
 import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
 import {setGenreId, setInfinityAble, setPageNumber} from "../Store/movies/slice";
-import ErrorPage from "./ErrorPage";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import qs from 'qs'
 import {GenreBar, Loader, Search} from "../components";
+import {ErrorPage} from "./ErrorPage";
 
-const AllMoviesPage: React.FC = () => {
+export const AllMoviesPage:FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {pathname} = useLocation()
@@ -132,5 +132,3 @@ const AllMoviesPage: React.FC = () => {
         </div>
     );
 };
-
-export default AllMoviesPage;

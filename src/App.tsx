@@ -1,16 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './scss/app.scss'
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import MainLayout from "./pages/MainLayout";
-import Home from "./pages/Home";
-import AllMoviesPage from "./pages/AllMoviesPage";
-import People from "./pages/People";
-import ContactsPage from "./pages/ContactsPage";
-import ErrorPage from "./pages/ErrorPage";
-import DetailInfoPage from "./pages/DetailInfoPage";
 import {AllMoviesContent} from "./components";
+import {AllMoviesPage, ContactsPage, DetailInfoPage, ErrorPage, Home, MainLayout, People} from "./pages";
 
-const App: React.FC = () => {
+const App:FC = () => {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path='/' element={<MainLayout/>}>

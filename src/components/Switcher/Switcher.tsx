@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './switcher.scss'
 import {SwitcherType} from "./types";
 
-export const Switcher: React.FC<SwitcherType> = ({color, title1, title2, setSwitcher, switcher}) => {
+export const Switcher:FC<SwitcherType> = ({color, title1, title2, setSwitcher, switcher}) => {
 
     return (
         <div

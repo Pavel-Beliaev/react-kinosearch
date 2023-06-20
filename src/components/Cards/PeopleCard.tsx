@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link, useLocation} from "react-router-dom";
 import notImg from '../../public/JPG/notImg.jpg'
 import {useAppSelector} from "../../Store/store";
 import {PeopleCardProps} from "./types";
 
-export const PeopleCard: React.FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
+export const PeopleCard:FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
     const {pathname} = useLocation()
 
     const {base_url, profileSize} = useAppSelector((state) => state.config)

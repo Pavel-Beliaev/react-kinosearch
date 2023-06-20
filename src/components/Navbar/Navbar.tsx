@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {Link} from "react-router-dom";
 import logoIcon from "../../public/SVG/Paulo F  I  L  M  S.svg";
 import {ReactComponent as BurgerIcon} from "../../public/SVG/burger.svg";
 import {NavElement} from "./NavElement";
 
 
-export const Navbar: React.FC = () => {
+export const Navbar:FC = () => {
     const [isActive, setIsActive] = useState(false)
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './slidershow.scss'
 import {Scrollbar, Mousewheel, Keyboard, Navigation} from "swiper";
 import {Swiper} from "swiper/react";
@@ -6,7 +6,7 @@ import "swiper/scss";
 import "swiper/scss/scrollbar";
 import {SliderProps} from "./types";
 
-export const SliderShow: React.FC<SliderProps> = ({navigation, slideCount, children}) => {
+export const SliderShow:FC<SliderProps> = ({navigation, slideCount, children}) => {
 
     return (
         <>

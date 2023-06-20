@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {footerMenu} from "../mock/statick";
 
-export const Footer: React.FC = () => {
+export const Footer:FC = () => {
 
     return (
         <div className='footer'>

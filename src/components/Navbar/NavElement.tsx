@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {navbarMenu} from "../../mock/statick";
 import {Link, NavLink} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 
-export const NavElement: React.FC = () => {
+export const NavElement:FC = () => {
     const {types} = useAppSelector(state => state.movies)
 
     const disabledClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, idx: number) => {

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './reviews.scss'
 import {Link} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 import {ReviewsType} from "./types";
 
 
-export const Reviews: React.FC<ReviewsType> = ({reviews}) => {
+export const Reviews:FC<ReviewsType> = ({reviews}) => {
     const {base_url, avatarSize} = useAppSelector((state) => state.config)
 
     return (

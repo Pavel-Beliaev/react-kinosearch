@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {setGenreId} from "../Store/movies/slice";
 import {Genres} from "../Store/tmdbService/@types";
@@ -9,7 +9,7 @@ type GenreBarType = {
     genres: Genres[]
 }
 
-export const GenreBar: React.FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
+export const GenreBar:FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
     const dispatch = useAppDispatch()
     const {searchValue, genreId} = useAppSelector(state => state.movies)
 

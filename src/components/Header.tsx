@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
 import {useAppSelector} from "../Store/store";
 import {HeaderSlider} from "./HeaderSlider/HeaderSlider";
@@ -6,7 +6,7 @@ import {HeaderSlider} from "./HeaderSlider/HeaderSlider";
 export type HeaderProps = {
     pathname: string
 }
-export const Header: React.FC<HeaderProps> = ({pathname}) => {
+export const Header:FC<HeaderProps> = ({pathname}) => {
     const [isVisibleEffect, setIsVisibleEffect] = useState(true);
 
     const {base_url, backdropSize} = useAppSelector((state) => state.config);

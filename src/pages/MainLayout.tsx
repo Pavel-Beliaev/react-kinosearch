@@ -1,23 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {Outlet} from "react-router-dom";
 import {useLocation} from "react-router-dom";
 import {
-    useGetConfigurationQuery,
-    useGetGenreMoviesQuery,
-    useGetGenreTVQuery,
-    useLazyGetVideoByIdQuery
+    useLazyGetConfigurationQuery,
+    useLazyGetGenreMoviesQuery,
+    useLazyGetGenreTVQuery,
+    useLazyGetVideoByIdQuery,
 } from "../Store/tmdbService/endpoints";
 import {useAppSelector} from "../Store/store";
 import {DropDownNavbar, Footer, Header, Menu, ModalWindow, VideoPlayer} from "../components";
 
 
-const MainLayout: React.FC = () => {
+export const MainLayout: FC = () => {
     const {active, id} = useAppSelector(state => state.config.activeModal);
 
     const [target, data] = useLazyGetVideoByIdQuery()
-    useGetConfigurationQuery();
-    useGetGenreMoviesQuery();
-    useGetGenreTVQuery();
+    const [fetchGenresMovie] = useLazyGetGenreMoviesQuery();
+    const [fetchGenresTV] = useLazyGetGenreTVQuery();
+    const [fetchConfig] = useLazyGetConfigurationQuery();
 
     const {pathname} = useLocation();
 
@@ -30,6 +30,13 @@ const MainLayout: React.FC = () => {
                 .toLowerCase()
                 .includes('official trailer'))
     const video = (foundVideo || data.data?.results[0])
+
+    useEffect(() => {
+        fetchGenresMovie();
+        fetchGenresTV();
+        fetchConfig();
+    }, [])
+
 
     useEffect(() => {
         if (active) {
@@ -90,5 +97,3 @@ const MainLayout: React.FC = () => {
         </div>
     );
 };
-
-export default MainLayout;

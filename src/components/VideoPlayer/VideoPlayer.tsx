@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './videoplayer.scss'
 import ReactPlayer from "react-player/lazy";
 import {VideoPlayerProps} from "./types";
 
-export const VideoPlayer: React.FC<VideoPlayerProps> = ({keys, keysArray}) => {
+export const VideoPlayer:FC<VideoPlayerProps> = ({keys, keysArray}) => {
 
     return (
         <div className='player-wrapper'>

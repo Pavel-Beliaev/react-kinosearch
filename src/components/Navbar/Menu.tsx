@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {Navbar} from "./Navbar";
 
-export const Menu: React.FC = () => {
+export const Menu:FC = () => {
 
     return (
         <div className='menu'>

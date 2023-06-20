@@ -1,0 +1,7 @@
+export * from './AllMoviesPage'
+export * from './ContactsPage'
+export * from './DetailInfoPage'
+export * from './ErrorPage'
+export * from './Home'
+export * from './MainLayout'
+export * from './People'

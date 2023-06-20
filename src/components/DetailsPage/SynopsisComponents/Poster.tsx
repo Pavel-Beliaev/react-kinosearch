@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import notImg from "../../../public/JPG/notImg.jpg";
 import {useAppSelector} from "../../../Store/store";
 import {PosterType} from "./types";
 import '../sinipsis.scss'
 import {Rating} from "../../Rating/Rating";
 
-export const Poster: React.FC<PosterType> = ({poster, rating, keyType}) => {
+export const Poster:FC<PosterType> = ({poster, rating, keyType}) => {
     const {base_url, profileSize, posterSize} = useAppSelector((state) => state.config)
 
     return (

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useState} from 'react';
 import {SwiperSlide} from "swiper/react";
 import {useGetTopRatedMoviesQuery, useGetTrendingMoviesQuery} from "../Store/tmdbService/endpoints";
 import {typeQueryFilms, typeQueryTrendingFilms} from "../mock/statick";
 import {MovieSlideCard, SkeletonSliderShow, SliderShow, SliderTrailers, Switcher} from "../components";
 
-const Home: React.FC = () => {
+export const Home:FC = () => {
     const [switcherTrendingFilms, setSwitcherTrendingFilms] = useState(0)
     const [switcherTopRateFilms, setSwitcherTopRateFilms] = useState(0)
 
@@ -89,5 +89,3 @@ const Home: React.FC = () => {
         </>
     );
 };
-
-export default Home;

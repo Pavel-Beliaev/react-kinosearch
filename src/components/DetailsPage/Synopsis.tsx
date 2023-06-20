@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {IDetails} from "../../Store/tmdbService/@types";
 import './sinipsis.scss'
 import {Poster} from "./SynopsisComponents/Poster";
@@ -11,7 +11,7 @@ type SynopsisType = {
     keyType: boolean,
     isFetching: boolean
 }
-export const Synopsis: React.FC<SynopsisType> = ({data, keyType, isFetching}) => {
+export const Synopsis:FC<SynopsisType> = ({data, keyType, isFetching}) => {
 
     return (
         <>

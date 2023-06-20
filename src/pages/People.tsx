@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {useGetAllPersonQuery} from "../Store/tmdbService/endpoints";
 import {Pagination, PeopleCard, SkeletonPeopleCard} from "../components";
 
 
-const People: React.FC = () => {
+export const People:FC = () => {
     const [pageNumber, setPageNumber] = useState(1)
 
     const {data, isFetching} = useGetAllPersonQuery(pageNumber);
@@ -45,5 +45,3 @@ const People: React.FC = () => {
         </div>
     );
 };
-
-export default People;

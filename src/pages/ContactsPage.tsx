@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {CustomButton, CustomInput, CustomTextarea, MapComponent} from "../components";
 
-const ContactsPage: React.FC = () => {
+export const ContactsPage:FC = () => {
 
     return (
         <div className='frameworks-container'>
@@ -59,5 +59,3 @@ const ContactsPage: React.FC = () => {
 
     );
 };
-
-export default ContactsPage;

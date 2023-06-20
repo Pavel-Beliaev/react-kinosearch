@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './headerslider.scss'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Pagination, Autoplay, EffectFade} from 'swiper';
@@ -13,7 +13,7 @@ import {CustomButton} from "../CustomButton/CustomButton";
 import {Rating} from "../Rating/Rating";
 
 
-export const HeaderSlider: React.FC = () => {
+export const HeaderSlider:FC = () => {
     const dispatch = useAppDispatch();
     const {genresMovies} = useAppSelector((state) => state.config)
     const {base_url, backdropSize} = useAppSelector((state) => state.config)

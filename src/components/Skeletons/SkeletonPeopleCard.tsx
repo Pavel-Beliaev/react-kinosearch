@@ -1,7 +1,7 @@
-import React from "react"
+import React, {FC} from "react"
 import ContentLoader from "react-content-loader"
 
-export const SkeletonPeopleCard: React.FC = (props) => (
+export const SkeletonPeopleCard:FC = (props) => (
     <ContentLoader
         speed={2}
         width={200}

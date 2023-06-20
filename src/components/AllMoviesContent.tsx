@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {useOutletContext} from "react-router-dom";
 import {IResultsMovies} from "../Store/tmdbService/@types";
 import {MovieCard} from "./Cards/MovieCard";
@@ -7,7 +7,7 @@ type AllMoviesContentType = {
     dataFilms: IResultsMovies[],
 }
 
-export const AllMoviesContent: React.FC = () => {
+export const AllMoviesContent:FC = () => {
     const {dataFilms} = useOutletContext<AllMoviesContentType>()
 
     return (

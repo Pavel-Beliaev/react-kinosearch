@@ -204,9 +204,9 @@ export const {
     useGetPopularMoviesQuery,
     useGetTopRatedMoviesQuery,
     useGetTrendingMoviesQuery,
-    useGetGenreMoviesQuery,
-    useGetGenreTVQuery,
     useGetNewMoviesQuery,
-    useGetConfigurationQuery,
+    useLazyGetGenreMoviesQuery,
+    useLazyGetGenreTVQuery,
+    useLazyGetConfigurationQuery,
     useGetAllPersonQuery,
 } = extendedApi

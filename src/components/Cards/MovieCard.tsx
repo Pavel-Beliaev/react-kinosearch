@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link, useLocation} from "react-router-dom";
 import {useAppSelector} from "../../Store/store";
 import {MovieCardProps} from "./types";
 import notPicture from "../../public/PNG/placeholder.png";
 
 
-export const MovieCard: React.FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
+export const MovieCard:FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
     const {pathname} = useLocation()
 
     const {base_url, posterSize, genresMovies, genresTV} = useAppSelector((state) => state.config)

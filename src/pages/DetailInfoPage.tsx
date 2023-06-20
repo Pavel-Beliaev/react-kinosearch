@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {useLocation, useParams} from "react-router-dom";
 import {SwiperSlide} from "swiper/react";
 import {
@@ -14,7 +14,7 @@ import {
     SliderWrapper, Synopsis, TablePeopleActing
 } from "../components";
 
-const DetailInfoPage = () => {
+export const DetailInfoPage:FC = () => {
     const {id} = useParams()
     const {pathname} = useLocation()
 
@@ -121,5 +121,3 @@ const DetailInfoPage = () => {
         </div>
     );
 };
-
-export default DetailInfoPage;

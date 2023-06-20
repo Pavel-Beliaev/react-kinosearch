@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {MovieReviewsType} from "./types";
 import './media.scss'
 import {Reviews} from "../../Reviews/Reviews";
 
-export const MovieReviews: React.FC<MovieReviewsType> = ({length, title, reviews}) => {
+export const MovieReviews:FC<MovieReviewsType> = ({length, title, reviews}) => {
 
     return (
         <div className='container review'>

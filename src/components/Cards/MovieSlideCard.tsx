@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../Store/store";
 import {setActiveModal} from "../../Store/config/slice";
@@ -7,7 +7,7 @@ import notPicture from "../../public/PNG/placeholder.png";
 import {Rating} from "../Rating/Rating";
 
 
-export const MovieSlideCard: React.FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
+export const MovieSlideCard:FC<MovieSlideCardProps> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
 
     const {base_url, posterSize} = useAppSelector((state) => state.config)

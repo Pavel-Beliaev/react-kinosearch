@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {genderArr} from "../../../mock/statick";
 import {InfoType} from "./types";
 import '../sinipsis.scss'
 
-export const Info: React.FC<InfoType> = ({data, keyType}) => {
+export const Info:FC<InfoType> = ({data, keyType}) => {
 
     return (
         <div className='info'>

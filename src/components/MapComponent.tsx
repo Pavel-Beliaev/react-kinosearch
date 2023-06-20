@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Map, Placemark, YMaps} from "@pbe/react-yandex-maps";
 
-export const MapComponent: React.FC = () => {
+export const MapComponent:FC = () => {
 
     return (
         <YMaps>

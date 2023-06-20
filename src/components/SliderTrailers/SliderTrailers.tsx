@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import './slidertrailers.scss'
 import {Swiper, SwiperSlide} from "swiper/react";
 import {FreeMode, Navigation, Thumbs} from "swiper";
@@ -11,7 +11,7 @@ import {useAppSelector} from "../../Store/store";
 import {useGetPopularMoviesQuery, useLazyGetVideoByIdQuery} from "../../Store/tmdbService/endpoints";
 import {VideoPlayer} from "../VideoPlayer/VideoPlayer";
 
-export const SliderTrailers: React.FC = () => {
+export const SliderTrailers:FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
