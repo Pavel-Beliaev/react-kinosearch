@@ -12,7 +12,7 @@ const Form: FC = () => {
                 <CustomInput title={'Email'}/>
                 <CustomInput title={'Where did you hear about us?'}/>
                 <CustomTextarea title={'Message'}/>
-                <CustomButton children={'Send message'}/>
+                <CustomButton>Send message</CustomButton>
             </form>
             <div className='form-colum'>
                 {contactArray

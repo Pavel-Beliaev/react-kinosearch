@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ConfigurationState, VideoModal} from "./@types";
-import {Genres} from "../tmdbService/@types";
+import {Genres, IConfiguration} from "../tmdbService/@types";
 
 const initialState: ConfigurationState = {
     base_url: '',
@@ -19,20 +19,12 @@ export const configurationSLice = createSlice({
     name: 'config',
     initialState,
     reducers: {
-        setBaseUrl(state, action: PayloadAction<string>) {
-            state.base_url = action.payload
-        },
-        setProfileSize(state, action: PayloadAction<string>) {
-            state.profileSize = action.payload
-        },
-        setBackdropSize(state, action: PayloadAction<string>) {
-            state.backdropSize = action.payload
-        },
-        setPosterSize(state, action: PayloadAction<string>) {
-            state.posterSize = action.payload
-        },
-        setAvatarSize(state, action: PayloadAction<string>) {
-            state.avatarSize = action.payload
+        setConfiguration(state, action:PayloadAction<IConfiguration>) {
+            state.base_url = action.payload.images.base_url
+            state.profileSize = action.payload.images.profile_sizes[2]
+            state.backdropSize = action.payload.images.backdrop_sizes[2]
+            state.posterSize = action.payload.images.poster_sizes[3]
+            state.avatarSize = action.payload.images.logo_sizes[1]
         },
         setGenreMovies(state, action: PayloadAction<Genres[]>) {
             state.genresMovies = action.payload
@@ -46,12 +38,8 @@ export const configurationSLice = createSlice({
     },
 })
 export const {
-    setAvatarSize,
+    setConfiguration,
     setActiveModal,
-    setBaseUrl,
-    setProfileSize,
-    setBackdropSize,
-    setPosterSize,
     setGenreMovies,
     setGenreTV
 } = configurationSLice.actions;

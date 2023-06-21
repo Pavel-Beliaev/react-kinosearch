@@ -9,12 +9,9 @@ import {
     QueryArgs,
 } from "./@types";
 import {
-    setAvatarSize,
-    setBackdropSize,
-    setBaseUrl,
-    setGenreMovies, setGenreTV,
-    setPosterSize,
-    setProfileSize
+    setConfiguration,
+    setGenreMovies,
+    setGenreTV,
 } from "../config/slice";
 import {setHeaderFilms} from "../header/slice";
 import {tmdbApi} from "./tmdb.api";
@@ -35,11 +32,7 @@ const extendedApi = tmdbApi.injectEndpoints({
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled
-                    dispatch(setBaseUrl(data?.images.base_url))
-                    dispatch(setProfileSize(data?.images.profile_sizes[2]))
-                    dispatch(setBackdropSize(data?.images.backdrop_sizes[2]))
-                    dispatch(setPosterSize(data?.images.poster_sizes[3]))
-                    dispatch(setAvatarSize(data?.images.logo_sizes[1]))
+                    dispatch(setConfiguration(data))
                 } catch (error) {
                     console.log(error)
                 }
@@ -172,7 +165,7 @@ const extendedApi = tmdbApi.injectEndpoints({
                     append_to_response: 'videos,credits,images,reviews,external_ids,movie_credits,tv_credits,tagged_images'
                 },
             }),
-            keepUnusedDataFor: 1,
+            keepUnusedDataFor: 0,
             async onQueryStarted(arg, {dispatch, queryFulfilled}) {
                 try {
                     const {data} = await queryFulfilled

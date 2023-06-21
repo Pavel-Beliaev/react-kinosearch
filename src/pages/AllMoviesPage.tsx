@@ -54,7 +54,6 @@ export const AllMoviesPage: FC = () => {
                 .parse(window
                     .location.search
                     .substring(1))
-            console.log(params)
             dispatch(setFilter({
                     searchValue: params.search as string,
                     genreId: params.genre as unknown as number | null,
