@@ -39,29 +39,35 @@
 }
 
 .blurb {
+  height: 95px;
   position: relative;
   width: 100%;
   margin-top: 200px;
   margin-bottom: 100px;
-  animation: Blurb .5s .5s forwards;
   text-align: left;
   opacity: 0;
   z-index: 6;
 
+  .title {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $lightorang;
+  }
   h1 {
+    transform: translateY(-30px);
     font-size: 52px;
     padding: 0;
-    animation: Heading .5s .5s forwards;
     letter-spacing: 3px;
     opacity: 0;
     color: #fff;
     border: none;
   }
 }
-
-.title {
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: $lightorang;
+.with-animate {
+  @extend .blurb;
+  animation: Blurb .5s .5s forwards;
+  h1 {
+    animation: Heading .5s .5s forwards;
+  }
 }

@@ -86,14 +86,14 @@
     }
   }
 
-  .blurb {
+  .blurb-slide {
     width: 100%;
     margin-top: 50px;
     animation: Blurb .5s .5s forwards;
     text-align: left;
     margin-bottom: 0;
-
-
+    opacity: 0;
+    z-index: 6;
   }
 
   &-text {
