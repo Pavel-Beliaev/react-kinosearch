@@ -26,10 +26,10 @@ export const SliderTrailers: FC = () => {
   const [target, data] = useLazyGetVideoByIdQuery();
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
-  const getId = popularMoviesDataList?.results[slideIndex].id;
+  const getId = popularMoviesDataList?.results[slideIndex]?.id;
   const moviesKeys = data.data?.results
     .filter((el) => el.type === "Trailer")
-    .map((elem) => elem.key);
+    .find((elem) => elem.key);
 
   useEffect(() => {
     if (isSuccess) target(getId);
@@ -60,7 +60,7 @@ export const SliderTrailers: FC = () => {
           style={{ paddingTop: !moviesKeys ? "47.3%" : "" }}
           className="sliderTrailer-player trailers-player"
         >
-          {<VideoPlayer keysArray={moviesKeys} />}
+          {<VideoPlayer keys={moviesKeys?.key} />}
         </div>
         <Swiper
           loop={true}
@@ -75,7 +75,7 @@ export const SliderTrailers: FC = () => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="swiperBottom"
           slideToClickedSlide={true}
-          onSlideChange={(swiper) => setSlideIndex(swiper.activeIndex)}
+          onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
         >
           {popularMoviesDataList?.results.map((poster) => (
             <SwiperSlide key={poster.id}>

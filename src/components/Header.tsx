@@ -7,18 +7,19 @@ import { useLocation } from "react-router-dom";
 type HeaderInfo = {
   genre: string;
   title: string;
+  backgroundImage: string;
 };
 export const Header = () => {
   const [isVisibleEffect, setIsVisibleEffect] = useState(false);
   const [dataInfo, setDataInfo] = useState<HeaderInfo>({
     genre: "",
     title: "",
+    backgroundImage: "",
   });
   const { pathname } = useLocation();
 
   const { base_url, backdropSize } = useAppSelector((state) => state.config);
   const data = useAppSelector((state) => state.header);
-
   const stylePage = pathname.substring(1);
   const genre = data.film.genres.map((genre) => genre.name).join(", ");
 
@@ -26,19 +27,20 @@ export const Header = () => {
     setIsVisibleEffect(false);
     const timeout = setTimeout(() => setIsVisibleEffect(true), 50);
     setDataInfo({
-      genre: data[stylePage] ? data[stylePage]?.heading : genre,
+      genre: data ? data[stylePage]?.heading : genre,
       title: data[stylePage] ? data[stylePage]?.title : data.film.title,
+      backgroundImage: data[stylePage]
+        ? `${data[stylePage]?.url}`
+        : `url(${base_url}${backdropSize}${data.film.url})`,
     });
     return () => clearTimeout(timeout);
-  }, [pathname]);
+  }, [pathname, data]);
 
   return (
     <div
       className="header"
       style={{
-        backgroundImage: data[stylePage]
-          ? `${data[stylePage]?.url}`
-          : `url(${base_url}${backdropSize}${data.film.url})`,
+        backgroundImage: dataInfo.backgroundImage,
       }}
     >
       <span className="scroll">
