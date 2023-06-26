@@ -10,21 +10,16 @@ import {
     MovieReviews,
     MovieSlideCard,
     PeopleCard,
-    SkeletonPeopleCard, SkeletonSliderShow,
+    SkeletonPeopleCard, SkeletonSliderShow, SliderShow,
     SliderWrapper, Synopsis, TablePeopleActing
 } from "../components";
+import {useScroll} from "../hooks/useScroll";
+import {useTypePage} from "../hooks/useTypePage";
+import Title from "../components/Title";
 
-export const DetailInfoPage:FC = () => {
-    const {id} = useParams()
-    const {pathname} = useLocation()
-
-    const [keyType, setKeyType] = useState(false)
-
-    const pathnameType = pathname
-        .split("/");
-    const type = pathnameType.length > 3
-        ? pathnameType[2]
-        : pathnameType[1];
+export const DetailInfoPage: FC = () => {
+    const {isType, type, id} = useTypePage()
+    const scrollTo = useScroll()
 
     const [fetchMovie, {data, isFetching: isFetchingDetails}] = useLazyGetDetailsQuery()
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
@@ -33,19 +28,11 @@ export const DetailInfoPage:FC = () => {
         typeQuery: 'discover',
     });
 
-
     useEffect(() => {
-        window
-            .scrollTo({
-                top: 115,
-                behavior: 'smooth'
-            })
+        scrollTo(115, 0, "smooth")
     }, [id])
 
     useEffect(() => {
-        if (type === 'person') {
-            setKeyType(true)
-        } else setKeyType(false)
         fetchMovie({
             type: type,
             id: Number(id)
@@ -54,21 +41,21 @@ export const DetailInfoPage:FC = () => {
 
 
     return (
-        <div className='page'>
-            <div className='container'>
-                <h2>Synopsis</h2>
-                <Synopsis
-                    data={data}
-                    keyType={keyType}
-                    isFetching={isFetchingDetails}
-                />
-                <SliderWrapper
-                    title={keyType
-                        ? 'Known For'
-                        : 'Top billed cast'
-                    }
-                    children={
-                        keyType
+        <div>
+            <div className='page-frame'>
+                <div className='frameworks-container'>
+                    <Title>Synopsis</Title>
+                    <Synopsis
+                        data={data}
+                        isFetching={isFetchingDetails}
+                    />
+                </div>
+            </div>
+            <div className='page-frame'>
+                <div className='frameworks-container'>
+                    <Title>{isType ? 'Known For' : 'Top billed cast'}</Title>
+                    <SliderShow slideCount={4}>
+                        {isType
                             ? dataAllMovies?.results
                                 .map((film) => (
                                     <SwiperSlide key={film.id}>
@@ -97,27 +84,30 @@ export const DetailInfoPage:FC = () => {
                                         }
                                     </SwiperSlide>
                                 ))
-                    }
-                />
+                        }
+                    </SliderShow>
+                </div>
             </div>
-            {data?.also_known_as && keyType
-                ? <TablePeopleActing
-                    movieCredits={data?.movie_credits.cast}
-                    tvCredits={data?.tv_credits.cast}
-                />
-                : data?.status &&
-                <>
-                    <MovieMedia
-                        dataMovie={data}
-                        pict={data?.poster_path}
-                    />
-                    <MovieReviews
-                        length={data?.reviews.results.length}
-                        title={data?.title ? data?.title : data?.name}
-                        reviews={data?.reviews.results}
-                    />
-                </>
-            }
+            <div className='page-frame'>
+                    {data?.also_known_as && isType
+                        ? <TablePeopleActing
+                            movieCredits={data?.movie_credits.cast}
+                            tvCredits={data?.tv_credits.cast}
+                        />
+                        : data?.status &&
+                        <>
+                            <MovieMedia
+                                dataMovie={data}
+                                pict={data?.poster_path}
+                            />
+                            <MovieReviews
+                                length={data?.reviews.results.length}
+                                title={data?.title ? data?.title : data?.name}
+                                reviews={data?.reviews.results}
+                            />
+                        </>
+                    }
+                </div>
         </div>
     );
 };

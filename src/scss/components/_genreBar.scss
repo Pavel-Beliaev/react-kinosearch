@@ -6,23 +6,6 @@
   flex-direction: column;
   margin-right: 20px;
 
-  h4 {
-    font-size: 18px;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    color: $orange;
-
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -1px;
-      display: block;
-      height: 4px;
-      width: 75px;
-      background: $gradient;
-    }
-  }
-
   ul {
     display: flex;
     flex-wrap: wrap;

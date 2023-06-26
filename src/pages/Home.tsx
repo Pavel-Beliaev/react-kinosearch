@@ -3,6 +3,7 @@ import {SwiperSlide} from "swiper/react";
 import {useGetTopRatedMoviesQuery, useGetTrendingMoviesQuery} from "../Store/tmdbService/endpoints";
 import {typeQueryFilms, typeQueryTrendingFilms} from "../mock/statick";
 import {MovieSlideCard, SkeletonSliderShow, SliderShow, SliderTrailers, Switcher} from "../components";
+import Title from "../components/Title";
 
 export const Home:FC = () => {
     const [switcherTrendingFilms, setSwitcherTrendingFilms] = useState(0)
@@ -22,7 +23,7 @@ export const Home:FC = () => {
         <>
             <div className='slider-show'>
                 <div className='frameworks-container'>
-                    <h2>Trending</h2>
+                    <Title>Trending</Title>
                     <Switcher
                         switcher={switcherTrendingFilms}
                         setSwitcher={setSwitcherTrendingFilms}
@@ -30,9 +31,8 @@ export const Home:FC = () => {
                         title2={'This week'}
                         color={'#ffffff'}
                     />
-                    <SliderShow
-                        slideCount={4}
-                        children={trendDataList?.results
+                    <SliderShow slideCount={4}>
+                        {trendDataList?.results
                             .map((film) => (
                                 <SwiperSlide key={film.id}>
                                     {isLoadingTrend
@@ -48,7 +48,7 @@ export const Home:FC = () => {
                                 </SwiperSlide>
                             ))
                         }
-                    />
+                    </SliderShow>
                 </div>
             </div>
             <div className='trailers'>
@@ -56,7 +56,7 @@ export const Home:FC = () => {
             </div>
             <div className='slider-show'>
                 <div className='frameworks-container'>
-                    <h2>Top rated</h2>
+                    <Title>Top rated</Title>
                     <Switcher
                         switcher={switcherTopRateFilms}
                         setSwitcher={setSwitcherTopRateFilms}

@@ -1,22 +1,23 @@
 import React, {FC} from 'react';
 import '../../synopsis.scss'
 import {CreatedByType, CreditsCrewType} from "../../../../Store/tmdbService/@types";
+import {useTypePage} from "../../../../hooks/useTypePage";
 
 export type OverviewsType = {
     title: string,
     overview: string | null | undefined,
     creditsCrew?: CreditsCrewType[] | undefined,
     created_by?: CreatedByType[] | undefined,
-    keyType: boolean
 }
 
-export const Overviews:FC<OverviewsType> = ({title, created_by, overview, creditsCrew, keyType}) => {
+export const Overviews:FC<OverviewsType> = ({title, created_by, overview, creditsCrew}) => {
+    const {isType} = useTypePage()
 
     return (
         <div className='overview'>
             <h3>{title}</h3>
             <p>{overview}</p>
-            {!keyType &&
+            {!isType &&
                 <div className='overview-credits'>
                     {creditsCrew
                         ? creditsCrew

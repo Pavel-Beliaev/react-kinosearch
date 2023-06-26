@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
-import {CustomButton, CustomInput, CustomTextarea, MapComponent} from "../components";
+import {MapComponent} from "../components";
 import Form from "../components/Form";
+import Title from "../components/Title";
 
 export const ContactsPage: FC = () => {
 
@@ -15,9 +16,7 @@ export const ContactsPage: FC = () => {
                 </div>
             </div>
             <div className='form'>
-                <div className='form-title'>
-                    <h2>Send a message</h2>
-                </div>
+                <Title>Send a message</Title>
                 <Form/>
             </div>
         </div>

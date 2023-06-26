@@ -5,12 +5,12 @@ import {Pagination, Autoplay, EffectFade} from "swiper";
 import "swiper/scss";
 import "swiper/scss/effect-fade";
 import "swiper/scss/pagination";
-import {useAppDispatch, useAppSelector} from "../../../Store/store";
-import {setActiveModal} from "../../../Store/config/slice";
+import {useAppDispatch, useAppSelector} from "../../Store/store";
+import {setActiveModal} from "../../Store/config/slice";
 import {Link} from "react-router-dom";
-import {useGetNewMoviesQuery} from "../../../Store/tmdbService/endpoints";
-import {CustomButton} from "../../CustomButton";
-import {Rating} from "../../Rating";
+import {useGetNewMoviesQuery} from "../../Store/tmdbService/endpoints";
+import {CustomButton} from "../CustomButton";
+import {Rating} from "../Rating";
 
 export const HeaderSlider: FC = () => {
     const dispatch = useAppDispatch();

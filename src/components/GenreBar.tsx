@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {useAppDispatch, useAppSelector} from "../Store/store";
 import {setGenreId} from "../Store/movies/slice";
 import {Genres} from "../Store/tmdbService/@types";
+import Title from "./Title";
 
 type GenreBarType = {
     isActive: boolean
@@ -25,7 +26,7 @@ export const GenreBar: FC<GenreBarType> = ({isActive, setIsActive, genres}) => {
 
     return (
         <div className='genreBar'>
-            <h4>Categories</h4>
+            <Title>Categories</Title>
             <ul>
                 {genres
                     .map((genre) => (

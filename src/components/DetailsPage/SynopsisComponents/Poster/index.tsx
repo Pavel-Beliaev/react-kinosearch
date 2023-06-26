@@ -3,19 +3,22 @@ import notImg from "../../../../public/JPG/notImg.jpg";
 import {useAppSelector} from "../../../../Store/store";
 import '../../synopsis.scss'
 import {Rating} from "../../../Rating";
+import {useTypePage} from "../../../../hooks/useTypePage";
 
 export type PosterType = {
     poster: string | null | undefined,
     rating: number | undefined,
-    keyType: boolean
 }
 
-export const Poster:FC<PosterType> = ({poster, rating, keyType}) => {
+export const Poster:FC<PosterType> = ({poster, rating}) => {
     const {base_url, profileSize, posterSize} = useAppSelector((state) => state.config)
+
+    const {isType} = useTypePage()
+
 
     return (
         <div className='poster'>
-            {keyType
+            {isType
                 ? <img
                     src={poster
                         ? `${base_url}${profileSize}${poster}`

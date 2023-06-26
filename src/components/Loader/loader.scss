@@ -29,12 +29,12 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      border-right: 4px solid #fbbd61;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-      border-left: 4px solid #fbbd61;
+      border-right: 4px dotted #fbbd61;
+      border-top: 4px dotted #fbbd61;
+      border-bottom: 4px dotted #fbbd61;
+      border-left: 4px dotted #fbbd61;
       border-radius: 50%;
-      animation: spin linear 1s infinite;
+      animation: spin linear 3s infinite;
     }
   }
 

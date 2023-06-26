@@ -4,6 +4,7 @@ import {MovieCredits, TablePeopleActingType} from "./types";
 import './table.scss'
 import {columns} from "./config_table";
 import {Switcher} from "../../Switcher";
+import Title from "../../Title";
 
 export const TablePeopleActing:FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
     const [switcher, setSwitcher] = useState(0);
@@ -39,7 +40,7 @@ export const TablePeopleActing:FC<TablePeopleActingType> = ({movieCredits, tvCre
 
     return (
         <div className='container table'>
-            <h2>Acting</h2>
+            <Title>Acting</Title>
             <div className='table-switcher'>
                 <Switcher
                     color={'#ffffff'}

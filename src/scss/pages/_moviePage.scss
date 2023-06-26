@@ -1,10 +1,7 @@
 @import "../variables";
 
-.page {
+.page-frame {
+  padding-top: 65px;
   display: flex;
   flex-direction: column;
-
-  h2 {
-    margin-top: 65px;
-  }
 }

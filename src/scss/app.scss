@@ -4,6 +4,7 @@
 
 .wrapper {
   position: relative;
+  top: 0;
 }
 
 .container {
@@ -18,9 +19,9 @@
   }
 
   &:after {
-    clear: both;
-    display: table;
     content: ' ';
+    display: table;
+    clear: both;
   }
 
   @media (min-width: 320px) {

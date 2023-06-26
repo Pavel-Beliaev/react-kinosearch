@@ -1,26 +1,25 @@
 import React, {FC, useState} from 'react';
 import {useGetAllPersonQuery} from "../Store/tmdbService/endpoints";
 import {Pagination, PeopleCard, SkeletonPeopleCard} from "../components";
+import {useScroll} from "../hooks/useScroll";
+import Title from "../components/Title";
 
 
 export const People: FC = () => {
     const [pageNumber, setPageNumber] = useState(1)
+    const scrollTo = useScroll()
 
     const {data, isFetching} = useGetAllPersonQuery(pageNumber);
 
 
     const onChangePage = (page: number) => {
         (setPageNumber(page))
-        window
-            .scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            })
+        scrollTo(0, 0, "smooth")
     };
 
     return (
         <div className='frameworks-container people'>
-            <h2>Popular People</h2>
+            <Title>Popular People</Title>
             <div className='people-content'>
                 {data?.results
                     .map((object, index) => (

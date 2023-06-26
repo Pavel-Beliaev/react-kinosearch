@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {SliderShow} from "./SliderShow";
+import Title from "./Title";
 
 type SliderWrapperType = {
     title: string,
@@ -9,7 +10,7 @@ export const SliderWrapper:FC<SliderWrapperType> = ({title, children}) => {
 
     return (
         <>
-            <h2>{title}</h2>
+            <Title>{title}</Title>
             <div>
                 <SliderShow
                     slideCount={4}

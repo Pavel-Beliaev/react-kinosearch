@@ -13,6 +13,7 @@ import {
     useLazyGetVideoByIdQuery,
 } from "../../Store/tmdbService/endpoints";
 import {VideoPlayer} from "../VideoPlayer";
+import Title from "../Title";
 
 export const SliderTrailers: FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
@@ -55,7 +56,7 @@ export const SliderTrailers: FC = () => {
                 ))}
             </Swiper>
             <div className="container sliderTrailer">
-                <h2>Trailers</h2>
+                <Title>Trailers</Title>
                 <div
                     style={{paddingTop: !moviesKeys ? "47.3%" : ""}}
                     className="sliderTrailer-player trailers-player"

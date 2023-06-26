@@ -7,11 +7,14 @@ import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import qs from 'qs'
 import {GenreBar, Loader, Search} from "../components";
 import {ErrorPage} from "./ErrorPage";
+import {useScroll} from "../hooks/useScroll";
 
 export const AllMoviesPage: FC = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {pathname} = useLocation()
+    const scrollTo = useScroll()
+
 
     const {genresMovies, genresTV} = useAppSelector((state) => state.config);
     const {dataFilms, pageNumber, infinityAble, searchValue, genreId} = useAppSelector(state => state.movies)
@@ -79,9 +82,7 @@ export const AllMoviesPage: FC = () => {
     }, [type, searchValue])
 
     useEffect(() => {
-        window.scrollTo({
-            top: 0,
-        })
+        scrollTo(0, 0, "auto")
         dispatch(setPageNumber(1))
         dispatch(setInfinityAble(false))
     }, [type, genreId, searchValue])

@@ -58,7 +58,7 @@ export const MovieSlideCard:FC<MovieSlideCardProps> = ({first_air_date, id, rele
                 </div>
                 : <div className='movieSliderCard-posterAlt'>
                     <Link to={`/all/movie/${id}`}>
-                        <img
+                         <img
                             src={poster
                                 ? `${base_url}${posterSize}${poster}`
                                 : notPicture

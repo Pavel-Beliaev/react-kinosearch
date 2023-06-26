@@ -1,6 +1,11 @@
 import React, {FC} from 'react';
+import './title.scss'
 
-const Title = (children: string) => {
+type TitleType = {
+    children: string
+}
+
+const Title:FC<TitleType> = ({children}) => {
     return (
         <h2>
             {children}

@@ -6,6 +6,7 @@ import {VideoPlayer} from "../../../VideoPlayer";
 import {Switcher} from "../../../Switcher";
 import {SliderShow} from "../../../SliderShow";
 import {IDetails} from "../../../../Store/tmdbService/@types";
+import Title from "../../../Title";
 
 export type MovieMediaType = {
     dataMovie: IDetails | undefined,
@@ -21,7 +22,7 @@ export const MovieMedia: FC<MovieMediaType> = ({dataMovie}) => {
     return (
         <div className='mediaBlock'>
             <div className='container'>
-                <h2>Media</h2>
+                <Title>Media</Title>
                 <div className='mediaBlock-media'>
                     <Switcher
                         switcher={switcher}

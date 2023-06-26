@@ -5,13 +5,14 @@ import {Poster} from "../SynopsisComponents/Poster";
 import {Overviews} from "../SynopsisComponents/Overviews";
 import {Info} from "../SynopsisComponents/Info";
 import {SkeletonPeoplePage} from "../../Skeletons/SkeletonPeoplePage";
+import {useTypePage} from "../../../hooks/useTypePage";
 
 type SynopsisType = {
     data: IDetails | undefined,
-    keyType: boolean,
     isFetching: boolean
 }
-export const Synopsis:FC<SynopsisType> = ({data, keyType, isFetching}) => {
+export const Synopsis:FC<SynopsisType> = ({data, isFetching}) => {
+    const {isType} = useTypePage()
 
     return (
         <>
@@ -19,29 +20,26 @@ export const Synopsis:FC<SynopsisType> = ({data, keyType, isFetching}) => {
                 ? <SkeletonPeoplePage/>
                 : <div className='synopsis'>
                     <Poster
-                        poster={keyType
+                        poster={isType
                             ? data?.profile_path
                             : data?.poster_path
                         }
                         rating={data?.vote_average}
-                        keyType={keyType}
                     />
                     <Overviews
-                        title={keyType
+                        title={isType
                             ? 'Biography'
                             : 'Overviews'
                         }
-                        overview={keyType
+                        overview={isType
                             ? data?.biography
                             : data?.overview
                         }
                         creditsCrew={data?.credits.crew}
                         created_by={data?.created_by}
-                        keyType={keyType}
                     />
                     <Info
                         data={data}
-                        keyType={keyType}
                     />
                 </div>
             }
