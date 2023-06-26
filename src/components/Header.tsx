@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
-import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
-import {useAppSelector} from "../Store/store";
-import {HeaderSlider} from "./HeaderSlider";
+import {ReactComponent as ArrowDownIcon} from "../../../public/SVG/duble-arrow-down.svg";
+import {useAppSelector} from "../../../Store/store";
+import {HeaderSlider} from "../HeaderSlider";
 import {useLocation} from "react-router-dom";
 
 type HeaderInfo = {
