@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import './scss/app.scss'
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import {AllMoviesContent} from "./components";
 import {AllMoviesPage, ContactsPage, DetailInfoPage, ErrorPage, Home, MainLayout, People} from "./pages";
+import {AllMoviesContent} from "./components";
 
 const App:FC = () => {
     const router = createBrowserRouter(

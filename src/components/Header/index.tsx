@@ -1,15 +1,15 @@
 import React, {FC, useEffect, useState} from "react";
-import {ReactComponent as ArrowDownIcon} from "../public/SVG/duble-arrow-down.svg";
-import {useAppSelector} from "../Store/store";
-import {HeaderSlider} from "./HeaderSlider";
+import {ReactComponent as ArrowDownIcon} from "../../public/SVG/duble-arrow-down.svg";
+import {useAppSelector} from "../../Store/store";
 import {useLocation} from "react-router-dom";
+import {HeaderSlider} from "../HeaderSlider";
 
 type HeaderInfo = {
     genre: string;
     title: string;
     backgroundImage: string;
 };
-export const Header = () => {
+export const Header:FC = () => {
     const [isVisibleEffect, setIsVisibleEffect] = useState(false);
     const [dataInfo, setDataInfo] = useState<HeaderInfo>({
         genre: "",

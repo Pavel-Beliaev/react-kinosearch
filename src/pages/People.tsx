@@ -1,8 +1,7 @@
 import React, {FC, useState} from 'react';
 import {useGetAllPersonQuery} from "../Store/tmdbService/endpoints";
-import {Pagination, PeopleCard, SkeletonPeopleCard} from "../components";
 import {useScroll} from "../hooks/useScroll";
-import Title from "../components/Title";
+import {Pagination, PeopleCard, SkeletonPeopleCard, Title} from "../components";
 
 
 export const People: FC = () => {
@@ -34,7 +33,7 @@ export const People: FC = () => {
                             />
                     ))
                 }
-                <div className='container people-pagination'>
+                <div className='people-pagination'>
                     <Pagination
                         value={pageNumber}
                         changePage={onChangePage}

@@ -1,12 +1,12 @@
 import React, {FC, useState} from 'react';
 import {SwiperSlide} from "swiper/react";
-import {useAppSelector} from "../../../../Store/store";
-import '../media.scss'
-import {VideoPlayer} from "../../../VideoPlayer";
-import {Switcher} from "../../../Switcher";
-import {SliderShow} from "../../../SliderShow";
-import {IDetails} from "../../../../Store/tmdbService/@types";
-import Title from "../../../Title";
+import {useAppSelector} from "../../../Store/store";
+import './media.scss'
+import {VideoPlayer} from "../../VideoPlayer";
+import {Switcher} from "../../Switcher";
+import {SliderShow} from "../../SliderShow";
+import {IDetails} from "../../../Store/tmdbService/@types";
+import {Title} from "../../Title";
 
 export type MovieMediaType = {
     dataMovie: IDetails | undefined,
@@ -15,13 +15,12 @@ export type MovieMediaType = {
 
 export const MovieMedia: FC<MovieMediaType> = ({dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
-
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
 
 
     return (
-        <div className='mediaBlock'>
-            <div className='container'>
+        <div className='background'>
+            <div className='container mediaBlock'>
                 <Title>Media</Title>
                 <div className='mediaBlock-media'>
                     <Switcher

@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import '../media.scss'
-import {Reviews} from "../../../Reviews";
-import {ResultsReviewsType} from "../../../../Store/tmdbService/@types";
-import Title from "../../../Title";
+import './reviews.scss'
+import {ResultsReviewsType} from "../../../Store/tmdbService/@types";
+import {Reviews} from "../../Reviews";
+import {Title} from "../../Title";
 
 export type MovieReviewsType = {
     length: number | undefined,

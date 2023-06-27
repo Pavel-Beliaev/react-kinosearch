@@ -170,7 +170,7 @@
           position: relative;
 
           &:hover {
-            color: $lightorang;
+            color: $light-orange;
             transition: all .30s ease-in-out;
           }
 
@@ -185,7 +185,7 @@
               height: 2px;
               content: '';
               background-image: $gradient;
-              box-shadow: 0 0 30px 0 $lightorang;
+              box-shadow: 0 0 30px 0 $light-orange;
             }
           }
         }
@@ -200,7 +200,7 @@
           content: '';
           transition: all .30s ease-in-out;
           background-image: $gradient;
-          box-shadow: 0 0 30px 0 $lightorang;
+          box-shadow: 0 0 30px 0 $light-orange;
         }
       }
     }
@@ -222,7 +222,7 @@
         transition: all .30s ease-in-out;
 
         &:hover {
-          background-color: rgba($lightorang, 0.8);
+          background-color: rgba($light-orange, 0.8);
           transition: all .30s ease-in-out;
         }
 

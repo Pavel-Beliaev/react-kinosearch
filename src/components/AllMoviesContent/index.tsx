@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {useOutletContext} from "react-router-dom";
-import {IResultsMovies} from "../Store/tmdbService/@types";
-import {MovieCard} from "./Cards/MovieCard";
+import {IResultsMovies} from "../../Store/tmdbService/@types";
+import {MovieCard} from "../Cards";
 
 type AllMoviesContentType = {
     dataFilms: IResultsMovies[],

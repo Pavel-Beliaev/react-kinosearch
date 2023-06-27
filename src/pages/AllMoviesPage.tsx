@@ -5,37 +5,29 @@ import {useLazyGetAllMoviesQuery} from "../Store/tmdbService/endpoints";
 import {setGenreId, setInfinityAble, setPageNumber, setFilter} from "../Store/movies/slice";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import qs from 'qs'
-import {GenreBar, Loader, Search} from "../components";
 import {ErrorPage} from "./ErrorPage";
 import {useScroll} from "../hooks/useScroll";
+import {GenreBar, Loader, Search} from "../components";
 
 export const AllMoviesPage: FC = () => {
-    const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const {pathname} = useLocation()
+    const navigate = useNavigate();
     const scrollTo = useScroll()
-
+    const [preventRedundantRequest, setPreventRedundantRequest] = useState(false)
+    const [prevPageNumber, setPrevPageNumber] = useState(1)
+    const [observerAble, setObserverAble] = useState(false)
+    const [isActive, setIsActive] = useState(false)
+    const lastElementRef = useRef<HTMLDivElement>(null);
+    const dataElementRef = useRef<HTMLDivElement>(null);
 
     const {genresMovies, genresTV} = useAppSelector((state) => state.config);
     const {dataFilms, pageNumber, infinityAble, searchValue, genreId} = useAppSelector(state => state.movies)
 
-    const [prevPageNumber, setPrevPageNumber] = useState(1)
-    const [observerAble, setObserverAble] = useState(false)
-    const [preventRedundantRequest, setPreventRedundantRequest] = useState(false)
-
-    const [isActive, setIsActive] = useState(false)
-
-    const lastElementRef = useRef<HTMLDivElement>(null);
-    const dataElementRef = useRef<HTMLDivElement>(null);
-
     const [fetching, allMovieBase] = useLazyGetAllMoviesQuery()
 
-    const type = pathname
-        .split('/')
-        .pop()
-    const genres = type === 'movie'
-        ? genresMovies
-        : genresTV
+    const type = pathname.split('/').pop()
+    const genres = type === 'movie' ? genresMovies : genresTV
     const totalPage = allMovieBase.data?.total_pages ?? 1;
     const isFetch = allMovieBase.isFetching
     const isSuces = allMovieBase.isSuccess

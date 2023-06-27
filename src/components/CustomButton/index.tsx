@@ -1,6 +1,10 @@
 import React, {FC} from 'react';
 import './custombutton.scss'
-import {ButtonProps} from "./types";
+
+export interface ButtonProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+    children?: string | React.ReactElement;
+}
 
 export const CustomButton:FC<ButtonProps> = ({children, ...props}) => {
 

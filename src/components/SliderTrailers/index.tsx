@@ -13,7 +13,7 @@ import {
     useLazyGetVideoByIdQuery,
 } from "../../Store/tmdbService/endpoints";
 import {VideoPlayer} from "../VideoPlayer";
-import Title from "../Title";
+import {Title} from "../Title";
 
 export const SliderTrailers: FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
@@ -37,7 +37,7 @@ export const SliderTrailers: FC = () => {
     }, [getId, isSuccess, target]);
 
     return (
-        <>
+        <div className='trailers'>
             <Swiper
                 onSwiper={setThumbsSwiperTop}
                 loop={true}
@@ -88,6 +88,6 @@ export const SliderTrailers: FC = () => {
                     ))}
                 </Swiper>
             </div>
-        </>
+        </div>
     );
 };

@@ -2,10 +2,9 @@ import React, {FC, useState} from 'react';
 import {SwiperSlide} from "swiper/react";
 import {useGetTopRatedMoviesQuery, useGetTrendingMoviesQuery} from "../Store/tmdbService/endpoints";
 import {typeQueryFilms, typeQueryTrendingFilms} from "../mock/statick";
-import {MovieSlideCard, SkeletonSliderShow, SliderShow, SliderTrailers, Switcher} from "../components";
-import Title from "../components/Title";
+import {MovieSlideCard, SkeletonSliderShow, SliderShow, SliderTrailers, Switcher, Title} from "../components";
 
-export const Home:FC = () => {
+export const Home: FC = () => {
     const [switcherTrendingFilms, setSwitcherTrendingFilms] = useState(0)
     const [switcherTopRateFilms, setSwitcherTopRateFilms] = useState(0)
 
@@ -21,7 +20,7 @@ export const Home:FC = () => {
 
     return (
         <>
-            <div className='slider-show'>
+            <div className='page-frame'>
                 <div className='frameworks-container'>
                     <Title>Trending</Title>
                     <Switcher
@@ -51,10 +50,10 @@ export const Home:FC = () => {
                     </SliderShow>
                 </div>
             </div>
-            <div className='trailers'>
+            <div className='page-frame'>
                 <SliderTrailers/>
             </div>
-            <div className='slider-show'>
+            <div className='page-frame'>
                 <div className='frameworks-container'>
                     <Title>Top rated</Title>
                     <Switcher
@@ -64,9 +63,8 @@ export const Home:FC = () => {
                         title2={'TV'}
                         color={'#ffffff'}
                     />
-                    <SliderShow
-                        slideCount={4}
-                        children={topRateDataList?.results
+                    <SliderShow slideCount={4}>
+                        {topRateDataList?.results
                             .map((film) => (
                                 <SwiperSlide key={film.id}>
                                     {isLoadingTopRate
@@ -83,7 +81,7 @@ export const Home:FC = () => {
                                 </SwiperSlide>
                             ))
                         }
-                    />
+                    </SliderShow>
                 </div>
             </div>
         </>

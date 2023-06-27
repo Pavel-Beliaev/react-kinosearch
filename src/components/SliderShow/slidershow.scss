@@ -10,16 +10,22 @@
 
     &-wrapper {
       margin-bottom: 40px;
+      padding: 15px 0;
     }
 
     &-slide {
       height: 100%;
       padding: 10px 0;
 
-      img {
+      a {
+        display: block;
         height: 100%;
         width: 100%;
-        object-fit: cover;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
       }
     }
   }

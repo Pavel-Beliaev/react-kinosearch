@@ -6,28 +6,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 15px;
-
-  &-switcher {
-    flex: 0 1 100%;
-  }
 
   &-colum {
     display: flex;
     flex-direction: column;
     flex: 0 1 65%;
-  }
-
-  &-skeleton {
-    padding-bottom: 40px;
-    margin-bottom: 40px;
-    border-bottom: 1px solid #d8d8d8;
-  }
-
-  .refElement {
-    padding: 5px;
-    background-color: #101010;
-    width: 100%;
   }
 }
 

@@ -11,15 +11,19 @@ export const ModalWindow:FC<ModalWindowType> = ({children}) => {
     const dispatch = useAppDispatch();
     const {active} = useAppSelector(state => state.config.activeModal);
 
+    const dispatchActiveModalHandler = () => {
+        dispatch(
+            setActiveModal({
+                active: false,
+            })
+        );
+    };
+
     return (
         <>
             {active &&
                 <div
-                    onClick={() =>
-                        dispatch(setActiveModal({
-                            active: false
-                        }))
-                    }
+                    onClick={dispatchActiveModalHandler}
                     className={`modalWindow ${active && 'active'}`}
                 >
                     {children}

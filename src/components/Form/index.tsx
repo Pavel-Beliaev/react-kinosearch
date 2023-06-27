@@ -1,13 +1,14 @@
 import React, {FC} from 'react';
-import {CustomInput} from "./CustomFields/CustomInput";
-import {CustomTextarea} from "./CustomFields/CustomTextarea";
-import {CustomButton} from "./CustomButton";
-import {contactArray} from "../mock/statick";
+import './form.scss'
+import {contactArray} from "../../mock/statick";
+import {CustomInput, CustomTextarea} from "../CustomFields";
+import {CustomButton} from "../CustomButton";
 
-const Form: FC = () => {
+export const Form: FC = () => {
+
     return (
-        <div className='form-block'>
-            <form action="">
+        <div className='form'>
+            <form action="src/components">
                 <CustomInput title={'Name'}/>
                 <CustomInput title={'Email'}/>
                 <CustomInput title={'Where did you hear about us?'}/>
@@ -35,5 +36,3 @@ const Form: FC = () => {
         </div>
     );
 };
-
-export default Form;

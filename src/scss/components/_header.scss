@@ -33,7 +33,7 @@
   svg {
     width: 100%;
     height: 100%;
-    fill: $lightorang;
+    fill: $light-orange;
     stroke: $orange;
   }
 }
@@ -52,7 +52,7 @@
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: $lightorang;
+    color: $light-orange;
   }
   h1 {
     transform: translateY(-30px);
@@ -64,6 +64,7 @@
     border: none
   }
 }
+
 .with-animate {
   @extend .blurb;
   animation: Blurb .5s .5s forwards;

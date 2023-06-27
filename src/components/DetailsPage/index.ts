@@ -1,0 +1,7 @@
+export * from './Info'
+export * from './MovieMedia'
+export * from './MovieReviews'
+export * from './Overviews'
+export * from './Poster'
+export * from './Synopsis'
+export * from './TablePeopleActing'

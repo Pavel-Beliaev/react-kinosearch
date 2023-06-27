@@ -1,6 +1,5 @@
 import React, {FC, useEffect, useState} from "react";
 import {Outlet} from "react-router-dom";
-import {useLocation} from "react-router-dom";
 import {
     useLazyGetConfigurationQuery,
     useLazyGetGenreMoviesQuery,
@@ -8,15 +7,8 @@ import {
     useLazyGetVideoByIdQuery,
 } from "../Store/tmdbService/endpoints";
 import {useAppSelector} from "../Store/store";
-import {
-    DropDownNavbar,
-    Footer,
-    Header,
-    Menu,
-    ModalWindow,
-    VideoPlayer,
-} from "../components";
 import {useScroll} from "../hooks/useScroll";
+import {DropDownNavbar, Footer, Header, Menu, ModalWindow, VideoPlayer} from "../components";
 
 export const MainLayout: FC = () => {
     const {active, id} = useAppSelector((state) => state.config.activeModal);
@@ -70,9 +62,7 @@ export const MainLayout: FC = () => {
                 <Outlet/>
             </div>
             <div
-                style={{
-                    opacity: scroll < 300 ? 0 : 1,
-                }}
+                style={{opacity: scroll < 300 ? 0 : 1,}}
                 onClick={handleUpButton}
                 className="back-to-top"
             >

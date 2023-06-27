@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
-import notImg from "../../../../public/JPG/notImg.jpg";
-import {useAppSelector} from "../../../../Store/store";
-import '../../synopsis.scss'
-import {Rating} from "../../../Rating";
-import {useTypePage} from "../../../../hooks/useTypePage";
+import notImg from "../../../public/JPG/notImg.jpg";
+import {useAppSelector} from "../../../Store/store";
+import '../synopsis.scss'
+import {useTypePage} from "../../../hooks/useTypePage";
+import {Rating} from "../../Rating";
 
 export type PosterType = {
     poster: string | null | undefined,

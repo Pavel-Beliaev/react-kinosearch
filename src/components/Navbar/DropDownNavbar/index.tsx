@@ -9,10 +9,7 @@ export const DropDownNavbar:FC<DropDownNavbarType> = ({scroll}) => {
 
     return (
         <div
-            style={scroll < 115
-                ? {}
-                : {transform: 'translateY(0px)'}
-            }
+            style={{transform: scroll < 100 ? '' :  'translateY(0px)'}}
             className='drop_navbar'
         >
             <Navbar/>

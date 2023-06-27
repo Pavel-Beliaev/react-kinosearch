@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import {IDetails} from "../../../Store/tmdbService/@types";
 import '../synopsis.scss'
-import {Poster} from "../SynopsisComponents/Poster";
-import {Overviews} from "../SynopsisComponents/Overviews";
-import {Info} from "../SynopsisComponents/Info";
-import {SkeletonPeoplePage} from "../../Skeletons/SkeletonPeoplePage";
 import {useTypePage} from "../../../hooks/useTypePage";
+import {Poster} from "../Poster";
+import {Overviews} from "../Overviews";
+import {Info} from "../Info";
+import {SkeletonPeoplePage} from "../../Skeletons/SkeletonPeoplePage";
 
 type SynopsisType = {
     data: IDetails | undefined,

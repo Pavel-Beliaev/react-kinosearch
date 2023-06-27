@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
 import {Link} from "react-router-dom";
-import {genderArr} from "../../../../mock/statick";
-import '../../synopsis.scss'
-import {IDetails} from "../../../../Store/tmdbService/@types";
-import {useTypePage} from "../../../../hooks/useTypePage";
-import Title from "../../../Title";
+import {genderArr} from "../../../mock/statick";
+import '../synopsis.scss'
+import {IDetails} from "../../../Store/tmdbService/@types";
+import {useTypePage} from "../../../hooks/useTypePage";
+import {Title} from "../../Title";
 
 export type InfoType = {
     data: IDetails | undefined,

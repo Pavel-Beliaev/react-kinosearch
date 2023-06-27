@@ -21,7 +21,7 @@
       font-size: 14px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: $lightorang;
+      color: $light-orange;
     }
 
     h3 {
@@ -72,7 +72,7 @@
     }
 
     &:hover {
-      color: $lightorang;
+      color: $light-orange;
       transition: all 300ms ease-in-out;
     }
   }

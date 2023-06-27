@@ -1,25 +1,12 @@
-.review {
-  &-text {
-    padding: 20px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-
-    p {
-      letter-spacing: 1.5px;
-      color: #101010;
-    }
-  }
-}
-
-.mediaBlock {
-  margin-top: 65px;
+.background {
   background-color: #101010;
   width: 100%;
   position: relative;
+}
+
+.mediaBlock {
+  padding-top: 65px;
+
 
   &-media {
     display: flex;
@@ -66,5 +53,3 @@
     }
   }
 }
-
-

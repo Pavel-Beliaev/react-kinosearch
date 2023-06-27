@@ -5,7 +5,7 @@ type TitleType = {
     children: string
 }
 
-const Title:FC<TitleType> = ({children}) => {
+export const Title:FC<TitleType> = ({children}) => {
     return (
         <h2>
             {children}
@@ -13,5 +13,3 @@ const Title:FC<TitleType> = ({children}) => {
 
     );
 };
-
-export default Title;

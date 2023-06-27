@@ -8,6 +8,7 @@
   left: 0;
   color: #fff;
   background: #101010;
+  margin-top: 65px;
 
   &-main {
     display: flex;
@@ -57,11 +58,11 @@
             }
 
             &:hover {
-              color: $lightorang;
+              color: $light-orange;
               transition: all .30s ease-in-out;
 
               .fa {
-                color: $lightorang;
+                color: $light-orange;
                 transition: all .30s ease-in-out;
               }
             }

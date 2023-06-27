@@ -1,21 +1,22 @@
-import React, {FC, useEffect, useState} from 'react';
-import {useLocation, useParams} from "react-router-dom";
+import React, {FC, useEffect} from 'react';
 import {SwiperSlide} from "swiper/react";
 import {
     useGetAllMoviesQuery,
     useLazyGetDetailsQuery,
 } from "../Store/tmdbService/endpoints";
+import {useScroll} from "../hooks/useScroll";
+import {useTypePage} from "../hooks/useTypePage";
 import {
     MovieMedia,
     MovieReviews,
     MovieSlideCard,
     PeopleCard,
-    SkeletonPeopleCard, SkeletonSliderShow, SliderShow,
-    SliderWrapper, Synopsis, TablePeopleActing
+    SkeletonPeopleCard, SkeletonSliderShow,
+    SliderShow,
+    Synopsis,
+    TablePeopleActing,
+    Title
 } from "../components";
-import {useScroll} from "../hooks/useScroll";
-import {useTypePage} from "../hooks/useTypePage";
-import Title from "../components/Title";
 
 export const DetailInfoPage: FC = () => {
     const {isType, type, id} = useTypePage()
@@ -38,7 +39,6 @@ export const DetailInfoPage: FC = () => {
             id: Number(id)
         })
     }, [id])
-
 
     return (
         <div>
@@ -88,26 +88,30 @@ export const DetailInfoPage: FC = () => {
                     </SliderShow>
                 </div>
             </div>
-            <div className='page-frame'>
-                    {data?.also_known_as && isType
-                        ? <TablePeopleActing
-                            movieCredits={data?.movie_credits.cast}
-                            tvCredits={data?.tv_credits.cast}
-                        />
-                        : data?.status &&
-                        <>
-                            <MovieMedia
-                                dataMovie={data}
-                                pict={data?.poster_path}
-                            />
-                            <MovieReviews
-                                length={data?.reviews.results.length}
-                                title={data?.title ? data?.title : data?.name}
-                                reviews={data?.reviews.results}
-                            />
-                        </>
-                    }
+            {data?.also_known_as && isType
+                ? <div className='page-frame'>
+                    <TablePeopleActing
+                        movieCredits={data?.movie_credits.cast}
+                        tvCredits={data?.tv_credits.cast}
+                    />
                 </div>
+                : data?.status &&
+                <>
+                    <div className='page-frame'>
+                        <MovieMedia
+                            dataMovie={data}
+                            pict={data?.poster_path}
+                        />
+                    </div>
+                    <div className='page-frame'>
+                        <MovieReviews
+                            length={data?.reviews.results.length}
+                            title={data?.title ? data?.title : data?.name}
+                            reviews={data?.reviews.results}
+                        />
+                    </div>
+                </>
+            }
         </div>
     );
 };

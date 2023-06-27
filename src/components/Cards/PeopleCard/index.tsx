@@ -12,7 +12,7 @@ export type PeopleCardProps = {
     id: number
 }
 
-export const PeopleCard:FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
+export const PeopleCard: FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
     const {pathname} = useLocation()
 
     const {base_url, profileSize} = useAppSelector((state) => state.config)
