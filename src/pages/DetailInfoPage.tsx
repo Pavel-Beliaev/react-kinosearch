@@ -7,16 +7,13 @@ import {
 import {useScroll} from "../hooks/useScroll";
 import {useTypePage} from "../hooks/useTypePage";
 import {
-    MovieMedia,
-    MovieReviews,
     MovieSlideCard,
     PeopleCard,
     SkeletonPeopleCard, SkeletonSliderShow,
     SliderShow,
-    Synopsis,
-    TablePeopleActing,
     Title
 } from "../components";
+import {MovieMedia, MovieReviews, Synopsis, TablePeopleActing} from "../modules";
 
 export const DetailInfoPage: FC = () => {
     const {isType, type, id} = useTypePage()
@@ -41,7 +38,7 @@ export const DetailInfoPage: FC = () => {
     }, [id])
 
     return (
-        <div>
+        <div className="frameworks">
             <div className='page-frame'>
                 <div className='frameworks-container'>
                     <Title>Synopsis</Title>

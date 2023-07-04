@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import './scss/app.scss'
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
 import {AllMoviesPage, ContactsPage, DetailInfoPage, ErrorPage, Home, MainLayout, People} from "./pages";
-import {AllMoviesContent} from "./components";
+import {AllMoviesLayout} from "./modules";
 
 const App:FC = () => {
     const router = createBrowserRouter(
@@ -10,7 +10,7 @@ const App:FC = () => {
             <Route path='/' element={<MainLayout/>}>
                 <Route index element={<Home/>}/>
                 <Route path='all' element={<AllMoviesPage/>}>
-                    <Route path=':type' element={<AllMoviesContent/>}/>
+                    <Route path=':type' element={<AllMoviesLayout/>}/>
                 </Route>
                 <Route path='all/:type/:id' element={<DetailInfoPage/>}/>
                 <Route path='persons' element={<People/>}/>

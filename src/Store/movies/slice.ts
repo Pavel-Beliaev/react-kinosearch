@@ -11,7 +11,6 @@ type FilterType = {
 const initialState: MoviesState = {
     dataFilms: [],
     pageNumber: 1,
-    types: ['movie', 'tv'],
     infinityAble: false,
     searchValue: '',
     genreId: null
