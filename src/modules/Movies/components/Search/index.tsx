@@ -2,8 +2,8 @@ import React, {FC, useCallback, useState} from 'react';
 import debounce from "lodash.debounce";
 import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {setSearchValue} from "../../../../Store/movies/slice";
-import {CustomInput} from "../../../../components/UI/CustomFields";
-
+import './search.scss'
+import {CustomInput} from "../../../../components";
 export const Search:FC = () => {
     const dispatch = useAppDispatch();
 

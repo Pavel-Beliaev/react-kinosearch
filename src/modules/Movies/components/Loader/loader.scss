@@ -1,3 +1,5 @@
+@import "../../../../scss/variables";
+
 .loader {
   position: relative;
   display: flex;
@@ -8,16 +10,16 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    border: 4px double #ec7532;
+    border: 4px double $orange;
     border-radius: 50%;
 
     &-slice {
       position: absolute;
       width: 40px;
       height: 40px;
-      border-top: 4px solid #EC7532FF;
+      border-top: 4px solid $orange;
       border-left: 4px solid transparent;
-      border-bottom: 4px solid #EC7532FF;
+      border-bottom: 4px solid $orange;
       border-right: 4px solid transparent;
       border-radius: 50%;
       animation: spinRevers linear 4s infinite;
@@ -29,10 +31,10 @@
       position: absolute;
       width: 30px;
       height: 30px;
-      border-right: 4px dotted #fbbd61;
-      border-top: 4px dotted #fbbd61;
-      border-bottom: 4px dotted #fbbd61;
-      border-left: 4px dotted #fbbd61;
+      border-right: 4px dotted $light-orange;
+      border-top: 4px dotted $light-orange;
+      border-bottom: 4px dotted $light-orange;
+      border-left: 4px dotted $light-orange;
       border-radius: 50%;
       animation: spin linear 3s infinite;
     }
@@ -42,15 +44,15 @@
     position: absolute;
     width: 20px;
     height: 20px;
-    border: 4px double #ec7532;
+    border: 4px double $orange;
     border-radius: 50%;
 
     &-slice {
       position: absolute;
       width: 20px;
       height: 20px;
-      border-bottom: 4px solid #EC7532FF;
-      border-top: 4px solid #EC7532FF;
+      border-bottom: 4px solid $orange;
+      border-top: 4px solid $orange;
       border-right: 4px solid transparent;
       border-left: 4px solid transparent;
       border-radius: 50%;

@@ -1,0 +1,26 @@
+.overview {
+  flex: 0 1 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: flex-start;
+
+  h3 {
+    margin: 0;
+    font-weight: bold;
+  }
+
+  p {
+    flex-grow: 1;
+  }
+
+  &-credits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  &-crew {
+    flex: 0 1 30%;
+  }
+}

@@ -1,2 +1,2 @@
 export * from './components/MovieContent'
-export * from './pages/AllMoviesLayout'
+export * from './components/AllMoviesContent'

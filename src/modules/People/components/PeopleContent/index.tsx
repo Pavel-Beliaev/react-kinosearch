@@ -3,6 +3,7 @@ import {PeopleCard, SkeletonPeopleCard, Title} from "../../../../components";
 import {Pagination} from "../Pagination";
 import {useScroll} from "../../../../hooks/useScroll";
 import {useGetAllPersonQuery} from "../../../../Store/tmdbService/endpoints";
+import './peopleContent.scss'
 
 export const PeopleContent = () => {
     const [pageNumber, setPageNumber] = useState(1)
@@ -33,13 +34,11 @@ export const PeopleContent = () => {
                             />
                     ))
                 }
-                <div className='people-pagination'>
-                    <Pagination
-                        value={pageNumber}
-                        changePage={onChangePage}
-                        totalPage={data?.total_pages}
-                    />
-                </div>
+                <Pagination
+                    value={pageNumber}
+                    changePage={onChangePage}
+                    totalPage={data?.total_pages}
+                />
             </div>
         </>
     );

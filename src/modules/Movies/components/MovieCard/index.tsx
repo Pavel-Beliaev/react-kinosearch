@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
 import {Link, useLocation} from "react-router-dom";
 import {useAppSelector} from "../../../../Store/store";
-import notPicture from "../../../../public/PNG/placeholder.png";
+import notPicture from "../../../../assets/PNG/placeholder.png";
+import './movieCard.scss'
 
 export type MovieCardProps = {
     poster: string | null,

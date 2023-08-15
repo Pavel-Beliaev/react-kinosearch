@@ -1,12 +1,11 @@
 import React from 'react';
+import './errorElement.scss'
 
 export const ErrorElement = () => {
     return (
-        <div className='error'>
-            <div className='error-block'>
-                <h3>Error</h3>
-                <p>Not Found</p>
-            </div>
+        <div className='err-block'>
+            <h3>Error</h3>
+            <p>Not Found</p>
         </div>
     );
 };

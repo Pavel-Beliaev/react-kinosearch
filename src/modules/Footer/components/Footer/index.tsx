@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {footerContactArray, footerLinkArray, footerMenu} from "../../mock/statick";
+import './footer.scss'
 
 export const Footer: FC = () => {
     return (

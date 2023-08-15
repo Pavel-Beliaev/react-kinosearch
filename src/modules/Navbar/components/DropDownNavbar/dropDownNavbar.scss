@@ -1,0 +1,13 @@
+@import "../../../../scss/variables";
+
+.drop_navbar {
+  position: fixed;
+  background-color: $dark;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  padding-top: 20px;
+  transform: translateY(-100%);
+  transition: $transit;
+}

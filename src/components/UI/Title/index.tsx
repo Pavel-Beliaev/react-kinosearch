@@ -10,6 +10,6 @@ export const Title:FC<TitleType> = ({children}) => {
         <h2>
             {children}
         </h2>
-
     );
 };
+

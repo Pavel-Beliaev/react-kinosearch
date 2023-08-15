@@ -1,0 +1,40 @@
+@import "../../scss/variables";
+
+.back-to-top {
+  font-size: 12px;
+  position: fixed;
+  z-index: 9999;
+  right: 40px;
+  bottom: 40px;
+  cursor: pointer;
+  transition: opacity 1s ease-out, $transit;
+  border-radius: 30px;
+  background: rgba(36, 43, 45, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    i {
+      border: 2px solid $light-orange;
+      transition: $transit;
+    }
+
+    .fa {
+      color: $light-orange;
+      transition: $transit;
+    }
+  }
+
+  i {
+    border: 2px solid $orange;
+    padding: 15.5px;
+    border-radius: 30px;
+    transition: $transit;
+  }
+
+  .fa {
+    color: $orange;
+    transition: $transit;
+  }
+}

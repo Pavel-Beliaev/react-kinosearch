@@ -1,13 +1,14 @@
 import React, {FC} from 'react';
 import {Navbar} from "../Navbar";
+import './dropDownNavbar.scss'
 
 type DropDownNavbarType = {
-    scroll: number
+    scroll: boolean
 }
 export const DropDownNavbar:FC<DropDownNavbarType> = ({scroll}) => {
     return (
         <div
-            style={{transform: scroll < 100 ? '' :  'translateY(0px)'}}
+            style={{transform: scroll ? 'translateY(0px)' : ''}}
             className='drop_navbar'
         >
             <Navbar/>

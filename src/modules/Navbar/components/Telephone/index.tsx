@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import './telephone.scss'
 
 export const Telephone = () => {
     return (

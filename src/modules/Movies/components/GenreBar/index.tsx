@@ -2,7 +2,8 @@ import React, {FC} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {setGenreId} from "../../../../Store/movies/slice";
 import {Genres} from "../../../../Store/tmdbService/@types";
-import {Title} from "../../../../components/UI/Title";
+import './genreBar.scss'
+import {Title} from "../../../../components";
 
 type GenreBarType = {
     isActive: boolean

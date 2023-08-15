@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import './scss/app.scss'
 import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
-import {AllMoviesPage, ContactsPage, DetailInfoPage, ErrorPage, Home, MainLayout, People} from "./pages";
-import {AllMoviesLayout} from "./modules";
+import {AllMoviesPage, ContactsPage, DetailInfoPage, ErrorPage, Home, People} from "./pages";
+import {MainLayout} from "./layouts/MainLayout";
+import {AllMoviesContent} from "./modules";
 
 const App:FC = () => {
     const router = createBrowserRouter(
@@ -10,7 +11,7 @@ const App:FC = () => {
             <Route path='/' element={<MainLayout/>}>
                 <Route index element={<Home/>}/>
                 <Route path='all' element={<AllMoviesPage/>}>
-                    <Route path=':type' element={<AllMoviesLayout/>}/>
+                    <Route path=':type' element={<AllMoviesContent/>}/>
                 </Route>
                 <Route path='all/:type/:id' element={<DetailInfoPage/>}/>
                 <Route path='persons' element={<People/>}/>

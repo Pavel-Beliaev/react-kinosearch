@@ -1,0 +1,18 @@
+@import "../../../../scss/variables";
+
+.synopsis {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  h3 {
+    border: none;
+    padding: 0;
+    margin-bottom: 10px;
+    color: $dark;
+  }
+
+  p {
+    color: $dark;
+  }
+}

@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import {useScroll} from "../../hooks/useScroll";
+import './buttonToUp.scss'
 
 type ButtonToUpType = {
-    scroll: number
+    scroll: boolean
 }
 const ButtonToUp:FC<ButtonToUpType> = ({scroll}) => {
     const scrollTo = useScroll()
@@ -13,7 +14,7 @@ const ButtonToUp:FC<ButtonToUpType> = ({scroll}) => {
 
     return (
         <div
-            style={{opacity: scroll < 300 ? 0 : 1,}}
+            style={{opacity: scroll ? 1 : 0}}
             onClick={handleUpButton}
             className="back-to-top"
         >

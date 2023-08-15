@@ -1,10 +1,18 @@
 import React, {FC} from 'react';
 import {Navbar} from "../Navbar";
 import {Telephone} from "../Telephone";
+import './_menu.scss'
 
-export const Menu:FC = () => {
+type MenuType = {
+    refElem: React.RefObject<HTMLDivElement>
+}
+export const Menu: FC<MenuType> = ({refElem}) => {
+
     return (
-        <div className='menu'>
+        <div
+            ref={refElem}
+            className='menu'
+        >
             <Telephone/>
             <Navbar/>
         </div>

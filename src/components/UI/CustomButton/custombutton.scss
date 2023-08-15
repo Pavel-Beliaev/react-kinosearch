@@ -1,5 +1,7 @@
+@import "../../../scss/variables";
+
 .custom_button {
-  color: #ec7532;
+  color: $orange;
   background: transparent;
   font-size: 13px;
   position: relative;
@@ -7,7 +9,7 @@
   padding: 12px 24px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  border: 2px solid #ec7532;
+  border: 2px solid $orange;
   border-radius: 30px;
   cursor: pointer;
   line-height: inherit;

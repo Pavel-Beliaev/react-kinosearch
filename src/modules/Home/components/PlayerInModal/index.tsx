@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import {useAppSelector} from "../../../../Store/store";
 import {useLazyGetVideoByIdQuery} from "../../../../Store/tmdbService/endpoints";
 import {VideoPlayer} from "../../../../components";
+import './playerInModal.scss'
 
 export const PlayerInModal = () => {
     const {active, id} = useAppSelector((state) => state.config.activeModal);

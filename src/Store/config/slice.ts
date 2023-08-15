@@ -37,6 +37,7 @@ export const configurationSLice = createSlice({
         },
     },
 })
+
 export const {
     setConfiguration,
     setActiveModal,

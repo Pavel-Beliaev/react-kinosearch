@@ -1,6 +1,7 @@
 import React, {FC} from 'react';
 import {Link, NavLink} from "react-router-dom";
 import {menuNavbar, navbarMenu} from "../../mock/static";
+import '../Navbar/navbar.scss'
 
 export const NavElement: FC = () => {
     const disabledClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, idx: number) => {
@@ -11,7 +12,7 @@ export const NavElement: FC = () => {
     }
 
     return (
-        <>
+        <ul>
             {navbarMenu
                 .map((obj, index) => (
                     <li key={obj.title}>
@@ -47,6 +48,6 @@ export const NavElement: FC = () => {
                     </li>
                 ))
             }
-        </>
+        </ul>
     );
 };

@@ -1,5 +1,7 @@
+@import "../../../../scss/variables";
+
 .trailers {
-  background-color: #101010;
+  background-color: $dark;
   width: 100%;
   position: relative;
 
@@ -56,8 +58,8 @@
 .swiperBottom {
   user-select: none;
   margin: 0 30px;
-  --swiper-navigation-color: #ec7532;
-  --swiper-pagination-color: #fff;
+  --swiper-navigation-color: $orange;
+  --swiper-pagination-color: #ffffff;
 
   .swiper-slide img {
     width: 100%;

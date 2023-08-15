@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 import {Link, useLocation} from "react-router-dom";
-import notImg from '../../public/JPG/notImg.jpg'
+import notImg from '../../assets/JPG/notImg.jpg'
 import {useAppSelector} from "../../Store/store";
 import {IKnowFor} from "../../Store/tmdbService/@types";
+import './peopleCard.scss'
 
 export type PeopleCardProps = {
     name: string,

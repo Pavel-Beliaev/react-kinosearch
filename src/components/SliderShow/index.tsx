@@ -31,7 +31,7 @@ export const SliderShow: FC<SliderProps> = ({
                 mousewheel={true}
                 keyboard={true}
                 modules={[Scrollbar, Mousewheel, Keyboard, Navigation]}
-                className="swiperTrending"
+                className="sliderShow"
             >
                 {children}
             </Swiper>

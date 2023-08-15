@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import '../synopsis.scss'
 import {CreatedByType, CreditsCrewType} from "../../../../Store/tmdbService/@types";
 import {useTypePage} from "../../../../hooks/useTypePage";
+import './overviews.scss'
 
 export type OverviewsType = {
     title: string,

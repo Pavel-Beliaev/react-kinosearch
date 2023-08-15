@@ -1,0 +1,58 @@
+@import "../../../../scss/variables";
+
+.genreBar {
+  display: flex;
+  flex: 0 1 30%;
+  flex-direction: column;
+  margin-right: 20px;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      margin-bottom: 8px;
+      flex: 0 1 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      span {
+        font-size: 14px;
+        color: #717171;
+        transition: $transit;
+        cursor: pointer;
+        padding: 5px 8px 5px 8px;
+
+        &:hover {
+          color: $light-orange;
+          transition: $transit;
+        }
+
+        &.active {
+          background-color: $orange;
+          border-radius: 30px;
+          color: white;
+        }
+
+        &.disableGenre {
+          pointer-events: none;
+          color: rgba(#717171, 0.5);
+          transition: $transit;
+        }
+      }
+    }
+  }
+
+  &-clean {
+    color: $orange;
+    padding: 5px 8px;
+    cursor: pointer;
+
+    &:after {
+      content: '\f00d';
+      font: normal normal normal 14px/1 FontAwesome;
+      margin-left: 3px;
+    }
+  }
+}

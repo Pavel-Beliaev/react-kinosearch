@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {IDetails} from "../../../../Store/tmdbService/@types";
-import '../synopsis.scss'
+import './synopsis.scss'
 import {useTypePage} from "../../../../hooks/useTypePage";
 import {Poster} from "../Poster";
 import {Overviews} from "../Overviews";

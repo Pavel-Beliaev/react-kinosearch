@@ -4,7 +4,8 @@ type ObserverCallback = () => void
 export const useObserver = (
     ref: RefObject<HTMLDivElement>,
     disabled: boolean,
-    callback_one: ObserverCallback,
+    callbackOne: ObserverCallback,
+    callbackTwo: ObserverCallback,
 ): void => {
 
     const observer = useRef<IntersectionObserver>();
@@ -15,8 +16,12 @@ export const useObserver = (
 
         const addPage: IntersectionObserverCallback = (entries) => {
             if (entries[0].isIntersecting) {
-                callback_one();
+                callbackOne();
             }
+            if (!entries[0].isIntersecting) {
+                callbackTwo();
+            }
+
         };
         observer.current = new IntersectionObserver(addPage);
         if (ref.current) {
@@ -24,5 +29,5 @@ export const useObserver = (
         }
 
 
-    }, [callback_one])
+    }, [callbackOne])
 }

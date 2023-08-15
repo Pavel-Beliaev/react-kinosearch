@@ -10,6 +10,7 @@ import {GenreBar} from "../GenreBar";
 import {Search} from "../Search";
 import {Loader} from "../Loader";
 import {ErrorElement} from "../../../../components";
+import './movieContent.scss'
 
 export const MovieContent = () => {
     const dispatch = useAppDispatch();
@@ -42,6 +43,8 @@ export const MovieContent = () => {
                 dispatch(setPageNumber(pageNumber + 1))
                 dispatch(setInfinityAble(true))
             }
+        },
+        () => {
         }
     )
 

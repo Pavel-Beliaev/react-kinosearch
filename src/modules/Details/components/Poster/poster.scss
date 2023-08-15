@@ -1,0 +1,14 @@
+.poster {
+  position: relative;
+
+  img {
+    width: 100%;
+    flex: 0 1 30%;
+  }
+
+  &-rating {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+  }
+}

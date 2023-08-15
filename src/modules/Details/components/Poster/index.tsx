@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
-import notImg from "../../../../public/JPG/notImg.jpg";
+import notImg from "../../../../assets/JPG/notImg.jpg";
 import {useAppSelector} from "../../../../Store/store";
-import '../synopsis.scss'
+import './poster.scss'
 import {useTypePage} from "../../../../hooks/useTypePage";
 import {Rating} from "../../../../components";
 

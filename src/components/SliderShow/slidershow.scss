@@ -1,7 +1,9 @@
-.swiperTrending {
+@import "../../scss/variables";
+
+.sliderShow {
   user-select: none;
   --swiper-scrollbar-size: 8px;
-  --swiper-navigation-color: #ec7532;
+  --swiper-navigation-color: $orange;
 
   .swiper {
     width: 100%;
@@ -31,11 +33,11 @@
   }
 
   .swiper-scrollbar-drag {
-    background-color: #fbbd61;
+    background-color: $light-orange;
   }
 
   .swiper-scrollbar-drag:active {
-    background-image: linear-gradient(to right, #ec7532 0%, #fbbd61 100%);
+    background-image: $gradient;
   }
 }
 
