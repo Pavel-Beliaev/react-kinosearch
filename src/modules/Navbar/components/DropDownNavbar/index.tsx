@@ -5,7 +5,8 @@ import './dropDownNavbar.scss'
 type DropDownNavbarType = {
     scroll: boolean
 }
-export const DropDownNavbar:FC<DropDownNavbarType> = ({scroll}) => {
+export const DropDownNavbar:FC<DropDownNavbarType> = React.memo(({scroll}) => {
+
     return (
         <div
             style={{transform: scroll ? 'translateY(0px)' : ''}}
@@ -14,4 +15,4 @@ export const DropDownNavbar:FC<DropDownNavbarType> = ({scroll}) => {
             <Navbar/>
         </div>
     );
-};
+});

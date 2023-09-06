@@ -16,8 +16,6 @@ import {
 import {MovieMedia, MovieReviews, Synopsis, TablePeopleActing} from "../../modules";
 
 export const DetailInfoPage: FC = () => {
-    console.log('details')
-
     const {isType, type, id} = useTypePage()
     const scrollTo = useScroll()
 
@@ -44,10 +42,13 @@ export const DetailInfoPage: FC = () => {
             <div className='page-frame'>
                 <div className='frameworks-container'>
                     <Title>Synopsis</Title>
-                    <Synopsis
-                        data={data}
-                        isFetching={isFetchingDetails}
-                    />
+                    {data &&
+                        <Synopsis
+                            data={data}
+                            isFetching={isFetchingDetails}
+                            isType={isType}
+                        />
+                    }
                 </div>
             </div>
             <div className='page-frame'>
@@ -61,10 +62,7 @@ export const DetailInfoPage: FC = () => {
                                         {isFetching
                                             ? <SkeletonSliderShow/>
                                             : <MovieSlideCard
-                                                title={film.title}
-                                                rating={film.vote_average}
-                                                poster={film.poster_path}
-                                                id={film.id}
+                                                data={film}
                                             />
                                         }
                                     </SwiperSlide>

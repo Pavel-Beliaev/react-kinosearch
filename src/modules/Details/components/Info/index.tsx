@@ -1,24 +1,20 @@
-import React, {FC} from 'react';
+import React, {FC, useCallback, useMemo} from 'react';
 import {Link} from "react-router-dom";
 import {genderArr} from "../../mock/statick";
 import {IDetails} from "../../../../Store/tmdbService/@types";
-import {useTypePage} from "../../../../hooks/useTypePage";
 import {Title} from "../../../../components";
 import './info.scss'
 
 export type InfoType = {
     data: IDetails | undefined,
+    type: boolean
 }
 
-export const Info: FC<InfoType> = ({data}) => {
-
-    const {isType} = useTypePage()
-
-    //useMemo
+export const Info: FC<InfoType> = ({data, type}) => {
     const infoLinks = () => {
         return (
             <div className='info-links'>
-                {isType &&
+                {type &&
                     <Title>Personal Info</Title>
                 }
                 <ul>
@@ -32,7 +28,7 @@ export const Info: FC<InfoType> = ({data}) => {
                             <i className='fa fa-facebook'></i>
                         </Link>
                     </li>
-                    {!isType &&
+                    {!type &&
                         <li>
                             {data?.homepage &&
                                 <Link to={`${data?.homepage}`}>
@@ -123,7 +119,7 @@ export const Info: FC<InfoType> = ({data}) => {
     return (
         <div className='info'>
             {infoLinks()}
-            {isType
+            {type
                 ? infoPeople()
                 : infoMovie()
             }

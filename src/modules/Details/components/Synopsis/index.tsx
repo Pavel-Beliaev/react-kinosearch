@@ -9,10 +9,10 @@ import {SkeletonPeoplePage} from "../SkeletonPeoplePage";
 
 type SynopsisType = {
     data: IDetails | undefined,
-    isFetching: boolean
+    isFetching: boolean,
+    isType: boolean
 }
-export const Synopsis:FC<SynopsisType> = ({data, isFetching}) => {
-    const {isType} = useTypePage()
+export const Synopsis: FC<SynopsisType> = React.memo(({data, isFetching, isType}) => {
 
     return (
         <>
@@ -25,6 +25,7 @@ export const Synopsis:FC<SynopsisType> = ({data, isFetching}) => {
                             : data?.poster_path
                         }
                         rating={data?.vote_average}
+                        type={isType}
                     />
                     <Overviews
                         title={isType
@@ -37,12 +38,14 @@ export const Synopsis:FC<SynopsisType> = ({data, isFetching}) => {
                         }
                         creditsCrew={data?.credits.crew}
                         created_by={data?.created_by}
+                        type={isType}
                     />
                     <Info
                         data={data}
+                        type={isType}
                     />
                 </div>
             }
         </>
     );
-};
+});

@@ -134,11 +134,11 @@ const extendedApi = tmdbApi.injectEndpoints({
             })
         }),
         //in slider trailers
-        getPopularMovies: build.query<IMovies, number>({
-            query: (page) => ({
+        getPopularMovies: build.query<IMovies, null>({
+            query: () => ({
                 url: '/movie/popular',
                 params: {
-                    page: page,
+                    page: 1,
                     'api_key': 'd2e6a036f6b0dbeacdb1e6d2fc5af3aa',
                 },
             }),

@@ -4,10 +4,9 @@ import {menuNavbar, navbarMenu} from "../../mock/static";
 import '../Navbar/navbar.scss'
 
 export const NavElement: FC = () => {
-    const disabledClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, idx: number) => {
+    const disabledClick = (event: React.MouseEvent<HTMLAnchorElement>, idx: number) => {
         if (idx === 1) {
-            event
-                .preventDefault()
+            event.preventDefault()
         }
     }
 

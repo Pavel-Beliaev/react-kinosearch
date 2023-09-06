@@ -10,7 +10,7 @@ type HeaderInfo = {
     title: string;
     backgroundImage: string;
 };
-export const Header:FC = () => {
+export const Header:FC = React.memo(() => {
     const [isVisibleEffect, setIsVisibleEffect] = useState(false);
     const [dataInfo, setDataInfo] = useState<HeaderInfo>({
         genre: "",
@@ -61,4 +61,4 @@ export const Header:FC = () => {
                 )}
         </div>
     );
-};
+});

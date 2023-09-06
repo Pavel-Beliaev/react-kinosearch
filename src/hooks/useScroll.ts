@@ -1,6 +1,6 @@
 export const useScroll = () => {
 
-    const scrollToHandler = (
+    return (
         top: number,
         left: number,
         behavior: ScrollBehavior | undefined,
@@ -12,6 +12,4 @@ export const useScroll = () => {
             behavior: behavior,
         })
     }
-
-    return scrollToHandler
 }

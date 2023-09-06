@@ -6,7 +6,7 @@ import './_menu.scss'
 type MenuType = {
     refElem: React.RefObject<HTMLDivElement>
 }
-export const Menu: FC<MenuType> = ({refElem}) => {
+export const Menu: FC<MenuType> = React.memo(({refElem}) => {
 
     return (
         <div
@@ -17,4 +17,4 @@ export const Menu: FC<MenuType> = ({refElem}) => {
             <Navbar/>
         </div>
     );
-};
+});

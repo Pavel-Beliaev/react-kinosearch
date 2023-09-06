@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {CreatedByType, CreditsCrewType} from "../../../../Store/tmdbService/@types";
-import {useTypePage} from "../../../../hooks/useTypePage";
 import './overviews.scss'
 
 export type OverviewsType = {
@@ -8,16 +7,16 @@ export type OverviewsType = {
     overview: string | null | undefined,
     creditsCrew?: CreditsCrewType[] | undefined,
     created_by?: CreatedByType[] | undefined,
+    type: boolean
 }
 
-export const Overviews:FC<OverviewsType> = ({title, created_by, overview, creditsCrew}) => {
-    const {isType} = useTypePage()
+export const Overviews:FC<OverviewsType> = ({type, title, created_by, overview, creditsCrew}) => {
 
     return (
         <div className='overview'>
             <h3>{title}</h3>
             <p>{overview}</p>
-            {!isType &&
+            {!type &&
                 <div className='overview-credits'>
                     {creditsCrew
                         ? creditsCrew

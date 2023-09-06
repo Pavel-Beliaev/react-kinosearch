@@ -28,6 +28,5 @@ export const useObserver = (
             observer.current.observe(ref.current);
         }
 
-
     }, [callbackOne])
 }

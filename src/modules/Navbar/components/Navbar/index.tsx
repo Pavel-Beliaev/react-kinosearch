@@ -5,9 +5,12 @@ import {ReactComponent as BurgerIcon} from "../../assets/SVG/burger.svg";
 import {NavElement} from "../NavElement";
 import './navbar.scss'
 
-export const Navbar:FC = React.memo(() => {
-    const [isActive, setIsActive] = useState(false)
-    console.log('1')
+export const Navbar:FC = () => {
+    const [isActive, setIsActive] = useState<boolean>(false)
+
+    const burgerMenu = (): void => {
+        setIsActive(!isActive)
+    }
 
     return (
         <div className='container navbar'>
@@ -21,7 +24,7 @@ export const Navbar:FC = React.memo(() => {
                     </Link>
                 </div>
                 <div className='navbar-burger'>
-                    <BurgerIcon onClick={() => setIsActive(!isActive)}/>
+                    <BurgerIcon onClick={burgerMenu}/>
                     {isActive &&
                         <NavElement/>
                     }
@@ -32,4 +35,4 @@ export const Navbar:FC = React.memo(() => {
             </div>
         </div>
     );
-});
+};

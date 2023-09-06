@@ -34,11 +34,13 @@ export const PeopleContent = () => {
                             />
                     ))
                 }
-                <Pagination
-                    value={pageNumber}
-                    changePage={onChangePage}
-                    totalPage={data?.total_pages}
-                />
+                {data?.total_pages &&
+                    <Pagination
+                        value={pageNumber}
+                        changePage={onChangePage}
+                        totalPage={data?.total_pages}
+                    />
+                }
             </div>
         </>
     );

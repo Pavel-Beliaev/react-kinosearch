@@ -2,8 +2,8 @@ import {useLocation, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 export const useTypePage = () => {
-    const [isType, setIsType] = useState(false)
 
+    const [isType, setIsType] = useState(false)
     const {id} = useParams()
     const {pathname} = useLocation()
 
@@ -17,7 +17,7 @@ export const useTypePage = () => {
         if (type === 'person') {
             setIsType(true)
         } else setIsType(false)
-    }, [id])
+    }, [id, type])
 
     return {isType, type, id}
 }

@@ -21,8 +21,7 @@ export const SliderTrailers: FC = () => {
         (state) => state.config
     );
 
-    const {data: popularMoviesDataList, isSuccess} =
-        useGetPopularMoviesQuery(1);
+    const {data: popularMoviesDataList, isSuccess} = useGetPopularMoviesQuery(null);
     const [target, data] = useLazyGetVideoByIdQuery();
     const [slideIndex, setSlideIndex] = useState<number>(0);
 

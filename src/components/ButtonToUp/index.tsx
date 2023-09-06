@@ -2,25 +2,19 @@ import React, {FC} from 'react';
 import {useScroll} from "../../hooks/useScroll";
 import './buttonToUp.scss'
 
-type ButtonToUpType = {
+type PropsType = {
     scroll: boolean
 }
-const ButtonToUp:FC<ButtonToUpType> = ({scroll}) => {
+export const ButtonToUp: FC<PropsType> = React.memo(({scroll}) => {
     const scrollTo = useScroll()
 
-    const handleUpButton = () => {
-        scrollTo(0, 0, "auto")
-    };
-
     return (
-        <div
+        <button
             style={{opacity: scroll ? 1 : 0}}
-            onClick={handleUpButton}
+            onClick={() => scrollTo(0, 0, "auto")}
             className="back-to-top"
         >
             <i className="fa fa-chevron-up"></i>
-        </div>
+        </button>
     );
-};
-
-export default ButtonToUp;
+});

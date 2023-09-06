@@ -9,6 +9,7 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  margin: 0 25%;
 
   h3 {
     color: $dark;
@@ -17,7 +18,7 @@
   }
 
   p {
-    color: #717171;
+    color: $textColor;
   }
 }
 

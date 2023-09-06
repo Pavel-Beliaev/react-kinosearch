@@ -1,30 +1,33 @@
-import React, {FC, useEffect, useRef, useState} from "react";
+import React, {FC, useCallback, useEffect, useRef, useState} from "react";
 import {Outlet} from "react-router-dom";
 import {
     useLazyGetConfigurationQuery,
     useLazyGetGenreMoviesQuery,
     useLazyGetGenreTVQuery,
 } from "../Store/tmdbService/endpoints";
-import ButtonToUp from "../components/ButtonToUp";
 import {DropDownNavbar, Footer, Header, Menu} from "../modules";
 import './mainLayout.scss'
 import {useObserver} from "../hooks/useObserver";
+import {ButtonToUp} from "../components";
 
-export const MainLayout: FC = React.memo(() => {
+export const MainLayout: FC = () => {
     const [fetchGenresMovie] = useLazyGetGenreMoviesQuery();
     const [fetchGenresTV] = useLazyGetGenreTVQuery();
     const [fetchConfig] = useLazyGetConfigurationQuery();
     const elementRef = useRef<HTMLDivElement>(null);
-    const [scroll, setScroll] = useState(false);
+    const [scroll, setScroll] = useState<boolean>(false);
+    const toggleScroll = (b: boolean): void => {
+        setScroll(b)
+    }
 
     useObserver(
         elementRef,
         false,
         () => {
-            setScroll(false)
+            toggleScroll(false)
         },
         () => {
-            setScroll(true)
+            toggleScroll(true)
         }
     )
 
@@ -44,4 +47,4 @@ export const MainLayout: FC = React.memo(() => {
             <Footer/>
         </div>
     );
-});
+};

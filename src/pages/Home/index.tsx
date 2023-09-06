@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {SliderTrailers, PlayerInModal, TrendingBlock, TopRateBlock, ModalWindow} from "../../modules";
 export const Home: FC = () => {
-    console.log('home')
 
     return (
         <div className="frameworks">
