@@ -12,6 +12,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-color: $dark;
+
+  &:active {
+    border-style: solid;
+  }
 
   &:hover {
     i {
@@ -23,7 +28,7 @@
 
   i {
     border: 2px solid $orange;
-    padding: 15.5px;
+    padding: 16px;
     border-radius: 30px;
     transition: $transit;
     color: $orange;

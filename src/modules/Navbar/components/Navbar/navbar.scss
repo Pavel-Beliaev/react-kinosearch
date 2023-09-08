@@ -89,7 +89,6 @@
               content: '\f105';
               padding-left: 10px;
               line-height: 10px;
-
             }
           }
         }
@@ -207,7 +206,7 @@
       position: absolute;
       display: flex;
       flex-direction: column;
-      background-color: rgba($orange, 0.8);
+      background-color: rgba($dark, 0.3);
       justify-content: flex-start;
       transition: $transit;
       top: 100%;
@@ -220,7 +219,6 @@
         transition: $transit;
 
         &:hover {
-          background-color: rgba($light-orange, 0.8);
           transition: $transit;
         }
 

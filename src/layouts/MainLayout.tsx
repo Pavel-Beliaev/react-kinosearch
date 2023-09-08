@@ -16,18 +16,15 @@ export const MainLayout: FC = () => {
     const [fetchConfig] = useLazyGetConfigurationQuery();
     const elementRef = useRef<HTMLDivElement>(null);
     const [scroll, setScroll] = useState<boolean>(false);
-    const toggleScroll = (b: boolean): void => {
-        setScroll(b)
-    }
 
     useObserver(
         elementRef,
         false,
         () => {
-            toggleScroll(false)
+            setScroll(false)
         },
         () => {
-            toggleScroll(true)
+            setScroll(true)
         }
     )
 

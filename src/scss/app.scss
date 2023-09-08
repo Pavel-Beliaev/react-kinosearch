@@ -2,8 +2,6 @@
 @import "libs/normalize";
 
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 
@@ -48,8 +46,6 @@
     position: relative;
     margin-right: auto;
     margin-left: auto;
-    padding-left: 15px;
-    padding-right: 15px;
     max-width: 100%;
 
     @media (min-width: 320px) {

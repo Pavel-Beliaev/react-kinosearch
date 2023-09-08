@@ -9,7 +9,7 @@
   border-radius: 15px;
   overflow: hidden;
   transition: $transit;
-  box-shadow: 0 0 20px 1px rgba($dark, 0.75) inset;
+  box-shadow: 0 0 1px 1px rgba($dark, 0.4) inset;
   max-width: 250px;
 
   span {
@@ -28,11 +28,10 @@
 
   .slider {
     position: absolute;
-    background-color: $orange;
+    background: $gradient;
     width: 50%;
     height: 100%;
     border-radius: 15px;
-    box-shadow: 0 0 20px -5px rgba(255, 255, 255, 0.75) inset;
     transition: $transit;
     font-size: 13px;
     letter-spacing: 1.5px;

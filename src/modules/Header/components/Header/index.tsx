@@ -1,9 +1,10 @@
-import React, {FC, useEffect, useState} from "react";
+import React, {FC, useEffect, useRef, useState} from "react";
 import {ReactComponent as ArrowDownIcon} from "../../assets/SVG/duble-arrow-down.svg";
 import {useAppSelector} from "../../../../Store/store";
 import {useLocation} from "react-router-dom";
 import {HeaderSlider} from "../HeaderSlider";
 import './header.scss'
+import {useObserver} from "../../../../hooks/useObserver";
 
 type HeaderInfo = {
     genre: string;
@@ -23,6 +24,23 @@ export const Header:FC = React.memo(() => {
     const data = useAppSelector((state) => state.header);
     const stylePage = pathname.substring(1);
     const genre = data.film.genres.map((genre) => genre.name).join(", ");
+
+    const elementRef = useRef<HTMLDivElement>(null);
+    const [scroll, setScroll] = useState<boolean>(false);
+
+    useObserver(
+        elementRef,
+        false,
+        () => {
+            setScroll(false)
+        },
+        () => {
+            setScroll(true)
+        },
+        {
+            rootMargin: '-90px',
+        }
+    )
 
     useEffect(() => {
         setIsVisibleEffect(false);
@@ -44,7 +62,10 @@ export const Header:FC = React.memo(() => {
                 backgroundImage: dataInfo.backgroundImage,
             }}
         >
-            <span className="scroll">
+            <span
+                style={{bottom: scroll ? '3px' : '-25px'}}
+                className="scroll"
+            >
                 <ArrowDownIcon/>
             </span>
             {pathname === "/"
@@ -59,6 +80,7 @@ export const Header:FC = React.memo(() => {
                         </div>
                     </div>
                 )}
+            <div ref={elementRef}/>
         </div>
     );
 });

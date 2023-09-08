@@ -36,16 +36,15 @@
     transform: none;
     align-items: center;
     justify-content: center;
+    gap: 20px;
 
     .swiper-pagination {
-      text-align: start;
-
       &-bullet {
+        display: flex;
         background-color: #999999;
         opacity: 0.5;
         width: 10px;
         height: 10px;
-        margin-right: 20px;
 
         &-active {
           background-color: white;
@@ -135,6 +134,7 @@
     align-items: center;
 
     button {
+      border: none;
       animation: Buttons .5s .5s forwards;
       opacity: 0;
       background: $gradient;
@@ -154,7 +154,6 @@
 
       &:active {
         background-color: #e6e6e6;
-        border-color: #adadad;
         background-image: none;
 
         span {
@@ -175,6 +174,7 @@
     cursor: pointer;
     letter-spacing: 4px;
     text-transform: uppercase;
+    transition: $transit;
 
     &:hover {
       color: $light-orange;
@@ -193,6 +193,3 @@
     opacity: 1;
   }
 }
-
-
-

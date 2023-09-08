@@ -6,6 +6,7 @@ export const useObserver = (
     disabled: boolean,
     callbackOne: ObserverCallback,
     callbackTwo: ObserverCallback,
+    options? : IntersectionObserverInit
 ): void => {
 
     const observer = useRef<IntersectionObserver>();
@@ -23,7 +24,7 @@ export const useObserver = (
             }
 
         };
-        observer.current = new IntersectionObserver(addPage);
+        observer.current = new IntersectionObserver(addPage, options);
         if (ref.current) {
             observer.current.observe(ref.current);
         }

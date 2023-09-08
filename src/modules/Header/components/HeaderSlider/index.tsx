@@ -4,7 +4,7 @@ import "swiper/scss";
 import "swiper/scss/effect-fade";
 import "swiper/scss/pagination";
 import {Swiper, SwiperSlide} from "swiper/react";
-import {Pagination, Autoplay, EffectFade} from "swiper";
+import {Pagination, Keyboard, Autoplay, EffectFade} from "swiper";
 import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {setActiveModal} from "../../../../Store/config/slice";
 import {Link} from "react-router-dom";
@@ -29,13 +29,16 @@ export const HeaderSlider: FC = () => {
     return (
         <Swiper
             className="sliderHeader"
-            modules={[Pagination, Autoplay, EffectFade]}
+            modules={[Pagination, Autoplay, Keyboard, EffectFade]}
             effect="fade"
             allowTouchMove={false}
             spaceBetween={30}
             centeredSlides={true}
+            keyboard={{
+                enabled: true,
+            }}
             autoplay={{
-                delay: 7000,
+                delay: 7000000,
                 disableOnInteraction: false,
             }}
             pagination={{

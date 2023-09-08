@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useState} from "react";
 import "./slidertrailers.scss";
 import {Swiper, SwiperSlide} from "swiper/react";
-import {FreeMode, Navigation, Thumbs} from "swiper";
+import {FreeMode, Keyboard, Navigation, Thumbs} from "swiper";
 import SwiperClass from "swiper/types/swiper-class";
 import "swiper/scss";
 import "swiper/scss/free-mode";
@@ -71,9 +71,12 @@ export const SliderTrailers: FC = () => {
                     navigation={true}
                     freeMode={true}
                     watchSlidesProgress={true}
-                    modules={[FreeMode, Navigation, Thumbs]}
+                    modules={[FreeMode, Keyboard, Navigation, Thumbs]}
                     className="swiperBottom"
                     slideToClickedSlide={true}
+                    keyboard={{
+                        enabled: true,
+                    }}
                     onSlideChange={(swiper) => setSlideIndex(swiper.realIndex)}
                 >
                     {popularMoviesDataList?.results.map((poster) => (
