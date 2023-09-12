@@ -29,7 +29,12 @@ export const TopRateBlock = () => {
                             {isLoadingTopRate
                                 ? <SkeletonSliderShow/>
                                 : <MovieSlideCard
-                                    data={film}
+                                    id={film.id}
+                                    release={film.release_date}
+                                    rating={film.vote_average}
+                                    title={film.title || film.name}
+                                    poster={film.poster_path}
+                                    first_air_date={film.first_air_date}
                                 />
                             }
                         </SwiperSlide>

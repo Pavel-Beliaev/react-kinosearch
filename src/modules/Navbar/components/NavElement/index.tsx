@@ -26,15 +26,11 @@ export const NavElement: FC = () => {
                             style={{color: index === 1 && isHovered ? '#FBBD61FF' : ''}}
                             onClick={event => disabledClick(event, index)}
                             className={({isActive}) =>
-                                index === 1
-                                    ? ''
-                                    : isActive
-                                        ? 'active'
-                                        : ''
+                                isActive
+                                    ? 'active'
+                                    : ''
                             }
-                            to={index === 1
-                                ? ''
-                                : obj.url}
+                            to={obj.url}
                         >
                             {obj.title}
                         </NavLink>

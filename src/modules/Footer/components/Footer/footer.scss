@@ -2,11 +2,10 @@
 
 .footer {
   position: static;
-  padding-top: 75px;
+  padding-top: 65px;
   right: 0;
   bottom: 0;
   left: 0;
-  color: #fff;
   background: $dark;
   margin-top: 65px;
 
@@ -49,6 +48,8 @@
             letter-spacing: 1.5px;
             align-items: center;
             gap: 5px;
+            transition: $transit;
+
 
             .fa {
               width: 25px;
@@ -74,8 +75,12 @@
 }
 
 .copyright {
-  margin-top: 50px;
+  margin-top: 45px;
   padding: 20px 0;
   border-top: 1px solid rgba(255, 255, 255, .1);
+
+  svg {
+    height: 16px;
+  }
 }
 

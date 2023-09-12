@@ -5,17 +5,20 @@ import {setActiveModal} from "../../Store/config/slice";
 import notPicture from "../../assets/PNG/placeholder.png";
 import {Rating} from "../UI";
 import './movieSlideCard.scss'
-import {IResultsMovies} from "../../Store/tmdbService/@types";
 
 type PropsType = {
-    data: IResultsMovies
+    first_air_date?: string,
+    release?: string,
+    title: string,
+    rating: number,
+    poster: string | null
+    id: number,
 }
-export const MovieSlideCard: FC<PropsType> = ({data}) => {
+export const MovieSlideCard: FC<PropsType> = ({first_air_date, id, release, poster, title, rating}) => {
     const dispatch = useAppDispatch();
     const {base_url, posterSize} = useAppSelector(
         (state) => state.config
     );
-    const {first_air_date, id, release_date, poster_path, title, vote_average} = data;
 
     const dispatchActiveModalHandler = (id: number): void => {
         dispatch(
@@ -28,9 +31,9 @@ export const MovieSlideCard: FC<PropsType> = ({data}) => {
 
     return (
         <div className='sliderCard'>
-            <div className={(release_date || first_air_date) ? 'sliderCard-poster_alt' : 'sliderCard-poster'}>
+            <div className={(release || first_air_date) ? 'sliderCard-poster_alt' : 'sliderCard-poster'}>
                 <div className='sliderCard-aside'>
-                    {(release_date || first_air_date) &&
+                    {(release || first_air_date) &&
                         <div className='sliderCard-text'>
                             <div
                                 className='sliderCard-play'
@@ -40,18 +43,18 @@ export const MovieSlideCard: FC<PropsType> = ({data}) => {
                             </div>
                             <Link
                                 className='sliderCard-readMore'
-                                to={`all/${release_date ? 'movie' : 'tv'}/${id}`}
+                                to={`all/${release ? 'movie' : 'tv'}/${id}`}
                             >
                                 Read more
                             </Link>
-                            <span>Released: {release_date}</span>
+                            <span>Released: {release}</span>
                         </div>
                     }
                 </div>
                 <Link to={`/all/movie/${id}`}>
                     <img
-                        src={poster_path
-                            ? `${base_url}${posterSize}${poster_path}`
+                        src={poster
+                            ? `${base_url}${posterSize}${poster}`
                             : notPicture
                         }
                         alt="poster"
@@ -63,7 +66,7 @@ export const MovieSlideCard: FC<PropsType> = ({data}) => {
             </div>
             <div className='sliderCard-more'>
                 <Rating
-                    rating={vote_average}
+                    rating={rating}
                     fill='none'
                 />
             </div>

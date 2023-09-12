@@ -62,7 +62,10 @@ export const DetailInfoPage: FC = () => {
                                         {isFetching
                                             ? <SkeletonSliderShow/>
                                             : <MovieSlideCard
-                                                data={film}
+                                                title={film.title}
+                                                rating={film.vote_average}
+                                                poster={film.poster_path}
+                                                id={film.id}
                                             />
                                         }
                                     </SwiperSlide>

@@ -25,7 +25,7 @@ export const MovieMedia: FC<MovieMediaType> = ({dataMovie}) => {
                         setSwitcher={setSwitcher}
                         title1={'Trailers'}
                         title2={'Backgrounds'}
-                        color={'#717171'}
+                        color={'#101010'}
                     />
                     {switcher === 0
                         ? <div className='mediaBlock-videos'>

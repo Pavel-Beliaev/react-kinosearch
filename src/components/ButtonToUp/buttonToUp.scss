@@ -13,10 +13,7 @@
   justify-content: center;
   align-items: center;
   border-color: $dark;
-
-  &:active {
-    border-style: solid;
-  }
+  border-style: solid;
 
   &:hover {
     i {

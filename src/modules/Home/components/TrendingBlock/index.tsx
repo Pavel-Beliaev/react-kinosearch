@@ -29,7 +29,11 @@ export const TrendingBlock = () => {
                             {isLoadingTrend
                                 ? <SkeletonSliderShow/>
                                 : <MovieSlideCard
-                                    data={film}
+                                    id={film.id}
+                                    release={film.release_date}
+                                    rating={film.vote_average}
+                                    title={film.title}
+                                    poster={film.poster_path}
                                 />
                             }
                         </SwiperSlide>

@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import {Link} from "react-router-dom";
 import {footerContactArray, footerLinkArray, footerMenu} from "../../mock/statick";
 import './footer.scss'
+import {ReactComponent as Logo} from "./../../assets/SVG/TMDB.svg";
 
 export const Footer: FC = () => {
     return (
@@ -50,7 +51,12 @@ export const Footer: FC = () => {
                         </div>
                     </div>
                     <div className='copyright'>
-                        <p>2023 © Paulo films.&nbsp; All rights reserved.</p>
+                        <p>2023 © Paulo films. All rights reserved.</p>
+                        <p>This product uses the TMDB API but is not endorsed or certified by&nbsp;
+                            <a href="https://www.themoviedb.org">
+                                <Logo/>
+                            </a>.
+                        </p>
                     </div>
                 </div>
             </div>

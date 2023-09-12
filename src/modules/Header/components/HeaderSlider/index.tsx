@@ -38,7 +38,7 @@ export const HeaderSlider: FC = () => {
                 enabled: true,
             }}
             autoplay={{
-                delay: 7000000,
+                delay: 7000,
                 disableOnInteraction: false,
             }}
             pagination={{
