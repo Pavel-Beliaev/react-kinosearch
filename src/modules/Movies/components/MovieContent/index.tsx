@@ -1,39 +1,37 @@
 import React, {useEffect, useRef, useState} from 'react';
-import {Outlet, useLocation, useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {useScroll} from "../../../../hooks/useScroll";
 import {useLazyGetAllMoviesQuery} from "../../../../Store/tmdbService/endpoints";
 import {useObserver} from "../../../../hooks/useObserver";
 import {setFilter, setGenreId, setInfinityAble, setPageNumber} from "../../../../Store/movies/slice";
 import qs from "qs";
-import {GenreBar} from "../GenreBar";
 import {Search} from "../Search";
 import {Loader} from "../Loader";
-import {ErrorElement} from "../../../../components";
 import './movieContent.scss'
+import {MovieCard} from "../MovieCard";
+import {ErrorSearch} from "../ErrorSearch";
 
 export const MovieContent = () => {
     const dispatch = useAppDispatch();
-    const {pathname} = useLocation()
     const navigate = useNavigate();
     const scrollTo = useScroll()
     const [preventRedundantRequest, setPreventRedundantRequest] = useState(false)
     const [prevPageNumber, setPrevPageNumber] = useState(1)
     const [observerAble, setObserverAble] = useState(false)
-    const [isActive, setIsActive] = useState(false)
     const lastElementRef = useRef<HTMLDivElement>(null);
     const dataElementRef = useRef<HTMLDivElement>(null);
 
-    const {genresMovies, genresTV} = useAppSelector((state) => state.config);
-    const {dataFilms, pageNumber, infinityAble, searchValue, genreId} = useAppSelector(state => state.movies)
-
-    const [fetching, allMovieBase] = useLazyGetAllMoviesQuery()
-
+    const {pathname} = useLocation()
     const type = pathname.split('/').pop()
-    const genres = type === 'movie' ? genresMovies : genresTV
+
+    const {dataFilms, pageNumber, infinityAble, searchValue, genreId, genresType} = useAppSelector(state => state.movies)
+    const [fetching, allMovieBase] = useLazyGetAllMoviesQuery()
     const totalPage = allMovieBase.data?.total_pages ?? 1;
     const isFetch = allMovieBase.isFetching
     const isSuces = allMovieBase.isSuccess
+
+    console.log(genresType)
 
     useObserver(
         lastElementRef,
@@ -67,22 +65,21 @@ export const MovieContent = () => {
         const queryString = qs
             .stringify({
                 search: searchValue,
-                genre: genreId,
+                genre: genresType.genreId,
                 page: pageNumber,
             })
         navigate(`?${queryString}`)
-    }, [searchValue, genreId, pageNumber])
+    }, [searchValue, genresType.genreId, pageNumber])
 
     useEffect(() => {
-        setIsActive(false)
         dispatch(setGenreId(null))
-    }, [type, searchValue])
+    }, [genresType.type, searchValue])
 
     useEffect(() => {
         scrollTo(0, 0, "auto")
         dispatch(setPageNumber(1))
         dispatch(setInfinityAble(false))
-    }, [type, genreId, searchValue])
+    }, [genresType, searchValue])
 
     useEffect(() => {
         const blockHeight = dataElementRef.current
@@ -96,13 +93,13 @@ export const MovieContent = () => {
 
     useEffect(() => {
         setPreventRedundantRequest(!preventRedundantRequest)
-    }, [pageNumber, genreId, type, searchValue])
+    }, [pageNumber, genresType, type, searchValue])
 
     useEffect(() => {
         fetching({
-            type: type,
+            type: genresType.type ? genresType.type : type,
             pageNumber,
-            genre: genreId,
+            genre: genresType.genreId,
             searchValue: searchValue,
             typeQuery: searchValue
                 ? 'search'
@@ -119,20 +116,29 @@ export const MovieContent = () => {
                 className='movies-colum'
             >
                 {searchValue && !dataFilms.length
-                    ? <ErrorElement/>
-                    : <Outlet context={{dataFilms}}/>
-                }
-                {isFetch
-                    ? <Loader/>
-                    : observerAble && pageNumber < totalPage &&
-                    <div ref={lastElementRef}/>
+                    ? <ErrorSearch value={searchValue}/>
+                    : dataFilms
+                        .map((film, index) => (
+                            <div key={film.id}>
+                                <MovieCard
+                                    id={film.id}
+                                    title={film.title || film.name}
+                                    overview={film.overview}
+                                    poster={film.poster_path}
+                                    filmGenre={film.genre_ids}
+                                />
+                                {index !== dataFilms.length-1 &&
+                                    <div className='line'  />
+                                }
+                            </div>
+                        ))
                 }
             </div>
-            <GenreBar
-                isActive={isActive}
-                setIsActive={setIsActive}
-                genres={genres}
-            />
+            {isFetch
+                ? <Loader/>
+                : observerAble && pageNumber < totalPage &&
+                <div ref={lastElementRef}/>
+            }
         </>
     );
 };

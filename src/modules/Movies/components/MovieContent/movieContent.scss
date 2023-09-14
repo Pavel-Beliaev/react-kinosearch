@@ -1,5 +1,14 @@
+@import "../../../../scss/variables";
+
+
 .movies-colum {
   display: flex;
   flex-direction: column;
-  flex: 0 1 65%;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba($dark, 0.2);
+  margin: 40px 0;
 }

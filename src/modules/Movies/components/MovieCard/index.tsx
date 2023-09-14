@@ -12,7 +12,7 @@ export type MovieCardProps = {
     id: number,
 }
 
-export const MovieCard:FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
+export const MovieCard: FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
     const {pathname} = useLocation()
 
     const {base_url, posterSize, genresMovies, genresTV} = useAppSelector((state) => state.config)
@@ -25,15 +25,15 @@ export const MovieCard:FC<MovieCardProps> = ({id, poster, overview, title, filmG
         : genresTV
 
     return (
-        <div className='film'>
-            <img
-                src={poster
-                    ? `${base_url}${posterSize}${poster}`
-                    : notPicture
-                }
-                alt="Prev. poster"
-            />
-            <div className='film-info'>
+            <div className='film'>
+                <img
+                    src={poster
+                        ? `${base_url}${posterSize}${poster}`
+                        : notPicture
+                    }
+                    alt="Prev. poster"
+                />
+                <div className='film-info'>
                 <span>
                     {filmGenre
                         .map((id) =>
@@ -42,17 +42,17 @@ export const MovieCard:FC<MovieCardProps> = ({id, poster, overview, title, filmG
                         .join(', ')
                     }
                 </span>
-                <h3>{title}</h3>
-                <p>{overview}</p>
-                <div className='film-more'>
+                    <h3>{title}</h3>
+                    <p>{overview}</p>
+                    <div className='film-more'>
                         <Link
                             className='film-button'
                             to={`${pathname}/${id}`}
                         >
                             Read more
                         </Link>
+                    </div>
                 </div>
             </div>
-        </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, {FC, useCallback, useState} from 'react';
+import React, {FC, useCallback, useEffect, useState} from 'react';
 import debounce from "lodash.debounce";
 import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {setSearchValue} from "../../../../Store/movies/slice";
@@ -17,16 +17,24 @@ export const Search:FC = () => {
         }, 1000),
         []
     )
-
     const changeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setIsValue(event.target.value);
         debounceChangeInput(event.target.value);
+        sessionStorage.setItem('searchResults', JSON.stringify(event.target.value));
     }
-
     const cleanInput = () => {
         dispatch(setSearchValue(''))
         setIsValue('')
+        sessionStorage.setItem('searchResults', JSON.stringify(''));
     }
+
+    useEffect(() => {
+        const storedResults = sessionStorage.getItem('searchResults');
+
+        if (storedResults) {
+            setIsValue(JSON.parse(storedResults));
+        }
+    }, []);
 
     return (
         <div className='search'>

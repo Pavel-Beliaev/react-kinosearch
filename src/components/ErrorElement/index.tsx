@@ -1,12 +1,15 @@
-import React from 'react';
+import React, {FC} from 'react';
 import './errorElement.scss'
 
-export const ErrorElement = () => {
+type PropsType = {
+    children: React.ReactNode
+}
+
+export const ErrorElement:FC<PropsType> = ({children}) => {
 
     return (
         <div className='err-block'>
-            <h3>Error</h3>
-            <p>Not Found</p>
+            {children}
         </div>
     );
 };

@@ -5,5 +5,9 @@ export type MoviesState = {
     pageNumber: number,
     infinityAble: boolean,
     searchValue: string,
-    genreId: number | null
+    genreId: number | null,
+    genresType: {
+        genreId: number | null,
+        type: string,
+    },
 }

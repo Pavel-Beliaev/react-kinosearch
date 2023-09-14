@@ -6,8 +6,11 @@ export const ErrorPage:FC = () => {
     console.log('error')
 
     return (
-        <div className='error'>
-            <ErrorElement/>
+        <div className='frameworks-container error'>
+            <ErrorElement>
+                <h3>Error</h3>
+                <p>Page not found</p>
+            </ErrorElement>
         </div>
     )
 }

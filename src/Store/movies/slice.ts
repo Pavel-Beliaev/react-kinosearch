@@ -6,6 +6,11 @@ type FilterType = {
     pageNumber: number,
     searchValue: string,
     genreId: number | null
+};
+
+type GenresType = {
+    genreId: number | null,
+    type: string
 }
 
 const initialState: MoviesState = {
@@ -13,7 +18,11 @@ const initialState: MoviesState = {
     pageNumber: 1,
     infinityAble: false,
     searchValue: '',
-    genreId: null
+    genreId: null,
+    genresType: {
+        genreId: null,
+        type: ''
+    }
 }
 export const moviesSlice = createSlice({
     name: 'movies',
@@ -37,6 +46,9 @@ export const moviesSlice = createSlice({
         setGenreId(state, action: PayloadAction<number | null>) {
             state.genreId = action.payload
         },
+        setGenresType(state, action: PayloadAction<GenresType>) {
+            state.genresType = action.payload
+        },
         setFilter(state, action: PayloadAction<FilterType>) {
             state.pageNumber = action.payload.pageNumber
             state.searchValue = action.payload.searchValue
@@ -45,6 +57,7 @@ export const moviesSlice = createSlice({
     },
 })
 export const {
+    setGenresType,
     setFilter,
     setGenreId,
     setSearchValue,

@@ -2,10 +2,8 @@
 
 .film {
   display: flex;
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 1px solid #d8d8d8;
   gap: 30px;
+  padding: 0 20px;
 
   img {
     border-radius: 10px;
@@ -48,23 +46,28 @@
     justify-content: space-between;
     align-items: center;
     height: 45px;
+    position: relative;
   }
 
   &-button {
-    font-size: 12px;
-    position: relative;
+    font-size: 13px;
     letter-spacing: 4px;
+    line-height: 1em;
     text-transform: uppercase;
     color: $orange;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    transition: $transit;
+
 
     &:after {
       font: normal normal normal 14px/1 FontAwesome;
       font-size: inherit;
       font-weight: bold;
       position: absolute;
-      top: 0;
-      margin-left: 5px;
       content: '\f105';
+      margin-right: -10px;
     }
 
     &:hover {
@@ -73,5 +76,3 @@
     }
   }
 }
-
-
