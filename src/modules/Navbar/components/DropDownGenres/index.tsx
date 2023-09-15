@@ -12,7 +12,6 @@ export const DropDownGenres: FC<PropsType> = ({genres, type}) => {
     const changeGenre = (IdGenre: number | null, type: string) => {
         dispatch(setGenreId(IdGenre))
         dispatch(setGenresType({genreId: IdGenre, type: type}))
-
     }
 
     return (

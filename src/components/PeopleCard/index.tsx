@@ -29,16 +29,13 @@ export const PeopleCard: FC<PeopleCardProps> = ({character, name, knownFor, prof
         .join(', ')
 
     return (
-        <Link
-            to={`/person/${id}`}
-            state={{state: pathname}}
-        >
-            <div className='peopleCard'>
+        <div className='peopleCard'>
+            <Link
+                to={`/person/${id}`}
+                state={{state: pathname}}
+            >
                 <img
-                    src={profilePath
-                        ? `${base_url}${profileSize}${profilePath}`
-                        : notImg
-                    }
+                    src={`${base_url}${profileSize}${profilePath}`}
                     alt="people"
                 />
                 <div className='peopleCard-text'>
@@ -50,8 +47,7 @@ export const PeopleCard: FC<PeopleCardProps> = ({character, name, knownFor, prof
                         }
                     </p>
                 </div>
-            </div>
-        </Link>
-
+            </Link>
+        </div>
     );
 };

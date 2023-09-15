@@ -57,7 +57,7 @@ export const DetailInfoPage: FC = () => {
                     <SliderShow slideCount={4}>
                         {isType
                             ? dataAllMovies?.results
-                                .map((film) => (
+                                .map((film) => (film.poster_path &&
                                     <SwiperSlide key={film.id}>
                                         {isFetching
                                             ? <SkeletonSliderShow/>
@@ -71,7 +71,7 @@ export const DetailInfoPage: FC = () => {
                                     </SwiperSlide>
                                 ))
                             : data?.credits.cast
-                                .map((cast) => (
+                                .map((cast) => (cast.profile_path &&
                                     <SwiperSlide key={cast.credit_id}>
                                         {isFetchingDetails
                                             ? <SkeletonPeopleCard/>

@@ -18,7 +18,7 @@ export const PeopleContent = () => {
     };
 
     return (
-        <>
+        <div className='frameworks-container people'>
             <Title>Popular People</Title>
             <div className='people-content'>
                 {data?.results
@@ -42,6 +42,6 @@ export const PeopleContent = () => {
                     />
                 }
             </div>
-        </>
+        </div>
     );
 };

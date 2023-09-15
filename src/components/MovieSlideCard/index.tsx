@@ -28,39 +28,41 @@ export const MovieSlideCard: FC<PropsType> = ({first_air_date, id, release, post
             })
         );
     };
-
     return (
         <div className='sliderCard'>
-            <div className={(release || first_air_date) ? 'sliderCard-poster_alt' : 'sliderCard-poster'}>
-                <div className='sliderCard-aside'>
-                    {(release || first_air_date) &&
-                        <div className='sliderCard-text'>
-                            <div
-                                className='sliderCard-play'
-                                onClick={() => dispatchActiveModalHandler(id)}
-                            >
-                                <i className='fa fa-play'></i>
-                            </div>
-                            <Link
-                                className='sliderCard-readMore'
-                                to={`all/${release ? 'movie' : 'tv'}/${id}`}
-                            >
-                                Read more
-                            </Link>
-                            <span>Released: {release}</span>
-                        </div>
-                    }
-                </div>
-                <Link to={`/all/movie/${id}`}>
-                    <img
-                        src={poster
-                            ? `${base_url}${posterSize}${poster}`
-                            : notPicture
+            <Link
+                style={{cursor: (release || first_air_date) ? 'auto' : 'pointer'}}
+                onClick={(e) => (release || first_air_date) && e.preventDefault()}
+                to={`/movie/${id}`}
+            >
+                <div className={(release || first_air_date) ? 'sliderCard-poster_alt' : 'sliderCard-poster'}>
+                    <div className='sliderCard-aside'>
+                        {(release || first_air_date) &&
+                            // <div className='sliderCard-text'>
+                            <>
+                                <div
+                                    className='sliderCard-play'
+                                    onClick={() => dispatchActiveModalHandler(id)}
+                                >
+                                    <i className='fa fa-play'></i>
+                                </div>
+                                <Link
+                                    className='sliderCard-readMore'
+                                    to={`${release ? 'movie' : 'tv'}/${id}`}
+                                >
+                                    Read more
+                                </Link>
+                                <span>Released: {release}</span>
+                            </>
+                            // </div>
                         }
+                    </div>
+                    <img
+                        src={`${base_url}${posterSize}${poster}`}
                         alt="poster"
                     />
-                </Link>
-            </div>
+                </div>
+            </Link>
             <div className='sliderCard-title'>
                 <h4>{title}</h4>
             </div>

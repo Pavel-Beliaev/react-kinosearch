@@ -4,7 +4,7 @@ import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {useScroll} from "../../../../hooks/useScroll";
 import {useLazyGetAllMoviesQuery} from "../../../../Store/tmdbService/endpoints";
 import {useObserver} from "../../../../hooks/useObserver";
-import {setFilter, setGenreId, setInfinityAble, setPageNumber} from "../../../../Store/movies/slice";
+import {setFilter, setGenreId, setGenresType, setInfinityAble, setPageNumber} from "../../../../Store/movies/slice";
 import qs from "qs";
 import {Search} from "../Search";
 import {Loader} from "../Loader";
@@ -45,6 +45,12 @@ export const MovieContent = () => {
         () => {
         }
     )
+
+    useEffect(() => {
+        return () => {
+            dispatch(setGenresType({type: '', genreId: null}))
+        }
+    }, [])
 
     useEffect(() => {
         if (window.location.search) {

@@ -6,7 +6,7 @@ export const People: FC = () => {
 
     return (
         <div className="frameworks">
-            <div className='frameworks-container people'>
+            <div className='page-frame'>
                 <PeopleContent/>
             </div>
         </div>

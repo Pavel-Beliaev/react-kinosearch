@@ -45,7 +45,6 @@ export const MovieMedia: FC<MovieMediaType> = ({dataMovie}) => {
                         </div>
                         : <div className='mediaBlock-backdrops'>
                             <SliderShow
-                                navigation={true}
                                 slideCount={1}
                                 children={dataMovie?.images.backdrops
                                     .map((path) =>

@@ -23,8 +23,8 @@ export const columns: ColumnsType<MovieCredits> = [
         render: (value) => {
             return <div>
                 <Link to={value.title
-                    ? `/all/movie/${value.movieID}`
-                    : `/all/tv/${value.tvID}`
+                    ? `/movie/${value.movieID}`
+                    : `/tv/${value.tvID}`
                 }
                 >
                     {value.title
