@@ -31,7 +31,7 @@ export const HeaderSlider: FC = () => {
             className="sliderHeader"
             modules={[Pagination, Autoplay, Keyboard, EffectFade]}
             effect="fade"
-            // allowTouchMove={false}
+            allowTouchMove={false}
             spaceBetween={30}
             centeredSlides={true}
             keyboard={{

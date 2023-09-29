@@ -19,27 +19,27 @@ export const PeopleContent:FC = () => {
             <Title>Popular People</Title>
             <div className='people-content'>
                 {data?.results
-                    .map((object, index) => (
-                        isFetching
-                            ? <SkeletonPeopleCard key={index}/>
-                            : object.profile_path &&
-                            <PeopleCard
-                                key={object.id}
-                                name={object.name}
-                                knownFor={object.known_for}
-                                id={object.id}
-                                profilePath={object.profile_path}
-                            />
-                    ))
-                }
-                {data?.total_pages &&
-                    <Pagination
-                        value={pageNumber}
-                        changePage={onChangePage}
-                        totalPage={data?.total_pages}
-                    />
-                }
+                .map((object, index) => (
+                    isFetching
+                        ? <SkeletonPeopleCard key={index}/>
+                        : object.profile_path &&
+                        <PeopleCard
+                            key={object.id}
+                            name={object.name}
+                            knownFor={object.known_for}
+                            id={object.id}
+                            profilePath={object.profile_path}
+                        />
+                ))
+            }
             </div>
+            {data?.total_pages &&
+                <Pagination
+                    value={pageNumber}
+                    changePage={onChangePage}
+                    totalPage={data?.total_pages}
+                />
+            }
         </div>
     );
 };

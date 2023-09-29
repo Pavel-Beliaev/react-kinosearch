@@ -7,7 +7,15 @@ import {useScreenSize} from "../../../../hooks/useScreenSize";
 
 export const TopRateBlock:FC = () => {
     const [switcherTopRateFilms, setSwitcherTopRateFilms] = useState(0)
-    const screenSize = useScreenSize();
+    const screenSize = useScreenSize({
+        size_1: 1024,
+        value_1: 4,
+        size_2: 768,
+        value_2: 3,
+        size_3: 470,
+        value_3: 2,
+        value_4: 1,
+    });
     const {
         data: topRateDataList,
         isLoading: isLoadingTopRate

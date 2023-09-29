@@ -17,7 +17,15 @@ import {useScreenSize} from "../../../../hooks/useScreenSize";
 
 export const SliderTrailers: FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
-    const screenSize = useScreenSize();
+    const screenSize = useScreenSize({
+        size_1: 1024,
+        value_1: 4,
+        size_2: 768,
+        value_2: 3,
+        size_3: 470,
+        value_3: 2,
+        value_4: 1,
+    });
     const {base_url, posterSize, backdropSize} = useAppSelector(
         (state) => state.config
     );

@@ -1,4 +1,3 @@
-export const menuNavbar = ['movie', 'tv']
 export const navbarMenu = [
     {title: 'Home', url: '/'},
     {title: 'Movies', url: '/movie'},

@@ -1,18 +1,27 @@
 import {useEffect, useState} from "react";
 
-export function useScreenSize() {
+type HookProps = {
+    value_1: number,
+    size_1: number,
+    value_2: number,
+    size_2: number,
+    value_3: number,
+    size_3: number,
+    value_4: number,
+}
+export function useScreenSize({size_1, value_1, size_2, value_2, size_3, value_3, value_4}: HookProps) {
     const [screenSize, setScreenSize] = useState<number>(0);
 
     useEffect(() => {
         const checkScreenSize = () => {
-            if (window.innerWidth >= 1024) {
-                setScreenSize(4);
-            } else if (window.innerWidth >= 768) {
-                setScreenSize(3);
-            } else if (window.innerWidth >= 470) {
-                setScreenSize(2);
+            if (window.innerWidth >= size_1) {
+                setScreenSize(value_1);
+            } else if (window.innerWidth >= size_2) {
+                setScreenSize(value_2);
+            } else if (window.innerWidth >= size_3) {
+                setScreenSize(value_3);
             } else {
-                setScreenSize(1);
+                setScreenSize(value_4);
             }
         };
 

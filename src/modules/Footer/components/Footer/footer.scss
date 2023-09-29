@@ -90,14 +90,12 @@
         li {
           a {
             font-size: 13px;
-            padding: 3px 0;
             letter-spacing: 1.5px;
             transition: color 300ms ease-in-out;;
 
             .fa {
-              width: 25px;
+              width: 15px;
               transition: $transit;
-              transform: translateY(2px);
               color: rgba(255, 255, 255, .3);
             }
 
