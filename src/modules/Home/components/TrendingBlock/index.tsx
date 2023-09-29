@@ -3,10 +3,11 @@ import {MovieSlideCard, SkeletonSliderShow, SliderShow, Switcher, Title} from ".
 import {SwiperSlide} from "swiper/react";
 import {useGetTrendingMoviesQuery} from "../../../../Store/tmdbService/endpoints";
 import {typeQueryTrendingFilms} from "../../mock/statick";
+import {useScreenSize} from "../../../../hooks/useScreenSize";
 
 export const TrendingBlock = () => {
     const [switcherTrendingFilms, setSwitcherTrendingFilms] = useState(0)
-
+    const screenSize = useScreenSize();
     const {
         data: trendDataList,
         isLoading: isLoadingTrend
@@ -22,7 +23,7 @@ export const TrendingBlock = () => {
                 title2={'This week'}
                 color={'#ffffff'}
             />
-            <SliderShow slideCount={4}>
+            <SliderShow slideCount={screenSize}>
                 {trendDataList?.results
                     .map((film) => (
                         <SwiperSlide key={film.id}>

@@ -1,11 +1,10 @@
 import React, {FC} from 'react';
 import {Link, useLocation} from "react-router-dom";
-import notImg from '../../assets/JPG/notImg.jpg'
 import {useAppSelector} from "../../Store/store";
 import {IKnowFor} from "../../Store/tmdbService/@types";
 import './peopleCard.scss'
 
-export type PeopleCardProps = {
+type PropsType = {
     name: string,
     knownFor?: IKnowFor[],
     character?: string,
@@ -13,7 +12,7 @@ export type PeopleCardProps = {
     id: number
 }
 
-export const PeopleCard: FC<PeopleCardProps> = ({character, name, knownFor, profilePath, id}) => {
+export const PeopleCard: FC<PropsType> = ({character, name, knownFor, profilePath, id}) => {
     const {pathname} = useLocation()
 
     const {base_url, profileSize} = useAppSelector((state) => state.config)

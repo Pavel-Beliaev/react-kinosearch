@@ -25,13 +25,11 @@ export const MovieContent = () => {
     const {pathname} = useLocation()
     const type = pathname.split('/').pop()
 
-    const {dataFilms, pageNumber, infinityAble, searchValue, genreId, genresType} = useAppSelector(state => state.movies)
+    const {dataFilms, pageNumber, infinityAble, searchValue, genresType} = useAppSelector(state => state.movies)
     const [fetching, allMovieBase] = useLazyGetAllMoviesQuery()
     const totalPage = allMovieBase.data?.total_pages ?? 1;
     const isFetch = allMovieBase.isFetching
     const isSuces = allMovieBase.isSuccess
-
-    console.log(genresType)
 
     useObserver(
         lastElementRef,

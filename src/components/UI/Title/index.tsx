@@ -1,11 +1,11 @@
 import React, {FC} from 'react';
 import './title.scss'
 
-type TitleType = {
+type PropsType = {
     children: string
 }
 
-export const Title: FC<TitleType> = ({children}) => {
+export const Title: FC<PropsType> = ({children}) => {
     return (
         <div className='titles'>
             <h2>

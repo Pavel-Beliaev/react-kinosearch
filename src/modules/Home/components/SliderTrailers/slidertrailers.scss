@@ -59,11 +59,12 @@
 
 .swiperBottom {
   user-select: none;
-  margin: 0 30px;
+  margin: 0 30px 20px 30px;
   --swiper-navigation-color: #EC7532FF;
 
   .swiper-slide {
     opacity: 0.4;
+    height: auto;
 
     &-active {
       opacity: 1;

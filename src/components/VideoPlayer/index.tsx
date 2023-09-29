@@ -2,11 +2,11 @@ import React, {FC} from 'react';
 import './videoplayer.scss'
 import ReactPlayer from "react-player/lazy";
 
-export type VideoPlayerProps = {
+type PropsType = {
     keys?: string | undefined,
 }
 
-export const VideoPlayer: FC<VideoPlayerProps> = ({keys}) => {
+export const VideoPlayer: FC<PropsType> = ({keys}) => {
     return (
         <div className='player-wrapper'>
             <ReactPlayer

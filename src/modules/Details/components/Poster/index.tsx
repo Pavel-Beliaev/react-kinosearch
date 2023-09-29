@@ -4,13 +4,13 @@ import {useAppSelector} from "../../../../Store/store";
 import './poster.scss'
 import {Rating} from "../../../../components";
 
-export type PosterType = {
+type PropsType = {
     poster: string | null | undefined,
     rating: number | undefined,
     type: boolean
 }
 
-export const Poster: FC<PosterType> = ({poster, rating, type}) => {
+export const Poster: FC<PropsType> = ({poster, rating, type}) => {
     const {base_url, profileSize, posterSize} = useAppSelector((state) => state.config)
 
     return (

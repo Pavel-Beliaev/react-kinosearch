@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import '../customfields.scss'
 
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     title: string;
 }
 

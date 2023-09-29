@@ -5,12 +5,12 @@ import {Swiper} from "swiper/react";
 import "swiper/scss";
 import 'swiper/css/navigation';
 
-export interface SliderProps {
+type PropsType = {
     slideCount: number;
     children: React.ReactElement | React.ReactNode;
 }
 
-export const SliderShow: FC<SliderProps> = ({
+export const SliderShow: FC<PropsType> = ({
                                                 slideCount,
                                                 children,
                                             }) => {

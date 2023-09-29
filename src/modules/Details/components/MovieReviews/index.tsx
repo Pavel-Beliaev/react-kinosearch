@@ -4,13 +4,13 @@ import {ResultsReviewsType} from "../../../../Store/tmdbService/@types";
 import {Reviews} from "../Reviews";
 import {Title} from "../../../../components";
 
-export type MovieReviewsType = {
+type PropsType = {
     length: number | undefined,
     title: string | undefined,
     reviews: ResultsReviewsType[] | undefined,
 }
 
-export const MovieReviews:FC<MovieReviewsType> = ({length, title, reviews}) => {
+export const MovieReviews:FC<PropsType> = ({length, title, reviews}) => {
 
     return (
         <div className='container review'>

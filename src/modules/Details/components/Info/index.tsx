@@ -5,12 +5,12 @@ import {IDetails} from "../../../../Store/tmdbService/@types";
 import {Title} from "../../../../components";
 import './info.scss'
 
-export type InfoType = {
+type PropsType = {
     data: IDetails | undefined,
     type: boolean
 }
 
-export const Info: FC<InfoType> = ({data, type}) => {
+export const Info: FC<PropsType> = ({data, type}) => {
     const infoLinks = () => {
         return (
             <div className='info-links'>

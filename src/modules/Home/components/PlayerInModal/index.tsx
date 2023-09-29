@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {FC, useEffect} from 'react';
 import {useAppSelector} from "../../../../Store/store";
 import {useLazyGetVideoByIdQuery} from "../../../../Store/tmdbService/endpoints";
 import {VideoPlayer} from "../../../../components";
 import './playerInModal.scss'
 
-export const PlayerInModal = () => {
+export const PlayerInModal: FC = () => {
     const {active, id} = useAppSelector((state) => state.config.activeModal);
 
     const [fetchVideoById, data] = useLazyGetVideoByIdQuery();

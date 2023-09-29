@@ -13,10 +13,11 @@ import {
     useLazyGetVideoByIdQuery,
 } from "../../../../Store/tmdbService/endpoints";
 import {Title, VideoPlayer} from "../../../../components";
+import {useScreenSize} from "../../../../hooks/useScreenSize";
 
 export const SliderTrailers: FC = () => {
     const [thumbsSwiperTop, setThumbsSwiperTop] = useState<SwiperClass>();
-
+    const screenSize = useScreenSize();
     const {base_url, posterSize, backdropSize} = useAppSelector(
         (state) => state.config
     );
@@ -29,6 +30,7 @@ export const SliderTrailers: FC = () => {
     const moviesKeys = data.data?.results
         .filter((el) => el.type === "Trailer")
         .find((elem) => elem.key);
+
 
     useEffect(() => {
         if (isSuccess) target(getId);
@@ -56,10 +58,12 @@ export const SliderTrailers: FC = () => {
             <div className="container sliderTrailer">
                 <Title>Trailers</Title>
                 <div
-                    style={{paddingTop: !moviesKeys ? "47.3%" : ""}}
                     className="sliderTrailer-player trailers-player"
                 >
-                    {<VideoPlayer keys={moviesKeys?.key}/>}
+                    {moviesKeys?.key
+                        ? <VideoPlayer keys={moviesKeys.key}/>
+                        : <div className='player-wrapper'/>
+                    }
                 </div>
                 <Swiper
                     loop={true}
@@ -67,7 +71,7 @@ export const SliderTrailers: FC = () => {
                         swiper: thumbsSwiperTop,
                     }}
                     spaceBetween={30}
-                    slidesPerView={4}
+                    slidesPerView={screenSize}
                     navigation={true}
                     freeMode={true}
                     watchSlidesProgress={true}

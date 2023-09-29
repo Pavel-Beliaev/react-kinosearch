@@ -7,12 +7,12 @@ import {Overviews} from "../Overviews";
 import {Info} from "../Info";
 import {SkeletonPeoplePage} from "../SkeletonPeoplePage";
 
-type SynopsisType = {
+type PropsType = {
     data: IDetails | undefined,
     isFetching: boolean,
     isType: boolean
 }
-export const Synopsis: FC<SynopsisType> = React.memo(({data, isFetching, isType}) => {
+export const Synopsis: FC<PropsType> = React.memo(({data, isFetching, isType}) => {
 
     return (
         <>

@@ -13,7 +13,7 @@ export const Navbar:FC = () => {
     }
 
     return (
-        <div className='container navbar'>
+        <div className='navbar'>
             <div className='navbar-main'>
                 <div>
                     <Link to="/">

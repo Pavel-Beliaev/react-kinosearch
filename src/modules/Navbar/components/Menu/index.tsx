@@ -3,15 +3,15 @@ import {Navbar} from "../Navbar";
 import {Telephone} from "../Telephone";
 import './_menu.scss'
 
-type MenuType = {
+type PropsType = {
     refElem: React.RefObject<HTMLDivElement>
 }
-export const Menu: FC<MenuType> = React.memo(({refElem}) => {
+export const Menu: FC<PropsType> = React.memo(({refElem}) => {
 
     return (
         <div
             ref={refElem}
-            className='menu'
+            className='container menu'
         >
             <Telephone/>
             <Navbar/>

@@ -2,13 +2,13 @@ import React, {FC} from 'react';
 import './pagination.scss'
 import ReactPaginate from "react-paginate";
 
-export type PaginationProps = {
+type PropsType = {
     value: number,
     changePage: (page: number) => void
     totalPage: number | undefined
 }
 
-export const Pagination: FC<PaginationProps> = ({value, changePage, totalPage}) => {
+export const Pagination: FC<PropsType> = ({value, changePage, totalPage}) => {
 
     return (
         <div className='people-pagination'>

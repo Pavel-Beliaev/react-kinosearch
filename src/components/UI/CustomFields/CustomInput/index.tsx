@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react';
 import '../customfields.scss'
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     title?: string;
 }
 

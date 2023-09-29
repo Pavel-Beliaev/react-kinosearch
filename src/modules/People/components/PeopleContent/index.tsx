@@ -1,17 +1,14 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {PeopleCard, SkeletonPeopleCard, Title} from "../../../../components";
 import {Pagination} from "../Pagination";
 import {useScroll} from "../../../../hooks/useScroll";
 import {useGetAllPersonQuery} from "../../../../Store/tmdbService/endpoints";
 import './peopleContent.scss'
 
-export const PeopleContent = () => {
+export const PeopleContent:FC = () => {
     const [pageNumber, setPageNumber] = useState(1)
     const scrollTo = useScroll()
-
     const {data, isFetching} = useGetAllPersonQuery(pageNumber);
-
-
     const onChangePage = (page: number) => {
         (setPageNumber(page))
         scrollTo(0, 0, "smooth")
@@ -25,7 +22,8 @@ export const PeopleContent = () => {
                     .map((object, index) => (
                         isFetching
                             ? <SkeletonPeopleCard key={index}/>
-                            : <PeopleCard
+                            : object.profile_path &&
+                            <PeopleCard
                                 key={object.id}
                                 name={object.name}
                                 knownFor={object.known_for}

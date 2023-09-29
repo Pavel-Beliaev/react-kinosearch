@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {CreatedByType, CreditsCrewType} from "../../../../Store/tmdbService/@types";
 import './overviews.scss'
 
-export type OverviewsType = {
+type PropsType = {
     title: string,
     overview: string | null | undefined,
     creditsCrew?: CreditsCrewType[] | undefined,
@@ -10,7 +10,7 @@ export type OverviewsType = {
     type: boolean
 }
 
-export const Overviews:FC<OverviewsType> = ({type, title, created_by, overview, creditsCrew}) => {
+export const Overviews:FC<PropsType> = ({type, title, created_by, overview, creditsCrew}) => {
 
     return (
         <div className='overview'>

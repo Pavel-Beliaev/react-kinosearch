@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import './rating.scss'
 
-export type RatingProps = {
+type PropsType = {
     rating?: number | null,
     fill?: string,
 }
 
-export const Rating:FC<RatingProps> = ({rating, fill}) => {
+export const Rating:FC<PropsType> = ({rating, fill}) => {
 
     const circumference = 2 * Math.PI * 25;
     const offset = circumference - ((rating ? rating : 0) / 10) * circumference;

@@ -3,11 +3,11 @@ import './modalWindow.scss'
 import {useAppDispatch, useAppSelector} from "../../../../Store/store";
 import {setActiveModal} from "../../../../Store/config/slice";
 
-export type ModalWindowType = {
+type PropsType = {
     children: React.ReactNode
 }
 
-export const ModalWindow:FC<ModalWindowType> = ({children}) => {
+export const ModalWindow:FC<PropsType> = ({children}) => {
     const dispatch = useAppDispatch();
     const {active} = useAppSelector(state => state.config.activeModal);
 

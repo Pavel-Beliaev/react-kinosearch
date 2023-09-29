@@ -5,12 +5,12 @@ import './media.scss'
 import {SliderShow, Switcher, Title, VideoPlayer} from "../../../../components";
 import {IDetails} from "../../../../Store/tmdbService/@types";
 
-export type MovieMediaType = {
+type PropsType = {
     dataMovie: IDetails | undefined,
     pict: string | null | undefined
 }
 
-export const MovieMedia: FC<MovieMediaType> = ({dataMovie}) => {
+export const MovieMedia: FC<PropsType> = ({dataMovie}) => {
     const [switcher, setSwitcher] = useState(0);
     const {base_url, backdropSize} = useAppSelector((state) => state.config)
 

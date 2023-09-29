@@ -9,6 +9,54 @@
   background: $dark;
   margin-top: 65px;
 
+  @media (max-width: 860px) {
+    .social {
+      align-items: center;
+
+
+      .footer-column-menu {
+        height: auto;
+        visibility: visible;
+
+
+        ul {
+          display: flex;
+          gap: 10px;
+
+        }
+      }
+    }
+
+    .footer-column-border {
+      width: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .open {
+      height: auto;
+      visibility: visible;
+    }
+
+    &-row {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 10px;
+    }
+    &-column {
+      width: 100%;
+      align-items: center;
+      h6 {
+        cursor: pointer;
+      }
+
+      &-menu {
+        height: 0;
+        visibility: hidden;
+        align-items: center;
+      }
+    }
+  }
+
   &-main {
     display: flex;
     flex-direction: column;
@@ -16,18 +64,13 @@
 
   &-row {
     display: flex;
-    margin-right: -15px;
-    margin-left: -15px;
+    justify-content: space-between;
   }
 
   &-column {
-    width: 25%;
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 1px;
-    padding-right: 15px;
-    padding-left: 15px;
 
     h6 {
       color: $orange;
@@ -40,16 +83,16 @@
     }
 
     &-menu {
+      display: flex;
+      flex-direction: column;
+
       ul {
         li {
           a {
             font-size: 13px;
             padding: 3px 0;
             letter-spacing: 1.5px;
-            align-items: center;
-            gap: 5px;
-            transition: $transit;
-
+            transition: color 300ms ease-in-out;;
 
             .fa {
               width: 25px;

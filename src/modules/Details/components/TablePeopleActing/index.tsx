@@ -1,11 +1,16 @@
 import React, {FC, useState} from 'react';
 import {Table} from 'antd';
-import {MovieCredits, TablePeopleActingType} from "./types";
+import {MovieCredits} from "./types";
 import './table.scss'
 import {columns} from "./config_table";
 import {Switcher, Title} from "../../../../components";
+import {CreditsPeopleCastType} from "../../../../Store/tmdbService/@types";
 
-export const TablePeopleActing:FC<TablePeopleActingType> = ({movieCredits, tvCredits}) => {
+type PropsType = {
+    movieCredits: CreditsPeopleCastType[] | undefined,
+    tvCredits: CreditsPeopleCastType[] | undefined,
+}
+export const TablePeopleActing:FC<PropsType> = ({movieCredits, tvCredits}) => {
     const [switcher, setSwitcher] = useState(0);
 
     const movieCreditsData: MovieCredits[] | undefined = movieCredits

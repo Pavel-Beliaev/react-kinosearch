@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {useGetTopRatedMoviesQuery} from "../../../../Store/tmdbService/endpoints";
 import {MovieSlideCard, SkeletonSliderShow, SliderShow, Switcher, Title} from "../../../../components";
 import {SwiperSlide} from "swiper/react";
 import {typeQueryFilms} from "../../mock/statick";
+import {useScreenSize} from "../../../../hooks/useScreenSize";
 
-export const TopRateBlock = () => {
+export const TopRateBlock:FC = () => {
     const [switcherTopRateFilms, setSwitcherTopRateFilms] = useState(0)
-
+    const screenSize = useScreenSize();
     const {
         data: topRateDataList,
         isLoading: isLoadingTopRate
@@ -22,7 +23,7 @@ export const TopRateBlock = () => {
                 title2={'TV'}
                 color={'#ffffff'}
             />
-            <SliderShow slideCount={4}>
+            <SliderShow slideCount={screenSize}>
                 {topRateDataList?.results
                     .map((film) => (
                         <SwiperSlide key={film.id}>

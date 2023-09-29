@@ -4,16 +4,20 @@
   user-select: none;
   --swiper-navigation-color: #EC7532FF;
   margin-top: 20px;
-  height: 100%;
+  display: flex;
 
   .swiper {
+    display: flex;
 
     &-wrapper {
+      display: flex;
       overflow: hidden;
     }
 
     &-slide {
       height: auto;
+      display: flex;
+      flex-direction: column;
     }
   }
 }

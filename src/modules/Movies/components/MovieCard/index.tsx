@@ -4,7 +4,7 @@ import {useAppSelector} from "../../../../Store/store";
 import notPicture from "../../../../assets/PNG/placeholder.png";
 import './movieCard.scss'
 
-export type MovieCardProps = {
+type PropsType = {
     poster: string | null,
     overview: string,
     title: string,
@@ -12,7 +12,7 @@ export type MovieCardProps = {
     id: number,
 }
 
-export const MovieCard: FC<MovieCardProps> = ({id, poster, overview, title, filmGenre}) => {
+export const MovieCard: FC<PropsType> = ({id, poster, overview, title, filmGenre}) => {
     const {pathname} = useLocation()
 
     const {base_url, posterSize, genresMovies, genresTV} = useAppSelector((state) => state.config)

@@ -2,14 +2,14 @@
 
 .navbar {
 
-  @media (max-width: 960px) {
+  @media (max-width: 1024px) {
     .navbar-main {
       display: flex;
       flex-direction: column;
     }
   }
 
-  @media (max-width: 710px) {
+  @media (max-width: 760px) {
     .navbar-main {
       display: flex;
       flex-direction: row;
@@ -60,8 +60,6 @@
         }
 
         a {
-          width: 100%;
-          font-size: 16px;
           font-weight: normal;
           line-height: 0.8em;
           display: flex;
@@ -69,7 +67,6 @@
           padding: 20px 24px;
           letter-spacing: 3px;
           text-transform: uppercase;
-          color: #ffffff;
           position: relative;
           transition: $transit;
 

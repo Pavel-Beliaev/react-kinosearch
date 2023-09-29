@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 import {useAppSelector} from "../../../../Store/store";
 import {ResultsReviewsType} from "../../../../Store/tmdbService/@types";
 
-export type ReviewsType = {
+type PropsType = {
     reviews: ResultsReviewsType[] | undefined,
 }
 
-export const Reviews: FC<ReviewsType> = ({reviews}) => {
+export const Reviews: FC<PropsType> = ({reviews}) => {
     const {base_url, avatarSize} = useAppSelector((state) => state.config)
 
     return (

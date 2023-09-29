@@ -3,7 +3,7 @@
 .sliderCard {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   user-select: none;
   height: 100%;
@@ -13,21 +13,17 @@
     border-radius: 10px;
     overflow: hidden;
     display: flex;
+    height: 100%;
 
-    &-aside {
-      z-index: -1;
+    img {
+      width: 100%;
+      height: auto;
     }
-
-    a {
-      position: relative;
-      z-index: 2;
-    }
-
   }
 
   &-poster_alt {
     @extend .sliderCard-poster;
-
+    height: auto;
 
     &-aside {
       z-index: 1;
@@ -114,25 +110,17 @@
     letter-spacing: 4px;
     text-transform: uppercase;
     transition: $transit;
-
-
+    
     &:hover {
       color: $orange;
       transition: $transit;
     }
-
-  }
-
-  img {
-    width: 100%;
-    height: auto;
   }
 
   &-title {
     padding: 10px;
     display: flex;
     align-items: flex-start;
-    flex-grow: 1;
 
     h4 {
       border: none;
