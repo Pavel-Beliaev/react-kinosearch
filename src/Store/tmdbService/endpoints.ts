@@ -146,7 +146,7 @@ const extendedApi = tmdbApi.injectEndpoints({
 
         // endpoints video
 
-        getVideoById: build.query<IVideos, number | undefined>({
+        getVideoById: build.query<IVideos, number>({
             query: (id) => ({
                 url: `/movie/${id}/videos`,
                 params: {

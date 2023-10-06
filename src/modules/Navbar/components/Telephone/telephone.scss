@@ -1,41 +1,17 @@
 @import "../../../../scss/variables";
 
 .heading {
-  margin-top: 30px;
   display: flex;
   justify-content: flex-end;
-
-  span {
-    font-size: 18px;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-    margin-right: 24px;
-    transition: $transit;
-    cursor: pointer;
-
-    &:hover {
-      color: $light-orange;
-      transition: $transit;
-    }
-  }
-}
-
-.tel {
-  margin-right: 24px;
   font-size: 14px;
-  font-weight: bold;
-  color: #ffffff;
-  display: flex;
   align-items: center;
-  gap: 10px;
 
   a {
     transition: $transit;
+    margin-right: 24px;
 
     i {
-      font-size: 17px;
-      width: 14px;
+      font-size: inherit;
       margin-right: 5px;
       color: #ffffff;
     }

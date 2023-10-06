@@ -22,15 +22,15 @@ body {
   color: white;
 }
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 12px;
 }
 
-body::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
   background: $orange;
 }
 
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
   height: 10px;
   background-color: #101010;
   border-radius: 20px;

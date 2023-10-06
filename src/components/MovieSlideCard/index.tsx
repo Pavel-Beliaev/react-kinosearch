@@ -30,13 +30,9 @@ export const MovieSlideCard: FC<PropsType> = React.memo(({first_air_date, id, re
     };
     return (
         <div className='sliderCard'>
-            <Link
-                style={{cursor: (release || first_air_date) ? 'auto' : 'pointer'}}
-                onClick={(e) => (release || first_air_date) && e.preventDefault()}
-                to={`/movie/${id}`}
-                className={(release || first_air_date) ? 'sliderCard-poster_alt' : 'sliderCard-poster'}
-            >
-                {(release || first_air_date) &&
+            {(release || first_air_date)
+                ?
+                <span className='sliderCard-poster_alt'>
                     <div className='sliderCard-aside'>
                         <div
                             className='sliderCard-play'
@@ -52,12 +48,24 @@ export const MovieSlideCard: FC<PropsType> = React.memo(({first_air_date, id, re
                         </Link>
                         <span>Released: {release}</span>
                     </div>
-                }
-                <img
-                    src={`${base_url}${posterSize}${poster}`}
-                    alt="poster"
-                />
-            </Link>
+                    <img
+                        src={`${base_url}${posterSize}${poster}`}
+                        alt="poster"
+                    />
+                </span>
+                :
+                <Link
+                    style={{cursor: (release || first_air_date) ? 'auto' : 'pointer'}}
+                    onClick={(e) => (release || first_air_date) && e.preventDefault()}
+                    to={`/movie/${id}`}
+                    className='sliderCard-poster'
+                >
+                    <img
+                        src={`${base_url}${posterSize}${poster}`}
+                        alt="poster"
+                    />
+                </Link>
+            }
             <div>
                 <div className='sliderCard-title'>
                     <h4>{title}</h4>

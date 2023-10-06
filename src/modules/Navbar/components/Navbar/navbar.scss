@@ -1,245 +1,34 @@
 @import "../../../../scss/variables";
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 
   @media (max-width: 1024px) {
-    .navbar-main {
-      display: flex;
-      flex-direction: column;
-    }
+    display: flex;
+    flex-direction: column;
   }
 
   @media (max-width: 760px) {
-    .navbar-main {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .navbar-burger {
-      display: flex;
-    }
-
-    .navbar-panel {
-      display: none;
-    }
-  }
-
-  &-main {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-  }
+    flex-direction: row;
 
-  &-panel {
-    position: relative;
-
-    ul {
-      border-bottom: 1px solid rgba(255, 255, 255, .2);
+    .burger {
       display: flex;
-
-      li {
-        position: relative;
-        min-width: 120px;
-
-        &:hover {
-          .dropdown {
-            width: 100%;
-            transition: $transit;
-            opacity: 1;
-
-            li {
-              visibility: visible;
-              transition: $transit;
-            }
-          }
-
-          &:after {
-            width: 100%;
-          }
-        }
-
-        a {
-          font-weight: normal;
-          line-height: 0.8em;
-          display: flex;
-          justify-content: center;
-          padding: 20px 24px;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          position: relative;
-          transition: $transit;
-
-
-          &:hover {
-            color: $light-orange;
-            transition: $transit;
-          }
-
-          &.active {
-            &:after {
-              position: absolute;
-              right: 0;
-              bottom: 0;
-              left: 0;
-              display: block;
-              width: 100%;
-              height: 2px;
-              content: '';
-              background-image: $gradient;
-              box-shadow: 0 0 30px 0 $light-orange;
-            }
-          }
-        }
-
-        &:after {
-          position: absolute;
-          right: auto;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          height: 2px;
-          content: '';
-          transition: $transit;
-          background-image: $gradient;
-          box-shadow: 0 0 30px 0 $light-orange;
-        }
-      }
     }
 
-    .dropdown {
-      position: absolute;
-      display: flex;
-      flex-direction: column;
-      background-color: rgba($dark, 0.3);
-      transition: $transit;
-      top: 100%;
-      left: 0;
-      width: 0;
-      opacity: 0;
-
-      li {
-        width: 100%;
-        visibility: hidden;
-        transition: $transit;
-        z-index: 10;
-        cursor: pointer;
-
-        &:hover {
-          transition: $transit;
-        }
-
-        span {
-          width: 100%;
-          font-size: 13px;
-          padding: 13px 50%;
-          line-height: 0.9em;
-          font-weight: normal;
-          display: flex;
-          justify-content: center;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          color: #ffffff;
-          position: relative;
-          transition: $transit;
-        }
-      }
-    }
-  }
-
-  &-burger {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    padding-right: 24px;
-
-
-    svg {
-      width: 50px;
-      height: 50px;
-      stroke: white;
-      z-index: 2;
-    }
-
-    ul {
-      position: absolute;
-      width: 100%;
-      top: 0;
-      left: 0;
-      background-color: rgba($dark, 1);
-
-      li {
-        position: relative;
-        border: 1px solid $orange;
-        transition: $transit;
-        background: #101010;
-
-
-        &:hover {
-          border: 1px solid $light-orange;
-          transition: $transit;
-          background: linear-gradient(-90deg, rgba(0, 0, 0, 1) 40%, rgba(236, 117, 50, 0.6) 100%);
-        }
-
-        &:nth-of-type(2) {
-
-          .dropdown {
-            li {
-              span {
-                &:after {
-                  content: '';
-                }
-              }
-            }
-          }
-
-          &:hover {
-            .dropdown {
-              display: block;
-            }
-          }
-
-          a {
-            &:after {
-              font: normal normal normal 16px/1 FontAwesome;
-              content: '\f105';
-              padding-left: 10px;
-              line-height: 10px;
-            }
-          }
-        }
-
-        a {
-          padding: 24px 24px;
-          width: 100%;
-          letter-spacing: 3px;
-          text-transform: uppercase;
-          font-size: 16px;
-          font-weight: normal;
-          line-height: .8em;
-          display: inline-block;
-          position: relative;
-        }
-      }
-    }
-
-    .dropdown {
+    .panel {
       display: none;
-      position: absolute;
-      z-index: 2;
-      left: 50%;
-      top: 0;
-      width: 50%;
+    }
 
-      li {
-
-        span {
-
-        }
+    .heading {
+      a {
+        margin-right: 0;
       }
     }
   }
-
 }
 
 

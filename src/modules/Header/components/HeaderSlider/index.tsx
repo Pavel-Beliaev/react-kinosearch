@@ -78,7 +78,7 @@ export const HeaderSlider: FC = () => {
                                             </CustomButton>
                                             <Link
                                                 className="sliderHeader-readMore"
-                                                to={`all/movie/${film.id}`}
+                                                to={`/movie/${film.id}`}
                                             >
                                                 Read more
                                             </Link>

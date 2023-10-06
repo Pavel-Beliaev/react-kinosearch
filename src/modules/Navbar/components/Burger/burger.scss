@@ -1,0 +1,122 @@
+@import "../../../../scss/variables";
+
+.burger {
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+
+  svg {
+    width: 50px;
+    height: 50px;
+    stroke: $orange;
+    z-index: 2;
+  }
+
+  ul {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: $dark;
+
+    li {
+      position: relative;
+      border: 1px solid $orange;
+      transition: $transit;
+      background: rgba($dark, 1);
+
+      &:hover {
+        border: 1px solid $light-orange;
+        transition: $transit;
+        background: linear-gradient(-90deg, $dark 30%, $orange 80%, $light-orange 100%);
+      }
+
+      &:nth-of-type(2) {
+
+        .dropdown {
+          li {
+            span {
+              &:after {
+                content: '';
+              }
+            }
+          }
+        }
+
+        &:hover {
+          .dropdown {
+            display: block;
+          }
+        }
+
+        a {
+          &:after {
+            font: normal normal normal 16px/1 FontAwesome;
+            content: '\f105';
+            padding-left: 10px;
+            line-height: 10px;
+          }
+        }
+      }
+
+      &:nth-of-type(3) {
+
+        .dropdown {
+          li {
+            span {
+              &:after {
+                content: '';
+              }
+            }
+          }
+        }
+
+        &:hover {
+          .dropdown {
+            display: block;
+          }
+        }
+
+        a {
+          &:after {
+            font: normal normal normal 16px/1 FontAwesome;
+            content: '\f105';
+            padding-left: 10px;
+            line-height: 10px;
+          }
+        }
+      }
+
+      a {
+        padding: 24px 24px;
+        width: 100%;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-size: 16px;
+        font-weight: normal;
+        line-height: .8em;
+        display: inline-block;
+        position: relative;
+      }
+    }
+  }
+
+  .dropdown {
+    display: none;
+    position: absolute;
+    overflow-y: scroll;
+    z-index: 2;
+    left: 50%;
+    width: 50%;
+    height: 520%;
+
+    li {
+      padding: 24px;
+
+      span {
+
+      }
+    }
+  }
+}

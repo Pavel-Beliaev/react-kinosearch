@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {Navbar} from "../Navbar";
 import {Telephone} from "../Telephone";
-import './_menu.scss'
+import './menu.scss'
 
 type PropsType = {
     refElem: React.RefObject<HTMLDivElement>

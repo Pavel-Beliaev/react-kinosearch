@@ -1,2 +1,2 @@
-export * from './components/DropDownNavbar'
+export * from './components/DropDownMenu'
 export * from './components/Menu'

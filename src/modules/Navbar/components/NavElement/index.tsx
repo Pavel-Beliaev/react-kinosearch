@@ -1,4 +1,4 @@
-import React, {FC, useRef, useState} from 'react';
+import React, {FC} from 'react';
 import {NavLink} from "react-router-dom";
 import {navbarMenu} from "../../mock/static";
 import '../Navbar/navbar.scss'

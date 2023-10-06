@@ -5,7 +5,7 @@ import {
     useLazyGetGenreMoviesQuery,
     useLazyGetGenreTVQuery,
 } from "../Store/tmdbService/endpoints";
-import {DropDownNavbar, Footer, Header, Menu} from "../modules";
+import {DropDownMenu, Footer, Header, Menu} from "../modules";
 import './mainLayout.scss'
 import {useObserver} from "../hooks/useObserver";
 import {ButtonToUp} from "../components";
@@ -37,7 +37,7 @@ export const MainLayout: FC = () => {
     return (
         <div className="wrapper">
             <Menu refElem={elementRef}/>
-            <DropDownNavbar scroll={scroll}/>
+            <DropDownMenu scroll={scroll}/>
             <Header/>
             <Outlet/>
             <ButtonToUp scroll={scroll}/>

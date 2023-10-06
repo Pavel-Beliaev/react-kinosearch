@@ -73,7 +73,7 @@
     }
 
     &-colum {
-      flex-direction: row;
+      //flex-direction: row;
     }
 
     &-row {
@@ -82,12 +82,12 @@
     }
 
     &-text {
-      display: none;
-      position: absolute;
-      z-index: 2;
-      background: white;
-      border: 1px solid black;
-      margin-top: 100%;
+      //display: none; // text info
+      //position: absolute;
+      //z-index: 2;
+      //background: white;
+      //border: 1px solid black;
+      //margin-top: 100%;
     }
   }
 }

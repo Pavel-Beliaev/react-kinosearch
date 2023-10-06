@@ -31,7 +31,7 @@ export const SliderTrailers: FC = () => {
     );
 
     const {data: popularMoviesDataList, isSuccess} = useGetPopularMoviesQuery(null);
-    const [target, data] = useLazyGetVideoByIdQuery();
+    const [fetch, data] = useLazyGetVideoByIdQuery();
     const [slideIndex, setSlideIndex] = useState<number>(0);
 
     const getId = popularMoviesDataList?.results[slideIndex]?.id;
@@ -39,10 +39,9 @@ export const SliderTrailers: FC = () => {
         .filter((el) => el.type === "Trailer")
         .find((elem) => elem.key);
 
-
     useEffect(() => {
-        if (isSuccess) target(getId);
-    }, [getId, isSuccess, target]);
+        if (isSuccess && getId) fetch(getId);
+    }, [getId, isSuccess, fetch]);
 
     return (
         <div className='trailers'>
