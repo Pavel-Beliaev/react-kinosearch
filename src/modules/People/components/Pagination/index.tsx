@@ -23,7 +23,7 @@ export const Pagination: FC<PropsType> = ({value, changePage, totalPage}) => {
         <div className='people-pagination'>
             <ReactPaginate
                 className='paginate'
-                pageCount={totalPage ? totalPage : 0}
+                pageCount={totalPage ? 500 : 0}
                 marginPagesDisplayed={1}
                 pageRangeDisplayed={screenSize}
                 breakLabel="..."

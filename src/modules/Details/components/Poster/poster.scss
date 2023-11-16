@@ -1,9 +1,9 @@
 .poster {
   position: relative;
+  align-self:flex-start;
 
   img {
     width: 100%;
-    flex: 0 1 30%;
   }
 
   &-rating {

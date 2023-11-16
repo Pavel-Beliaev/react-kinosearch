@@ -14,6 +14,8 @@ export const PeopleContent:FC = () => {
         scrollTo(0, 0, "smooth")
     };
 
+    console.log(data)
+
     return (
         <div className='frameworks-container people'>
             <Title>Popular People</Title>

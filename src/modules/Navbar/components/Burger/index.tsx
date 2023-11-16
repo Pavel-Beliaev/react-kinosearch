@@ -2,10 +2,12 @@ import React, {FC, useCallback, useEffect, useState} from 'react';
 import './burger.scss'
 import {ReactComponent as BurgerIcon} from "../../assets/SVG/burger.svg";
 import {NavElement} from "../NavElement";
+import {useLocation} from "react-router-dom";
 
 
 export const Burger: FC = () => {
-    const [isActive, setIsActive] = useState<boolean>(false)
+    const {pathname} = useLocation();
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     const handleClickOutside = useCallback(
         (event: MouseEvent) => {
@@ -19,6 +21,10 @@ export const Burger: FC = () => {
         },
         [isActive]
     );
+
+    useEffect(() => {
+        setIsActive(false);
+    }, [pathname])
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);

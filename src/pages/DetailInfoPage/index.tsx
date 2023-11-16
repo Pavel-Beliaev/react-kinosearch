@@ -14,10 +14,20 @@ import {
     Title
 } from "../../components";
 import {MovieMedia, MovieReviews, Synopsis, TablePeopleActing} from "../../modules";
+import {useScreenSize} from "../../hooks/useScreenSize";
 
 export const DetailInfoPage: FC = () => {
     const {isType, type, id} = useTypePage()
     const scrollTo = useScroll()
+    const screenSize = useScreenSize({
+        size_1: 1024,
+        value_1: 4,
+        size_2: 768,
+        value_2: 3,
+        size_3: 470,
+        value_3: 2,
+        value_4: 1,
+    });
 
     const [fetchMovie, {data, isFetching: isFetchingDetails}] = useLazyGetDetailsQuery()
     const {data: dataAllMovies, isFetching} = useGetAllMoviesQuery({
@@ -54,7 +64,7 @@ export const DetailInfoPage: FC = () => {
             <div className='page-frame'>
                 <div className='frameworks-container'>
                     <Title>{isType ? 'Known For' : 'Top billed cast'}</Title>
-                    <SliderShow slideCount={4}>
+                    <SliderShow slideCount={screenSize}>
                         {isType
                             ? dataAllMovies?.results
                                 .map((film) => (film.poster_path &&
