@@ -46,7 +46,7 @@ export const MovieContent = () => {
 
     useEffect(() => {
         return () => {
-            dispatch(setGenresType({type: '', genreId: null}))
+            dispatch(setGenresType({type: '', genreId: ''}))
         }
     }, [])
 
@@ -58,7 +58,7 @@ export const MovieContent = () => {
                     .substring(1))
             dispatch(setFilter({
                     searchValue: params.search as string,
-                    genreId: params.genre as unknown as number | null,
+                    genreId: params.genre as unknown as number | string,
                     pageNumber: params.page as unknown as number,
                 })
             )
@@ -76,7 +76,7 @@ export const MovieContent = () => {
     }, [searchValue, genresType.genreId, pageNumber])
 
     useEffect(() => {
-        dispatch(setGenreId(null))
+        dispatch(setGenreId(''))
     }, [genresType.type, searchValue])
 
     useEffect(() => {

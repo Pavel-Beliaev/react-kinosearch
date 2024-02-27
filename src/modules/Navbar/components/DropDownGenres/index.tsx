@@ -9,7 +9,7 @@ type PropsType = {
 }
 export const DropDownGenres: FC<PropsType> = ({genres, type}) => {
     const dispatch = useAppDispatch()
-    const changeGenre = (IdGenre: number | null, type: string) => {
+    const changeGenre = (IdGenre: number | string, type: string) => {
         dispatch(setGenreId(IdGenre))
         dispatch(setGenresType({genreId: IdGenre, type: type}))
     }

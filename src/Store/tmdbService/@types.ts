@@ -122,7 +122,7 @@ export type QueryArgs = {
     type?: string,
     searchValue?: string,
     pageNumber?: number,
-    genre?: number | null,
+    genre?: number | string,
     peopleId?: number,
     infinityKey?: boolean
 }

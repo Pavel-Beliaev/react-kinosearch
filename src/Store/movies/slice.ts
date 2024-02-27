@@ -5,11 +5,11 @@ import {MoviesState} from "./@types";
 type FilterType = {
     pageNumber: number,
     searchValue: string,
-    genreId: number | null
+    genreId: number | string
 };
 
 type GenresType = {
-    genreId: number | null,
+    genreId: number | string,
     type: string
 }
 
@@ -18,9 +18,9 @@ const initialState: MoviesState = {
     pageNumber: 1,
     infinityAble: false,
     searchValue: '',
-    genreId: null,
+    genreId: '',
     genresType: {
-        genreId: null,
+        genreId: '',
         type: ''
     }
 }
@@ -43,7 +43,7 @@ export const moviesSlice = createSlice({
         setSearchValue(state, action: PayloadAction<string>) {
             state.searchValue = action.payload
         },
-        setGenreId(state, action: PayloadAction<number | null>) {
+        setGenreId(state, action: PayloadAction<number | string>) {
             state.genreId = action.payload
         },
         setGenresType(state, action: PayloadAction<GenresType>) {
